@@ -7,6 +7,7 @@
     <title>首页</title>
     <link href="../public/library/bootstrap-4.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="../public/library/jquery-ui/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="../public/library/jquery.magnify/jquery.magnify.min.css" rel="stylesheet" type="text/css">
     <link href="../public/fonts/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="../public/stylesheets/animate.css" rel="stylesheet" type="text/css">
     <link href="../public/stylesheets/custom-global.css" rel="stylesheet" type="text/css">
@@ -32,7 +33,9 @@
         <!-- 多栏布局 - 栅格系统 -->
         <div class="col-lg-3 col-md-4 col-sm-6">
             <div class="card mb20">
-                <img class="card-img-top" src="layout/Grid.png" alt="Card image">
+                <a href="layout/Grid.png" class="layout-img" data-magnify="gallery">
+                    <img class="card-img-top" src="layout/Grid.png" alt="Card image">
+                </a>
                 <div class="card-body">
                     <h5 class="card-title">多栏布局 - 栅格系统</h5>
                     <p class="card-text text-muted">依赖于bootstrap的布局</p>
@@ -41,11 +44,13 @@
                 </div>
             </div>
         </div>
-
+        
         <!--弹性盒子布局（FlexBox）-->
         <div class="col-lg-3 col-md-4 col-sm-6">
             <div class="card mb20">
-                <img class="card-img-top" src="layout/Flexbox.png" alt="Card image">
+                <a href="layout/Flexbox.png" class="layout-img" data-magnify="gallery">
+                    <img class="card-img-top" src="layout/Flexbox.png" alt="Card image">
+                </a>
                 <div class="card-body">
                     <h5 class="card-title">弹性盒子布局（FlexBox）</h5>
                     <p class="card-text text-muted">无依赖</p>
@@ -58,7 +63,9 @@
         <!-- 双飞翼布局 -->
         <div class="col-lg-3 col-md-4 col-sm-6">
             <div class="card mb20">
-                <img class="card-img-top" src="layout/HolyGrail.png" alt="Card image">
+                <a href="layout/HolyGrail.png" class="layout-img" data-magnify="gallery">
+                    <img class="card-img-top" src="layout/HolyGrail.png" alt="Card image">
+                </a>
                 <div class="card-body">
                     <h5 class="card-title">双飞翼布局</h5>
                     <p class="card-text text-muted">无依赖</p>
@@ -67,7 +74,7 @@
                 </div>
             </div>
         </div>
-        
+    
     </div>
 </div>
 
@@ -77,9 +84,9 @@
 <script src="../public/library/jquery.cookie.js"></script>
 <script src="../public/library/jquery.animate.js"></script>
 <script src="../public/library/jquery-divScroll/divscroll.js"></script>
+<script src="../public/library/jquery.magnify/jquery.magnify.min.js"></script>
 <script src="../public/javascripts/custom-util.js"></script>
 <script src="../public/javascripts/custom-global.js"></script>
-
 
 </body>
 </html>
