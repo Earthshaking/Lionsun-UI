@@ -81,7 +81,8 @@ body {
     overflow-y: hidden;
     position: relative;
 }
-.doc-btn{
+
+.doc-btn {
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -97,13 +98,29 @@ body {
     min-width: 240px !important;
 }
 
-#sidebarMenu a.active{
+#sidebarMenu a.active {
     border: rgba(12, 84, 96, 0.74);
     background-color: rgba(12, 84, 96, 0.74);
 }
 
 #sidebarMenu a.disabled {
     opacity: 0.5;
+}
+
+.example-item {
+    width: 100%;
+    padding: 5px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.example-item .example-dom {
+    padding: 25px 30px 30px;
+    background-color: #FFFFFF;
+    border: 1px solid #e6e6e6;
+    position: relative;
+    top: 5px;
+    box-shadow: 0 10px 35px 0 rgba(154, 161, 171, .15);
 }
 
 /*--------------------------------
@@ -123,4 +140,21 @@ body {
 
 #main-title {
     color: #888 !important;
+}
+
+.docs {
+    color: rgba(12, 84, 96, 1) !important;
+    font-weight: 700;
+}
+
+.docs.active {
+    color: #FFF !important;
+}
+
+.layout-img img {
+    transition: all .3s;
+}
+
+.layout-img:hover > img {
+    filter: brightness(0.9);
 }
