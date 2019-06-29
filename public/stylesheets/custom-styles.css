@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+:root {
+    --white: #FFFFFF;
+    --lightBackground: #ececec;
+    --lightBackground2: #f5f5f5;
+    --globalGray: #DDDDDD;
+    --boxShadow: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.index.container-fluid, body, html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    position: relative;
+    overflow: hidden;
+}
+
+.container-fluid {
+    height: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: var(--lightBackground2);
+}
+
+.index.container-fluid {
+    background-color: var(--lightBackground2);
+    padding: 0;
+}
+
+#LIONSUN {
+    display: inline-flex;
+    align-items: center;
+    width: auto;
+    opacity: 0.8;
+    border: 0;
+}
+
+#LIONSUN:hover {
+    opacity: 1;
+}
+
+#LIONSUN span.logoTitle {
+    font-size: 22px;
+    font-family: Arial, arial, sans-serif;
+    vertical-align: middle;
+    margin-left: 5px;
+    color: #999 !important;
+}
+
+#LIONSUN span.navbar-toggler-icon {
+    vertical-align: bottom;
+    font-size: 18px;
+}
+
+.content {
+    width: 100%;
+    height: calc(100% - 50px);
+    display: flex;
+}
+
+/*--------------------------------
+              侧边栏
+---------------------------------*/
+#sidebar {
+    width: 0;
+    height: 100%;
+    border-right: 1px solid var(--globalGray);
+    /*box-shadow: 2px 0 5px 0 var(--boxShadow);*/
+    background-color: var(--white);
+    transition: all .3s;
+    opacity: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: relative;
+}
+.doc-btn{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+#sidebar.open {
+    width: 240px;
+    opacity: 1;
+}
+
+#sidebarMenu {
+    width: 240px !important;
+    min-width: 240px !important;
+}
+
+#sidebarMenu a.active{
+    border: rgba(12, 84, 96, 0.74);
+    background-color: rgba(12, 84, 96, 0.74);
+}
+
+#sidebarMenu a.disabled {
+    opacity: 0.5;
+}
+
+/*--------------------------------
+          右侧主体内容显示
+---------------------------------*/
+#main {
+    flex: 1;
+    background-color: var(--lightBackground);
+    height: 100%;
+}
+
+#frame {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#main-title {
+    color: #888 !important;
+}
