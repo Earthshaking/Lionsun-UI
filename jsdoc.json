@@ -1,0 +1,75 @@
+{
+    "tags": {
+        "allowUnknownTags": false
+    },
+    "source": {
+        "include": "./public/javascripts",
+        "includePattern": ".js$",
+        "excludePattern": "(node_modules/|docs)"
+    },
+    "plugins": [
+        "plugins/markdown"
+    ],
+    "opts": {
+        "template": "node_modules/docdash/",
+        "encoding": "utf8",
+        "destination": "doc/jsdoc/",
+        "recurse": true,
+        "verbose": true
+    },
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": true,
+        "useLongnameInNav": false,
+        "showInheritedInNav": true
+    },
+    "docdash": {
+        "static": true,
+        "sort": true,
+        "sectionOrder": [
+            "Classes",
+            "Modules",
+            "Externals",
+            "Events",
+            "Namespaces",
+            "Mixins",
+            "Tutorials",
+            "Interfaces"
+        ],
+        "disqus": "",
+        "openGraph": {
+            "title": "",
+            "type": "website",
+            "image": "",
+            "site_name": "",
+            "url": ""
+        },
+        "meta": {
+            "title": "",
+            "description": "",
+            "keyword": ""
+        },
+        "search": true,
+        "collapse": true,
+        "wrap": true,
+        "typedefs": true,
+        "navLevel": 1,
+        "private": true,
+        "removeQuotes": "none",
+        "scripts": [],
+        "menu": {
+            "Project Website": {
+                "href": "https://myproject.com",
+                "target": "_blank",
+                "class": "menu-item",
+                "id": "website_link"
+            },
+            "Forum": {
+                "href": "https://myproject.com.forum",
+                "target": "_blank",
+                "class": "menu-item",
+                "id": "forum_link"
+            }
+        }
+    }
+}
