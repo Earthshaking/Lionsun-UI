@@ -16,12 +16,55 @@
     <link href="../../public/stylesheets/custom-global.css" rel="stylesheet" type="text/css">
     <link href="../../public/stylesheets/custom-color.css" rel="stylesheet" type="text/css">
     <link href="../../public/stylesheets/custom-styles.css" rel="stylesheet" type="text/css">
+    <link href="../../public/library/scrollbar/gemini-scrollbar.css" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="../../public/favicon.ico" type="image/x-icon"/>
+    
+    <style>
+        .CodeMirror {
+            height: 500px;
+        }
+    </style>
 </head>
 
 <body>
-<div class="container-fluid p0 area">
-    <textarea name="code" id="code" style="opacity: 0;"></textarea>
+<div class="container-fluid p0">
+    
+    <div class="code-boxes">
+        <div class="row clearfix">
+            <div class="col-12">
+                <h1 class="h3" id="main-title">正在加载...</h1>
+                <hr>
+            </div>
+        </div>
+        
+        <blockquote>
+            <p>将 <b class="text-hight">HTML</b> 代码以及 <b class="text-hight">CSS</b> 代码都复制粘贴到你的项目内, 即可实现效果</p>
+            <small>页面样式依赖于 <code>bootstrap-4.0.0</code>（必须） </small>
+        </blockquote>
+        
+        <!-- HTML代码 -->
+        <div class="row clearfix">
+            <div class="col-12">
+                <textarea name="code" id="htmlCode" class="code-shows" style="opacity: 0;"></textarea>
+            </div>
+        </div>
+        <br>
+        <br>
+        <blockquote>
+            <p>当你日后需要修改页面样式的时候，先找到你需要修改的样式代码，然后复制粘贴一段 <br>
+               接着换一个 <b class="text-hight">Class</b> 名或者 <b class="text-hight">ID</b> 名，然后再进行修改<br>
+               <b>切记！</b> 如果你没有 <b class="text-hight">100%</b> 的把握，请不要直接修改并覆盖原有样式，</p>
+            <small>页面样式依赖于 <code>bootstrap-4.0.0</code>（必须）</small>
+        </blockquote>
+        
+        <!-- CSS代码 -->
+        <div class="row clearfix">
+            <div class="col-12">
+                <textarea name="code" id="cssCode" class="code-shows" style="opacity: 0;"></textarea>
+            </div>
+        </div>
+    
+    </div>
 </div>
 
 <script src="../../public/library/jquery-2.1.1.js"></script>
@@ -29,7 +72,7 @@
 <script src="../../public/library/jquery-ui/js/jquery-ui.min.js"></script>
 <script src="../../public/library/jquery.cookie.js"></script>
 <script src="../../public/library/layer/layer.js"></script>
-<script src="../../public/library/jquery-divScroll/divscroll.js"></script>
+<script src="../../public/library/scrollbar/index.js"></script>
 <script src="../../public/library/Codemirror/lib/codemirror.js"></script>
 <script src="../../public/library/Codemirror/javascript.js"></script>
 <script src="../../public/library/Codemirror/addon/selection/selection-pointer.js"></script>
@@ -50,39 +93,69 @@
 <script src="../../public/library/Codemirror/addon/hint/javascript-hint.js"></script>
 <script>
     
-    window.onload = function(){
-    
-        $(".area").perfectScrollbar();
+    window.onload = function () {
+        var Scrollbar = new GeminiScrollbar({
+            element: document.body
+        }).create();
+        
+        var mainTitle = $("#main-title");
         
         if (location.hash) {
-    
+            
             if (location.hash == "#grid") {
-                getHtmlCode("grid.html")
+                
+                getHtmlCode("grid/grid.html");
+                getCssCode("grid/grid.css");
+                mainTitle.html("多栏布局-栅格系统");
+                
             } else if (location.hash == "#Flexbox") {
-                getHtmlCode("Flexbox.html")
+                
+                getHtmlCode("flexbox/Flexbox.html");
+                getCssCode("flexbox/flexbox.css");
+                mainTitle.html("弹性盒子布局（FlexBox）");
+    
             } else if (location.hash == "#HolyGrail") {
-                getHtmlCode("HolyGrail.html")
+                
+                getHtmlCode("holyGrail/HolyGrail.html");
+                getCssCode("holyGrail/HolyGrail.css");
+                mainTitle.html("双飞翼布局");
+    
             } else if (location.hash == "#login") {
-                getHtmlCode("login/index.html")
+                
+                getHtmlCode("login/index.html");
+                getCssCode("login/login.css");
+                mainTitle.html("登录页面模版");
+    
             }
         }
-    }
-
+    };
+    
     function getHtmlCode(url) {
         $.ajax({
-            url:url,
-            type:"get",
-            dataType:"html",
-            success:function (html) {
-                $("#code").val(html);
-                initCodes()
+            url: url,
+            type: "get",
+            dataType: "html",
+            success: function (html) {
+                $("#htmlCode").val(html);
+                initHtmlCodes()
             }
         })
     }
-
-    function initCodes() {
-        CodeMirror.fromTextArea(document.getElementById("code"), {
-            mode: {name: "htmlmixed", globalVars: true},
+    
+    function getCssCode(url) {
+        $.ajax({
+            url: url,
+            type: "get",
+            success: function (html) {
+                $("#cssCode").val(html);
+                initCssCodes()
+            }
+        })
+    }
+    
+    function initCssCodes() {
+        CodeMirror.fromTextArea(document.getElementById("cssCode"), {
+            mode: {name: "css", globalVars: true},
             lineNumbers: true,
             lineWrapping: true,
             smartIndent: true,
@@ -97,7 +170,24 @@
         });
     }
     
-    
+    function initHtmlCodes() {
+        CodeMirror.fromTextArea(document.getElementById("htmlCode"), {
+            mode: {name: "htmlmixed", globalVars: true},
+            lineNumbers: true,
+            lineWrapping: true,
+            smartIndent: true,
+            indentUnit: 4,
+            foldGutter: true,
+            extraKeys: {"Ctrl-Space": "autocomplete"},
+            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+            matchBrackets: true, //括号匹配
+            autoCloseBrackets: true,
+            autoCloseTags: true,
+            theme: "material",
+        });
+    }
+
+
 </script>
 
 </body>

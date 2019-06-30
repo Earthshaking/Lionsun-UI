@@ -14,6 +14,8 @@
     <link href="../public/stylesheets/custom-color.css" rel="stylesheet" type="text/css">
     <link href="../public/stylesheets/custom-styles.css" rel="stylesheet" type="text/css">
     <link href="../public/library/Code.prism.all/prism-dark.css" rel="stylesheet">
+    <link href="../public/library/scrollbar/gemini-scrollbar.css" rel="stylesheet" type="text/css">
+    
     <link rel="shortcut icon" href="../public/favicon.ico" type="image/x-icon"/>
 
 </head>
@@ -212,15 +214,17 @@
 <script src="../public/library/jquery-ui/js/jquery-ui.min.js"></script>
 <script src="../public/library/jquery.cookie.js"></script>
 <script src="../public/library/jquery.animate.js"></script>
-<script src="../public/library/jquery-divScroll/divscroll.js"></script>
 <script src="../public/javascripts/custom-util.js"></script>
 <script src="../public/javascripts/custom-global.js"></script>
 <script src="../public/library/Code.prism.all/prism-dark.js"></script>
+<script src="../public/library/scrollbar/index.js"></script>
 
 <script type="text/javascript">
-    $(".area").perfectScrollbar({
-        horizrailenabled: false
-    });
+    
+    var Scrollbar = new GeminiScrollbar({
+        element: document.body
+    }).create();
+    
     var listJson = [
         {
             id: 1,
