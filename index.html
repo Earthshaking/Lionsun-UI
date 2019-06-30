@@ -20,27 +20,32 @@
 <!-- CODE BEGIN -->
 <div class="container-fluid index">
 
-    <!-- 导航栏 -->
-    <div id="header" class="animated fadeIn">
-        <div class="pos-f-t">
-            <nav class="navbar navbar-dark bg-dark">
-                <button class="navbar-toggler" id="LIONSUN" data-status="open" type="button" aria-label="Toggle navigation" onclick="toggleSidebar(this)">
-                    <span class="navbar-toggler-icon"></span> <span class="logoTitle">LIONSUN-UI</span>
-                </button>
-            </nav>
-        </div>
-    </div>
+    <!--&lt;!&ndash; 导航栏 &ndash;&gt;-->
+    <!--<div id="header" class="animated fadeIn">-->
+        <!--<div class="pos-f-t">-->
+            <!--<nav class="navbar navbar-dark bg-linear-5">-->
+                <!--<button class="navbar-toggler" id="LIONSUN" data-status="open" type="button" aria-label="Toggle navigation" onclick="toggleSidebar(this)">-->
+                    <!--<span class="navbar-toggler-icon"></span> <span class="logoTitle">LIONSUN-UI</span>-->
+                <!--</button>-->
+            <!--</nav>-->
+        <!--</div>-->
+    <!--</div>-->
 
     <!-- 主体 -->
     <div class="content">
 
         <!-- 侧边栏 -->
-        <div id="sidebar" class="animated fadeIn open area">
-
+        <div id="sidebar" class="animated fadeIn open area pt10">
+            <br>
+            <div id="sidebar-title" class="text-center mb20">
+                <h1 class="h4">LIONSUN UI</h1>
+            </div>
+            
             <!-- 页面模版 -->
             <div class="card brn bn sidebar-card">
                 <div class="card-header sidebar-card-header">
-                    <a class="card-link" href="javascript:void (0);" data-toggle="collapse">页面模版</a>
+                    <a class="card-link" href="#collapseOne" data-toggle="collapse">
+                        <i class="fa fa-bookmark"></i>Page template<i class="fa fa-angle-right"></i></a>
                 </div>
                 <div id="collapseOne" class="collapse show">
                     <div class="card-body p0">
@@ -50,11 +55,12 @@
                     </div>
                 </div>
             </div>
-
-            <!-- 其他 -->
+            <!-- 查看文档 -->
             <div class="card brn bn sidebar-card">
                 <div class="card-header sidebar-card-header">
-                    <a class="card-link" href="javascript:void (0);" data-toggle="collapse">参考文档</a>
+                    <a class="card-link" href="#collapseThree" data-toggle="collapse">
+                        <i class="fa fa-bookmark"></i>Documentation<i class="fa fa-angle-right"></i>
+                    </a>
                 </div>
                 <div id="collapseThree" class="collapse show">
                     <div class="card-body p0">
@@ -65,11 +71,12 @@
                     </div>
                 </div>
             </div>
-
             <!-- 元素组件 -->
-            <div class="card brn bn sidebar-card">
+            <div class="card brn bn sidebar-card mb10">
                 <div class="card-header sidebar-card-header">
-                    <a class="card-link" href="javascript:void (0);" data-toggle="collapse">元素组件</a>
+                    <a class="card-link" href="#collapseTwo" data-toggle="collapse">
+                        <i class="fa fa-bookmark"></i>UI KIT<i class="fa fa-angle-right"></i>
+                    </a>
                 </div>
                 <div id="collapseTwo" class="collapse show">
                     <div class="card-body p0">

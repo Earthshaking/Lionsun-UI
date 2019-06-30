@@ -6,6 +6,8 @@
     --lightBackground2: #f5f5f5;
     --globalGray: #DDDDDD;
     --boxShadow: rgba(0, 0, 0, 0.1);
+    --sidebarBG: linear-gradient(45deg, #0c434f 0%, #0b4e59 99%, #0b4e59 100%);
+
 }
 
 * {
@@ -28,7 +30,7 @@ body {
     height: auto;
     padding-left: 25px;
     padding-right: 25px;
-    background-color: #F0F0F0;
+    background-color: rgba(240, 240, 240, 0.5);
 }
 
 .index.container-fluid {
@@ -64,7 +66,7 @@ body {
 
 .content {
     width: 100%;
-    height: calc(100% - 50px);
+    height: 100%;
     display: flex;
     position: relative;
 }
@@ -77,12 +79,24 @@ body {
     height: 100%;
     border-right: 1px solid var(--globalGray);
     /*box-shadow: 2px 0 5px 0 var(--boxShadow);*/
-    background-color: var(--white);
+    background-color: transparent;
     transition: all .3s;
     opacity: 0;
     overflow-x: hidden;
     overflow-y: hidden;
     position: relative;
+}
+
+#sidebar::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: var(--sidebarBG);
 }
 
 @media (max-width: 576px) {
@@ -94,6 +108,11 @@ body {
     }
 }
 
+#sidebar .card {
+    background-color: transparent;
+
+}
+
 .doc-btn {
     width: 100%;
     position: absolute;
@@ -101,41 +120,82 @@ body {
 }
 
 #sidebar.open {
-    width: 200px;
+    width: 230px;
     opacity: 1;
+}
+
+.sidebarMenu {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgba(255, 255, 255, 0.08);
 }
 
 .sidebarMenu > a {
     padding-top: 8px;
     padding-bottom: 8px;
-    padding-left: 30px;
-    font-size: 14px;
+    padding-left: 45px;
+    padding-right: 25px;
+    font-size: 12px;
     display: block;
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: "微软雅黑", Arial, sans-serif;
     text-decoration: none !important;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+}
+
+.sidebarMenu > a:hover {
+    color: rgba(255, 255, 255, 1) !important;
+    /*background-color: rgba(255, 255, 255, 0.08);*/
 }
 
 .sidebar-card,
 .sidebarMenu {
-    width: 200px !important;
-    min-width: 200px !important;
+    width: 230px !important;
+    min-width: 230px !important;
 }
 
 .sidebar-card-header {
-    background-color: rgb(18, 134, 152);
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0);
     border-radius: 0 !important;
+    border: 0;
 }
 
 .sidebar-card-header a {
+    width: 100%;
+    display: block;
+    padding: 12px 20px;
     border-radius: 0 !important;
-    color: #FFF;
-    font-weight: bold;
+    color: rgba(240, 240, 240, 0.7);
+    font-size: 15px !important;
+    transition: all .2s;
+    position: relative;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+}
+
+.sidebar-card-header > a > i.fa-angle-right {
+    position: absolute;
+    right: 25px;
+    top: 17px;
+    font-size: 12px !important;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+}
+
+.sidebar-card-header > a > i:not(.fa-angle-right) {
+    position: relative;
+    margin-right: 12px;
+    font-size: 15px !important;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+}
+
+.sidebar-card-header:hover > a {
+    color: #FFFFFF;
 }
 
 .sidebarMenu a.active {
-    color: rgba(12, 84, 96, 1) !important;
+    color: rgba(255, 255, 255, 1) !important;
     border: rgba(12, 84, 96, 0.1);
-    background-color: rgba(12, 84, 96, 0.1);
+    /*background-color: rgba(255, 255, 255, 0.1);*/
 }
 
 .sidebarMenu a.disabled {
@@ -186,6 +246,10 @@ body {
     color: #FFF !important;
 }
 
+.layout-img {
+    border-bottom: 1px solid #ddd;
+}
+
 .layout-img img {
     transition: all .3s;
     width: 100%;
@@ -193,7 +257,7 @@ body {
     max-height: 164px !important;
 }
 
-.layout-img:hover > img {
+.layout-img:hover img {
     filter: brightness(0.9);
 }
 
@@ -219,7 +283,7 @@ body {
 /*min-width: 200px;*/
 /*}*/
 
-.code-boxes{
+.code-boxes {
     padding: 30px;
     height: auto;
 }
@@ -232,6 +296,13 @@ blockquote {
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
 }
 
-.text-hight{
+.text-hight {
     color: #e83e8c;
+}
+
+#sidebar-title > h1 {
+    font-family: "Cabin Condensed", sans-serif;
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+
 }
