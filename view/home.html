@@ -13,12 +13,13 @@
     <link href="../public/stylesheets/custom-global.css" rel="stylesheet" type="text/css">
     <link href="../public/stylesheets/custom-color.css" rel="stylesheet" type="text/css">
     <link href="../public/stylesheets/custom-styles.css" rel="stylesheet" type="text/css">
+    <link href="../public/library/scrollbar/gemini-scrollbar.css" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="../public/favicon.ico" type="image/x-icon"/>
 </head>
 
 <body>
 
-<div class="container-fluid animated fadeIn">
+<div class="container-fluid">
     <br>
     <div class="row clearfix">
         <div class="col-12">
@@ -27,18 +28,16 @@
         </div>
     </div>
     
-    
     <div class="row clearfix">
         
         <!-- 多栏布局 - 栅格系统 -->
-        <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="card mb20">
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+            <div class="card layout-card">
                 <a href="layout/Grid.png" class="layout-img" data-magnify="gallery">
                     <img class="card-img-top" src="layout/Grid.png" alt="Card image">
                 </a>
                 <div class="card-body">
-                    <h5 class="card-title">多栏布局 - 栅格系统</h5>
-                    <p class="card-text text-muted">依赖于bootstrap的布局</p>
+                    <h6 class="card-title">多栏布局 - 栅格系统</h6>
                     <a href="layout/grid.html" class="btn btn-green btn-sm">查看</a>
                     <a href="layout/layoutCodeView.html#grid" class="btn btn-warning btn-sm">查看代码</a>
                 </div>
@@ -46,14 +45,13 @@
         </div>
         
         <!--弹性盒子布局（FlexBox）-->
-        <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="card mb20">
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+            <div class="card layout-card">
                 <a href="layout/Flexbox.png" class="layout-img" data-magnify="gallery">
                     <img class="card-img-top" src="layout/Flexbox.png" alt="Card image">
                 </a>
                 <div class="card-body">
-                    <h5 class="card-title">弹性盒子布局（FlexBox）</h5>
-                    <p class="card-text text-muted">无依赖</p>
+                    <h6 class="card-title">弹性盒子布局（FlexBox）</h6>
                     <a href="layout/Flexbox.html" class="btn btn-green btn-sm">查看</a>
                     <a href="layout/layoutCodeView.html#Flexbox" class="btn btn-warning btn-sm">查看代码</a>
                 </div>
@@ -61,32 +59,50 @@
         </div>
         
         <!-- 双飞翼布局 -->
-        <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="card mb20">
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+            <div class="card layout-card">
                 <a href="layout/HolyGrail.png" class="layout-img" data-magnify="gallery">
                     <img class="card-img-top" src="layout/HolyGrail.png" alt="Card image">
                 </a>
                 <div class="card-body">
-                    <h5 class="card-title">双飞翼布局</h5>
-                    <p class="card-text text-muted">无依赖</p>
+                    <h6 class="card-title">双飞翼布局</h6>
                     <a href="layout/HolyGrail.html" class="btn btn-green btn-sm">查看</a>
                     <a href="layout/layoutCodeView.html#HolyGrail" class="btn btn-warning btn-sm">查看代码</a>
                 </div>
             </div>
         </div>
-    
+
+        <!-- 通用登录界面 -->
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+            <div class="card layout-card">
+                <a href="layout/login/login-page.jpg" class="layout-img" data-magnify="gallery">
+                    <img class="card-img-top" src="layout/login/login-page.jpg" alt="Card image">
+                </a>
+                <div class="card-body">
+                    <h6 class="card-title">登录页面模版</h6>
+                    <a href="layout/login/index.html" class="btn btn-green btn-sm">查看</a>
+                    <a href="layout/layoutCodeView.html#login" class="btn btn-warning btn-sm">查看代码</a>
+                </div>
+            </div>
+        </div>
+        
+        
     </div>
 </div>
 
 <script src="../public/library/jquery-2.1.1.js"></script>
 <script src="../public/library/bootstrap-4.0.0/js/bootstrap.bundle.min.js"></script>
 <script src="../public/library/jquery-ui/js/jquery-ui.min.js"></script>
+<script src="../public/library/scrollbar/index.js"></script>
 <script src="../public/library/jquery.cookie.js"></script>
 <script src="../public/library/jquery.animate.js"></script>
-<script src="../public/library/jquery-divScroll/divscroll.js"></script>
 <script src="../public/library/jquery.magnify/jquery.magnify.min.js"></script>
 <script src="../public/javascripts/custom-util.js"></script>
 <script src="../public/javascripts/custom-global.js"></script>
-
+<script>
+    var Scrollbar = new GeminiScrollbar({
+        element: document.body
+    }).create();
+</script>
 </body>
 </html>

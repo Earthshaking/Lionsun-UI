@@ -1,0 +1,209 @@
+.content-fluid {
+    width: 1200px;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+    /*padding: 0 15px;*/
+}
+
+.login-page {
+    padding-top: 150px;
+}
+
+.login-card {
+    border: 0;
+    border-radius: 0;
+}
+
+.login-card > .card-header {
+    background-color: transparent;
+    height: auto;
+    padding: 0;
+    border-radius: 0;
+    position: relative;
+    border-bottom: 2px solid #3184CA;
+}
+
+.login-card > .card-body {
+    height: 415px;
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 0;
+    border-top: 1px solid white;
+    overflow: hidden;
+}
+
+.logo {
+    position: relative;
+    top: -10px;
+}
+
+.login-card > .card-footer {
+    height: 45px;
+    background-color: #555555;
+    border-radius: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.login-card > .card-footer p {
+    text-align: center;
+    color: #ddd;
+}
+
+.registerLink {
+    vertical-align: middle;
+    right: 0;
+    top: 0px;
+    text-decoration: underline;
+    color: #004395;
+    position: absolute;
+}
+
+.login-box {
+    width: 370px;
+    height: 360px;
+    background-color: #FFF;
+    border-radius: 10px;
+    float: right;
+    margin-top: 10px;
+    margin-right: 42px;
+}
+
+.login-box > form {
+    width: 280px;
+    margin: 0 auto;
+    /*border: 1px solid red;*/
+    text-align: center;
+}
+
+#phone {
+    width: 100%;
+    height: 42px;
+    border-radius: 0;
+    display: inline-block;
+}
+
+#verif {
+    width: 180px;
+    height: 42px;
+    border-radius: 0;
+    display: inline-block;
+}
+
+#phone:focus,
+#verif:focus {
+    border: 1px solid rgba(26, 113, 168, 0.69);
+    box-shadow: 0 0 1px 0 rgba(26, 113, 168, 0.69);
+}
+
+#sendCode {
+    vertical-align: top;
+    width: calc(100% - 185px);
+    height: 42px;
+    border: 1px solid #ddd;
+    outline: 0;
+    box-shadow: none;
+    background-color: #FFF;
+    display: inline-block;
+    color: #FAA729;
+    cursor: pointer;
+}
+
+#sendCode:hover {
+    background-color: #F5F5F5;
+}
+
+#sendCode:active {
+    background-color: #F9f9f9;
+}
+
+.resultBtn {
+    position: absolute;
+    right: 0;
+    top: 30px;
+    color: #999;
+    text-decoration: underline;
+}
+
+.form-title {
+    padding-top: 25px;
+    padding-bottom: 5px;
+}
+
+.loginBtn {
+    height: 37px;
+    font-size: 16px;
+    border: 1px solid #c90008;
+    color: #FFF;
+    border-radius: 5px;
+    outline: 0;
+    cursor: pointer;
+    background-color: #FF0000;
+    background: -webkit-linear-gradient(#EF2E29, #dc0009); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#EF2E29, #dc0009); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#EF2E29, #dc0009); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#EF2E29, #dc0009); /* 标准的语法 */
+}
+
+.loginBtn:focus,
+.loginBtn:hover {
+    outline: 0;
+    background: #d70000;
+}
+
+.loginBtn:active {
+    background: -webkit-linear-gradient(#dc0009, #EF2E29); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#dc0009, #EF2E29); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#dc0009, #EF2E29); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#dc0009, #EF2E29); /* 标准的语法 */
+}
+
+.loginBtn:active,
+.loginBtn:focus,
+.loginBtn:hover {
+    outline: 0;
+}
+
+.cut-lines {
+    width: 100%;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #999;
+    text-align: center;
+    position: relative;
+}
+
+.cut-lines:before {
+    width: 30%;
+    height: 1px;
+    background-color: #ddd;
+    position: absolute;
+    left: -5px;
+    top: 50%;
+    content: '';
+}
+
+.cut-lines:after {
+    width: 30%;
+    height: 1px;
+    background-color: #ddd;
+    position: absolute;
+    right: -5px;
+    top: 50%;
+    content: '';
+}
+
+.social-box {
+    text-align: center;
+    padding: 15px 0 0;
+    margin-bottom: 0;
+}
+
+.social-box > a {
+    display: inline-block;
+    margin: 0 10px;
+}

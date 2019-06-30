@@ -21,13 +21,14 @@
 
 <body>
 <div class="container-fluid p0 area">
-    <textarea name="code" id="code"></textarea>
+    <textarea name="code" id="code" style="opacity: 0;"></textarea>
 </div>
 
 <script src="../../public/library/jquery-2.1.1.js"></script>
 <script src="../../public/library/bootstrap-4.0.0/js/bootstrap.bundle.min.js"></script>
 <script src="../../public/library/jquery-ui/js/jquery-ui.min.js"></script>
 <script src="../../public/library/jquery.cookie.js"></script>
+<script src="../../public/library/layer/layer.js"></script>
 <script src="../../public/library/jquery-divScroll/divscroll.js"></script>
 <script src="../../public/library/Codemirror/lib/codemirror.js"></script>
 <script src="../../public/library/Codemirror/javascript.js"></script>
@@ -49,7 +50,6 @@
 <script src="../../public/library/Codemirror/addon/hint/javascript-hint.js"></script>
 <script>
     
-    
     window.onload = function(){
     
         $(".area").perfectScrollbar();
@@ -62,6 +62,8 @@
                 getHtmlCode("Flexbox.html")
             } else if (location.hash == "#HolyGrail") {
                 getHtmlCode("HolyGrail.html")
+            } else if (location.hash == "#login") {
+                getHtmlCode("login/index.html")
             }
         }
     }
