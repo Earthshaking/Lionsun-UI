@@ -14,5 +14,8 @@
   "license": "ISC",
   "devDependencies": {
     "jsdoc": "^3.6.2"
+  },
+  "dependencies": {
+    "gemini-scrollbar": "^1.5.3"
   }
 }
