@@ -13,7 +13,7 @@
     margin: 0;
 }
 
-.index.container-fluid, body, html {
+body, html {
     height: 100%;
     width: 100%;
 }
@@ -24,7 +24,8 @@ body {
 }
 
 .container-fluid {
-    height: 100%;
+    min-height:100%;
+    height: auto;
     padding-left: 30px;
     padding-right: 30px;
     background-color: var(--lightBackground2);
@@ -33,6 +34,7 @@ body {
 .index.container-fluid {
     background-color: var(--lightBackground2);
     padding: 0;
+    height: 100%;
 }
 
 #LIONSUN {
@@ -89,21 +91,43 @@ body {
 }
 
 #sidebar.open {
-    width: 240px;
+    width: 220px;
     opacity: 1;
 }
 
-#sidebarMenu {
-    width: 240px !important;
-    min-width: 240px !important;
+.sidebarMenu > a {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 30px;
+    font-size: 14px;
+    display: block;
+    color: #666;
+    text-decoration: none !important;
 }
 
-#sidebarMenu a.active {
-    border: rgba(12, 84, 96, 0.74);
-    background-color: rgba(12, 84, 96, 0.74);
+.sidebarMenu {
+    width: 220px !important;
+    min-width: 220px !important;
 }
 
-#sidebarMenu a.disabled {
+.sidebar-card-header {
+    background-color: rgb(18, 134, 152);
+    border-radius: 0 !important;
+}
+
+.sidebar-card-header a {
+    border-radius: 0 !important;
+    color: #FFF;
+    font-weight: bold;
+}
+
+.sidebarMenu a.active {
+    color: rgba(12, 84, 96, 1) !important;
+    border: rgba(12, 84, 96, 0.1);
+    background-color: rgba(12, 84, 96, 0.1);
+}
+
+.sidebarMenu a.disabled {
     opacity: 0.5;
 }
 
@@ -153,8 +177,29 @@ body {
 
 .layout-img img {
     transition: all .3s;
+    width: 100%;
+    min-height: 164px !important;
+    max-height: 164px !important;
 }
 
 .layout-img:hover > img {
     filter: brightness(0.9);
+}
+
+.layout-card {
+    min-height: 265px !important;
+    margin-bottom: 20px;
+    border-radius: 0 !important;
+}
+
+.layout-card .card-body {
+    border-radius: 0 !important;
+}
+
+.layout-card .card-title{
+    width: 100%;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
