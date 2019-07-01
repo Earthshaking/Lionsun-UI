@@ -96,7 +96,7 @@ body {
     top: 0;
     pointer-events: none;
     z-index: 0;
-    background-image: var(--sidebarBG);
+    background-color:#0c434f;
 }
 
 @media (max-width: 576px) {
