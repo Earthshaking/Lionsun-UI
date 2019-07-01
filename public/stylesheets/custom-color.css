@@ -267,7 +267,13 @@
 
 
 .example-title {
-    font-size: 17px !important;
-    color: #383c41;
+    font-size: 18px !important;
+    color: #2c2f33;
+
+}
+
+.example-title2 {
+    font-size: 19px !important;
+    color: #2c2f33;
 
 }

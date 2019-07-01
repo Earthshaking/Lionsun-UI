@@ -2,10 +2,10 @@
 
 .CodeMirror {
     /* Set height, width, borders, and global font properties here */
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
+    font-family: mononoki,Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
     height: auto;
     color: black;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.5;
     font-weight: lighter;
     direction: ltr;

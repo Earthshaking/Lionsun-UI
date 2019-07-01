@@ -21,12 +21,29 @@
     <link href="../public/library/Codemirror/theme/material.css" rel="stylesheet" type="text/css">
     <link href="../public/library/Codemirror/addon/fold/foldgutter.css" rel="stylesheet" type="text/css"/>
     <link href="../public/library/Codemirror/addon/hint/show-hint.css" rel="stylesheet" type="text/css"/>
+    <style>
+        /*.carousel-inner > .carousel-item{*/
+            /*width: 100%;*/
+            /*height: 100%;*/
+        /*}*/
+        /*.carousel-inner > .carousel-item > img{*/
+            /*width:auto;*/
+            /*height: 100%;*/
+        /*}*/
+        
+        #DescriptionTable code{
+            font-size: 14px;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
+        }
+    </style>
+    
 </head>
 
 <body>
 
 <div class="container-fluid">
     <br>
+    
     <div class="row clearfix">
         <div class="col-12">
             <h1 class="h3" id="main-title">轮播组件</h1>
@@ -34,50 +51,238 @@
         </div>
     </div>
     
-    
-    <div class="row">
-        <div class="col-6">
+    <div class="row clearfix">
+        <!-- 轮播图 -->
+        <div class="col-12 col-sm-12 col-md-6">
             <div class="card card-carousel">
                 <div class="card-body">
-                    <div id="demo" class="carousel slide" data-ride="carousel">
-        
+                    <h5 class="example-title">轮播图</h5>
+                    <p class="text-muted">请务必在 <code class="text-hight">.carousel</code> 可选控件上设置唯一ID ，尤其是在单个页面上使用多个轮播时。</p>
+                    <br>
+                    
+                    <div id="demo1" class="carousel slide" style="max-width: 960px">
                         <!-- 指示符 -->
                         <ul class="carousel-indicators">
                             <li data-target="#demo" data-slide-to="0" class="active"></li>
                             <li data-target="#demo" data-slide-to="1"></li>
                             <li data-target="#demo" data-slide-to="2"></li>
                         </ul>
-        
                         <!-- 轮播图片 -->
-                        <div class="carousel-inner" style="height: 400px">
-                            <div class="carousel-item active" style="width: 100%;height: 100%;">
+                        <div class="carousel-inner" >
+                            <div class="carousel-item active">
                                 <img src="../public/images/carousel-img1.jpg" alt="carousel img">
                             </div>
-                            <div class="carousel-item" style="width: 100%;height: 100%;">
+                            <div class="carousel-item" >
                                 <img src="../public/images/carousel-img2.jpg" alt="carousel img">
                             </div>
-                            <div class="carousel-item" style="width: 100%;height: 100%;">
+                            <div class="carousel-item">
                                 <img src="../public/images/carousel-img3.jpg" alt="carousel img">
                             </div>
                         </div>
-        
                         <!-- 左右切换按钮 -->
-                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                        <a class="carousel-control-prev" href="#demo1" data-slide="prev">
                             <span class="carousel-control-prev-icon"></span>
                         </a>
-                        <a class="carousel-control-next" href="#demo" data-slide="next">
+                        <a class="carousel-control-next" href="#demo1" data-slide="next">
                             <span class="carousel-control-next-icon"></span>
                         </a>
-    
                     </div>
                     
                     
+                    <br>
+                    <!-- 代码展示区域 -->
+                    <div class="code-shows-box">
+                        <textarea name="code" id="carousel1" class="code-shows" style="opacity: 0;"></textarea>
+                    </div>
+                    <!-- 点击切换显示代码 -->
+                    <button class="btn btn-block bg-light show-this-codes">
+                        <i class="fa fa-caret-down"></i>&nbsp; <span>显示代码</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--带描述的轮播图-->
+        <div class="col-12 col-sm-12 col-md-6">
+            <div class="card card-carousel">
+                <div class="card-body">
+                    <h5 class="example-title">轮播图片上添加描述</h5>
+                    <p class="text-muted">
+                        在每个 <code class="text-hight">&lt;div class="carousel-item"&gt;</code> 内添加 <code class="text-hight">&lt;div class="carousel-caption"&gt;</code> 来设置轮播图片的描述文本
+                    </p>
+                    <br>
+                
+                    <div id="demo2" class="carousel slide" style="max-width: 960px">
+                    
+                        <!-- 指示符 -->
+                        <ul class="carousel-indicators">
+                            <li data-target="#demo" data-slide-to="0" class="active"></li>
+                            <li data-target="#demo" data-slide-to="1"></li>
+                            <li data-target="#demo" data-slide-to="2"></li>
+                        </ul>
+                    
+                        <!-- 轮播图片 -->
+                        <div class="carousel-inner" >
+                            <div class="carousel-item active">
+                                <img src="../public/images/carousel-img1.jpg" alt="carousel img">
+                                <div class="carousel-caption">
+                                    <h3>第一张轮播图</h3>
+                                    <p>描述文字，XXXXXXXXXXXXXXXXXXXXXXXXXXXX...</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../public/images/carousel-img2.jpg" alt="carousel img">
+                                <div class="carousel-caption">
+                                    <h3>第二张轮播图</h3>
+                                    <p>描述文字，XXXXXXXXXXXXXXXXXXXXXXXXXXXX...</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../public/images/carousel-img3.jpg" alt="carousel img">
+                                <div class="carousel-caption">
+                                    <h3>第三张轮播图</h3>
+                                    <p>描述文字，XXXXXXXXXXXXXXXXXXXXXXXXXXXX...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 左右切换按钮 -->
+                        <a class="carousel-control-prev" href="#demo2" data-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#demo2" data-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </a>
+                    </div>
+                    
+                    <br>
+                    <!-- 代码展示区域 -->
+                    <div class="code-shows-box">
+                        <textarea name="code" id="carousel2" class="code-shows" style="opacity: 0;"></textarea>
+                    </div>
+                    <!-- 点击切换显示代码 -->
+                    <button class="btn btn-block bg-light show-this-codes">
+                        <i class="fa fa-caret-down"></i>&nbsp; <span>显示代码</span>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-
-
+    <br>
+    <!-- 以上实例中使用的类说明 -->
+    <div class="row clearfix">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="example-title2">以上实例中使用的类说明</h4>
+                    <br>
+                    <table class="table table-bordered table-striped" id="DescriptionTable">
+                        <thead>
+                        <tr>
+                            <th style="width:30%;">类</th>
+                            <th style="width:70%;">描述</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><code>.carousel</code></td>
+                            <td>创建一个轮播</td>
+                        </tr>
+                        <tr>
+                            <td><code>.carousel-indicators</code></td>
+                            <td>为轮播添加一个指示符，就是轮播图底下的一个个小点，轮播的过程可以显示目前是第几张图。</td>
+                        </tr>
+                        <tr>
+                            <td><code>.carousel-inner</code></td>
+                            <td>添加要切换的图片</td>
+                        </tr>
+                        <tr>
+                            <td><code>.carousel-item</code></td>
+                            <td>指定每个图片的内容</td>
+                        </tr>
+                        <tr>
+                            <td><code>.carousel-control-prev</code></td>
+                            <td>添加左侧的按钮，点击会返回上一张。</td>
+                        </tr>
+                        <tr>
+                            <td><code>.carousel-control-next</code></td>
+                            <td>添加右侧按钮，点击会切换到下一张。</td>
+                        </tr>
+                        <tr>
+                            <td><code>.carousel-control-prev-icon</code></td>
+                            <td>与 .carousel-control-prev 一起使用，设置左侧的按钮</td>
+                        </tr>
+                        <tr>
+                            <td><code>.carousel-control-next-icon</code></td>
+                            <td>与 .carousel-control-next 一起使用，设置右侧的按钮</td>
+                        </tr>
+                        <tr>
+                            <td><code>.slide</code></td>
+                            <td>切换图片的过渡和动画效果，如果你不需要这样的效果，可以删除这个类。</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- Options -->
+    <div class="row clearfix">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="example-title2">Options</h4>
+                    <p>选项可以通过数据属性或JavaScript传递。对于数据属性，请将选项名称附加到 <code class="text-hight">data-</code> ，如
+                        <code class="text-hight">data-interval=""</code></p>
+                    <br>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th style="width: 100px;">名称</th>
+                            <th style="width: 50px;">类型</th>
+                            <th style="width: 50px;">默认值</th>
+                            <th>描述</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>interval</td>
+                            <td>number</td>
+                            <td>5000</td>
+                            <td>自动循环项目之间的延迟时间。如果为false，轮播将不会自动循环。</td>
+                        </tr>
+                        <tr>
+                            <td>keyboard</td>
+                            <td>boolean</td>
+                            <td>true</td>
+                            <td>轮播图是否应该对键盘事件做出反应。</td>
+                        </tr>
+                        <tr>
+                            <td>pause</td>
+                            <td>string | boolean</td>
+                            <td>"hover"</td>
+                            <td>如果设置为"hover"，则暂停轮播图mouseenter的循环并恢复轮播图的循环mouseleave。如果设置为false，则将鼠标悬停在轮播图上不会暂停。
+                                在启用触摸的设备上，当设置"hover"为时，循环将暂停touchend（一旦用户完成与轮播图的交互）两个时间间隔，然后自动恢复。请注意，这是上述鼠标行为的补充。
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ride</td>
+                            <td>string</td>
+                            <td>false</td>
+                            <td>用户手动循环第一个项目后，自动播放轮播。如果是“carousel”，请在装载时自动播放轮播图。</td>
+                        </tr>
+                        <tr>
+                            <td>wrap</td>
+                            <td>boolean</td>
+                            <td>true</td>
+                            <td>是否应连续循环或停止</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
 </div>
 
 <script src="../public/library/jquery-2.1.1.js"></script>
@@ -112,7 +317,99 @@
 <script>
     var scrollbar = initScrollbar("body");
 
+    var carouselCodeJson = [
+        {
+            id:"carousel1",
+            name:"轮播图",
+            code:`\n<div id="demo1" class="carousel slide" style="max-width: 960px">
+    <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
+    <div class="carousel-inner" >
+        <div class="carousel-item active">
+            <img src="../public/images/carousel-img1.jpg" alt="carousel img">
+        </div>
+        <div class="carousel-item" >
+            <img src="../public/images/carousel-img2.jpg" alt="carousel img">
+        </div>
+        <div class="carousel-item">
+            <img src="../public/images/carousel-img3.jpg" alt="carousel img">
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#demo1" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo1" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>\n`
+        },
+        {
+            id: "carousel2",
+            name: "轮播图片上添加描述",
+            code: `\n<div id="demo2" class="carousel slide" style="max-width: 960px">
+    <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
+    <div class="carousel-inner" >
+        <div class="carousel-item active">
+            <img src="../public/images/carousel-img1.jpg" alt="carousel img">
+            <div class="carousel-caption">
+                <h3>第一张轮播图</h3>
+                <p>描述文字，XXXXXXXXXXXXXXXXXXXXXXXXXXXX...</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="../public/images/carousel-img2.jpg" alt="carousel img">
+            <div class="carousel-caption">
+                <h3>第二张轮播图</h3>
+                <p>描述文字，XXXXXXXXXXXXXXXXXXXXXXXXXXXX...</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="../public/images/carousel-img3.jpg" alt="carousel img">
+            <div class="carousel-caption">
+                <h3>第三张轮播图</h3>
+                <p>描述文字，XXXXXXXXXXXXXXXXXXXXXXXXXXXX...</p>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#demo2" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo2" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>\n`
+        },
+    ];
+    
+    $(".code-shows").each(function () {
+        var thisID = $(this).attr('id');
+        for (var i = 0; i < carouselCodeJson.length; i++) {
+            if (carouselCodeJson[i].id == thisID) {
+                $("#" + thisID).val(carouselCodeJson[i].code);
+                initCodemirror(thisID);
+            }
+        }
+    });
 
+    $(".show-this-codes").on("click", function () {
+        var $this = $(this);
+        if (!$(this).hasClass('yes')) {
+            $this.addClass('yes');
+            $this.find('span').text('隐藏代码');
+            $this.parents('.card').find('.code-shows-box').addClass('visibles');
+        } else {
+            $this.removeClass('yes');
+            $this.find('span').text('显示代码');
+            $this.parents('.card').find('.code-shows-box').removeClass('visibles');
+        }
+    });
 </script>
 </body>
 </html>
