@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航栏</title>
+    <link href="../public/library/bootstrap-4.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../public/library/jquery-ui/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="../public/fonts/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../public/stylesheets/animate.css" rel="stylesheet" type="text/css">
+    <link href="../public/stylesheets/custom-global.css" rel="stylesheet" type="text/css">
+    <link href="../public/stylesheets/custom-color.css" rel="stylesheet" type="text/css">
+    <link href="../public/stylesheets/custom-styles.css" rel="stylesheet" type="text/css">
+    <link href="../public/stylesheets/custom-button.css" rel="stylesheet" type="text/css">
+    <link href="../public/library/scrollbar/gemini-scrollbar.css" rel="stylesheet" type="text/css">
+    
+    <!-- Codemirror -->
+    <link href="../public/library/Codemirror/lib/codemirror.css" rel="stylesheet" type="text/css">
+    <link href="../public/library/Codemirror/theme/material.css" rel="stylesheet" type="text/css">
+    <link href="../public/library/Codemirror/addon/fold/foldgutter.css" rel="stylesheet" type="text/css"/>
+    <link href="../public/library/Codemirror/addon/hint/show-hint.css" rel="stylesheet" type="text/css"/>
+    
+    <link rel="shortcut icon" href="../public/favicon.ico" type="image/x-icon"/>
+</head>
+
+<body>
+
+<div class="container-fluid">
+    
+    <br>
+    <div class="row clearfix">
+        <div class="col-12">
+            <h1 class="h3" id="main-title">导航栏</h1>
+            <hr>
+        </div>
+    </div>
+    
+    <div class="row clearfix">
+        
+        <!-- 左侧 -->
+        <div class="col-12">
+    
+            <!-- 前言 -->
+            <blockquote>
+                <p>Navbars内置了对少数子组件的支持。根据需要选择以下内容：</p>
+                <ul class="yes-list-style">
+                    <li>
+                        <code class="highlighter-rouge">.navbar-brand</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                        适用于您的公司，产品或项目名称。</font></font></li>
+                    <li>
+                        <code class="highlighter-rouge">.navbar-nav</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                        用于全高度和轻量级导航（包括对下拉菜单的支持）。</font></font></li>
+                    <li>
+                        <code class="highlighter-rouge">.navbar-toggler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用于我们的折叠插件和其他</font></font><a href="#responsive-behaviors"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">导航切换</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">行为。</font></font>
+                    </li>
+                    <li>
+                        <code class="highlighter-rouge">.form-inline</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                        对于任何表单控件和操作。</font></font></li>
+                    <li>
+                        <code class="highlighter-rouge">.navbar-text</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                        用于添加垂直居中的文本字符串。</font></font></li>
+                    <li>
+                        <code class="highlighter-rouge">.collapse.navbar-collapse</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                        用于通过父断点对导航栏内容进行分组和隐藏。</font></font></li>
+                </ul>
+                <br>
+                <small>页面样式依赖于 <code>bootstrap-4.0.0</code>（必须）</small>
+            </blockquote>
+            
+            <!-- 默认导航 -->
+            <div class="card example-card">
+                <div class="card-body p-4">
+                    <p>默认导航</p>
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <a class="navbar-brand" href="#">Navbar</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                            <div class="navbar-nav">
+                                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                                <a class="nav-item nav-link" href="#">Features</a>
+                                <a class="nav-item nav-link" href="#">Pricing</a>
+                                <a class="nav-item nav-link disabled" href="#">Disabled</a>
+                            </div>
+                        </div>
+                    </nav>
+    
+                    <br>
+                   
+                    <!-- 代码展示区域 -->
+                    <div class="code-shows-box">
+                        <textarea name="code" id="navbar1" class="code-shows" style="opacity: 0;"></textarea>
+                     </div>
+                    <!-- 点击切换显示代码 -->
+                    <button class="btn btn-block bg-light show-this-codes"><i class="fa fa-caret-down"></i>&nbsp; <span>显示代码</span>
+                    </button>
+                </div>
+            </div>
+    
+            <!-- 导航栏使用下拉菜单 -->
+            <div class="card example-card">
+                <div class="card-body p-4">
+                    <h5>导航栏使用下拉菜单</h5>
+                    <p class="text-muted">下拉菜单需要用于定位的缠绕元件，所以一定要使用单独的和嵌套的元素 <b class="text-hight">.nav-item</b> 和 <b class="text-hight">.nav-link</b>，如下所示。</p>
+    
+                    <nav class="navbar navbar-expand bg-dark navbar-dark">
+                        <a class="navbar-brand" href="#">LOGO</a>
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Link 2</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Dropdown link</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Link 1</a>
+                                    <a class="dropdown-item" href="#">Link 2</a>
+                                    <a class="dropdown-item" href="#">Link 3</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <br>
+    
+                    <!-- 代码展示区域 -->
+                    <div class="code-shows-box">
+                        <textarea name="code" id="navbar2" class="code-shows" style="opacity: 0;"></textarea>
+                    </div>
+                    <!-- 点击切换显示代码 -->
+                    <button class="btn btn-block bg-light show-this-codes"><i class="fa fa-caret-down"></i>&nbsp; <span>显示代码</span></button>
+                </div>
+    
+            </div>
+    
+            <!-- 导航栏的表单与按钮 -->
+            <div class="card example-card">
+                <div class="card-body p-4">
+                    <h5>导航栏的表单与按钮</h5>
+                    <p class="text-muted">导航栏的表单 <b class="text-hight">form</b> 元素使用 <b class="text-hight">class="form-inline"</b> 类来排版输入框与按钮</p>
+                    
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">LOGO</a>
+                
+                        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                                <li class="nav-item active"><a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                                <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+                            </ul>
+                            <form class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </nav>
+                    <br>
+    
+                    <!-- 代码展示区域 -->
+                    <div class="code-shows-box">
+                        <textarea name="code" id="navbar3" class="code-shows" style="opacity: 0;"></textarea>
+                    </div>
+                    <!-- 点击切换显示代码 -->
+                    <button class="btn btn-block bg-light show-this-codes"><i class="fa fa-caret-down"></i>&nbsp;
+                        <span>显示代码</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 不同颜色导航栏 -->
+            <div class="card example-card">
+                <div class="card-body p-4">
+                    <h5>不同颜色导航栏</h5>
+                    <p class="text-muted">
+                        可以使用以下类来创建不同颜色导航栏：<b class="text-hight">.bg-primary</b>,
+                        <b class="text-hight">.bg-success</b>,
+                        <b class="text-hight">.bg-info</b>,
+                        <b class="text-hight">.bg-warning</b>,
+                        <b class="text-hight">.bg-danger</b>,
+                        <b class="text-hight">.bg-secondary</b>,
+                        <b class="text-hight">.bg-dark</b> 和 <b class="text-hight">.bg-light</b>
+                        <br> 对于暗色背景需要设置文本颜色为浅色的，对于浅色背景需要设置文本颜色为深色的。</p>
+    
+                    <!-- 灰色底黑字 -->
+                    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+                        <a class="navbar-brand" href="#">LOGO</a>
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Active</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">Disabled</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- 黑色底白字  -->
+                    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                        <a class="navbar-brand" href="#">LOGO</a>
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Active</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">Disabled</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- 蓝色底白字 -->
+                    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+                        <a class="navbar-brand" href="#">LOGO</a>
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Active</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">Disabled</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- 绿色底白字 -->
+                    <nav class="navbar navbar-expand-sm bg-success navbar-dark">
+                        <a class="navbar-brand" href="#">LOGO</a>
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Active</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">Disabled</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- 青色底白字 -->
+                    <nav class="navbar navbar-expand-sm bg-info navbar-dark">
+                        <a class="navbar-brand" href="#">LOGO</a>
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Active</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">Disabled</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- 黄色底白字 -->
+                    <nav class="navbar navbar-expand-sm bg-warning navbar-dark">
+                        <a class="navbar-brand" href="#">LOGO</a>
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Active</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">Disabled</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- 红色底白字 -->
+                    <nav class="navbar navbar-expand-sm bg-danger navbar-dark">
+                        <a class="navbar-brand" href="#">LOGO</a>
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Active</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">Disabled</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- 深灰色底白字 -->
+                    <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+                        <a class="navbar-brand" href="#">LOGO</a>
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Active</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">Disabled</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    
+                    <br>
+                    <!-- 代码展示区域 -->
+                    <div class="code-shows-box">
+                        <textarea name="code" id="navbar4" class="code-shows" style="opacity: 0;"></textarea>
+                    </div>
+                    <!-- 点击切换显示代码 -->
+                    <button class="btn btn-block bg-light show-this-codes"><i class="fa fa-caret-down"></i>&nbsp;
+                        <span>显示代码</span>
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script src="../public/library/jquery-2.1.1.js"></script>
+<script src="../public/library/bootstrap-4.0.0/js/bootstrap.bundle.min.js"></script>
+<script src="../public/library/jquery-ui/js/jquery-ui.min.js"></script>
+<script src="../public/library/scrollbar/index.js"></script>
+<script src="../public/library/jquery.cookie.js"></script>
+<script src="../public/library/jquery.animate.js"></script>
+<script src="../public/javascripts/custom-util.js"></script>
+<script src="../public/javascripts/custom-global.js"></script>
+
+<!-- Codemirror -->
+<script src="../public/library/Codemirror/lib/codemirror.js"></script>
+<script src="../public/library/Codemirror/javascript.js"></script>
+<script src="../public/library/Codemirror/addon/selection/selection-pointer.js"></script>
+<script src="../public/library/Codemirror/mode/xml/xml.js"></script>
+<script src="../public/library/Codemirror/mode/javascript/javascript.js"></script>
+<script src="../public/library/Codemirror/mode/css/css.js"></script>
+<script src="../public/library/Codemirror/mode/vbscript/vbscript.js"></script>
+<script src="../public/library/Codemirror/mode/htmlmixed/htmlmixed.js"></script>
+<script src="../public/library/Codemirror/addon/fold/foldcode.js"></script>
+<script src="../public/library/Codemirror/addon/fold/foldgutter.js"></script>
+<script src="../public/library/Codemirror/addon/fold/brace-fold.js"></script>
+<script src="../public/library/Codemirror/addon/fold/comment-fold.js"></script>
+<script src="../public/library/Codemirror/addon/fold/indent-fold.js"></script>
+<script src="../public/library/Codemirror/addon/fold/markdown-fold.js"></script>
+<script src="../public/library/Codemirror/addon/fold/xml-fold.js"></script>
+<script src="../public/library/Codemirror/addon/edit/closebrackets.js"></script>
+<script src="../public/library/Codemirror/addon/edit/closetag.js"></script>
+<script src="../public/library/Codemirror/addon/hint/javascript-hint.js"></script>
+
+<script>
+    
+    $(".show-this-codes").on("click", function () {
+        var $this = $(this);
+        if (!$(this).hasClass('yes')) {
+            $this.addClass('yes');
+            $this.find('span').text('隐藏代码');
+            $this.parents('.card').find('.code-shows-box').addClass('visibles');
+        }else {
+            $this.removeClass('yes');
+            $this.find('span').text('显示代码');
+            $this.parents('.card').find('.code-shows-box').removeClass('visibles');
+        }
+    });
+    
+    
+    var navbarCodeJson = [
+        {
+            id:'navbar1',
+            name:'默认导航',
+            code:`\n<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#">Features</a>
+            <a class="nav-item nav-link" href="#">Pricing</a>
+            <a class="nav-item nav-link disabled" href="#">Disabled</a>
+        </div>
+    </div>
+</nav>\n`
+        },
+        {
+            id: 'navbar2',
+            name: '导航栏使用下拉菜单',
+            code: `\n<nav class="navbar navbar-expand bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">LOGO</a>
+    <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Link 2</a></li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Dropdown link</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Link 1</a>
+                <a class="dropdown-item" href="#">Link 2</a>
+                <a class="dropdown-item" href="#">Link 3</a>
+            </div>
+        </li>
+    </ul>
+</nav>\n`
+        },
+        {
+            id: 'navbar3',
+            name: '导航栏的表单与按钮',
+            code: `\n<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">LOGO</a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active"><a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+            <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>\n`
+        },
+        {
+            id:'navbar4',
+            name:'不同颜色导航栏',
+            code:`\n
+// 灰色底黑字
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+    <a class="navbar-brand" href="#">LOGO</a>
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+    </ul>
+</nav>
+
+// 黑色底白字
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">LOGO</a>
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+    </ul>
+</nav>
+
+// 蓝色底白字
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <a class="navbar-brand" href="#">LOGO</a>
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+    </ul>
+</nav>
+
+// 绿色底白字
+<nav class="navbar navbar-expand-sm bg-success navbar-dark">
+    <a class="navbar-brand" href="#">LOGO</a>
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+    </ul>
+</nav>
+
+// 青色底白字
+<nav class="navbar navbar-expand-sm bg-info navbar-dark">
+    <a class="navbar-brand" href="#">LOGO</a>
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+    </ul>
+</nav>
+
+// 黄色底白字
+<nav class="navbar navbar-expand-sm bg-warning navbar-dark">
+    <a class="navbar-brand" href="#">LOGO</a>
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+    </ul>
+</nav>
+
+// 红色底白字
+<nav class="navbar navbar-expand-sm bg-danger navbar-dark">
+    <a class="navbar-brand" href="#">LOGO</a>
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+    </ul>
+</nav>
+
+// 深灰色底白字
+<nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+    <a class="navbar-brand" href="#">LOGO</a>
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+    </ul>
+</nav>\n`
+        }
+    ];
+    
+    // 代码编辑器展示插件配置
+    var codeConfig = {
+        mode: {name: "htmlmixed", globalVars: true},
+        lineNumbers: true,
+        lineWrapping: true,
+        smartIndent: true,
+        indentUnit: 4,
+        foldGutter: true,
+        extraKeys: {"Ctrl-Space": "autocomplete"},
+        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+        matchBrackets: true, //括号匹配
+        autoCloseBrackets: true,
+        autoCloseTags: true,
+        theme: "material",
+    };
+    
+    $(".code-shows").each(function () {
+        var thisID = $(this).attr('id');
+        for (var i = 0; i < navbarCodeJson.length; i++) {
+            if (navbarCodeJson[i].id == thisID) {
+                $("#" + thisID).val(navbarCodeJson[i].code);
+                initCodemirror(thisID);
+            }
+        }
+    });
+
+    function initCodemirror(id) {
+        CodeMirror.fromTextArea(document.getElementById(id), codeConfig);
+    }
+    
+    
+    
+    var Scrollbar = new GeminiScrollbar({
+        element: document.body
+    }).create();
+</script>
+
+</body>
+</html>

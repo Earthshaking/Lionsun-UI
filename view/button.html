@@ -13,6 +13,7 @@
     <link href="../public/stylesheets/custom-color.css" rel="stylesheet" type="text/css">
     <link href="../public/stylesheets/custom-styles.css" rel="stylesheet" type="text/css">
     <link href="../public/stylesheets/custom-button.css" rel="stylesheet" type="text/css">
+    <link href="../public/library/scrollbar/gemini-scrollbar.css" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="../public/favicon.ico" type="image/x-icon"/>
 
 </head>
@@ -111,13 +112,17 @@
 
 <script src="../public/library/jquery-2.1.1.js"></script>
 <script src="../public/library/bootstrap-4.0.0/js/bootstrap.bundle.min.js"></script>
+<script src="../public/library/scrollbar/index.js"></script>
 <script src="../public/library/jquery-ui/js/jquery-ui.min.js"></script>
 <script src="../public/library/jquery.cookie.js"></script>
 <script src="../public/library/jquery.animate.js"></script>
-<script src="../public/library/jquery-divScroll/divscroll.js"></script>
 <script src="../public/javascripts/custom-util.js"></script>
 <script src="../public/javascripts/custom-global.js"></script>
-
+<script>
+    var Scrollbar = new GeminiScrollbar({
+        element: document.body
+    }).create();
+</script>
 
 </body>
 </html>
