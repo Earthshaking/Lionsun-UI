@@ -11,7 +11,7 @@
         "plugins/markdown"
     ],
     "opts": {
-        "template": "node_modules/docdash/",
+        "template": "node_modules/docdash",
         "encoding": "utf8",
         "destination": "doc/jsdoc/",
         "recurse": true,
@@ -59,13 +59,13 @@
         "scripts": [],
         "menu": {
             "Project Website": {
-                "href": "https://myproject.com",
+                "href": "https://github.com/Earthshaking/Lionsun-UI",
                 "target": "_blank",
                 "class": "menu-item",
                 "id": "website_link"
             },
             "Forum": {
-                "href": "https://myproject.com.forum",
+                "href": "https://earthshaking.github.io/Lionsun-UI/",
                 "target": "_blank",
                 "class": "menu-item",
                 "id": "forum_link"
