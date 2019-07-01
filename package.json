@@ -1,21 +1,21 @@
 {
-  "name": "lionsun-ui",
-  "version": "1.0.0",
-  "description": "立森UI",
-  "main": "main.js",
-  "directories": {
-    "doc": "doc"
-  },
-  "scripts": {
-    "generate-docs": "node_modules/.bin/jsdoc -c jsdoc.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "FFFF",
-  "license": "ISC",
-  "devDependencies": {
-    "jsdoc": "^3.6.2"
-  },
-  "dependencies": {
-    "gemini-scrollbar": "^1.5.3"
-  }
+    "name": "lionsun-ui",
+    "version": "1.0.0",
+    "description": "立森 Lionsun-UI",
+    "main": "main.js",
+    "directories": {
+        "doc": "doc"
+    },
+    "scripts": {
+        "generate-docs": "node_modules/.bin/jsdoc -c jsdoc.json",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "FFFF",
+    "license": "ISC",
+    "devDependencies": {
+        "jsdoc": "^3.6.2"
+    },
+    "dependencies": {
+        "gemini-scrollbar": "^1.5.3"
+    }
 }
