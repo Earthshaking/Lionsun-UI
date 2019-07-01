@@ -38,7 +38,7 @@
             </div>
         </div>
         
-        <blockquote>
+        <blockquote class="custom">
             <p>将 <b class="text-hight">HTML</b> 代码以及 <b class="text-hight">CSS</b> 代码都复制粘贴到你的项目内, 即可实现效果</p>
             <small>页面样式依赖于 <code>bootstrap-4.0.0</code>（必须） </small>
         </blockquote>
@@ -51,7 +51,7 @@
         </div>
         <br>
         <br>
-        <blockquote>
+        <blockquote class="custom">
             <p>当你日后需要修改页面样式的时候，先找到你需要修改的样式代码，然后复制粘贴一段 <br>
                接着换一个 <b class="text-hight">Class</b> 名或者 <b class="text-hight">ID</b> 名，然后再进行修改<br>
                <b>切记！</b> 如果你没有 <b class="text-hight">100%</b> 的把握，请不要直接修改并覆盖原有样式，</p>
@@ -71,9 +71,6 @@
 <script src="../../public/library/jquery-2.1.1.js"></script>
 <script src="../../public/library/bootstrap-4.0.0/js/bootstrap.bundle.min.js"></script>
 <script src="../../public/library/jquery-ui/js/jquery-ui.min.js"></script>
-<script src="../../public/library/jquery.cookie.js"></script>
-<script src="../../public/library/layer/layer.js"></script>
-<script src="../../public/library/scrollbar/index.js"></script>
 <script src="../../public/library/Codemirror/lib/codemirror.js"></script>
 <script src="../../public/library/Codemirror/javascript.js"></script>
 <script src="../../public/library/Codemirror/addon/selection/selection-pointer.js"></script>
@@ -92,13 +89,15 @@
 <script src="../../public/library/Codemirror/addon/edit/closebrackets.js"></script>
 <script src="../../public/library/Codemirror/addon/edit/closetag.js"></script>
 <script src="../../public/library/Codemirror/addon/hint/javascript-hint.js"></script>
+
+<script src="../../public/library/jquery.cookie.js"></script>
+<script src="../../public/library/layer/layer.js"></script>
+<script src="../../public/library/scrollbar/index.js"></script>
 <script>
     
     window.onload = function () {
-        var Scrollbar = new GeminiScrollbar({
-            element: document.body
-        }).create();
-        
+        var scrollbar = initScrollbar("body");
+    
         var mainTitle = $("#main-title");
         
         if (location.hash) {

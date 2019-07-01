@@ -19,28 +19,16 @@
 
 <!-- CODE BEGIN -->
 <div class="container-fluid index">
-
-    <!--&lt;!&ndash; 导航栏 &ndash;&gt;-->
-    <!--<div id="header" class="animated fadeIn">-->
-        <!--<div class="pos-f-t">-->
-            <!--<nav class="navbar navbar-dark bg-linear-5">-->
-                <!--<button class="navbar-toggler" id="LIONSUN" data-status="open" type="button" aria-label="Toggle navigation" onclick="toggleSidebar(this)">-->
-                    <!--<span class="navbar-toggler-icon"></span> <span class="logoTitle">LIONSUN-UI</span>-->
-                <!--</button>-->
-            <!--</nav>-->
-        <!--</div>-->
-    <!--</div>-->
-
+    
     <!-- 主体 -->
     <div class="content">
-
+        
         <!-- 侧边栏 -->
-        <div id="sidebar" class="animated fadeIn open area pt10">
+        <div id="sidebar" class="animated fadeIn open area pt10" data-status="open">
             <br>
             <div id="sidebar-title" class="text-center mb20">
                 <h1 class="h4">LIONSUN UI</h1>
             </div>
-            
             <!-- 页面模版 -->
             <div class="card brn bn sidebar-card">
                 <div class="card-header sidebar-card-header">
@@ -65,12 +53,18 @@
                 <div id="collapseThree" class="collapse show">
                     <div class="card-body p0">
                         <div class="sidebarMenu">
-                            <a href="https://v4.bootcss.com/docs/4.0/getting-started/introduction/" target="_blank">Bootstrap文档</a>
-                            <a href="doc/jsdoc/index.html" target="_blank">JS文档</a>
+                            <a href="https://github.com/Earthshaking/Lionsun-UI" target="_blank">Github</a>
+                            <a href="https://www.layui.com/admin/std/dist/views/" target="_blank">Layui 模版示例</a>
+                            <a href="https://v4.bootcss.com/docs/4.0/getting-started/introduction/" target="_blank">Bootstrap 文档</a>
+                            <a href="https://www.runoob.com/" target="_blank">菜鸟教程</a>
+                            <a href="http://www.jq22.com/" target="_blank">jQuery 插件库</a>
+                            <a href="http://fontawesome.dashgame.com/" target="_blank">fontawesome 图标库</a>
+                            <a href="doc/jsdoc/index.html" target="_blank">JS 文档</a>
                         </div>
                     </div>
                 </div>
             </div>
+            
             <!-- 元素组件 -->
             <div class="card brn bn sidebar-card mb10">
                 <div class="card-header sidebar-card-header">
@@ -83,8 +77,9 @@
                         <div class="sidebarMenu">
                             <a href="view/navbar.html" target="frame">导航栏</a>
                             <a href="view/button.html" target="frame">按钮样式</a>
-                            <a href="view/color.html" target="frame">调色板</a>
                             <a href="view/list.html" target="frame">列表组</a>
+                            <a href="view/card.html" target="frame">卡片面板</a>
+                            <a href="view/color.html" target="frame">调色板</a>
                             <a href="view/table.html" target="frame">表格组件</a>
                             <a href="#" class="disabled" target="frame">轮播组件</a>
                             <a href="#" class="disabled" target="frame">导航栏模块</a>
@@ -102,13 +97,22 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
-        <div id="main" class="animated fadeIn">
+        
+        <div id="main">
+            
+            <!-- 导航栏 -->
+            <div id="header" class="animated fadeIn">
+                <nav class="navbar navbar-light bg-light">
+                    <button class="navbar-toggler" id="LIONSUN" data-status="open" type="button" onclick="toggleSidebar(this)">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </nav>
+            </div>
+            
             <iframe src="view/home.html" id="frame" class="frame" name="frame" frameborder="0"></iframe>
         </div>
-
+    
     </div>
 
 </div>
@@ -122,26 +126,22 @@
 <script src="public/javascripts/custom-util.js"></script>
 <script src="public/javascripts/custom-global.js"></script>
 <script>
-
-    var sidebar = $("#sidebar").Sidebar({});
-    var Scrollbar = new GeminiScrollbar({
-        element: document.querySelector('.area'),
-    }).create();
     
+    var sidebar = $("#sidebar").Sidebar({});
+    var scrollbar = initScrollbar(".area");
     
     /**
      * 开启/隐藏侧边栏
      */
-    function toggleSidebar() {
-        var btn = event.target,
-            buttons = $(btn);
+    function toggleSidebar(obj) {
+        var buttons = $(obj);
         if (buttons.data('status') == 'open') {
             sidebar.close(buttons);
         } else {
             sidebar.open(buttons);
         }
     }
-
+    
     $(".sidebarMenu").find('a').on("click", function () {
         if (!$(this).hasClass('active')) {
             $(this).addClass('active').siblings().removeClass('active');

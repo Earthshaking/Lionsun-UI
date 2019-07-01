@@ -102,7 +102,7 @@ body {
 @media (max-width: 576px) {
     #sidebar {
         position: fixed;
-        top: 52px;
+        top: 0;
         left: 0;
         z-index: 99999;
     }
@@ -110,7 +110,6 @@ body {
 
 #sidebar .card {
     background-color: transparent;
-
 }
 
 .doc-btn {
@@ -148,6 +147,7 @@ body {
     /*background-color: rgba(255, 255, 255, 0.08);*/
 }
 
+#sidebar-title,
 .sidebar-card,
 .sidebarMenu {
     width: 230px !important;
@@ -179,6 +179,12 @@ body {
     top: 17px;
     font-size: 12px !important;
     text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+    transform: rotate(90deg);
+    transition: all .3s;
+}
+
+.sidebar-card-header > a.collapsed > i.fa-angle-right {
+    transform: rotate(0deg);
 }
 
 .sidebar-card-header > a > i:not(.fa-angle-right) {
@@ -225,6 +231,22 @@ body {
     flex: 1;
     background-color: var(--lightBackground);
     height: 100%;
+    padding-top: 50px;
+    position: relative;
+}
+
+#main > #header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+#main > #header .navbar-toggler {
+    outline: 0 !important;
+}
+
+#main > #header .navbar-toggler:hover {
+    background-color: #ececec;
 }
 
 #frame {
@@ -288,7 +310,7 @@ body {
     height: auto;
 }
 
-blockquote {
+blockquote.custom {
     padding: 15px 20px;
     margin: 0 0 10px;
     border-left: 5px solid #999;
@@ -308,20 +330,20 @@ blockquote {
 
 }
 
-.example-card{
+.example-card {
     margin-bottom: 20px;
 }
 
-.example-card .text-muted{
+.example-card .text-muted {
     font-size: 14px;
 }
 
-.example-card .card-footer{
+.example-card .card-footer {
     background-color: #fff;
     text-align: center;
 }
 
-.example-card .show-this-codes{
+.example-card .show-this-codes {
     display: block;
     width: 100%;
     cursor: pointer;
@@ -344,11 +366,11 @@ blockquote {
     transform: rotate(0deg);
 }
 
-.example-card .show-this-codes.yes > .fa-caret-down{
+.example-card .show-this-codes.yes > .fa-caret-down {
     transform: rotate(180deg);
 }
 
-.code-shows-box{
+.code-shows-box {
     width: 100%;
     height: 0;
     max-height: 500px;
@@ -358,7 +380,7 @@ blockquote {
     transition: all .3s ease;
 }
 
-.code-shows-box.visibles{
+.code-shows-box.visibles {
     height: auto;
     max-height: 500px;
     visibility: visible;
@@ -366,10 +388,10 @@ blockquote {
 }
 
 
-.yes-list-style{
+.yes-list-style {
     list-style-position: inside !important;
 }
 
-.yes-list-style li{
+.yes-list-style li {
     list-style: unset !important;
 }

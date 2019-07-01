@@ -14,6 +14,14 @@
     <link href="../public/stylesheets/custom-color.css" rel="stylesheet" type="text/css">
     <link href="../public/stylesheets/custom-styles.css" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="../public/favicon.ico" type="image/x-icon"/>
+    <link href="../public/library/scrollbar/gemini-scrollbar.css" rel="stylesheet" type="text/css">
+    
+    <!-- Codemirror -->
+    <link href="../public/library/Codemirror/lib/codemirror.css" rel="stylesheet" type="text/css">
+    <link href="../public/library/Codemirror/theme/material.css" rel="stylesheet" type="text/css">
+    <link href="../public/library/Codemirror/addon/fold/foldgutter.css" rel="stylesheet" type="text/css"/>
+    <link href="../public/library/Codemirror/addon/hint/show-hint.css" rel="stylesheet" type="text/css"/>
+    
 </head>
 
 <body>
@@ -26,19 +34,742 @@
             <hr>
         </div>
     </div>
+    
+    <div class="row clearfix">
+        
+        <div class="col-6">
+            <!-- 默认表格 -->
+            <div class="card card-table">
+                <div class="card-body">
+                    <h5 class="example-title">默认表格</h5>
+                    <p>使用最基本的表标记，这里 <code class="text-hight">.table</code> 是 <code class="text-hight">Bootstrap</code>
+                       实现表的方式</p>
+                    <br>
+                    
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    
+                    <!-- 代码展示区域 -->
+                    <div class="code-shows-box">
+                        <textarea name="code" id="table1" class="code-shows" style="opacity: 0;"></textarea>
+                    </div>
+                    <!-- 点击切换显示代码 -->
+                    <button class="btn btn-block bg-light show-this-codes">
+                        <i class="fa fa-caret-down"></i>&nbsp; <span>显示代码</span>
+                    </button>
+                </div>
+            </div>
 
+            <!-- 带有边框的表格-浅色 -->
+            <div class="card card-table">
+                    <div class="card-body">
+                        <h5 class="example-title">带有边框的表格-浅色</h5>
+                        <p class="text-muted"><code class="text-hight">.table-bordered</code> 在表格和单元格的所有边上添加边框</p>
+                        <br>
+                
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                
+                        <!-- 代码展示区域 -->
+                        <div class="code-shows-box">
+                            <textarea name="code" id="table3" class="code-shows" style="opacity: 0;"></textarea>
+                        </div>
+                        <!-- 点击切换显示代码 -->
+                        <button class="btn btn-block bg-light show-this-codes">
+                            <i class="fa fa-caret-down"></i>&nbsp; <span>显示代码</span>
+                        </button>
+                    </div>
+                </div>
+
+            <!-- 浅色表头外观 -->
+            <div class="card card-table">
+                    <div class="card-body">
+                        <h5 class="example-title">浅色表头外观</h5>
+                        <p>使用修饰符类 <code class="text-hight">.thead-light</code> 使
+                            <code class="text-hight">&lt;thead&gt;</code> 显示为浅灰色。</p>
+                        <br>
+                
+                        <table class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                
+                        <!-- 代码展示区域 -->
+                        <div class="code-shows-box">
+                            <textarea name="code" id="table5" class="code-shows" style="opacity: 0;"></textarea>
+                        </div>
+                        <!-- 点击切换显示代码 -->
+                        <button class="btn btn-block bg-light show-this-codes">
+                            <i class="fa fa-caret-down"></i>&nbsp; <span>显示代码</span>
+                        </button>
+                    </div>
+                </div>
+            
+            <!-- 浅色表格鼠标悬停效果 -->
+            <div class="card card-table">
+                <div class="card-body">
+                    <h5 class="example-title">浅色表格鼠标悬停效果</h5>
+                    <p>添加 <code class="text-hight">.table-hover</code> 启用鼠标悬停的样式</p>
+                    <br>
+                    <table class="table table-light table-hover">
+                        <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                        </tbody>
+                    </table>
+            
+                    <!-- 代码展示区域 -->
+                    <div class="code-shows-box">
+                        <textarea name="code" id="table7" class="code-shows" style="opacity: 0;"></textarea>
+                    </div>
+                    <!-- 点击切换显示代码 -->
+                    <button class="btn btn-block bg-light show-this-codes">
+                        <i class="fa fa-caret-down"></i>&nbsp; <span>显示代码</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-6">
+            <!-- 内斑马条纹外观表格 -->
+            <div class="card card-table">
+                <div class="card-body">
+                    <h5 class="example-title">内斑马条纹外观表格</h5>
+                    <p>使用 <code class="text-hight">.table-striped</code>给表格添加内斑马条纹的样式</p>
+                    <br>
+                    
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    
+                    <!-- 代码展示区域 -->
+                    <div class="code-shows-box">
+                        <textarea name="code" id="table2" class="code-shows" style="opacity: 0;"></textarea>
+                    </div>
+                    <!-- 点击切换显示代码 -->
+                    <button class="btn btn-block bg-light show-this-codes">
+                        <i class="fa fa-caret-down"></i>&nbsp; <span>显示代码</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 带有边框的表格-深色 -->
+            <div class="card card-table">
+                    <div class="card-body">
+                        <h5 class="example-title">带有边框的表格-深色</h5>
+                        <p class="text-muted"><code class="text-hight">.table-bordered</code> 在表格和单元格的所有边上添加边框</p>
+                        <br>
+                
+                        <table class="table table-dark table-bordered">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                
+                        <!-- 代码展示区域 -->
+                        <div class="code-shows-box">
+                            <textarea name="code" id="table4" class="code-shows" style="opacity: 0;"></textarea>
+                        </div>
+                        <!-- 点击切换显示代码 -->
+                        <button class="btn btn-block bg-light show-this-codes">
+                            <i class="fa fa-caret-down"></i>&nbsp; <span>显示代码</span>
+                        </button>
+                    </div>
+                </div>
+            
+            <!-- 深色表头外观 -->
+            <div class="card card-table">
+                    <div class="card-body">
+                        <h5 class="example-title">深色表头外观</h5>
+                        <p>使用修饰符类 <code class="text-hight">.thead-dark</code> 使
+                            <code class="text-hight">&lt;thead&gt;</code> 显示为深灰色。</p>
+                        <br>
+                
+                        <table class="table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                
+                        <!-- 代码展示区域 -->
+                        <div class="code-shows-box">
+                            <textarea name="code" id="table6" class="code-shows" style="opacity: 0;"></textarea>
+                        </div>
+                        <!-- 点击切换显示代码 -->
+                        <button class="btn btn-block bg-light show-this-codes">
+                            <i class="fa fa-caret-down"></i>&nbsp; <span>显示代码</span>
+                        </button>
+                    </div>
+                </div>
+
+            <!-- 深色表格鼠标悬停效果 -->
+            <div class="card card-table">
+                <div class="card-body">
+                    <h5 class="example-title">深色表格鼠标悬停效果</h5>
+                    <p>添加 <code class="text-hight">.table-hover</code> 启用鼠标悬停的样式</p>
+                    <br>
+                    <table class="table table-dark table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                        </tbody>
+                    </table>
+            
+                    <!-- 代码展示区域 -->
+                    <div class="code-shows-box">
+                        <textarea name="code" id="table8" class="code-shows" style="opacity: 0;"></textarea>
+                    </div>
+                    <!-- 点击切换显示代码 -->
+                    <button class="btn btn-block bg-light show-this-codes">
+                        <i class="fa fa-caret-down"></i>&nbsp; <span>显示代码</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+   
 
 </div>
 
 <script src="../public/library/jquery-2.1.1.js"></script>
 <script src="../public/library/bootstrap-4.0.0/js/bootstrap.bundle.min.js"></script>
 <script src="../public/library/jquery-ui/js/jquery-ui.min.js"></script>
+<!-- Codemirror -->
+<script src="../public/library/Codemirror/lib/codemirror.js"></script>
+<script src="../public/library/Codemirror/javascript.js"></script>
+<script src="../public/library/Codemirror/addon/selection/selection-pointer.js"></script>
+<script src="../public/library/Codemirror/mode/xml/xml.js"></script>
+<script src="../public/library/Codemirror/mode/javascript/javascript.js"></script>
+<script src="../public/library/Codemirror/mode/css/css.js"></script>
+<script src="../public/library/Codemirror/mode/vbscript/vbscript.js"></script>
+<script src="../public/library/Codemirror/mode/htmlmixed/htmlmixed.js"></script>
+<script src="../public/library/Codemirror/addon/fold/foldcode.js"></script>
+<script src="../public/library/Codemirror/addon/fold/foldgutter.js"></script>
+<script src="../public/library/Codemirror/addon/fold/brace-fold.js"></script>
+<script src="../public/library/Codemirror/addon/fold/comment-fold.js"></script>
+<script src="../public/library/Codemirror/addon/fold/indent-fold.js"></script>
+<script src="../public/library/Codemirror/addon/fold/markdown-fold.js"></script>
+<script src="../public/library/Codemirror/addon/fold/xml-fold.js"></script>
+<script src="../public/library/Codemirror/addon/edit/closebrackets.js"></script>
+<script src="../public/library/Codemirror/addon/edit/closetag.js"></script>
+<script src="../public/library/Codemirror/addon/hint/javascript-hint.js"></script>
+
 <script src="../public/library/jquery.cookie.js"></script>
 <script src="../public/library/jquery.animate.js"></script>
-<script src="../public/library/jquery-divScroll/divscroll.js"></script>
 <script src="../public/javascripts/custom-util.js"></script>
 <script src="../public/javascripts/custom-global.js"></script>
+<script src="../public/library/scrollbar/index.js"></script>
 
+<script>
+    // 自定义滚动条
+    var scrollbar = initScrollbar("body");
+    
+    var tableCodeJson = [
+        {
+            id: "table1",
+            name: "默认表格",
+            code: `<table class="table">
+     <thead>
+     <tr>
+         <th scope="col">#</th>
+         <th scope="col">First</th>
+         <th scope="col">Last</th>
+         <th scope="col">Handle</th>
+     </tr>
+     </thead>
+     <tbody>
+     <tr>
+         <th scope="row">1</th>
+         <td>Mark</td>
+         <td>Otto</td>
+         <td>@mdo</td>
+     </tr>
+     <tr>
+         <th scope="row">2</th>
+         <td>Jacob</td>
+         <td>Thornton</td>
+         <td>@fat</td>
+     </tr>
+     <tr>
+         <th scope="row">3</th>
+         <td>Larry</td>
+         <td>the Bird</td>
+         <td>@twitter</td>
+     </tr>
+     </tbody>
+ </table>`,
+        },
+        {
+            id: "table2",
+            name: "内斑马条纹外观表格",
+            code: `<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+    </tr>
+    <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+    </tr>
+    </tbody>
+</table>`,
+        },
+        {
+            id: "table3",
+            name: "带有边框的表格-浅色",
+            code: `<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+    </tr>
+    <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+    </tr>
+    </tbody>
+</table>`,
+        },
+        {
+            id: "table4",
+            name: "带有边框的表格-深色",
+            code: `<table class="table table-dark table-bordered">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+    </tr>
+    <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+    </tr>
+    </tbody>
+</table>`,
+        },
+        {
+            id: "table5",
+            name: "浅色表头外观",
+            code: `<table class="table">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+    </tr>
+    <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+    </tr>
+    </tbody>
+</table>`,
+        },
+        {
+            id: "table6",
+            name: "深色表头外观",
+            code: `<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+    </tr>
+    <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+    </tr>
+    </tbody>
+</table>`,
+        },
+        {
+            id: "table7",
+            name: "浅色表格鼠标悬停效果",
+            code: `<table class="table table-light table-hover">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+    </tr>
+    <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+    </tr>
+    </tbody>
+</table>`,
+        },
+        {
+            id: "table8",
+            name: "深色表格鼠标悬停效果",
+            code: `<table class="table table-dark table-hover">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+    </tr>
+    <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+    </tr>
+    </tbody>
+</table>`,
+        },
+    ];
+
+    $(".code-shows").each(function () {
+        var thisID = $(this).attr('id');
+        for (var i = 0; i < tableCodeJson.length; i++) {
+            if (tableCodeJson[i].id == thisID) {
+                $("#" + thisID).val(tableCodeJson[i].code);
+                initCodemirror(thisID);
+            }
+        }
+    });
+    
+    $(".show-this-codes").on("click", function () {
+        var $this = $(this);
+        if (!$(this).hasClass('yes')) {
+            $this.addClass('yes');
+            $this.find('span').text('隐藏代码');
+            $this.parents('.card').find('.code-shows-box').addClass('visibles');
+        } else {
+            $this.removeClass('yes');
+            $this.find('span').text('显示代码');
+            $this.parents('.card').find('.code-shows-box').removeClass('visibles');
+        }
+    });
+</script>
 
 </body>
 </html>

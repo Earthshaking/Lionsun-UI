@@ -42,7 +42,7 @@
         <div class="col-12">
     
             <!-- 前言 -->
-            <blockquote>
+            <blockquote class="custom">
                 <p>Navbars内置了对少数子组件的支持。根据需要选择以下内容：</p>
                 <ul class="yes-list-style">
                     <li>
@@ -71,7 +71,7 @@
             <!-- 默认导航 -->
             <div class="card example-card">
                 <div class="card-body p-4">
-                    <p>默认导航</p>
+                    <h5>默认导航</h5>
                     <nav class="navbar navbar-expand-lg navbar-light bg-light">
                         <a class="navbar-brand" href="#">Navbar</a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -327,7 +327,6 @@
                             </li>
                         </ul>
                     </nav>
-                    
                     <br>
                     <!-- 代码展示区域 -->
                     <div class="code-shows-box">
@@ -340,7 +339,6 @@
                 </div>
             </div>
 
-
         </div>
     </div>
 </div>
@@ -348,11 +346,6 @@
 <script src="../public/library/jquery-2.1.1.js"></script>
 <script src="../public/library/bootstrap-4.0.0/js/bootstrap.bundle.min.js"></script>
 <script src="../public/library/jquery-ui/js/jquery-ui.min.js"></script>
-<script src="../public/library/scrollbar/index.js"></script>
-<script src="../public/library/jquery.cookie.js"></script>
-<script src="../public/library/jquery.animate.js"></script>
-<script src="../public/javascripts/custom-util.js"></script>
-<script src="../public/javascripts/custom-global.js"></script>
 
 <!-- Codemirror -->
 <script src="../public/library/Codemirror/lib/codemirror.js"></script>
@@ -374,6 +367,13 @@
 <script src="../public/library/Codemirror/addon/edit/closetag.js"></script>
 <script src="../public/library/Codemirror/addon/hint/javascript-hint.js"></script>
 
+<script src="../public/library/scrollbar/index.js"></script>
+<script src="../public/library/jquery.cookie.js"></script>
+<script src="../public/library/jquery.animate.js"></script>
+<script src="../public/javascripts/custom-util.js"></script>
+<script src="../public/javascripts/custom-global.js"></script>
+
+
 <script>
     
     $(".show-this-codes").on("click", function () {
@@ -388,7 +388,6 @@
             $this.parents('.card').find('.code-shows-box').removeClass('visibles');
         }
     });
-    
     
     var navbarCodeJson = [
         {
@@ -608,22 +607,6 @@
         }
     ];
     
-    // 代码编辑器展示插件配置
-    var codeConfig = {
-        mode: {name: "htmlmixed", globalVars: true},
-        lineNumbers: true,
-        lineWrapping: true,
-        smartIndent: true,
-        indentUnit: 4,
-        foldGutter: true,
-        extraKeys: {"Ctrl-Space": "autocomplete"},
-        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-        matchBrackets: true, //括号匹配
-        autoCloseBrackets: true,
-        autoCloseTags: true,
-        theme: "material",
-    };
-    
     $(".code-shows").each(function () {
         var thisID = $(this).attr('id');
         for (var i = 0; i < navbarCodeJson.length; i++) {
@@ -634,15 +617,7 @@
         }
     });
 
-    function initCodemirror(id) {
-        CodeMirror.fromTextArea(document.getElementById(id), codeConfig);
-    }
-    
-    
-    
-    var Scrollbar = new GeminiScrollbar({
-        element: document.body
-    }).create();
+    var scrollbar = initScrollbar("body");
 </script>
 
 </body>

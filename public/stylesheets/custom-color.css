@@ -213,14 +213,14 @@
 
 .btn-green {
     color: #fff;
-    background-color: rgba(12, 84, 96, 0.74);
-    border-color: rgba(12, 84, 96, 0.74);
+    background-color: #0c7685;
+    border-color: #0c7685;
 }
 
 .btn-green:hover {
     color: #fff;
-    background-color: rgba(12, 84, 96, 0.88);
-    border-color: rgba(12, 84, 96, 0.88);
+    background-color: #095863;
+    border-color: #095863;
 }
 
 .btn-green:focus, .btn-green.focus {
@@ -261,3 +261,13 @@
     box-shadow: 0 0 0 0.2rem rgba(46, 152, 214, 0.5);
 }
 
+.card-table {
+    margin-bottom: 20px;
+}
+
+
+.example-title {
+    font-size: 17px !important;
+    color: #383c41;
+
+}
