@@ -37,7 +37,7 @@
     
     <div class="row clearfix">
         
-        <div class="col-6">
+        <div class="col-12 col-sm-6">
             <!-- 默认表格 -->
             <div class="card card-table">
                 <div class="card-body">
@@ -45,8 +45,8 @@
                     <p>使用最基本的表标记，这里 <code class="text-hight">.table</code> 是 <code class="text-hight">Bootstrap</code>
                        实现表的方式</p>
                     <br>
-                    
-                    <table class="table">
+                    <div class="table-responsive">
+                        <table class="table">
                         <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -76,7 +76,7 @@
                         </tr>
                         </tbody>
                     </table>
-                    
+                    </div>
                     <!-- 代码展示区域 -->
                     <div class="code-shows-box">
                         <textarea name="code" id="table1" class="code-shows" style="opacity: 0;"></textarea>
@@ -94,8 +94,8 @@
                         <h5 class="example-title">带有边框的表格-浅色</h5>
                         <p class="text-muted"><code class="text-hight">.table-bordered</code> 在表格和单元格的所有边上添加边框</p>
                         <br>
-                
-                        <table class="table table-bordered">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -125,7 +125,7 @@
                             </tr>
                             </tbody>
                         </table>
-                
+                        </div>
                         <!-- 代码展示区域 -->
                         <div class="code-shows-box">
                             <textarea name="code" id="table3" class="code-shows" style="opacity: 0;"></textarea>
@@ -144,8 +144,8 @@
                         <p>使用修饰符类 <code class="text-hight">.thead-light</code> 使
                             <code class="text-hight">&lt;thead&gt;</code> 显示为浅灰色。</p>
                         <br>
-                
-                        <table class="table">
+                        <div class="table-responsive">
+                            <table class="table">
                             <thead class="thead-light">
                             <tr>
                                 <th scope="col">#</th>
@@ -175,7 +175,7 @@
                             </tr>
                             </tbody>
                         </table>
-                
+                        </div>
                         <!-- 代码展示区域 -->
                         <div class="code-shows-box">
                             <textarea name="code" id="table5" class="code-shows" style="opacity: 0;"></textarea>
@@ -193,37 +193,40 @@
                     <h5 class="example-title">浅色表格鼠标悬停效果</h5>
                     <p>添加 <code class="text-hight">.table-hover</code> 启用鼠标悬停的样式</p>
                     <br>
-                    <table class="table table-light table-hover">
-                        <thead class="thead-light">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        </tbody>
-                    </table>
-            
+                    
+                    <div class="table-responsive">
+                        <table class="table table-light table-hover">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
                     <!-- 代码展示区域 -->
                     <div class="code-shows-box">
                         <textarea name="code" id="table7" class="code-shows" style="opacity: 0;"></textarea>
@@ -236,14 +239,14 @@
             </div>
         </div>
         
-        <div class="col-6">
+        <div class="col-12 col-sm-6">
             <!-- 内斑马条纹外观表格 -->
             <div class="card card-table">
                 <div class="card-body">
                     <h5 class="example-title">内斑马条纹外观表格</h5>
                     <p>使用 <code class="text-hight">.table-striped</code>给表格添加内斑马条纹的样式</p>
                     <br>
-                    
+                    <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
                         <tr>
@@ -274,7 +277,7 @@
                         </tr>
                         </tbody>
                     </table>
-                    
+                    </div>
                     <!-- 代码展示区域 -->
                     <div class="code-shows-box">
                         <textarea name="code" id="table2" class="code-shows" style="opacity: 0;"></textarea>
@@ -292,7 +295,7 @@
                         <h5 class="example-title">带有边框的表格-深色</h5>
                         <p class="text-muted"><code class="text-hight">.table-bordered</code> 在表格和单元格的所有边上添加边框</p>
                         <br>
-                
+                        <div class="table-responsive">
                         <table class="table table-dark table-bordered">
                             <thead>
                             <tr>
@@ -323,7 +326,7 @@
                             </tr>
                             </tbody>
                         </table>
-                
+                        </div>
                         <!-- 代码展示区域 -->
                         <div class="code-shows-box">
                             <textarea name="code" id="table4" class="code-shows" style="opacity: 0;"></textarea>
@@ -342,7 +345,7 @@
                         <p>使用修饰符类 <code class="text-hight">.thead-dark</code> 使
                             <code class="text-hight">&lt;thead&gt;</code> 显示为深灰色。</p>
                         <br>
-                
+                        <div class="table-responsive">
                         <table class="table">
                             <thead class="thead-dark">
                             <tr>
@@ -373,7 +376,7 @@
                             </tr>
                             </tbody>
                         </table>
-                
+                        </div>
                         <!-- 代码展示区域 -->
                         <div class="code-shows-box">
                             <textarea name="code" id="table6" class="code-shows" style="opacity: 0;"></textarea>
@@ -391,6 +394,7 @@
                     <h5 class="example-title">深色表格鼠标悬停效果</h5>
                     <p>添加 <code class="text-hight">.table-hover</code> 启用鼠标悬停的样式</p>
                     <br>
+                    <div class="table-responsive">
                     <table class="table table-dark table-hover">
                         <thead>
                         <tr>
@@ -421,7 +425,7 @@
                         </tr>
                         </tbody>
                     </table>
-            
+                    </div>
                     <!-- 代码展示区域 -->
                     <div class="code-shows-box">
                         <textarea name="code" id="table8" class="code-shows" style="opacity: 0;"></textarea>
@@ -476,274 +480,290 @@
         {
             id: "table1",
             name: "默认表格",
-            code: `<table class="table">
-     <thead>
-     <tr>
-         <th scope="col">#</th>
-         <th scope="col">First</th>
-         <th scope="col">Last</th>
-         <th scope="col">Handle</th>
-     </tr>
-     </thead>
-     <tbody>
-     <tr>
-         <th scope="row">1</th>
-         <td>Mark</td>
-         <td>Otto</td>
-         <td>@mdo</td>
-     </tr>
-     <tr>
-         <th scope="row">2</th>
-         <td>Jacob</td>
-         <td>Thornton</td>
-         <td>@fat</td>
-     </tr>
-     <tr>
-         <th scope="row">3</th>
-         <td>Larry</td>
-         <td>the Bird</td>
-         <td>@twitter</td>
-     </tr>
-     </tbody>
- </table>`,
+            code: `<div class="table-responsive">
+    <table class="table">
+         <thead>
+         <tr>
+             <th scope="col">#</th>
+             <th scope="col">First</th>
+             <th scope="col">Last</th>
+             <th scope="col">Handle</th>
+         </tr>
+         </thead>
+         <tbody>
+         <tr>
+             <th scope="row">1</th>
+             <td>Mark</td>
+             <td>Otto</td>
+             <td>@mdo</td>
+         </tr>
+         <tr>
+             <th scope="row">2</th>
+             <td>Jacob</td>
+             <td>Thornton</td>
+             <td>@fat</td>
+         </tr>
+         <tr>
+             <th scope="row">3</th>
+             <td>Larry</td>
+             <td>the Bird</td>
+             <td>@twitter</td>
+         </tr>
+         </tbody>
+     </table>
+</div>`,
         },
         {
             id: "table2",
             name: "内斑马条纹外观表格",
-            code: `<table class="table table-striped">
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-    </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-    </tr>
-    </tbody>
-</table>`,
+            code: `<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
+</div>`,
         },
         {
             id: "table3",
             name: "带有边框的表格-浅色",
-            code: `<table class="table table-bordered">
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-    </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-    </tr>
-    </tbody>
-</table>`,
+            code: `<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
+</div>`,
         },
         {
             id: "table4",
             name: "带有边框的表格-深色",
-            code: `<table class="table table-dark table-bordered">
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-    </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-    </tr>
-    </tbody>
-</table>`,
+            code: `<div class="table-responsive">
+    <table class="table table-dark table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
+</div>`,
         },
         {
             id: "table5",
             name: "浅色表头外观",
-            code: `<table class="table">
-    <thead class="thead-light">
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-    </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-    </tr>
-    </tbody>
-</table>`,
+            code: `<div class="table-responsive">
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
+</div>`,
         },
         {
             id: "table6",
             name: "深色表头外观",
-            code: `<table class="table">
-    <thead class="thead-dark">
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-    </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-    </tr>
-    </tbody>
-</table>`,
+            code: `<div class="table-responsive">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
+</div>`,
         },
         {
             id: "table7",
             name: "浅色表格鼠标悬停效果",
-            code: `<table class="table table-light table-hover">
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-    </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-    </tr>
-    </tbody>
-</table>`,
+            code: `<div class="table-responsive">
+    <table class="table table-light table-hover">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
+</div>`,
         },
         {
             id: "table8",
             name: "深色表格鼠标悬停效果",
-            code: `<table class="table table-dark table-hover">
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-    </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-    </tr>
-    </tbody>
-</table>`,
+            code: `<div class="table-responsive">
+    <table class="table table-dark table-hover">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
+</div>`,
         },
     ];
 

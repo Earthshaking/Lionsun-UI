@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播组件</title>
+    
+    <link href="../public/library/bootstrap-4.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../public/library/jquery-ui/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="../public/fonts/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../public/stylesheets/animate.css" rel="stylesheet" type="text/css">
+    <link href="../public/stylesheets/custom-global.css" rel="stylesheet" type="text/css">
+    <link href="../public/stylesheets/custom-color.css" rel="stylesheet" type="text/css">
+    <link href="../public/stylesheets/custom-styles.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="../public/favicon.ico" type="image/x-icon"/>
+    <link href="../public/library/scrollbar/gemini-scrollbar.css" rel="stylesheet" type="text/css">
+    
+    <!-- Codemirror -->
+    <link href="../public/library/Codemirror/lib/codemirror.css" rel="stylesheet" type="text/css">
+    <link href="../public/library/Codemirror/theme/material.css" rel="stylesheet" type="text/css">
+    <link href="../public/library/Codemirror/addon/fold/foldgutter.css" rel="stylesheet" type="text/css"/>
+    <link href="../public/library/Codemirror/addon/hint/show-hint.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <br>
+    <div class="row clearfix">
+        <div class="col-12">
+            <h1 class="h3" id="main-title">轮播组件</h1>
+            <hr>
+        </div>
+    </div>
+    
+    
+    <div class="row">
+        <div class="col-6">
+            <div class="card card-carousel">
+                <div class="card-body">
+                    <div id="demo" class="carousel slide" data-ride="carousel">
+        
+                        <!-- 指示符 -->
+                        <ul class="carousel-indicators">
+                            <li data-target="#demo" data-slide-to="0" class="active"></li>
+                            <li data-target="#demo" data-slide-to="1"></li>
+                            <li data-target="#demo" data-slide-to="2"></li>
+                        </ul>
+        
+                        <!-- 轮播图片 -->
+                        <div class="carousel-inner" style="height: 400px">
+                            <div class="carousel-item active" style="width: 100%;height: 100%;">
+                                <img src="../public/images/carousel-img1.jpg" alt="carousel img">
+                            </div>
+                            <div class="carousel-item" style="width: 100%;height: 100%;">
+                                <img src="../public/images/carousel-img2.jpg" alt="carousel img">
+                            </div>
+                            <div class="carousel-item" style="width: 100%;height: 100%;">
+                                <img src="../public/images/carousel-img3.jpg" alt="carousel img">
+                            </div>
+                        </div>
+        
+                        <!-- 左右切换按钮 -->
+                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#demo" data-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </a>
+    
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="../public/library/jquery-2.1.1.js"></script>
+<script src="../public/library/bootstrap-4.0.0/js/bootstrap.bundle.min.js"></script>
+<script src="../public/library/jquery-ui/js/jquery-ui.min.js"></script>
+<!-- Codemirror -->
+<script src="../public/library/Codemirror/lib/codemirror.js"></script>
+<script src="../public/library/Codemirror/javascript.js"></script>
+<script src="../public/library/Codemirror/addon/selection/selection-pointer.js"></script>
+<script src="../public/library/Codemirror/mode/xml/xml.js"></script>
+<script src="../public/library/Codemirror/mode/javascript/javascript.js"></script>
+<script src="../public/library/Codemirror/mode/css/css.js"></script>
+<script src="../public/library/Codemirror/mode/vbscript/vbscript.js"></script>
+<script src="../public/library/Codemirror/mode/htmlmixed/htmlmixed.js"></script>
+<script src="../public/library/Codemirror/addon/fold/foldcode.js"></script>
+<script src="../public/library/Codemirror/addon/fold/foldgutter.js"></script>
+<script src="../public/library/Codemirror/addon/fold/brace-fold.js"></script>
+<script src="../public/library/Codemirror/addon/fold/comment-fold.js"></script>
+<script src="../public/library/Codemirror/addon/fold/indent-fold.js"></script>
+<script src="../public/library/Codemirror/addon/fold/markdown-fold.js"></script>
+<script src="../public/library/Codemirror/addon/fold/xml-fold.js"></script>
+<script src="../public/library/Codemirror/addon/edit/closebrackets.js"></script>
+<script src="../public/library/Codemirror/addon/edit/closetag.js"></script>
+<script src="../public/library/Codemirror/addon/hint/javascript-hint.js"></script>
+
+<script src="../public/library/jquery.cookie.js"></script>
+<script src="../public/library/jquery.animate.js"></script>
+<script src="../public/javascripts/custom-util.js"></script>
+<script src="../public/javascripts/custom-global.js"></script>
+<script src="../public/library/scrollbar/index.js"></script>
+
+<script>
+    var scrollbar = initScrollbar("body");
+
+
+</script>
+</body>
+</html>
