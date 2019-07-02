@@ -1,0 +1,270 @@
+[
+    {
+        "id": "1",
+        "name": "page",
+        "title": "页面文件夹",
+        "open": false,
+        "iconSkin": "myFolder",
+        "child": [
+            {
+                "id": "1-1",
+                "name": "channel",
+                "title": "频道页面文件夹",
+                "open": false,
+                "iconSkin": "myFolder",
+                "child": [
+                    {"id": "1-1-1","name": "allArtice.html","title": ""},
+                    {"id": "1-1-2","name": "articeReview.html", "title": ""},
+                    {"id": "1-1-3","name": "articleClass.html", "title": ""},
+                    {"id": "1-1-4","name": "channelCenter.html", "title": ""},
+                    {"id": "1-1-5","name": "channelSetting.html", "title": ""},
+                    {"id": "1-1-6","name": "complaintManager.html", "title": ""},
+                    {"id": "1-1-7","name": "deletelArtice.html", "title": ""},
+                    {"id": "1-1-8","name": "friendLink.html", "title": ""},
+                    {"id": "1-1-9","name": "navbarManager.html", "title": ""},
+                    {"id": "1-1-10","name": "orderManager.html", "title": ""},
+                    {"id": "1-1-11","name": "paymentDetails.html", "title": ""},
+                    {"id": "1-1-12","name": "sendArtice.html", "title": ""},
+                    {"id": "1-1-13","name": "themsSetting.html", "title": ""}
+                ]
+            },
+            {
+                "id": "1-2",
+                "name": "member",
+                "title": "会员页面文件夹",
+                "open": false,
+                "iconSkin": "myFolder",
+                "child": [
+                    {
+                        "id": "1-2-1",
+                        "name": "accountBind.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-2-2",
+                        "name": "articleManager.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-2-3",
+                        "name": "collection.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-2-4",
+                        "name": "drawMoney.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-2-5",
+                        "name": "memberSpace.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-2-6",
+                        "name": "messages.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-2-7",
+                        "name": "myFocus.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-2-8",
+                        "name": "myOrder.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-2-9",
+                        "name": "newArticle.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-2-10",
+                        "name": "paymentInfo.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-2-11",
+                        "name": "personal.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-2-12",
+                        "name": "topUp.html",
+                        "title": ""
+                    }
+                ]
+            },
+            {
+                "id": "1-3",
+                "name": "default",
+                "title": "主要页面文件夹",
+                "open": false,
+                "iconSkin": "myFolder",
+                "child": [
+                    {
+                        "id": "1-3-1",
+                        "name": "article.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-3-2",
+                        "name": "channel.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-3-3",
+                        "name": "channelHome.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-3-4",
+                        "name": "channelManager.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-3-5",
+                        "name": "created_enterprise.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-3-6",
+                        "name": "created_managerHome.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-3-7",
+                        "name": "created_personal.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-3-8",
+                        "name": "created_success.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-3-9",
+                        "name": "createdChannel_1.html",
+                        "title": "createdChannel_2.html"
+                    },
+                    {
+                        "id": "1-3-10",
+                        "name": "empty.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-3-11",
+                        "name": "home.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-3-12",
+                        "name": "login.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-3-13",
+                        "name": "personFocus.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-3-14",
+                        "name": "personHome.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-3-15",
+                        "name": "register.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-3-16",
+                        "name": "result.html",
+                        "title": ""
+                    }
+                ]
+            },
+            {
+                "id": "1-4",
+                "name": "tepl",
+                "title": "模版页面文件夹",
+                "open": false,
+                "iconSkin": "myFolder",
+                "child": [
+                    {
+                        "id": "1-4-1",
+                        "name": "Alipay.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-4-2",
+                        "name": "appreciates.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-4-3",
+                        "name": "channel-search.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-4-4",
+                        "name": "channelSidebar.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-4-5",
+                        "name": "delivery.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-4-6",
+                        "name": "memberNavbar.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-4-7",
+                        "name": "navbar.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-4-8",
+                        "name": "search.html",
+                        "title": ""
+                    },
+                    {
+                        "id": "1-4-9",
+                        "name": "Wechat.html",
+                        "title": ""
+                    }
+                ]
+            }
+        
+        ]
+    },
+    {
+        "id": 2,
+        "name": "static",
+        "title": "图片、样式、js脚本等静态资源文件夹",
+        "open": false,
+        "iconSkin": "myFolder",
+        "child": [
+            {
+                "id": "2-1-1",
+                "name": "图片、样式、js脚本等静态资源文件夹"
+            }
+        
+        ]
+    },
+    {
+        "id": 3,
+        "name": "index.html",
+        "title": "页面目录"
+    },
+    {
+        "id": 4,
+        "name": "doc.html",
+        "title": "页面文件一览"
+    }
+]

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TA的关注</title>
+    <link rel="stylesheet" href="../../static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../../static/css/custom-global.css">
+    <link rel="stylesheet" href="../../static/css/custom-styles.css">
+    <link rel="stylesheet" href="../../static/css/animate.css">
+</head>
+<!-----------------------------------------
+  名称：智脑-TA的关注
+  时间：2019年3月31日
+  作者：方凌松
+------------------------------------------->
+<body>
+<div class="container-fluid pb50">
+    <div id="users-header">
+        
+        <!-- 主题背景图片 -->
+        <div class="usersInfosHeader">
+            
+            <!-- 更换主题背景 -->
+            <a href="javascript:void (0);" title="点击更换背景" id="usersBackground">
+                <img src="../../static/images/channelBg.jpg" alt="">
+            </a>
+            
+            <!-- 关注按钮 -->
+            <div class="content-fluid">
+                <button type="button" class="btn btn-user" id="attention" style="width: 92px;">+ 关注</button>
+            </div>
+        </div>
+        
+        <!-- 用户头像等信息 -->
+        <div class="usersInfosBody">
+            <div class="content-fluid text-center">
+                <!-- 用户头像 -->
+                <div id="usersIcons">
+                    <img src="../../static/images/placeholder/img2_140x175.jpg" alt="">
+                </div>
+                <!-- 用户名 && 星评价 -->
+                <div class="text-center" id="userInfos">
+                    <div class="text-center">
+                        <span class="userTitle">张三琴</span>
+                        <ul class="star-list mr0" data-state="3">
+                            <li><i class="fa fa-star yes" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-star yes" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-star yes" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        </ul>
+                    </div>
+                    <!-- 个性签名 -->
+                    <p class="signature">我就是我，是不一样的烟火。</p>
+                </div>
+                <!-- 文章 && 粉丝 && 关注 -->
+                <ul class="user-basic">
+                    <li><a href="#">125</a>文章</li>
+                    <li><a href="#">254</a>粉丝</li>
+                    <li><a href="#">120</a> 关注</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- 用户页面导航 -->
+        <div class="usersInfosNav">
+            <ul class="nav-tabs bn">
+                <li><a href="personHome.html">TA的主页</a></li>
+                <li class="active"><a href="personFocus.html" id="focusFirstBtn">TA的关注</a></li>
+                <li><a href="#" id="fansFirstBtn">TA的粉丝</a></li>
+            </ul>
+        </div>
+        <div class="bottomsDemo"></div>
+    
+    </div>
+    
+    <div class="content-fluid pt10">
+        <div class="main-content">
+            
+            <!-- 左侧 -->
+            <div class="col-left">
+                <div class="main-content pt10 clearfix">
+                    
+                    <!-- 切换按钮 -->
+                    <div class="content-btn clearfix relative">
+                        
+                        <ul class="nav nav-tabs" id="focusBtnGroup">
+                            <li>
+                                <a href="#focus" data-boxBtn="#focusBox" data-toggle="tab" class="active show">
+                                    关注用户<span id="FocusUser">120</span>
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="#channel" data-boxBtn="#channelBox" data-toggle="tab">
+                                    关注频道<span id="FocusChannel">20</span>
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="#fans" data-boxBtn="#fansBox" data-toggle="tab" id="fansToButton">
+                                    粉丝<span id="fansCount">253</span>
+                                </a>
+                            </li>
+                        </ul>
+                        
+                        <!-- 布局结合按钮 -->
+                        <a href="#focusBox" data-now="grid" class="toggleLayoutBtn" title="切换到列表模式"><i
+                            class="fa fa-th-list"></i></a>
+                        <a href="#channelBox" data-now="list" class="toggleLayoutBtn" title="切换到大图模式"><i
+                            class="fa fa-th-large"></i></a>
+                        <a href="#fansBox" data-now="list" class="toggleLayoutBtn" title="切换到大图模式"><i
+                            class="fa fa-th-large"></i></a>
+                    </div>
+                    
+                    <!-- 主要内容 -->
+                    <div class="content-body tab-content">
+                        <!-- 关注用户 -->
+                        <div class="tab-pane fade in active show" id="focus">
+                            <div class="focusItems grid" id="focusBox">
+                                <div class="focus-item media animated fadeIn">
+                                    <img src="../../static/images/placeholder/img1_235x220.jpg" alt=""
+                                         class="rounded-circle usersHeadIcon" style="width:100px;height: 100px">
+                                    <div class="media-body">
+                                        <h4 class="usersAccount">蓝蓝的子夜爱的阳光 <span class="male"></span></h4>
+                                        <p>文章 125 | 粉丝 253</p>
+                                    </div>
+                                    <button type="button" class="btn btn-user" style="width: 92px;">+ 关注</button>
+                                </div>
+                                <div class="focus-item media animated fadeIn">
+                                    <img src="../../static/images/placeholder/img2_235x220.jpg" alt=""
+                                         class="rounded-circle usersHeadIcon"
+                                         style="width:100px;height: 100px">
+                                    <div class="media-body">
+                                        <h4 class="usersAccount">凉子姑娘 <span class="female"></span></h4>
+                                        <p>文章 125 | 粉丝 253</p>
+                                    </div>
+                                    <button type="button" class="btn btn-user" style="width: 92px;">+ 关注</button>
+                                </div>
+                                <div class="focus-item media animated fadeIn">
+                                    <img src="../../static/images/icon/user-icon.png" alt=""
+                                         class="rounded-circle usersHeadIcon"
+                                         style="width:100px;height: 100px">
+                                    <div class="media-body">
+                                        <h4 class="usersAccount">蝴蝶酥而 <span class="male"></span></h4>
+                                        <p>文章 125 | 粉丝 253</p>
+                                    </div>
+                                    <button type="button" class="btn btn-user" style="width: 92px;">+ 关注</button>
+                                </div>
+                                <div class="focus-item media animated fadeIn">
+                                    <img src="../../static/images/placeholder/img3_140x175.jpg" alt=""
+                                         class="rounded-circle usersHeadIcon"
+                                         style="width:100px;height: 100px">
+                                    <div class="media-body">
+                                        <h4 class="usersAccount">混合双打噶看 <span class="female"></span></h4>
+                                        <p>文章 125 | 粉丝 253</p>
+                                    </div>
+                                    <button type="button" class="btn btn-user" style="width: 92px;">+ 关注</button>
+                                </div>
+                                <div class="focus-item media animated fadeIn">
+                                    <img src="../../static/images/icon/user-icon.png" alt=""
+                                         class="rounded-circle usersHeadIcon"
+                                         style="width:100px;height: 100px">
+                                    <div class="media-body">
+                                        <h4 class="usersAccount">蓝蓝的子夜爱的阳光 <span class="male"></span></h4>
+                                        <p>文章 125 | 粉丝 253</p>
+                                    </div>
+                                    <button type="button" class="btn btn-user" style="width: 92px;">+ 关注</button>
+                                </div>
+                                <div class="focus-item media animated fadeIn">
+                                    <img src="../../static/images/placeholder/img1_235x220.jpg" alt=""
+                                         class="rounded-circle usersHeadIcon"
+                                         style="width:100px;height: 100px">
+                                    <div class="media-body">
+                                        <h4 class="usersAccount">凉子姑娘 <span class="female"></span></h4>
+                                        <p>文章 125 | 粉丝 253</p>
+                                    </div>
+                                    <button type="button" class="btn btn-user" style="width: 92px;">+ 关注</button>
+                                </div>
+                                <div class="focus-item media animated fadeIn">
+                                    <img src="../../static/images/placeholder/img2_235x220.jpg" alt=""
+                                         class="rounded-circle usersHeadIcon"
+                                         style="width:100px;height: 100px">
+                                    <div class="media-body">
+                                        <h4 class="usersAccount">蝴蝶酥而 <span class="male"></span></h4>
+                                        <p>文章 125 | 粉丝 253</p>
+                                    </div>
+                                    <button type="button" class="btn btn-user" style="width: 92px;">+ 关注</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 关注频道 -->
+                        <div class="tab-pane list fade" id="channel">
+                            <div class="focusItems list" id="channelBox">
+                                <div class="focus-item media animated fadeIn">
+                                    <img src="../../static/images/placeholder/img1_140x175.jpg" alt=""
+                                         class="usersHeadIcon" style="width:100px;height: 100px">
+                                    <div class="media-body">
+                                        <h4 class="usersAccount">读书写作加油站</h4>
+                                        <p>创建者 收录125 | 120人关注</p>
+                                    </div>
+                                    <button type="button" class="btn btn-user" style="width: 92px;">+ 关注</button>
+                                </div>
+                                <div class="focus-item media animated fadeIn">
+                                    <img src="../../static/images/placeholder/img2_140x175.jpg" alt=""
+                                         class="usersHeadIcon" style="width:100px;height: 100px">
+                                    <div class="media-body">
+                                        <h4 class="usersAccount">读书写作加油站</h4>
+                                        <p>创建者 收录125 | 120人关注</p>
+                                    </div>
+                                    <button type="button" class="btn btn-user" style="width: 92px;">+ 关注</button>
+                                </div>
+                                <div class="focus-item media animated fadeIn">
+                                    <img src="../../static/images/placeholder/img1_140x175.jpg" alt=""
+                                         class="usersHeadIcon" style="width:100px;height: 100px">
+                                    <div class="media-body">
+                                        <h4 class="usersAccount">读书写作加油站</h4>
+                                        <p>创建者 收录125 | 120人关注</p>
+                                    </div>
+                                    <button type="button" class="btn btn-user" style="width: 92px;">+ 关注</button>
+                                </div>
+                                <div class="focus-item media animated fadeIn">
+                                    <img src="../../static/images/placeholder/img2_140x175.jpg" alt=""
+                                         class="usersHeadIcon" style="width:100px;height: 100px">
+                                    <div class="media-body">
+                                        <h4 class="usersAccount">读书写作加油站</h4>
+                                        <p>创建者 收录125 | 120人关注</p>
+                                    </div>
+                                    <button type="button" class="btn btn-user" style="width: 92px;">+ 关注</button>
+                                </div>
+                                <div class="focus-item media animated fadeIn">
+                                    <img src="../../static/images/placeholder/img1_140x175.jpg" alt=""
+                                         class="usersHeadIcon" style="width:100px;height: 100px">
+                                    <div class="media-body">
+                                        <h4 class="usersAccount">读书写作加油站</h4>
+                                        <p>创建者 收录125 | 120人关注</p>
+                                    </div>
+                                    <button type="button" class="btn btn-user" style="width: 92px;">+ 关注</button>
+                                </div>
+                                <div class="focus-item media animated fadeIn">
+                                    <img src="../../static/images/placeholder/img1_140x175.jpg" alt=""
+                                         class="usersHeadIcon" style="width:100px;height: 100px">
+                                    <div class="media-body">
+                                        <h4 class="usersAccount">读书写作加油站</h4>
+                                        <p>创建者 收录125 | 120人关注</p>
+                                    </div>
+                                    <button type="button" class="btn btn-user" style="width: 92px;">+ 关注</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 粉丝 -->
+                        <div class="tab-pane list fade" id="fans">
+                            <div class="focusItems list" id="fansBox">
+                                <div class="focus-item media animated fadeIn">
+                                    <img src="../../static/images/icon/user-icon.png" alt=""
+                                         class="rounded-circle usersHeadIcon" style="width:100px;height: 100px">
+                                    <div class="media-body">
+                                        <h4 class="usersAccount">蓝蓝的子夜爱的阳光 <span class="male"></span></h4>
+                                        <p>文章 125 | 粉丝 253</p>
+                                    </div>
+                                    <button type="button" class="btn btn-user" style="width: 92px;">+ 关注</button>
+                                </div>
+                                <div class="focus-item media animated fadeIn">
+                                    <img src="../../static/images/icon/user-icon.png" alt=""
+                                         class="rounded-circle usersHeadIcon"
+                                         style="width:100px;height: 100px">
+                                    <div class="media-body">
+                                        <h4 class="usersAccount">凉子姑娘 <span class="female"></span></h4>
+                                        <p>文章 125 | 粉丝 253</p>
+                                    </div>
+                                    <button type="button" class="btn btn-user" style="width: 92px;">+ 关注</button>
+                                </div>
+                                <div class="focus-item media animated fadeIn">
+                                    <img src="../../static/images/icon/user-icon.png" alt=""
+                                         class="rounded-circle usersHeadIcon"
+                                         style="width:100px;height: 100px">
+                                    <div class="media-body">
+                                        <h4 class="usersAccount">蝴蝶酥而 <span class="male"></span></h4>
+                                        <p>文章 125 | 粉丝 253</p>
+                                    </div>
+                                    <button type="button" class="btn btn-user" style="width: 92px;">+ 关注</button>
+                                </div>
+                                <div class="focus-item media animated fadeIn">
+                                    <img src="../../static/images/icon/user-icon.png" alt=""
+                                         class="rounded-circle usersHeadIcon"
+                                         style="width:100px;height: 100px">
+                                    <div class="media-body">
+                                        <h4 class="usersAccount">混合双打噶看 <span class="female"></span></h4>
+                                        <p>文章 125 | 粉丝 253</p>
+                                    </div>
+                                    <button type="button" class="btn btn-user" style="width: 92px;">+ 关注</button>
+                                </div>
+                                <div class="focus-item media animated fadeIn">
+                                    <img src="../../static/images/icon/user-icon.png" alt=""
+                                         class="rounded-circle usersHeadIcon"
+                                         style="width:100px;height: 100px">
+                                    <div class="media-body">
+                                        <h4 class="usersAccount">蓝蓝的子夜爱的阳光 <span class="male"></span></h4>
+                                        <p>文章 125 | 粉丝 253</p>
+                                    </div>
+                                    <button type="button" class="btn btn-user" style="width: 92px;">+ 关注</button>
+                                </div>
+                                <div class="focus-item media animated fadeIn">
+                                    <img src="../../static/images/icon/user-icon.png" alt=""
+                                         class="rounded-circle usersHeadIcon"
+                                         style="width:100px;height: 100px">
+                                    <div class="media-body">
+                                        <h4 class="usersAccount">凉子姑娘 <span class="female"></span></h4>
+                                        <p>文章 125 | 粉丝 253</p>
+                                    </div>
+                                    <button type="button" class="btn btn-user" style="width: 92px;">+ 关注</button>
+                                </div>
+                                <div class="focus-item media animated fadeIn">
+                                    <img src="../../static/images/icon/user-icon.png" alt=""
+                                         class="rounded-circle usersHeadIcon"
+                                         style="width:100px;height: 100px">
+                                    <div class="media-body">
+                                        <h4 class="usersAccount">蝴蝶酥而 <span class="male"></span></h4>
+                                        <p>文章 125 | 粉丝 253</p>
+                                    </div>
+                                    <button type="button" class="btn btn-user" style="width: 92px;">+ 关注</button>
+                                </div>
+                                <div class="focus-item media animated fadeIn">
+                                    <img src="../../static/images/icon/user-icon.png" alt=""
+                                         class="rounded-circle usersHeadIcon"
+                                         style="width:100px;height: 100px">
+                                    <div class="media-body">
+                                        <h4 class="usersAccount">混合双打噶看 <span class="female"></span></h4>
+                                        <p>文章 125 | 粉丝 253</p>
+                                    </div>
+                                    <button type="button" class="btn btn-user" style="width: 92px;">+ 关注</button>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                
+                </div>
+            </div>
+            
+            <!-- 右侧 -->
+            <div class="col-right clearfix">
+                <div class="col-right-inner">
+                    
+                    <!-- 个人介绍 -->
+                    <div class="introduction">
+                        <h3 class="introduction-title">
+                            <img src="../../static/images/icon/users-min-icon.jpg" alt=""
+                                 style="vertical-align: middle"/>
+                            个人介绍
+                        </h3>
+                        <p>张三的空间，姓张，生于1988，来自湖北，现居长沙。天性浪漫，读书写作是源于骨子里的热爱。即使老师也是妈妈，既渴望诗和远方也热爱一地鸡毛的生活。</p>
+                    </div>
+                    
+                    <!-- TA的频道 -->
+                    <div class="TaChannel list-group">
+                        <div class="TaChannelTitle">TA的频道</div>
+                        <div class="list-group-item">
+                            <div class="media">
+                                <img src="../../static/images/placeholder/img1_140x175.jpg" alt=""
+                                     style="width: 68px;height: 68px;" class="mr-3">
+                                <div class="media-body">
+                                    <a href="#" class="subChannelTitle">当代世界与社会主义</a>
+                                    <span>创建者</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="media">
+                                <img src="../../static/images/placeholder/img1_140x175.jpg" alt=""
+                                     style="width: 68px;height: 68px;" class="mr-3">
+                                <div class="media-body">
+                                    <a href="#" class="subChannelTitle">当代世界与社会主义</a>
+                                    <span>创建者</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="media">
+                                <img src="../../static/images/placeholder/img1_140x175.jpg" alt=""
+                                     style="width: 68px;height: 68px;" class="mr-3">
+                                <div class="media-body">
+                                    <a href="#" class="subChannelTitle">当代世界与社会主义</a>
+                                    <span>创建者</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="media">
+                                <img src="../../static/images/placeholder/img1_140x175.jpg" alt=""
+                                     style="width: 68px;height: 68px;" class="mr-3">
+                                <div class="media-body">
+                                    <a href="#" class="subChannelTitle">当代世界与社会主义</a>
+                                    <span>创建者</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../static/js/script.js"></script>
+<script>
+    global.loadSearch();
+    window.onload = function () {
+        
+        querryNowShow();
+        bindClickEvent();
+        
+        var resultBox = $("#resultBox");
+        if (location.hash) {
+            var hashStrings = (window.location.hash.length > 0 ? window.location.hash.substring(1) : "");
+            resultBox.addClass(hashStrings);
+            $("[data-to='" + hashStrings + "']").addClass('active');
+        } else {
+            $("[data-to='grid']").addClass('active');
+            resultBox.addClass('grid');
+        }
+        
+        var toggleButton = $(".toggleLayoutBtn");
+        
+        // 点击切换布局
+        toggleButton.on("click", function (e) {
+            var nowdata = $(this).attr('data-now');
+            var boxid = $(this).attr('href');
+            
+            if (nowdata == 'list') {
+                $(this)
+                .attr('data-now', "grid")
+                .attr('title', "切换到列表模式")
+                .children('i')
+                .removeClass('fa-th-large')
+                .addClass('fa-th-list');
+                $(boxid).removeClass('list').addClass('grid');
+            } else {
+                $(this)
+                .attr('data-now', "list")
+                .attr('title', "切换到大图模式")
+                .children('i')
+                .removeClass('fa-th-list')
+                .addClass('fa-th-large');
+                $(boxid).removeClass('grid').addClass('list');
+            }
+            e.preventDefault();
+        });
+        
+        
+    }
+    
+    
+    /**
+     * 绑定点击事件
+     */
+    function bindClickEvent() {
+        var usersInfosNav = $(".usersInfosNav");
+        var btnGroup = $("#focusBtnGroup");
+        var layoutBtn = $(".toggleLayoutBtn");
+        
+        btnGroup.find("a[data-toggle='tab']").on("click", function (e) {
+            layoutBtn.hide();
+            var boxbtn = $(this).attr("data-boxBtn");
+            $("a[href=" + boxbtn + "]").show();
+            
+            if ($(this).attr('id') == 'fansToButton') {
+                usersInfosNav.find('#fansFirstBtn').parent('li').addClass('active').siblings('li').removeClass('active');
+            } else {
+                usersInfosNav.find('#focusFirstBtn').parent('li').addClass('active').siblings('li').removeClass('active');
+            }
+        });
+        
+        $(".nav-tabs").find('a').on("click", function () {
+            if (!$(this).parent('li').hasClass('active')) {
+                $(this).parent('li').addClass('active').siblings('li').removeClass('active');
+            }
+        });
+        
+        
+        $("#fansFirstBtn").on("click", function () {
+            $("#fansToButton").tab('show');
+        });
+    }
+    
+    /**
+     * 页面刚加载完成时获取当前正显示哪个tab页，再显示对应的布局切换按钮
+     */
+    function querryNowShow() {
+        var btnGroup = $("#focusBtnGroup");
+        btnGroup.find('a').each(function (e) {
+            if ($(this).hasClass('active')) {
+                var boxbtn = $(this).attr("data-boxBtn");
+                $("a[href=" + boxbtn + "]").show();
+            }
+        });
+    }
+</script>
+</body>
+</html>

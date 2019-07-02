@@ -1,0 +1,127 @@
+:root {
+    /* 侧边栏背景颜色 */
+    --sidebarBg: linear-gradient(45deg, #769abb 0%, #2580B3 99%, #2580B3 100%);
+
+    /* 侧边栏字体颜色 */
+    --sidebarFontColor: #fff;
+
+    /* 侧边栏字体大小 */
+    --sidebarFontSize: 16px;
+}
+
+.grid-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: auto;
+    background-color: #EBEEF1;
+    padding: 15px 12px;
+}
+
+.container-fluid {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding-top: 62px;
+    overflow: hidden;
+}
+
+#new-header {
+    height: 62px;
+    width: 100%;
+    background-color: #FFF;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+}
+
+#main-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: #fff;
+}
+
+#sidebar {
+    width: 200px;
+    height: 100%;
+    position: relative;
+    transition-property: all;
+    transition-timing-function: ease-in-out;
+    z-index: 2;
+    background: transparent;
+    overflow-x: hidden;
+}
+
+#sidebar::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: var(--sidebarBg);
+}
+
+#content {
+    flex: 1;
+    background-color: rgba(248, 248, 248, 0.6);
+}
+
+#sidebarMenu {
+    padding-top: 10px;
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+#sidebarMenu li {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#sidebarMenu li a {
+    width: 100%;
+    display: block;
+    padding: 10px 20px;
+    color: var(--sidebarFontColor);
+    opacity: 0.85;
+    font-size: var(--sidebarFontSize);
+    font-family: "微软雅黑", Arial, sans-serif;
+    text-decoration: none !important;
+}
+
+#sidebarMenu li a i {
+    position: relative;
+    margin-right: 10px;
+}
+
+#sidebarMenu li > a:hover {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-sub-menu {
+    padding-left: 30px;
+}
+
+
+.grid-card {
+    box-shadow: 0 2px 5px -2px rgba(82, 82, 82, 0.15);
+    background-color: #FFFFFF;
+    border-radius: 0;
+}
+
+
+.grid-card > .card-header {
+    background-color: #FFFFFF;
+}
+
+#frames{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}

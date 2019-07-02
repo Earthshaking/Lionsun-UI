@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航管理</title>
+    <link rel="stylesheet" href="../../static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/lib/DataTables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../../static/lib/kindeditor/themes/default/default.css">
+    <link rel="stylesheet" href="../../static/css/custom-global.css">
+    <link rel="stylesheet" href="../../static/css/custom-styles.css">
+    <link rel="stylesheet" href="../../static/css/animate.css">
+    <!--[if lt IE 9]>
+    <script src="http://www.jq22.com/jquery/html5.min.js"></script>
+    <![endif]-->
+</head>
+<!-----------------------------------------
+  名称：智脑 - 频道中心 - 导航管理
+  时间：2019年4月3日
+  作者：方凌松
+------------------------------------------->
+<body>
+
+<!-- 导航管理页面 -->
+<div class="container-fluid" style="height: 100%">
+    <div id="header"></div>
+    <div class="content-fluid pt40">
+        <div class="top-box mb20 " id="globalBox" data-url="../tepl/channel-search.html">
+            <!------------------------------------------
+               加载公用组件内容：左侧logo标识和搜索框
+               对应模版文件：tepl/search.html
+             ------------------------------------------>
+        </div>
+    </div>
+    <hr class="m0 p0">
+    <div class="content-fluid">
+        <div class="channelCenter clearfix">
+            <div id="channelSidebarBox"></div>
+            <div class="channel-content" id="channelShow">
+                <div id="channel-setting">
+                    
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#navbarSetting" class="active show" data-toggle="tab">导航设置</a></li>
+                        <li><a href="#addNavbar" data-toggle="tab" id="addNavbarBtn" onclick="initEditor()">新增导航</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content ">
+                        
+                        <!-- 导航设置 -->
+                        <div class="tab-pane fade active in show" id="navbarSetting">
+                            <div class="table-responsive-sm pt20">
+                                <table class="table text-center table-even table-bordered" width="100%"
+                                       id="navbarMangerTable" cellspacing="0" cellpadding="0">
+                                    <thead class="thead-bg2">
+                                    <tr>
+                                        <th>导航名称</th>
+                                        <th>是否显示</th>
+                                        <th>序号</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>最新</td>
+                                        <td>是</td>
+                                        <td>1</td>
+                                        <td><a href="">编辑</a>&nbsp;&nbsp;<a href="">删除</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>最新</td>
+                                        <td>是</td>
+                                        <td>1</td>
+                                        <td><a href="">编辑</a>&nbsp;&nbsp;<a href="">删除</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>最新</td>
+                                        <td>是</td>
+                                        <td>1</td>
+                                        <td><a href="">编辑</a>&nbsp;&nbsp;<a href="">删除</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>最新</td>
+                                        <td>是</td>
+                                        <td>1</td>
+                                        <td><a href="">编辑</a>&nbsp;&nbsp;<a href="">删除</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>最新</td>
+                                        <td>是</td>
+                                        <td>1</td>
+                                        <td><a href="">编辑</a>&nbsp;&nbsp;<a href="">删除</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>最新</td>
+                                        <td>是</td>
+                                        <td>1</td>
+                                        <td><a href="">编辑</a>&nbsp;&nbsp;<a href="">删除</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>最新</td>
+                                        <td>是</td>
+                                        <td>1</td>
+                                        <td><a href="">编辑</a>&nbsp;&nbsp;<a href="">删除</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>最新</td>
+                                        <td>是</td>
+                                        <td>1</td>
+                                        <td><a href="">编辑</a>&nbsp;&nbsp;<a href="">删除</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>最新</td>
+                                        <td>是</td>
+                                        <td>1</td>
+                                        <td><a href="">编辑</a>&nbsp;&nbsp;<a href="">删除</a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        
+                        </div>
+                        
+                        <!-- 新增导航 -->
+                        <div class="tab-pane fade pt30" id="addNavbar">
+                            
+                            <form action="" method="post" id="addNavbarForm">
+                                
+                                <div class="form-group">
+                                    <label class="control-label">导航名称：</label>
+                                    <input type="text" class="form-control" style="width: 270px;" placeholder="请输入导航名称">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="control-label">导航序号：</label>
+                                    <input type="text" class="form-control" style="width: 270px;" placeholder="请输入导航序号">
+                                    &nbsp;
+                                    <span class="tip-text">序号越小越靠前</span>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="control-label">导航地址：</label>
+                                    <input type="text" class="form-control" style="width: 270px;" placeholder="请输入导航地址">
+                                    &nbsp;
+                                    <span class="tip-text">URL需要带http://,输入URL后导航内容不显示</span>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="control-label">是否显示：</label>
+                                    <div class="inline-block" style="margin-left: 20px">
+                                        <label class="radio-inline" data-toggle="radio" data-style="default">
+                                            <input type="radio" name="shows">
+                                            <span>是</span>
+                                        </label>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <label class="radio-inline" data-toggle="radio" data-style="default">
+                                            <input type="radio" name="shows" checked>
+                                            <span>否</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="control-label">打开方式：</label>
+                                    <div class="inline-block" style="margin-left: 20px">
+                                        <label class="radio-inline" data-toggle="radio" data-style="default">
+                                            <input type="radio" name="opens">
+                                            <span>本页面</span>
+                                        </label>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <label class="radio-inline" data-toggle="radio" data-style="default">
+                                            <input type="radio" name="opens" checked>
+                                            <span>新页面</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group clearfix flex">
+                                    <label class="control-label float-left">导航内容：</label>
+                                    <div class="rightBlock inline-block">
+                                        
+                                        <!-- 编辑器 -->
+                                        <div name="wzArticle" style="height: 200px;" id="editor"></div>
+                                        
+                                    </div>
+                                </div>
+                                
+                                <br>
+                                <div class="text-center">
+                                    <button class="btn channel-btn blues" type="submit" style="width: 120px;">保存
+                                    </button>
+                                </div>
+                            </form>
+                        
+                        
+                        </div>
+                    
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../static/js/script.js"></script>
+<script type="text/javascript" src="../../static/lib/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="../../static/lib/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" src="../../static/lib/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+<script>
+    global.loadSearch();
+    global.loadSidebar();
+    
+    
+    // 初始化编辑器
+    initEditor('editor');
+    
+    $('#navbarMangerTable').DataTable({
+        "paging": true,       // 分页
+        "scrollCollapse": true,
+        "ordering": false,     // 排序
+        "info": false,         // 页面信息
+        "searching": false,    // 搜索
+        "autoWidth": false,
+        "fixedHeader": false,
+        "language": getTableLanguage(),
+        "order": [],
+        "columnDefs": [
+            {"width": "40px", "orderable": false, "targets": 0}
+        ],
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <link rel="stylesheet" href="../../static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../../static/css/custom-global.css">
+    <link rel="stylesheet" href="../../static/css/custom-styles.css">
+    <link rel="stylesheet" href="../../static/css/animate.css">
+    <!--[if lt IE 9]>
+    <script src="http://www.jq22.com/jquery/html5.min.js"></script>
+    <![endif]-->
+</head>
+<!-----------------------------------------
+  名称：智脑 - 注册界面
+  时间：2019年3月31日
+  作者：方凌松
+------------------------------------------->
+<body>
+
+<div class="all-wrapper">
+    <div id="header"></div>
+    
+    <div class="content-fluid pt40">
+        
+        <div class="top-box mb20" id="globalBox" data-url="../tepl/search.html">
+            <!------------------------------------------
+               加载公用组件内容：左侧logo标识和搜索框
+               对应模版文件：tepl/search.html
+             ------------------------------------------>
+        </div>
+        
+        <div class="card" id="register-page">
+            <div class="card-header p0">
+                <h3 class="reds">会员注册
+                    <small>REGISTER</small>
+                </h3>
+            </div>
+            <div class="card-body clearfix">
+                <div class="register-left">
+                    <form id="register-form" >
+                        
+                        <!-- 手机号 -->
+                        <div class="form-group">
+                            <label for="first" class="control-label">手机号：</label>
+                            <div class="register-input" id="first" style="width: 355px">
+                                <label for="phoneType" class="register-box">
+                                    <select name="phoneType" id="phoneType" class="register-select ignore">
+                                        <option value="86">中国大陆 +86</option>
+                                    </select>
+                                    <span class="down-arrow"></span>
+                                </label>
+                                <input type="text" class="phone-input form-control" id="telphone" name="telphone"
+                                       placeholder="输入手机号"
+                                       maxlength="11" data-verify="notNull" required
+                                       oninput="value=value.replace(/[^\d]/g,'')">
+                            </div>
+                        </div>
+                        
+                        <!-- 用户名 -->
+                        <div class="form-group">
+                            <label for="account" class="control-label">用户名：</label>
+                            <input type="text" minlength="5" maxlength="20" style="width: 355px" class="form-control register-input"
+                                   name="account" id="account"
+                                   placeholder="5-20个字符，中文字符/英文字母/数字" required>
+                        </div>
+                        
+                        <!-- 密码 -->
+                        <div class="form-group">
+                            <label for="password" class="control-label">密码：</label>
+                            <input type="password" minlength="6" style="width: 355px" maxlength="18" class="form-control register-input"
+                                   name="password" id="password"
+                                   placeholder="6-18位大小写字母、符号或数字" required>
+                        </div>
+                        
+                        <!-- 短信验证码 -->
+                        <div class="form-group">
+                            <label for="validateCode" class="control-label">验证码：</label>
+                            <input type="text" class="form-control register-input" id="validateCode"
+                                   style="width: 234px"
+                                   placeholder="输入短信验证码" required name="validateCode">
+                            <button class="validateCodeBtn" type="button">获取验证码</button>
+                        </div>
+                        
+                        <!-- 用户服务协议 -->
+                        <div class="form-group agreementBox">
+                            <input type="checkbox" id="agreement" name="agreement" required>
+                            <label for="agreement">我已阅读并接受</label><a href="#" class="agreement"
+                                                                     target="_blank">《用户服务协议》</a>
+                        </div>
+                        
+                        <div class="text-center mb0">
+                            <button type="submit" id="registerBtn" class="btn">立即注册</button>
+                        </div>
+                    
+                    </form>
+                </div>
+                <div class="register-right">
+                    <p class="text-left ifHasAccount">如果已拥有账户：</p>
+                    <button class="loginBtn regloginBtn" type="button" onclick="location.href='login.html'">立即登录
+                    </button>
+                    
+                    <p class="text-left ifHasAccount">使用其他账户登录：</p>
+                    <div class="other-btn">
+                        <button id="wechatLogin" type="button">
+                            <img src="../../static/images/wechat.jpg" alt="微信登录">
+                            使用微信登录
+                        </button>
+                        <button id="qqLogin" type="button" class="text-left">
+                            <img src="../../static/images/qq.jpg" alt="QQ登录">
+                            使用QQ登录
+                        </button>
+                        <button id="weboLogin" type="button">
+                            <img src="../../static/images/webo.jpg" alt="微博登录">
+                            使用微博登录
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+</div>
+
+<script type="text/javascript" src="../../static/js/script.js"></script>
+<script>
+    global.loadSearch();
+    
+    // $("#register-form").validate({
+    //     ignore:'.ignore',
+    //     rules: {
+    //         telphone:{
+    //             required: true,
+    //             rangelength: [11, 11]
+    //         }
+    //     },
+    //     messages: {
+    //         telphone: {
+    //             required: "请输入用户名",
+    //             rangelength: $.validator.format("用户名长度在必须为：{0}-{1}之间")
+    //         }
+    //     }
+    // });
+    
+    // function validateForm(selector) {
+    //     $(selector).find('input').each(function () {
+    //         $(this).on("blur", function () {
+    //             var datatype = $(this).data('verify');
+    //             var value = $(this).val();
+    //             if ($.Util.verify(datatype, value)) {
+    //                 alert("yes")
+    //             } else {
+    //                 alert("no")
+    //             }
+    //         });
+    //     });
+    // }
+
+
+</script>
+</body>
+</html>

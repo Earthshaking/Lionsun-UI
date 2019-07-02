@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/lib/jquery.magnify/jquery.magnify.min.css">
+    <link rel="stylesheet" href="../../static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../../static/css/custom-global.css">
+    <link rel="stylesheet" href="../../static/css/custom-styles.css">
+    <link rel="stylesheet" href="../../static/css/new-styles.css">
+    <link rel="stylesheet" href="../../static/css/animate.css">
+    <link rel="stylesheet" href="../../static/lib/gridstack/gridstack.min.css">
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+    
+    <!-- 导航栏预留位置 -->
+    <header id="new-header"></header>
+    
+    <!-- 主要内容 -->
+    <div id="main-content">
+        
+        <!-- 侧边栏 -->
+        <div id="sidebar">
+            <ul id="sidebarMenu">
+                <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="fa fa-send"></i> 概况</a></li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link"><i class="fa fa-send"></i> 内容管理</a>
+                    <ul class="sidebar-sub-menu">
+                        <li><a href="#" class="sidebar-sub-link">图文</a></li>
+                        <li><a href="#" class="sidebar-sub-link">音频</a></li>
+                        <li><a href="#" class="sidebar-sub-link">视频</a></li>
+                        <li><a href="#" class="sidebar-sub-link">电子书</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="fa fa-send"></i> 交易记录</a></li>
+                <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="fa fa-send"></i> 我的钱包</a></li>
+                <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="fa fa-send"></i> 我的购买</a></li>
+                <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="fa fa-send"></i> 我的收藏</a></li>
+                <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="fa fa-send"></i> 我的关注</a></li>
+                <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="fa fa-send"></i> 我的粉丝</a></li>
+                <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="fa fa-send"></i> 消息管理</a></li>
+                <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="fa fa-send"></i> 浏览记录</a></li>
+
+            </ul>
+        </div>
+   
+        <div id="content">
+            <iframe src="gridHome.html" id="frames" frameborder="0"></iframe>
+        </div>
+    
+    </div>
+
+</div>
+
+
+<script type="text/javascript" src="../../static/js/script.js"></script>
+<!--<script type="text/javascript" src="../../static/lib/gridstack/gridstack.min.js"></script>-->
+<script>
+    
+    window.onload = function () {
+        var sidebarJson = [
+            {icon: "fa fa-send", name: "概况"},
+            {
+                icon: "fa fa-send",
+                name: "内容管理",
+                child: [
+                    {name: "图文"},
+                    {name: "音频"},
+                    {name: "视频"},
+                    {name: "电子书"}
+                ]
+            },
+            {icon: "fa fa-send", name: "交易记录"},
+            {icon: "fa fa-send", name: "我的钱包"},
+            {icon: "fa fa-send", name: "我的购买"},
+            {icon: "fa fa-send", name: "我的收藏"},
+            {icon: "fa fa-send", name: "我的关注"},
+            {icon: "fa fa-send", name: "我的粉丝"},
+            {icon: "fa fa-send", name: "消息管理"},
+            {icon: "fa fa-send", name: "浏览记录"},
+            {icon: "fa fa-send", name: "入会组织"},
+            {icon: "fa fa-send", name: "我的会议"},
+            {icon: "fa fa-send", name: "个人资料"},
+            {icon: "fa fa-send", name: "帐号绑定"}
+        ]
+        var html = "";
+        for (var i = 0; i < sidebarJson.length; i++) {
+            var value = sidebarJson[i];
+            if (value.child != undefined || value.child.length > 0) {
+                for (var j = 0; j < value.child.length; j++) {
+                    var subvalue = value.child[j];
+                    html += ` <li class="sidebar-item">
+                    <a href="#" class="sidebar-link"><i class="fa ${value.icon}"></i> ${value.name}</a>
+                    <ul class="sidebar-sub-menu">
+                        <li><a href="#" class="sidebar-sub-link">${subvalue.name}</a></li>
+                    </ul>
+                </li>`;
+                }
+            } else {
+                html += `<li class="sidebar-item"><a href="#" class="sidebar-link"><i class="fa ${value.icon}"></i> ${value.name}</a></li>`;
+            }
+        }
+        $("#sidebarMenu").append(html);
+    }
+   
+
+</script>
+
+</body>
+</html>

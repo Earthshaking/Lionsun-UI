@@ -1,0 +1,25 @@
+<!-- 智脑搜索框和Logo标识 search公用组件 帮助中心 -->
+
+<!-- 左侧LOGO -->
+<div class="left-logo">
+    <a href="../default/home.html"><img src="../../static/images/homepage-logo.jpg" alt="智脑LOGO" id="homepageLogo"></a>
+</div>
+<!-- 搜索框 -->
+<div class="right-search" id="search-element">
+    <!-- 搜索框 -->
+    <form method="post" action="" class="form-group" id="home-search" style="width: 640px;">
+        <div id="searchForm">
+            <label for="searchType" class="search-wrrapr">
+                <select name="searchType" id="searchType">
+                    <option value="">文章</option>
+                    <option value="">频道</option>
+                    <option value="">其他</option>
+                </select>
+                <span class="down-arrow"></span>
+            </label>
+            <input type="text" class="searchInput" id="search" maxlength="100"/>
+        </div>
+        <!-- 搜索按钮 -->
+        <button id="searchBtn" class="btn"><i class="fa fa-search"></i></button>
+    </form>
+</div>

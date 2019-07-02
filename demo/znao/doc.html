@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    
+    <link rel="stylesheet" href="static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="static/css/custom-global.css">
+    <link rel="stylesheet" href="static/css/custom-styles.css">
+    <link rel="stylesheet" href="static/css/animate.css">
+    <link rel="stylesheet" href="static/lib/bootstrap-ztree3/css/bootstrapStyle/bootstrapStyle.css">
+
+</head>
+
+<body>
+
+<div class="container-fluid pt50 pl25 pr25">
+    <h5 class="ml-5 mr-5">页面文件浏览 <small>CHECK PAGE FILE </small></h5>
+    <div class="bg-light border ml-5 mr-5 mb-5 pt-3 pl-4 pb-4 pr-4">
+        <ul id="treeDemo" class="ztree"></ul>
+    </div>
+</div>
+
+<script type="text/javascript" src="static/lib/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="static/lib/jquery-divScroll/divscroll.js"></script>
+<script type="text/javascript" src="static/lib/artTemplate/template-web.js"></script>
+<script type="text/javascript" src="static/lib/bootstrap-4.0.0/bootstrap.min.js"></script>
+<script type="text/javascript" src="static/lib/bootstrap-4.0.0/popper.min.js"></script>
+
+<script type="text/javascript" src="static/lib/bootstrap-ztree3/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="static/lib/bootstrap-ztree3/js/jquery.ztree.excheck.js"></script>
+<script type="text/javascript" src="static/lib/bootstrap-ztree3/js/jquery.ztree.exedit.js"></script>
+<script>
+    var setting = {
+        view: {
+            // addHoverDom: addHoverDom,
+            // removeHoverDom: removeHoverDom,
+            selectedMulti: false,
+            showLine: false
+        },
+        check: {
+            enable: false
+        },
+        data: {
+            key: {
+                children: "child",
+                title: 'title'
+            },
+            simpleData: {
+                enable: true,      // 是否使用简单数据模式
+                idKey: "id",       // 唯一标识
+                pIdKey: "pId",     // 父节点唯一标识
+                rootPId: 0         // 根节点父节点数据,即 pIdKey 指定的属性值
+            }
+        },
+        edit: {
+            enable: false
+        }
+    };
+    
+    $.get('fileJson.json', function (data) {
+        $.fn.zTree.init($("#treeDemo"), setting, data);
+    });
+    
+    var newCount = 1;
+    
+    function addHoverDom(treeId, treeNode) {
+        var sObj = $("#" + treeNode.tId + "_span");
+        if (treeNode.editNameFlag || $("#addBtn_" + treeNode.tId).length > 0) return;
+        var addStr = "<span class='button add' id='addBtn_" + treeNode.tId
+            + "' title='add node' onfocus='this.blur();'></span>";
+        sObj.after(addStr);
+        var btn = $("#addBtn_" + treeNode.tId);
+        if (btn) btn.bind("click", function () {
+            var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+            zTree.addNodes(treeNode, {id: (100 + newCount), pId: treeNode.id, name: "new node" + (newCount++)});
+            return false;
+        });
+    };
+    
+    function removeHoverDom(treeId, treeNode) {
+        $("#addBtn_" + treeNode.tId).unbind().remove();
+    };
+
+</script>
+
+</body>
+</html>

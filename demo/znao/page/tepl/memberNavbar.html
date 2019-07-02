@@ -1,0 +1,44 @@
+<!-- 智脑顶部导航栏 Navbar组件 -->
+<nav class="znao-header">
+    <div class="header-wrraper full clearfix">
+        
+        <div class="header-left">
+            <span class="usersaccount">会员名称</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="#" class="message">消息<span class="tag">1</span></a>
+        </div>
+        
+        <div class="header-right">
+            <ul class="navbar navbar-expand-sm header-navbar">
+                <!-- 会员中心 -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="{{navbar.member.url}}" data-toggle="dropdown">{{navbar.member.title}}</a>
+                    <div class="dropdown-menu">
+                        {{each navbar.member.child value i}}
+                        <a class="dropdown-item" href="{{value.url}}">{{value.title}}</a>
+                        {{/each}}
+                    </div>
+                </li>
+                <!-- 频道中心 -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="{{navbar.channel.url}}" data-toggle="dropdown">{{navbar.channel.title}}</a>
+                    <div class="dropdown-menu">
+                        {{each navbar.channel.child value j}}
+                        <a class="dropdown-item" href="{{value.url}}">{{value.title}}</a>
+                        {{/each}}
+                    </div>
+                </li>
+                <!-- 收藏夹 -->
+                <li class="nav-item">
+                    <a href="{{navbar.collection.url}}" class="nav-link">{{navbar.collection.title}}</a>
+                </li>
+                <!-- 帮助中心 -->
+                <li class="nav-item">
+                    <a href="{{navbar.help.url}}" class="nav-link">{{navbar.help.title}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>站内消息</title>
+    <link rel="stylesheet" href="../../static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../../static/css/custom-global.css">
+    <link rel="stylesheet" href="../../static/css/custom-styles.css">
+    <link rel="stylesheet" href="../../static/css/animate.css">
+    <style>
+    
+    </style>
+</head>
+<!-----------------------------------------
+  名称：智脑 我的账户-站内消息
+  时间：2019年4月2日
+  作者：方凌松
+------------------------------------------->
+<body>
+
+<div class="container-fluid">
+    
+    <ul class="path-nav full">
+        <li>我的账户</li>
+        <li>站内消息</li>
+    </ul>
+    
+    <div class="manager-wrraper">
+        <ul class="nav nav-tabs person-tabs">
+            <li class="active"><a href="#getMsg" class="active show" data-toggle="tab" id="getMsgTab">收到消息</a></li>
+            <li><a href="#sentMsg" data-toggle="tab" id="sentMsgTab">已发消息</a></li>
+            <li><a href="#systemMsg" data-toggle="tab" id="systemMsgTab">系统消息</a></li>
+        </ul>
+        
+        <div class="tab-content" id="messageTablesGroup">
+            
+            <!-- 收到消息 -->
+            <div class="tab-pane fade in active show" id="getMsg">
+                <div class="table-responsive-md clearfix">
+                    
+                    <div class="table-contrl mb5 clearfix relative" style="height: 40px">
+                        <!-- 全选 && 删除 -->
+                        <div class="float-left msg-item-box">
+                            <label data-toggle="checkbox" data-style="default" class="">
+                                <input type="checkbox" name="checkAll" data-table="#getMsg-table">
+                                <span class="nothing">&nbsp;全选</span>
+                            </label>
+                            <a href="" class="deleteButton"><i class="fa fa-trash-o"></i> 删除</a>
+                        </div>
+                        <button class="btn-send btn absolute pt0 pb0" style="height: 28px">发送消息</button>
+                    </div>
+                    <table class="table table-white-border" width="100%" id="getMsg-table">
+                        <thead class="thead-bg">
+                        <tr>
+                            <th width="30"></th>
+                            <th>发送人</th>
+                            <th>内容</th>
+                            <th>时间</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <label data-toggle="checkbox" data-style="default">
+                                    <input type="checkbox" name="checkItem">
+                                    <span class="nothing"></span>
+                                </label>
+                            </td>
+                            <td>李中权</td>
+                            <td>这里显示消息内容</td>
+                            <td>2019年4月3日 08:22:33</td>
+                            <td><a href="#" class="deleteThisMsg">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label data-toggle="checkbox" data-style="default">
+                                    <input type="checkbox" name="checkItem">
+                                    <span class="nothing"></span>
+                                </label>
+                            </td>
+                            <td>李中权</td>
+                            <td>这里显示消息内容</td>
+                            <td>2019年4月3日 08:22:33</td>
+                            <td><a href="#" class="deleteThisMsg">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label data-toggle="checkbox" data-style="default">
+                                    <input type="checkbox" name="checkItem">
+                                    <span class="nothing"></span>
+                                </label>
+                            </td>
+                            <td>李中权</td>
+                            <td>这里显示消息内容</td>
+                            <td>2019年4月3日 08:22:33</td>
+                            <td><a href="#" class="deleteThisMsg">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label data-toggle="checkbox" data-style="default">
+                                    <input type="checkbox" name="checkItem">
+                                    <span class="nothing"></span>
+                                </label>
+                            </td>
+                            <td>李中权</td>
+                            <td>这里显示消息内容</td>
+                            <td>2019年4月3日 08:22:33</td>
+                            <td><a href="#" class="deleteThisMsg">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label data-toggle="checkbox" data-style="default">
+                                    <input type="checkbox" name="checkItem">
+                                    <span class="nothing"></span>
+                                </label>
+                            </td>
+                            <td>李中权</td>
+                            <td>这里显示消息内容</td>
+                            <td>2019年4月3日 08:22:33</td>
+                            <td><a href="#" class="deleteThisMsg">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label data-toggle="checkbox" data-style="default">
+                                    <input type="checkbox" name="checkItem">
+                                    <span class="nothing"></span>
+                                </label>
+                            </td>
+                            <td>李中权</td>
+                            <td>这里显示消息内容</td>
+                            <td>2019年4月3日 08:22:33</td>
+                            <td><a href="#" class="deleteThisMsg">删除</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 已发消息 -->
+            <div class="tab-pane fade table-white-border" id="sentMsg">
+                <div class="table-responsive-md clearfix">
+                    <div class="table-contrl mb5 clearfix relative" style="height: 40px">
+                        <!-- 全选 && 删除 -->
+                        <div class="float-left msg-item-box">
+                            <label data-toggle="checkbox" data-style="default" class="">
+                                <input type="checkbox" name="checkAll" data-table="#sentMsg-table">
+                                <span class="nothing">&nbsp;全选</span>
+                            </label>
+                            <a href="" class="deleteButton"><i class="fa fa-trash-o"></i> 删除</a>
+                        </div>
+                        <button class="btn-send btn absolute pt0 pb0" style="height: 28px">发送消息</button>
+                    </div>
+                    <table class="table table-white-border" width="100%" id="sentMsg-table">
+                        <thead class="thead-bg">
+                        <tr>
+                            <th width="30"></th>
+                            <th>发送人</th>
+                            <th>内容</th>
+                            <th>时间</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <label data-toggle="checkbox" data-style="default">
+                                    <input type="checkbox" name="checkItem">
+                                    <span class="nothing"></span>
+                                </label>
+                            </td>
+                            <td>李中权</td>
+                            <td>这里显示消息内容</td>
+                            <td>2019年4月3日 08:22:33</td>
+                            <td><a href="#" class="deleteThisMsg">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label data-toggle="checkbox" data-style="default">
+                                    <input type="checkbox" name="checkItem">
+                                    <span class="nothing"></span>
+                                </label>
+                            </td>
+                            <td>李中权</td>
+                            <td>这里显示消息内容</td>
+                            <td>2019年4月3日 08:22:33</td>
+                            <td><a href="#" class="deleteThisMsg">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label data-toggle="checkbox" data-style="default">
+                                    <input type="checkbox" name="checkItem">
+                                    <span class="nothing"></span>
+                                </label>
+                            </td>
+                            <td>李中权</td>
+                            <td>这里显示消息内容</td>
+                            <td>2019年4月3日 08:22:33</td>
+                            <td><a href="#" class="deleteThisMsg">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label data-toggle="checkbox" data-style="default">
+                                    <input type="checkbox" name="checkItem">
+                                    <span class="nothing"></span>
+                                </label>
+                            </td>
+                            <td>李中权</td>
+                            <td>这里显示消息内容</td>
+                            <td>2019年4月3日 08:22:33</td>
+                            <td><a href="#" class="deleteThisMsg">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label data-toggle="checkbox" data-style="default">
+                                    <input type="checkbox" name="checkItem">
+                                    <span class="nothing"></span>
+                                </label>
+                            </td>
+                            <td>李中权</td>
+                            <td>这里显示消息内容</td>
+                            <td>2019年4月3日 08:22:33</td>
+                            <td><a href="#" class="deleteThisMsg">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label data-toggle="checkbox" data-style="default">
+                                    <input type="checkbox" name="checkItem">
+                                    <span class="nothing"></span>
+                                </label>
+                            </td>
+                            <td>李中权</td>
+                            <td>这里显示消息内容</td>
+                            <td>2019年4月3日 08:22:33</td>
+                            <td><a href="#" class="deleteThisMsg">删除</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 系统消息 -->
+            <div class="tab-pane fade" id="systemMsg">
+                <div class="table-responsive-md clearfix">
+                    <div class="table-contrl mb5 clearfix relative" style="min-height: 40px">
+                        <!-- 全选 && 删除 -->
+                        <div class="float-left msg-item-box">
+                            <label data-toggle="checkbox" data-style="default" class="">
+                                <input type="checkbox" name="checkAll" data-table="#systemMsg-table">
+                                <span class="nothing">&nbsp;全选</span>
+                            </label>
+                            <a href="" class="deleteButton"><i class="fa fa-trash-o"></i> 删除</a>
+                        </div>
+                    </div>
+                    <table class="table table-white-border" width="100%" id="systemMsg-table">
+                        <thead class="thead-bg">
+                        <tr>
+                            <th width="30"></th>
+                            <th>发送人</th>
+                            <th>内容</th>
+                            <th>时间</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <label data-toggle="checkbox" data-style="default">
+                                    <input type="checkbox" name="checkItem">
+                                    <span class="nothing"></span>
+                                </label>
+                            </td>
+                            <td>李中权</td>
+                            <td>这里显示消息内容</td>
+                            <td>2019年4月3日 08:22:33</td>
+                            <td><a href="#" class="deleteThisMsg">删除</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        
+        </div>
+    
+    </div>
+
+</div>
+
+<script type="text/javascript" src="../../static/js/script.js"></script>
+<script>
+    
+    // 全选功能
+    initContrl();
+    
+    // 全选功能
+    function initContrl() {
+        var checkAll = $("input[name='checkAll']");
+        
+        // 如果全选按钮发生点击
+        checkAll.on("change", function () {
+            
+            var table = $(this).data('table');
+            if ($(this).is(":checked")) {
+                $(table).find("input[name='checkItem']").prop('checked', 'checked');
+            } else {
+                $(table).find("input[name='checkItem']").prop('checked', false);
+            }
+        });
+        
+        
+        var checkitem = $("input[name='checkItem']");
+        checkitem.on("change", function () {
+            
+            var checkAllBox = $(this).parents('table').prev('.table-contrl').find("input[name='checkAll']");
+            var checkedCount = $(this).parents('table').find("input[name='checkItem']:checked").length;
+            var inputCount = $(this).parents('table').find("input[name='checkItem']").length;
+            
+            if (checkedCount != inputCount) {
+                checkAllBox.prop('checked', false);
+            } else {
+                checkAllBox.prop('checked', 'checked');
+            }
+        });
+    }
+
+
+</script>
+</body>
+</html>

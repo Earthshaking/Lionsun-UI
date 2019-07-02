@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人资料</title>
+    <link rel="stylesheet" href="../../static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../../static/lib/kindeditor/themes/default/default.css">
+    <link rel="stylesheet" href="../../static/css/custom-global.css">
+    <link rel="stylesheet" href="../../static/css/custom-styles.css">
+    <link rel="stylesheet" href="../../static/css/animate.css">
+</head>
+<!-----------------------------------------
+  名称：智脑-我的账户-个人资料
+  时间：2019年4月2日
+  作者：方凌松
+------------------------------------------->
+<body>
+
+<div class="container-fluid">
+    
+    <ul class="path-nav full">
+        <li>我的账户</li>
+        <li>个人资料</li>
+    </ul>
+    
+    <div class="home-page pt30">
+        
+        <ul class="nav nav-tabs person-tabs">
+            <li class="active"><a href="#information" data-toggle="tab" id="informationTab">基本信息</a></li>
+            <li><a href="#password" data-toggle="tab" id="passwordTab">密码修改</a></li>
+            <li><a href="#authentication" data-toggle="tab" id="authenticationTab">实名认证</a></li>
+            <li><a href="#pictureUpload" data-toggle="tab" id="pictureUploadTab">头像上传</a></li>
+        </ul>
+        
+        <div class="tab-content clearfix">
+            
+            <!-- 基本信息 -->
+            <div class="tab-pane fadeIn animated-fast" id="information">
+                <form action="" method="post" class="user-form" id="informationForm">
+                    <!-- 用户名 -->
+                    <div class="form-group clearfix">
+                        <label class="control-label">用户名：</label>
+                        <input type="text" class="form-control static" value="Admin">
+                    </div>
+                    <!-- 手机号码 -->
+                    <div class="form-group clearfix">
+                        <label class="control-label">手机号码：</label>
+                        <input type="text" class="form-control" maxlength="11">
+                    </div>
+                    <!-- 性别 -->
+                    <div class="form-group clearfix">
+                        <label class="control-label">性别：</label>
+                        <div class="ml25">
+                            <label class="radio-inline" data-toggle="radio">
+                                <input type="radio" value="男" name="sex">
+                                <span>男</span>
+                            </label>
+                            &nbsp;&nbsp;&nbsp;
+                            <label class="radio-inline" data-toggle="radio">
+                                <input type="radio" value="女" name="sex">
+                                <span>女</span>
+                            </label>
+                            &nbsp;&nbsp;&nbsp;
+                            <label class="radio-inline" data-toggle="radio">
+                                <input type="radio" value="保密" name="sex">
+                                <span>保密</span>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- 出生日期 -->
+                    <div class="form-group clearfix">
+                        <label class="control-label">出生日期：</label>
+                        <input type="date" class="form-control">
+                    </div>
+                    <!-- 所在地区 -->
+                    <div class="form-group clearfix">
+                        <label class="control-label">所在地区：</label>
+                        <div data-toggle="distpicker" class="region-select">
+                            <div class="form-select">
+                                <select class="form-control" data-province="- 选择省 -"></select>
+                                <span class="down-arrow"></span>
+                            </div>
+                            <div class="form-select">
+                                <select class="form-control" data-city="- 选择市 -"></select>
+                                <span class="down-arrow"></span>
+                            </div>
+                            <div class="form-select">
+                                <select class="form-control" data-district="- 选择区 -"></select>
+                                <span class="down-arrow"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 工作状态 -->
+                    <div class="form-group clearfix">
+                        <label class="control-label">工作状态：</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <!-- 二维码名片 -->
+                    <div class="form-group clearfix" style="align-items: flex-start">
+                        <label class="control-label">二维码名片：</label>
+                        <img src="../../static/images/codes.png" alt="" style="width: 118px;height: 119px;margin-top: 5px">
+                    </div>
+                    <!-- 提交按钮 -->
+                    <div class="form-group buttons">
+                        <button class="btn person-submit" type="button">提 交</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- 密码修改 -->
+            <div class="tab-pane fadeIn animated-fast " id="password">
+                <form action="" method="post" class="user-form" id="passwordForm">
+                    <div class="form-group">
+                        <label class="control-label">您的密码：</label>
+                        <input type="password" class="form-control" id="oldPsd">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">设置新密码：</label>
+                        <input type="password" class="form-control" id="newPsd" name="newPsd" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">确认新密码：</label>
+                        <input type="password" class="form-control" id="confirmPsd" name="confirmPsd" required>
+                    </div>
+                    <div class="form-group pt40">
+                        <button class="btn password-submit" type="submit">提 交</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- 实名认证 -->
+            <div class="tab-pane fadeIn animated-fast" id="authentication">
+                <form class="user-form" id="authenticationForm" data-submit="security">
+                    <div class="form-group">
+                        <label class="control-label">真实姓名：</label>
+                        <input type="password" class="form-control" id="realname" name="realname" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">身份证号：</label>
+                        <input type="password" class="form-control" id="idcard" name="idcard" required>
+                    </div>
+                    <div class="form-group pt40">
+                        <button class="btn authentication-submit" type="submit">立即实名</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- 头像上传 -->
+            <div class="tab-pane fadeIn animated-fast " id="pictureUpload">
+                
+                <form action="" method="post" id="uploadForm">
+                    
+                    <div class="text-center pt45" style="width: 588px">
+                        
+                        <label id="uploadHeadImg" for="headImg">
+                            <input type="file" id="headImg" />
+                            <i class="fa fa-image" id="icons"></i>&nbsp;选择照片
+                        </label>
+                        <br>
+                        <p class="text-center uploadFileText mb20">支持jpg、jpeg、gif、png、bmp格式的图片</p>
+                        <br>
+                        <!-- 头像预览区域 -->
+                        <div id="img-holderBox">
+                            <img src="../../static/images/headImg.jpg" alt="" style="width: 200px;height:200px;" id="img-holder">
+                        </div>
+                        <br>
+                        <h6 style="color: #999;">头像预览</h6>
+                        <br>
+                        <button id="submitUpload" type="button" class="btn">提 交</button>
+                    </div>
+                
+                </form>
+            
+            </div>
+        </div>
+    
+    </div>
+
+
+</div>
+
+<script type="text/javascript" src="../../static/js/script.js"></script>
+<script type="text/javascript" src="../../static/lib/Distpicker/distpicker.data.min.js"></script>
+<script type="text/javascript" src="../../static/lib/Distpicker/distpicker.min.js"></script>
+<script>
+    
+    personal.portraitHolder();
+    
+    window.onload = function () {
+        simpleRouter("", function (data) {
+            var infoTab = $("#informationTab");
+            if (data != "") {
+                var elementLength = $(data).length;
+                if (elementLength > 0) {
+                    $(data).tab('show');
+                } else {
+                    infoTab.tab('show');
+                }
+            } else {
+                infoTab.tab('show');
+            }
+        })
+    };
+    
+    $("#passwordForm").validate({
+        rules: {
+            confirmPsd: {
+                required: true,
+                equalTo:"#newPsd"
+            }
+        },
+        messages: {
+            confirmPsd: {
+                required: "两次密码输入不一致",
+            }
+        }
+    });
+    
+    $("#authenticationForm").validate({
+    
+    });
+    
+</script>
+</body>
+</html>

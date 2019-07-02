@@ -1,0 +1,31 @@
+<!--新增友情链接-->
+<div class="card default-card">
+    <div class="card-header bg-light">
+        <h6 class="card-title pt5">新增友情链接</h6>
+        <a href="#" class="closeButton">&times;</a>
+    </div>
+    <div class="card-body" style="height: 278px;">
+        <form action="" method="post" class="friendForm pt15" id="frendForm">
+            <div class="form-group">
+                <label class="control-label" for="linkname" style="width: 90px">链接名称：</label>
+                <input type="text" class="form-control brn" id="linkname" name="linkname" style="width: 230px;" placeholder="请输入链接名称" required>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="sortid" style="width: 90px">排列序号：</label>
+                <input type="text" class="form-control brn" style="width: 230px;" id="sortid" name="sortid" placeholder="请输入排列序号" required>
+                <small class="form-tips">&nbsp;序号越小越靠前</small>
+            </div>
+    
+            <div class="form-group">
+                <label class="control-label" for="linkurl" style="width: 90px">链接地址：</label>
+                <input type="text" class="form-control brn" id="linkurl" name="linkurl" style="width: 230px;" placeholder="请输入友情链接地址" required>
+                <small class="form-tips">&nbsp;URL需要带http://</small>
+            </div>
+            <br>
+            <div class="text-center">
+                <button type="submit" class="btn color-white" style="width: 110px;height: 40px;background-color: #1E8CEB">保 存</button>
+            </div>
+        </form>
+    </div>
+</div>
+

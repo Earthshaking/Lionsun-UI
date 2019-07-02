@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>目录</title>
+    <link rel="stylesheet" href="static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/lib/jquery.magnify/jquery.magnify.min.css">
+    <link rel="stylesheet" href="static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="static/css/custom-global.css">
+    <link rel="stylesheet" href="static/css/custom-styles.css">
+    <link rel="stylesheet" href="static/css/animate.css">
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        .all-wrapper {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .left-menu {
+            width: 260px;
+            height: 100%;
+            float: left;
+            border: 1px solid rgba(153, 153, 153, 0.5);
+            box-shadow: 2px 0 10px 0 rgba(17, 17, 17, 0.1), 1px 0 5px 0 rgba(17, 17, 17, 0.12);
+            position: relative;
+            z-index: 88;
+            overflow: hidden;
+            background-color: #fff;
+        }
+        
+        .left-menu-title {
+            padding: 15px 20px 5px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .right-show {
+            height: 100%;
+            margin-left: 260px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .right-show .testFrame {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .list-group {
+            border: 0;
+            border-radius: 0;
+        }
+        
+        .list-group-item a {
+            color: #111;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 200ms ease;
+        }
+        
+        #showInfo {
+            /*background-color: transparent;*/
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            width: 25px;
+            height: 25px;
+            z-index: 999;
+            border-radius: 50%;
+            color: #666;
+            background-color: #ececec;
+            padding: 0;
+            opacity: 0.5;
+            font-size: 15px;
+        }
+        
+        .list-group-item:hover #showInfo {
+            color: #444;
+            opacity: 1;
+        }
+        
+        .list-group-item {
+            position: relative;
+            transition: all 100ms;
+            border-radius: 0 !important;
+            padding: 0;
+        }
+        
+        .list-group-item a {
+            display: block;
+            padding: 8px 5px 8px 20px;
+            font-size: 14px;
+            color: #111;
+            font-family: "微软雅黑", sans-serif;
+            /*border: 1px solid red;*/
+        }
+        
+        .list-group-item a small {
+            float: right;
+            color: #999;
+            font-size: 13px;
+        }
+        
+        .list-group-item.current > a {
+            border-left: 5px solid #0d6fc4;
+        }
+        
+        .list-group-item.current > a,
+        .list-group-item > a:hover {
+            color: #0e79d6;
+            padding-left: 22px;
+            font-weight: bold;
+            background-color: #f5f5f5;
+        }
+        
+        #floatBox {
+            position: absolute;
+            width: 100%;
+            /*left: 20px;*/
+            /*right: 20px;*/
+            bottom: 20px;
+            z-index: 9999;
+            padding: 5px 15px;
+            min-width: 400px;
+            display: none;
+        }
+        
+        #floatBox .card-body {
+            transition: all 300ms;
+            padding: 10px 15px;
+            position: relative;
+        }
+        
+        #floatBox.min .card-body {
+            height: 0;
+            padding: 0;
+            visibility: hidden;
+            opacity: 0;
+            /*display: none;*/
+        }
+        
+        #floatBox > .card {
+            border-radius: 0;
+            box-shadow: 2px 5px 10px 0 rgba(17, 17, 17, 0.1), 5px 5px 5px 0 rgba(17, 17, 17, 0.12);
+            border: 1px solid rgba(153, 153, 153, 0.5);
+        }
+        
+        #minBtn {
+            width: 50px;
+            padding: 0;
+            position: relative;
+            left: 9px;
+            float: right;
+            /*border: 1px solid red;*/
+            color: #999;
+            opacity: 0.8;
+            border: 0;
+            outline: 0;
+            box-shadow: none;
+            background-color: transparent;
+        }
+        
+        #minBtn:hover {
+            color: #000;
+        }
+        
+        #minBtn i {
+            font-size: 30px;
+        }
+        
+        .card-header h5 {
+            padding-top: 5px;
+            padding-bottom: 0;
+        }
+        
+        p {
+            margin-bottom: 10px;
+        }
+        
+        .infoCard > .card-header {
+            padding: 10px 20px;
+            display: flex;
+            position: relative;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #fff;
+        }
+        
+        .card-header {
+            padding: 0;
+            display: flex;
+            border: 0;
+            position: relative;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #f5f5f5;
+        }
+        
+        #accordion .card-header > a {
+            width: 100%;
+            padding: 10px 20px;
+            border: 0;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            color: rgba(17, 17, 17, 0.77);
+            transition: all 200ms ease-in-out;
+        }
+        
+        .card-header > a:nth-child(#openNew) {
+            width: 100%;
+            padding: 10px 20px;
+            border: 0;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            color: rgba(17, 17, 17, 0.77);
+        }
+        
+        #pagename {
+            color: #d40000;
+        }
+        
+        #openNew {
+            position: absolute;
+            right: 60px;
+            top: 12px;
+            background-color: #f5f5f5;
+        }
+        
+        #openNew:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .card-title {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        #accordion .card-header > a:hover {
+            background-color: rgba(13, 111, 196, 0.1);
+        }
+        #accordion .card-header > a[aria-expanded="true"]{
+            background-color: rgba(13, 111, 196, 0.6);
+            color: #fff !important;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+<div class="all-wrapper clearfix">
+    
+    <!-- 左侧边栏 -->
+    <div class="left-menu area animated bounceInLeft">
+        <div class="left-menu-title">
+            <h3>
+                <small>Development</small>
+            </h3>
+        </div>
+        <div id="accordion">
+            <!-- 目录 -->
+            <div class="card">
+                <div class="card-header">
+                    <a class="collapsed card-link" data-toggle="collapse" href="#collapse-box" aria-expanded="false">页面模版</a>
+                </div>
+                <div id="collapse-box" class="collapse" data-parent="#accordion">
+                    <div class="card-body p0">
+                        <div id="list-box"></div>
+                        <script type="text/html" id="menuTemplate">
+                            <ul class="list-group">
+                                {{each list as value i}}
+                                <li class="list-group-item page-item">
+                                    <a href="{{value.url}}" target="main" data-time="{{value.time}}">
+                                        {{value.title}}
+                                        <small class="d-inline-block text-truncate" style="max-width: 100px;" title="{{value.url}}">
+                                            {{value.url}}
+                                        </small>
+                                    </a>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </script>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 其他 -->
+            <div class="card">
+                <div class="card-header">
+                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo" aria-expanded="false">其他</a>
+                </div>
+                <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                    <div class="card-body p0">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <a href="doc/design.html" target="main">
+                                    UI规范
+                                    <small class="d-inline-block text-truncate" style="max-width: 100px;"></small>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="right-show">
+        
+        <!-- 页面显示区域 -->
+        <iframe src="doc.html" class="testFrame" frameborder="0" name="main"></iframe>
+        
+        <!-- 页面详细信息面板 -->
+        <div id="floatBox" class="animated bounceInUp">
+            <div class="card infoCard">
+                <div class="card-header">
+                    <h5 class="card-title">页面标题：<span id="pagename"></span></h5>
+                    <a href="" class="btn btn-light" id="openNew" target="_blank">在新标签页打开</a>
+                    <a href="#" class="btn" id="minBtn"><i class="fa fa-angle-down"></i></a>
+                </div>
+                <div class="card-body">
+                    <p>完成时间：<span id="pagetime"></span></p>
+                    <p>页面路径：<span id="pageurl"></span></p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- 提示窗口 -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                
+                <!-- 模态框头部 -->
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title">提示</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                
+                <!-- 模态框主体 -->
+                <div class="modal-body">正在建设...</div>
+                
+                <!-- 模态框底部 -->
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript" src="static/lib/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="static/lib/jquery-divScroll/divscroll.js"></script>
+<script type="text/javascript" src="static/lib/artTemplate/template-web.js"></script>
+<script type="text/javascript" src="static/lib/bootstrap-4.0.0/bootstrap.min.js"></script>
+<script type="text/javascript" src="static/lib/bootstrap-4.0.0/popper.min.js"></script>
+
+<script>
+    
+    var menuData = [
+        {title: "首页", url: "page/default/home.html", time: "2019年3月26日"},
+        {title: "登录页面", url: "page/default/login.html", time: "2019年3月26日"},
+        {title: "注册页面", url: "page/default/register.html", time: "2019年3月31日"},
+        {title: "搜索-文章列表", url: "page/default/result.html", time: "2019年3月26日"},
+        {title: "搜索-频道页", url: "page/default/channel.html", time: "2019年3月30日"},
+        {title: "TA的主页", url: "page/default/personHome.html", time: "2019年3月31日"},
+        {title: "TA的关注", url: "page/default/personFocus.html", time: "2019年3月31日"},
+        {title: "频道主页", url: "page/default/channelHome.html", time: "2019年3月31日"},
+        {title: "阅读页-文章", url: "page/default/article.html", time: "2019年4月1日"},
+        {title: "频道管理主页1", url: "page/member/channelManager.html", time: "2019年4月4日"},
+        {title: "频道管理主页2", url: "page/member/created_managerHome.html", time: "2019年4月4日"},
+        {title: "判断创建-1", url: "page/member/createdChannel_1.html", time: "2019年4月4日"},
+        {title: "判断创建-2", url: "page/member/createdChannel_2.html?type=personal", time: "2019年4月4日"},
+        {title: "判断创建-个人", url: "page/member/created_personal.html", time: "2019年4月4日"},
+        {title: "判断创建-企业", url: "page/member/created_enterprise.html", time: "2019年4月4日"},
+        {title: "判断创建完成", url: "page/member/created_success.html", time: "2019年4月4日"},
+        {title: "会员空间", url: "page/member/memberSpace.html", time: "2019年4月1日"},
+        {title: "频道中心", url: "page/member/channelSetting.html#setting", time: "2019年4月4日"},
+    ];
+    
+    var html = template('menuTemplate', {list: menuData});
+    document.getElementById('list-box').innerHTML = html;
+
+    $(".list-group-item > a").on("click", function (e) {
+        $("#floatBox").hide();
+    });
+    
+    $(".list-group-item.page-item > a").on("click", function (e) {
+        $("#floatBox").hide();
+        if ($(this).attr('href') == "") {
+            $("#myModal").modal('show');
+            e.preventDefault();
+        } else {
+            setInfos($(this));
+            if (!$(this).parent('.list-group-item').hasClass('current')) {
+                $(this).parent('.list-group-item').addClass('current').siblings('.list-group-item').removeClass('current');
+                $(".frame").contentWindow.location.reload(true);
+            }
+        }
+    });
+    
+    function setInfos(obj) {
+        var time = $(obj).data('time');
+        var name = $(obj).html();
+        var url = $(obj).attr('href');
+        $("#pagename").html(name);
+        $("#pagetime").html(time);
+        $("#pageurl").html(url);
+        $("#openNew").attr('href', url);
+        setTimeout(function () {
+            $("#floatBox").show();
+        }, 100);
+    }
+    
+    window.onload = function () {
+    }
+    
+    $("#minBtn").on("click", function () {
+        if ($(this).parents('#floatBox').hasClass('min')) {
+            $(this).find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
+            $(this).parents('#floatBox').removeClass('min');
+        } else {
+            $(this).find('i').removeClass('fa-angle-down').addClass('fa-angle-up');
+            $(this).parents('#floatBox').addClass('min');
+        }
+    });
+    
+    $('.area').perfectScrollbar();
+
+</script>
+
+</body>
+</html>

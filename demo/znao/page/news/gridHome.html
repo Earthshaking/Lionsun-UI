@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../../static/css/custom-global.css">
+    <link rel="stylesheet" href="../../static/css/custom-styles.css">
+    <link rel="stylesheet" href="../../static/css/new-styles.css">
+    <link rel="stylesheet" href="../../static/css/animate.css">
+    <link rel="stylesheet" href="../../static/lib/gridstack/gridstack.min.css">
+    <link rel="stylesheet" href="../../static/lib/jquery-ui/css/jquery-ui.min.css">
+    <style>
+        .grid-stack > .grid-stack-item > .grid-stack-item-content{
+            left: 5px !important;
+            right: 5px !important;
+        }
+    </style>
+</head>
+
+<body>
+<div class="grid-container">
+    <div class="grid-stack">
+        <!-- 总收入 -->
+        <div class="grid-stack-item" id="item1" data-gs-id="item1" data-gs-x="0" data-gs-y="0" data-gs-width="2" data-gs-height="2">
+            <div class="grid-stack-item-content card grid-card">
+                <div class="card-header card-move-handle">（1）总收入</div>
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+        <!-- 今日收入 -->
+        <div class="grid-stack-item" id="item2" data-gs-id="item2" data-gs-x="2" data-gs-y="0" data-gs-width="2" data-gs-height="2">
+            <div class="grid-stack-item-content card grid-card">
+                <div class="card-header card-move-handle">（2）今日收入</div>
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+        <!-- 可用余额 -->
+        <div class="grid-stack-item" id="item3" data-gs-id="item3" data-gs-x="4" data-gs-y="0" data-gs-width="2" data-gs-height="2">
+            <div class="grid-stack-item-content card grid-card">
+                <div class="card-header card-move-handle">（3）可用余额</div>
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+        <!-- 内容总数 -->
+        <div class="grid-stack-item" id="item4" data-gs-id="item4" data-gs-x="6" data-gs-y="0" data-gs-width="2" data-gs-height="2">
+            <div class="grid-stack-item-content card grid-card">
+                <div class="card-header card-move-handle">（4）内容总数</div>
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+        <!-- 粉丝数 -->
+        <div class="grid-stack-item" id="item5" data-gs-id="item5" data-gs-x="8" data-gs-y="0" data-gs-width="2" data-gs-height="2">
+            <div class="grid-stack-item-content card grid-card">
+                <div class="card-header card-move-handle">（5）粉丝数</div>
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+        
+        <!-- 个人名片 -->
+        <div class="grid-stack-item" id="item6" data-gs-id="item6" data-gs-x="10" data-gs-y="0" data-gs-width="2" data-gs-height="7">
+            <div class="grid-stack-item-content card grid-card">
+                <div class="card-header card-move-handle">（6）个人名片</div>
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+        <!-- 近期活动 -->
+        <div class="grid-stack-item" id="item7" data-gs-id="item7" data-gs-x="10" data-gs-y="8" data-gs-width="2" data-gs-height="5">
+            <div class="grid-stack-item-content card grid-card">
+                <div class="card-header card-move-handle">（7）近期活动</div>
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+        
+        <!-- 常用功能和关注的频道 -->
+        <div class="grid-stack-item" id="item8" data-gs-id="item8" data-gs-x="0" data-gs-y="2" data-gs-width="10" data-gs-height="4">
+            <div class="grid-stack-item-content card grid-card">
+                <div class="card-header card-move-handle">（8）常用功能和关注的频道</div>
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+        
+        <!-- 我的浏览 -->
+        <div class="grid-stack-item" id="item9" data-gs-id="item9" data-gs-x="0" data-gs-y="7" data-gs-width="5" data-gs-height="4">
+            <div class="grid-stack-item-content card grid-card">
+                <div class="card-header card-move-handle">（9）我的浏览</div>
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+        <!-- 我的会议 -->
+        <div class="grid-stack-item" id="item10" data-gs-id="item10" data-gs-x="5" data-gs-y="7" data-gs-width="5" data-gs-height="4">
+            <div class="grid-stack-item-content card grid-card">
+                <div class="card-header card-move-handle">（10）我的会议</div>
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+        
+        <!-- 入会组织 -->
+        <div class="grid-stack-item" id="item11" data-gs-id="item11" data-gs-x="0" data-gs-y="11" data-gs-width="10" data-gs-height="4">
+            <div class="grid-stack-item-content card grid-card">
+                <div class="card-header card-move-handle">（10）我的会议</div>
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    <br>
+    <br>
+</div>
+
+<script type="text/javascript" src="../../static/js/script.js"></script>
+<script type="text/javascript" src="../../static/lib/gridstack/lodash.min.js"></script>
+<script type="text/javascript" src="../../static/lib/gridstack/gridstack.min.js"></script>
+<script>
+    $(function () {
+        var gridContainer = $('.grid-stack');
+        var options = {
+            
+            disableDrag:true,
+            vertical_margin: 10,
+            cell_height: 80,
+            draggable: {
+                handle: '.card-move-handle'
+            }
+        };
+        gridContainer.gridstack(options);
+    });
+
+</script>
+
+</body>
+</html>

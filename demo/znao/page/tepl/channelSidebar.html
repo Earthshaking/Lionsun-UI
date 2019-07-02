@@ -1,0 +1,55 @@
+<!-- 频道中心侧边栏 -->
+<div class="channel-left-navbar">
+    
+    <!-- 频道管理 -->
+    <div class="channel-items">
+        <h6 class="items-titles p5">
+            <img src="{{navbar.channelManager.img}}" alt="">
+            {{navbar.channelManager.title}}
+        </h6>
+        <ul>
+            {{each navbar.channelManager.childs value i}}
+            <li><a href="{{value.url}}#{{value.token}}" class="channel-link" data-name="{{value.token}}">{{value.title}}</a></li>
+            {{/each}}
+        </ul>
+    </div>
+    
+    <!-- 文章管理 -->
+    <div class="channel-items">
+        <h6 class="items-titles p5">
+            <img src="{{navbar.articleManage.img}}" alt="">
+            {{navbar.articleManage.title}}
+        </h6>
+        <ul>
+            {{each navbar.articleManage.childs value i}}
+            <li><a href="{{value.url}}#{{value.token}}" class="channel-link" data-name="{{value.token}}">{{value.title}}</a></li>
+            {{/each}}
+        </ul>
+    </div>
+    
+    <!-- 交易管理 -->
+    <div class="channel-items">
+        <h6 class="items-titles p5">
+            <img src="{{navbar.tradingManager.img}}" alt="">
+            {{navbar.tradingManager.title}}
+        </h6>
+        <ul>
+            {{each navbar.tradingManager.childs value i}}
+            <li><a href="{{value.url}}#{{value.token}}" class="channel-link" data-name="{{value.token}}">{{value.title}}</a></li>
+            {{/each}}
+        </ul>
+    </div>
+    
+    <!-- 客户服务 -->
+    <div class="channel-items">
+        <h6 class="items-titles p5">
+            <img src="{{navbar.customerService.img}}" alt="">
+            {{navbar.customerService.title}}
+        </h6>
+        <ul>
+            {{each navbar.customerService.childs value i}}
+            <li><a href="{{value.url}}#{{value.token}}" class="channel-link" data-name="{{value.token}}">{{value.title}}</a></li>
+            {{/each}}
+        </ul>
+    </div>
+</div>

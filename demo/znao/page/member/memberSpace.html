@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会员空间</title>
+    <link rel="stylesheet" href="../../static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../../static/css/custom-global.css">
+    <link rel="stylesheet" href="../../static/css/custom-styles.css">
+    <link rel="stylesheet" href="../../static/css/animate.css">
+    <style>
+        body {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<!-----------------------------------------
+  名称：智脑-会员空间
+  时间：2019年4月1日
+  作者：方凌松
+------------------------------------------->
+<body>
+
+<div class="all-wrapper overflown" style="height: 100%">
+    
+    <!-- 顶部导航栏 -->
+    <div id="memberHeader" class="fadeIn animated"></div>
+    
+    <div class="main clearfix">
+        
+        <div id="big-logo" class="fadeIn animated">
+            <img src="../../static/images/member-bg.png" alt="">
+        </div>
+        
+        <!-- 侧边栏 -->
+        <div class="sidebar member-sidebar bounceInLeft animated-slow area">
+            <div class="user-box">
+                <img src="../../static/images/icon/user-icon.png" id="userImg" alt="">
+                <h5 id="spaceName">张三的空间</h5>
+                <ul class="article-star-list" data-state="3">
+                    <li><i class="fa fa-star yes" aria-hidden="true"></i></li>
+                    <li><i class="fa fa-star yes" aria-hidden="true"></i></li>
+                    <li><i class="fa fa-star yes" aria-hidden="true"></i></li>
+                    <li><i class="fa fa-star yes" aria-hidden="true"></i></li>
+                    <li><i class="fa fa-star yes" aria-hidden="true"></i></li>
+                </ul>
+                <div class="link-group">
+                    <a href="#">编辑资料</a>
+                    &nbsp;
+                    <a href="#">进入主页></a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header toggle-group">
+                    <a class="card-link" data-toggle="collapse" href="#collapseOne"><span class="miniTag"></span>我的文章 <i
+                        class="fa fa-angle-down icon-arrow"></i></a>
+                </div>
+                <div id="collapseOne" class="collapse show">
+                    <div class="card-body pt15" style="height: 115px">
+                        <ul class="list-group">
+                            <li class="list-group-item active"><a href="articleManager.html" target="myframe">文章管理</a>
+                            </li>
+                            <li class="list-group-item"><a href="newArticle.html" target="myframe">发布管理</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header toggle-group">
+                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo"><span
+                        class="miniTag"></span>我的账户 <i class="fa fa-angle-down icon-arrow"></i></a>
+                </div>
+                <div id="collapseTwo" class="collapse show">
+                    <div class="card-body pt10">
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="personal.html" target="myframe">个人资料</a></li>
+                            <li class="list-group-item"><a href="messages.html" target="myframe">站内消息</a></li>
+                            <li class="list-group-item"><a href="accountBind.html" target="myframe">账户绑定</a></li>
+                            <li class="list-group-item"><a href="topUp.html" target="myframe">充值管理</a></li>
+                            <li class="list-group-item"><a href="drawMoney.html" target="myframe">提现管理</a></li>
+                            <li class="list-group-item"><a href="paymentInfo.html" target="myframe">收支明细</a></li>
+                            <li class="list-group-item"><a href="myOrder.html" target="myframe">我的订单</a></li>
+                            <li class="list-group-item"><a href="myFocus.html" target="myframe">我的关注</a></li>
+                            <li class="list-group-item"><a href="collection.html" target="myframe">我的收藏</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 右侧页面内容 -->
+        <div class="content overflown">
+            <iframe frameborder="0" name="myframe" class="frame" id="myFrame"></iframe>
+        </div>
+        
+    </div>
+
+</div>
+<script type="text/javascript" src="../../static/js/script.js"></script>
+<script>
+    var sidebar = $(".member-sidebar");
+    var sidebarItem = sidebar.find('.list-group-item');
+    
+    sidebarItem.children('a').on("click", function (e) {
+        var href = $(this).attr('href');
+        if (href == "#") {
+            layer.alert("正在建设中...");
+            e.preventDefault();
+            return false;
+        } else {
+            if (!$(this).parent('li').hasClass('active')) {
+                removeAllState();
+                $(this).parent('li').addClass('active');
+            }
+        }
+    });
+    
+    function removeAllState() {
+        sidebarItem.each(function (e) {
+            $(this).removeClass('active');
+        });
+    }
+    
+    window.onload = function () {
+        var url = $(".list-group-item.active").find('a').attr('href');
+        $("#myFrame").attr('src', url);
+    }
+
+</script>
+</body>
+</html>

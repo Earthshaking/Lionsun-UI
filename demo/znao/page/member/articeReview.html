@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章审核</title>
+    <link rel="stylesheet" href="../../static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../../static/css/custom-global.css">
+    <link rel="stylesheet" href="../../static/css/custom-styles.css">
+    <link rel="stylesheet" href="../../static/css/animate.css">
+    <!--[if lt IE 9]>
+    <script src="http://www.jq22.com/jquery/html5.min.js"></script>
+    <![endif]-->
+</head>
+<!-----------------------------------------
+  名称：智脑 - 频道中心 - 文章审核
+  时间：2019年4月3日
+  作者：方凌松
+------------------------------------------->
+<body>
+<!-- 文章审核页面 -->
+
+
+<div class="container-fluid" style="height: 100%">
+    <div id="header"></div>
+    <div class="content-fluid pt40">
+        <div class="top-box mb20 " id="globalBox" data-url="../tepl/channel-search.html">
+            <!------------------------------------------
+               加载公用组件内容：左侧logo标识和搜索框
+               对应模版文件：tepl/search.html
+             ------------------------------------------>
+        </div>
+    </div>
+    <hr class="m0 p0">
+    <div class="content-fluid">
+        <div class="channelCenter clearfix">
+            <div id="channelSidebarBox"></div>
+            <div class="channel-content" id="channelShow">
+                <div id="channel-setting">
+                    <div class="topss clearfix">
+                        <h4 class="float-left">文章审核</h4>
+                    </div>
+                    <div class="table-responsive-sm pt20">
+                        <table class="table table-bordered table-even table-mouseover table-center" width="100%" id="frendTable">
+                            <thead class="thead-bg2">
+                            <tr>
+                                <th>名称</th>
+                                <th>作者</th>
+                                <th>分类</th>
+                                <th>投递时间</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr>
+                                <td>中国共产党与民主、自由。人权</td>
+                                <td>张三</td>
+                                <td></td>
+                                <td>2019-04-04 16:25:53</td>
+                                <td><a href="../tepl/review.html" data-toggle="layer">审核</a></td>
+                            </tr>
+                            <tr>
+                                <td>中国共产党与民主、自由。人权</td>
+                                <td>张三</td>
+                                <td></td>
+                                <td>2019-04-04 16:25:53</td>
+                                <td><a href="../tepl/review.html" data-toggle="layer">审核</a></td>
+                            </tr>
+                            <tr>
+                                <td>中国共产党与民主、自由。人权</td>
+                                <td>张三</td>
+                                <td></td>
+                                <td>2019-04-04 16:25:53</td>
+                                <td><a href="../tepl/review.html" data-toggle="layer">审核</a></td>
+                            </tr>
+                            <tr>
+                                <td>中国共产党与民主、自由。人权</td>
+                                <td>张三</td>
+                                <td></td>
+                                <td>2019-04-04 16:25:53</td>
+                                <td><a href="../tepl/review.html" data-toggle="layer">审核</a></td>
+                            </tr>
+                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../static/js/script.js"></script>
+<script>
+    global.loadSearch();
+    global.loadSidebar();
+
+    $("[data-toggle='layer']").on("click", function (e) {
+        // 获取路径
+        var url = $(this).attr('href');
+        $.get(url, function (data) {
+            showModal(['495px', '330px'], data, function () {
+                $("#reviewForm").validate();
+            });
+        });
+        e.preventDefault();
+    });
+</script>
+</body>
+</html>

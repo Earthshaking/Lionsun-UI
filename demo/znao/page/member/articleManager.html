@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章管理</title>
+    <link rel="stylesheet" href="../../static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../../static/css/custom-global.css">
+    <link rel="stylesheet" href="../../static/css/custom-styles.css">
+    <link rel="stylesheet" href="../../static/css/animate.css">
+    <style>
+    
+    </style>
+
+</head>
+<!-----------------------------------------
+  名称：智脑-文章管理
+  时间：2019年4月2日
+  作者：方凌松
+------------------------------------------->
+<body>
+
+<div class="container-fluid manager-wrraper">
+    
+    <h1 class="manager-title bb pb10"><img src="../../static/images/book.png" alt=""> 全部文章</h1>
+    
+    <div class="article-manager">
+        <div class="table-responsive-md clearfix">
+            <div class="table-contrl">
+                <div class="button-box">
+                    <button class="btn btn-add" type="button" onclick="location.href='newArticle.html'">新增文章</button>
+                    <button class="btn btn-delete" type="button">删除</button>
+                    <button class="btn btn-send" type="button" data-toggle="layer" data-href="../tepl/delivery.html"
+                            data-width="680px" data-height="720px">文章投递</button>
+                </div>
+                <div class="search-box">
+                    <input type="text" class="search-input" id="search" name="search">
+                    <button type="button" class="searchBtn" onclick="myFunction()"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+            <table class="table table-bordered" width="100%" id="article-table">
+                <thead class="thead-bg">
+                <tr>
+                    <th width="30">
+                        <label data-toggle="checkbox" data-style="default">
+                            <input type="checkbox" name="checkAll">
+                            <span class="nothing"></span>
+                        </label>
+                    </th>
+                    <th width="494">文章名称</th>
+                    <th>分类</th>
+                    <th>价值</th>
+                    <th>状态</th>
+                    <th width="205">编辑时间</th>
+                    <th width="280">操作</th>
+                </tr>
+                </thead>
+                <tbody id="tbody">
+                <tr>
+                    <td>
+                        <label data-toggle="checkbox" data-style="default">
+                            <input type="checkbox" name="checkItem">
+                            <span class="nothing"></span>
+                        </label>
+                    </td>
+                    <td><a href="#">文章名称1</a></td>
+                    <td></td>
+                    <td><span class="reds">￥2.5</span></td>
+                    <td>私有</td>
+                    <td>2019-04-02 09:04</td>
+                    <td>
+                        <div>
+                            <a href="#">编辑</a>
+                            &nbsp;
+                            <a href="javascript:void(0);" data-toggle="layer" data-href="../tepl/fromChannel.html" data-width="960px" data-height="640px">所属频道</a>
+                            &nbsp;
+                            <a href="#">删除</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label data-toggle="checkbox" data-style="default">
+                            <input type="checkbox" name="checkItem">
+                            <span class="nothing"></span>
+                        </label>
+                    </td>
+                    <td><a href="#">文章名称1</a></td>
+                    <td></td>
+                    <td><span class="reds">￥2.5</span></td>
+                    <td>私有</td>
+                    <td>2019-04-02 09:04</td>
+                    <td>
+                        <div>
+                            <a href="#">编辑</a>
+                            &nbsp;
+                            <a href="#">所属频道</a>
+                            &nbsp;
+                            <a href="#">删除</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label data-toggle="checkbox" data-style="default">
+                            <input type="checkbox" name="checkItem">
+                            <span class="nothing"></span>
+                        </label>
+                    </td>
+                    <td><a href="#">文章名称1</a></td>
+                    <td></td>
+                    <td><span class="reds">￥2.5</span></td>
+                    <td>私有</td>
+                    <td>2019-04-02 09:04</td>
+                    <td>
+                        <div>
+            
+                            <a href="#">编辑</a>
+                            &nbsp;
+                            <a href="#">所属频道</a>
+                            &nbsp;
+                            <a href="#">删除</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label data-toggle="checkbox" data-style="default">
+                            <input type="checkbox" name="checkItem">
+                            <span class="nothing"></span>
+                        </label>
+                    </td>
+                    <td><a href="#">文章名称1</a></td>
+                    <td></td>
+                    <td><span class="reds">￥2.5</span></td>
+                    <td>私有</td>
+                    <td>2019-04-02 09:04</td>
+                    <td>
+                        <div>
+            
+                            <a href="#">编辑</a>
+                            &nbsp;
+                            <a href="#">所属频道</a>
+                            &nbsp;
+                            <a href="#">删除</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label data-toggle="checkbox" data-style="default">
+                            <input type="checkbox" name="checkItem">
+                            <span class="nothing"></span>
+                        </label>
+                    </td>
+                    <td><a href="#">文章名称1</a></td>
+                    <td></td>
+                    <td><span class="reds">￥2.5</span></td>
+                    <td>私有</td>
+                    <td>2019-04-02 09:04</td>
+                    <td>
+                        <div>
+            
+                            <a href="#">编辑</a>
+                            &nbsp;
+                            <a href="#">所属频道</a>
+                            &nbsp;
+                            <a href="#">删除</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label data-toggle="checkbox" data-style="default">
+                            <input type="checkbox" name="checkItem">
+                            <span class="nothing"></span>
+                        </label>
+                    </td>
+                    <td><a href="#">文章名称1</a></td>
+                    <td></td>
+                    <td><span class="reds">￥2.5</span></td>
+                    <td>私有</td>
+                    <td>2019-04-02 09:04</td>
+                    <td>
+                        <div>
+            
+                            <a href="#">编辑</a>
+                            &nbsp;
+                            <a href="#">所属频道</a>
+                            &nbsp;
+                            <a href="#">删除</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label data-toggle="checkbox" data-style="default">
+                            <input type="checkbox" name="checkItem">
+                            <span class="nothing"></span>
+                        </label>
+                    </td>
+                    <td><a href="#">文章名称1</a></td>
+                    <td></td>
+                    <td><span class="reds">￥2.5</span></td>
+                    <td>私有</td>
+                    <td>2019-04-02 09:04</td>
+                    <td>
+                        <div>
+            
+                            <a href="#">编辑</a>
+                            &nbsp;
+                            <a href="#">所属频道</a>
+                            &nbsp;
+                            <a href="#">删除</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label data-toggle="checkbox" data-style="default">
+                            <input type="checkbox" name="checkItem">
+                            <span class="nothing"></span>
+                        </label>
+                    </td>
+                    <td><a href="#">文章名称1</a></td>
+                    <td></td>
+                    <td><span class="reds">￥2.5</span></td>
+                    <td>私有</td>
+                    <td>2019-04-02 09:04</td>
+                    <td>
+                        <div>
+            
+                            <a href="#">编辑</a>
+                            &nbsp;
+                            <a href="#">所属频道</a>
+                            &nbsp;
+                            <a href="#">删除</a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript" src="../../static/js/script.js"></script>
+<script>
+    initContrl();
+    // 全选功能
+    function initContrl() {
+        var checkAll = $("input[name='checkAll']");
+        checkAll.on("change", function () {
+            if ($(this).is(":checked")) {
+                $("input[name='checkItem']").prop('checked', 'checked');
+            } else {
+                $("input[name='checkItem']").prop('checked', false);
+            }
+        });
+        var checkitem = $("input[name='checkItem']");
+        var inputCount = checkitem.length;
+        checkitem.on("change", function () {
+            var checkedCount = $("input[name='checkItem']:checked").length;
+            if (checkedCount != inputCount) {
+                checkAll.prop('checked',false);
+            }else {
+                checkAll.prop('checked', 'checked');
+            }
+        });
+    }
+    // 搜索
+    function myFunction() {
+        // 声明变量
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("search");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("article-table");
+        tr = table.getElementsByTagName("tr");
+        
+        // 循环表格每一行，查找匹配项
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[i];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+        
+        
+    }
+    var parent = window.parent;
+    
+    $("[data-toggle='layer']").on("click", function (e) {
+        var url = $(this).data('href');
+        var width = $(this).data('width');
+        var height = $(this).data('height');
+        $.get(url, function (data) {
+            parent.showModal([width, height], data, function () {
+            });
+        });
+        e.preventDefault();
+    });
+    
+</script>
+</body>
+</html>

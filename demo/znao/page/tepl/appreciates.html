@@ -1,0 +1,60 @@
+<!-- 文章赞赏 appreciates组件 -->
+<div class="card appreciates-card">
+    
+    <div class="card-header">
+        <h3 class="card-title">给作者赞赏</h3>
+        <a href="#" class="closeButton">&times;</a>
+    </div>
+    
+    <div class="card-body">
+        <div class="money-select">
+            <label class="money-item active">
+                <input type="radio" name="money" value="10" checked>
+                <span class="subText">￥10 <small>(1000阅币)</small></span>
+            </label>
+            <label class="money-item">
+                <input type="radio" name="money" value="20">
+                <span class="subText">￥20 <small>(2000阅币)</small></span>
+            </label>
+            <label class="money-item">
+                <input type="radio" name="money" value="30">
+                <span class="subText">￥30 <small>(3000阅币)</small></span>
+            </label>
+            <label class="money-item">
+                <input type="radio" name="money" value="50">
+                <span class="subText">￥50 <small>(5000阅币)</small></span>
+            </label>
+            <label class="money-item">
+                <input type="radio" name="money" value="100">
+                <span class="subText">￥100 <small>(10000阅币)</small></span>
+            </label>
+            <label class="money-item">
+                <input type="radio" name="money" id="otherMonery" value="0">
+                <span>其他金额￥<input type="text" class="moneyInput" name="enterMoney" maxlength="4" onchange="article.totalCount(this)"
+                                  oninput="value=value.replace(/[^\d]/g,'')"><small>(<span
+                    id="yueCount">0</span>阅币)</small></span>
+            </label>
+        </div>
+        
+        <div class="form-group pl20 pr20 pt15 mb25">
+            <textarea name="leaveMsg" placeholder="给Ta留言..." id="leaveMsg"></textarea>
+        </div>
+        
+        <div class="form-group text-center mb15">
+            <label class="pay-item active">
+                <input type="radio" name="pay" value="1" checked>
+                <span class="pay-zfb"></span>支付宝
+            </label>
+            <label class="pay-item">
+                <input type="radio" name="pay" value="2">
+                <span class="pay-wx"></span>微信
+            </label>
+        </div>
+        
+        <div class="text-center">
+            <button class="btn" id="nextBtn" onclick="article.openPay()">立即支付</button>
+        </div>
+    
+    </div>
+
+</div>
