@@ -38,7 +38,8 @@
                 <div id="collapseOne" class="collapse show">
                     <div class="card-body p0">
                         <div class="sidebarMenu">
-                            <a href="view/home.html" class="active" target="frame">基本布局</a>
+                            <a href="view/home.html" class="active" target="frame">基本页面布局</a>
+                            <a href="demo/znao/index.html" target="frame" id="thinkbrainsBtn">智脑风格页面模版</a>
                         </div>
                     </div>
                 </div>
@@ -151,6 +152,14 @@
     $(".sidebarMenu").find('a').on("click", function () {
         if (!$(this).hasClass('active')) {
             $(this).addClass('active').siblings().removeClass('active');
+        }
+    });
+    
+    
+    $("#thinkbrainsBtn").on("click", function () {
+        var LIONSUN = $("#LIONSUN");
+        if (LIONSUN.data('status') == 'open') {
+            sidebar.close(LIONSUN);
         }
     });
 
