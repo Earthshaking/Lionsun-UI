@@ -1,0 +1,481 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    z-index: 99;
+    height: 100px;
+    transition: all .2s;
+    position: fixed;
+    box-shadow: 0 0px 20px 0 rgba(0, 0, 0, 0.2), 0 0px 5px 0px rgba(0, 0, 0, .25);
+}
+
+.head-top {
+    width: 100%;
+    height: 35%;
+    background-color: #000;
+    box-sizing: border-box;
+    position: relative;
+    transition: all .2s;
+}
+
+.head-bottom {
+    width: 100%;
+    height: 65%;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    position: relative;
+    transition: all .2s;
+
+}
+
+.head-top a {
+    color: #fff;
+    font-family: "微软雅黑", sans-serif;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+
+.head-top a:hover {
+    color: rgb(246, 119, 119);
+}
+
+.head-top .left-con {
+    width: 30%;
+    height: 100%;
+    position: relative;
+    float: left;
+    display: flex;
+    padding-left: 10px;
+    align-items: center;
+    margin-left: 185px;
+}
+
+.head-top .right-con {
+    width: 30%;
+    height: 100%;
+    float: right;
+    margin-right: -5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    position: relative;
+}
+
+.left-con a {
+    margin: 6px;
+    font-size: .88em;
+    letter-spacing: 1px;
+}
+
+.left-con #user-link {
+    color: #fff;
+}
+
+.left-con #user-link span {
+    color: #fff;
+    width: auto;
+}
+
+.left-con #user-link:hover {
+    text-decoration: underline;
+}
+
+.right-con a {
+    margin: 8px;
+    font-size: 1.15em;
+}
+
+.head-bottom .container .nav-left {
+    height: 100%;
+    width: 55%;
+    margin-left: 185px;
+    display: flex;
+    float: left;
+    padding-left: .9px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.head-bottom .container .nav-left li {
+    /*border: 1px solid red;*/
+    padding: 0 26px;
+    width: auto;
+    margin-right: 1px;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: all .2s ease-in-out;
+}
+
+.head-bottom .container .nav-left li i {
+    font-size: .9em;
+    margin-left: 2px;
+    opacity: .8;
+    font-variant: all-small-caps;
+    transition: all .3s ease-in-out;
+}
+
+.head-bottom .container .nav-left li .left-link {
+    letter-spacing: 2px;
+    font-family: "苹方 常规", "微软雅黑", sans-serif;
+    font-size: .9em;
+    font-weight: 400;
+    color: #000;
+    transition: all .3s ease-in-out;
+}
+
+.head-bottom .container .nav-left li:hover {
+    background-color: rgb(246, 119, 119);
+}
+
+.head-bottom .container .nav-left li:hover a.left-link {
+    color: #fff;
+}
+
+.head-bottom .container .nav-left li:hover i {
+    color: #fff;
+}
+
+.head-bottom .container .nav-left li:nth-child(1):hover {
+    box-shadow: inset 1px 0 0 0 rgba(255, 255, 255, .3);
+}
+
+.head-bottom .container .nav-right {
+    height: 100%;
+    width: 26%;
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /*margin-left: 215px;*/
+    padding-left: .9px;
+    padding-right: 0px;
+    font-weight: 100;
+    font-size: 1em;
+    color: rgba(0, 0, 0, 0.3);
+    font-family: "微软雅黑", sans-serif;
+    /*border: 1px solid red;*/
+    /*background-color: rgba(0, 0, 0, 0.1);*/
+}
+
+.head-bottom .container .nav-right li {
+    flex: 0 0 18%;
+    height: 100%;
+    display: flex;
+    cursor: pointer;
+    position: relative;
+    transition: background-color .2s ease-in-out;
+}
+
+.head-bottom .container .nav-right li:nth-child(2) .search-wrap {
+    position: absolute;
+    background-color: white;
+    right: 0px;
+    top: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-flow: column;
+    padding: 0px 0px 5px;
+    cursor: default;
+    transition: all .2s ease-in-out;
+    overflow: hidden;
+    z-index: 999;
+    box-shadow: 0 0px 0px 1px rgba(0, 0, 0, 0.3), 0 10px 15px -2px rgba(0, 0, 0, 0.1);
+
+}
+
+.hide-search {
+    opacity: 0;
+    width: 0px;
+    height: 0px;
+    visibility: hidden;
+}
+
+.show-search {
+    opacity: 1;
+    width: 560px;
+    height: 142px;
+    visibility: visible;
+}
+
+.show-search-parent {
+    background-color: rgb(246, 119, 119);
+    box-shadow: inset 0 0 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+.search-wrap p:nth-child(1) {
+    width: 100%;
+    height: 18%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    margin-bottom: 3%;
+    padding: 5px 10px;
+}
+
+.search-wrap p:nth-child(1) a {
+    color: #000;
+    font-weight: lighter;
+    font-size: 1em;
+    font-family: "苹方 常规", "微软雅黑", sans-serif;
+
+}
+
+.search-wrap .input-wrap {
+    width: 100%;
+    height: 45%;
+    display: flex;
+    align-items: flex-start;
+    padding: 0px 25px;
+}
+
+.search-wrap p:nth-child(3) {
+    width: 100%;
+    height: 27%;
+    display: flex;
+    align-items: flex-start;
+    padding: 12px 30px;
+    margin-bottom: 10px;
+}
+
+.search-wrap p:nth-child(3) small a {
+    margin: 0px 3px;
+    color: #000;
+    transition: all 0s ease-in-out;
+    opacity: .8;
+}
+
+.search-wrap p:nth-child(3) small a:hover {
+    text-decoration: underline;
+    color: #f67777;
+}
+
+.search-wrap p:nth-child(3) small {
+    font-family: "苹方 常规", "微软雅黑", sans-serif;
+    font-size: .85em;
+    font-weight: 400;
+    /*padding: 12px 8px 0px 8px;*/
+    color: #0D0A0A;
+    /*border: 1px solid red;*/
+
+}
+
+.search-wrap input {
+    height: 45px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgb(246, 119, 119);
+
+}
+
+.search-wrap input#search-input {
+    width: 77%;
+    outline: 0;
+    font-size: .96em;
+}
+
+.search-wrap input#search-btn {
+    width: 23%;
+    outline: 0;
+    border: 0;
+    background-color: rgb(246, 119, 119);
+    color: #fff;
+    font-size: .96em;
+    font-family: "微软雅黑", sans-serif;
+    cursor: pointer;
+
+}
+
+.head-bottom .container .nav-right li:nth-child(3) {
+    flex: 0 0 36%;
+}
+
+.head-bottom .container .nav-right li:nth-child(3) a:after {
+    box-shadow: 0 0 0 0;
+}
+
+.head-bottom .container .nav-right li .a-btn {
+    color: #000;
+    font-size: .9em;
+    letter-spacing: 1px;
+    font-weight: 400;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 15px;
+    transition: all .3s ease-in-out;
+    font-family: "苹方 常规", "微软雅黑", sans-serif;
+}
+
+.head-bottom .container .nav-right li a i {
+    font-size: 1.2em;
+}
+
+.head-bottom .container .nav-right li a.a-btn small {
+    font-size: 1.18em;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+    color: #ff7a7a;
+    transition: all .3s ease-in-out;
+}
+
+.head-bottom .container .nav-right li:hover a small {
+    color: #fff;
+}
+
+.head-bottom .container .nav-right li a.a-btn small:hover {
+    text-decoration: underline;
+}
+
+/* 提示 成功添加到购物车 */
+
+div.addShopping-dialog-wrap {
+    min-width: 230px;
+    height: auto;
+    padding: 0px 0;
+    position: absolute;
+    top: 110%;
+    right: 0;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    pointer-events: none;
+
+}
+
+div.addShopping-dialog-wrap .success-dialog {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 11px;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.5);
+
+}
+
+div.addShopping-dialog-wrap .success-dialog span {
+    color: #ffffff;
+    font-size: 1em;
+    font-family: "微软雅黑", sans-serif;
+
+}
+
+div.addShopping-dialog-wrap .success-dialog i {
+    padding: 3px;
+    font-size: 1.5em;
+    color: #5FC55F;
+}
+
+/*----------------------*/
+.head-logo {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: auto;
+    transition: all .2s;
+}
+
+.head-logo .container .logo-wrap {
+    width: 175px;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    margin-left: 10px;
+    background-color: rgb(246, 119, 119);
+}
+
+.head-logo .container .logo-wrap img {
+    filter: invert(1) brightness(1.2);
+}
+
+/*二级联动菜单*/
+
+.head-bottom .container .nav-left li .submenu {
+    position: absolute;
+    width: 740px;
+    height: 260px;
+    top: 100%;
+    left: 0;
+    z-index: 99;
+    opacity: 0;
+    padding: 20px 20px;
+    background-color: white;
+    transition: all .2s ease-in-out;
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    cursor: default;
+    box-shadow: 0 0px 0px 1px rgba(0, 0, 0, 0.3), 0 10px 15px -2px rgba(0, 0, 0, 0.1);
+}
+
+.head-bottom .container .nav-left li:hover .submenu {
+    opacity: 1;
+    width: 740px;
+    height: 260px;
+    visibility: visible;
+}
+
+.submenu .submenu-col {
+    flex: 0 0 25%;
+    display: flex;
+    height: 90%;
+    flex-flow: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 5px 25px;
+
+}
+
+.submenu .submenu-col:not(:last-child) {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.submenu .submenu-col b {
+    display: block;
+    font-size: 1em;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-family: "苹方 常规", "微软雅黑", sans-serif;
+    color: rgba(0, 0, 0, 1);
+
+}
+
+.submenu .submenu-col a {
+    margin-bottom: 13.6px;
+    font-size: .88em;
+    font-family: "苹方 常规", "微软雅黑", sans-serif;
+    color: rgba(0, 0, 0, 0.64);
+    font-weight: 400;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+
+.submenu .submenu-col a:hover {
+    text-decoration: underline;
+    color: rgba(255, 122, 122, 0.8);
+}
+
+

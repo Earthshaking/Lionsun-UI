@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Shopper购物车</title>
+    <script src="js/jquery-1.8.3.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="Myicon/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/shopping.css"/>
+    <link rel="stylesheet" type="text/css" href="css/layout.css"/>
+    <link rel="stylesheet" type="text/css" href="css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="css/btn%20lib/bttn.min.css"/>
+</head>
+
+<body>
+<!--页面头部-->
+<header>
+
+    <div class="head-logo">
+        <div class="container">
+            <div class="logo-wrap">
+                <img src="img/logoSS.png">
+            </div>
+        </div>
+    </div>
+
+    <div class="head-top head">
+        <div class="container">
+            <div class="left-con">
+                <a href="login.html" title="立即登录" class="head-a-link">登录</a>
+                <a href="register.html" title="免费注册" class="head-a-link">注册</a>
+                <a href="user.html" id="user-link" title="个人中心">欢迎您,<span id="link-username"></span></a>
+            </div>
+            <div class="right-con">
+                <a href="" title="新浪微博"><i class="icon-uniF18A"></i></a>
+                <a href="" title="Apple中国"><i class="icon-uniF179"></i></a>
+                <a href="" title="NBA官网"><i class="icon-uniF17D"></i></a>
+                <a href="" title="Google+"><i class="icon-uniF0D5"></i></a>
+                <a href="" title="朋友网"><i class="icon-uniF18C"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="head-bottom head">
+        <div class="container">
+
+            <ul class="nav-left">
+                <!--首页-->
+                <li>
+                    <a href="index.html" class="left-link">首页</a>
+                </li>
+                <!--精致男装-->
+                <li><a href="#" class="left-link">精致男装</a>
+                    <i class="icon-uniE019"></i>
+                    <div class="submenu">
+                        <div class="submenu-col">
+                            <b>上衣系列</b>
+                            <a href="product.html">男士T恤 & 圆领</a>
+                            <a href="product.html">打底衬衫 & 服装</a>
+                            <a href="product.html">针织衫 & 保暖</a>
+                            <a href="product.html">棉麻材质 舒适</a>
+                            <a href="product.html">高档毛衣</a>
+                            <a href="product.html">修身T恤 紧身</a>
+                        </div>
+                        <div class="submenu-col">
+                            <b>男士内衣</b>
+                            <a href="product.html">三角裤 平角内裤</a>
+                            <a href="product.html">浴衣套装</a>
+                            <a href="product.html">休闲睡裤</a>
+                            <a href="product.html">秋裤 保暖打底</a>
+                            <a href="product.html">春季睡衣</a>
+                            <a href="product.html">春季睡裤</a>
+                        </div>
+                        <div class="submenu-col">
+                            <b>男士裤子</b>
+                            <a href="#">牛仔裤</a>
+                            <a href="#">沙滩裤 凉爽</a>
+                            <a href="#">九分裤 帅气</a>
+                            <a href="#">嘻哈 喇叭裤</a>
+                            <a href="#">西裤 高端</a>
+                            <a href="#">时装裤</a>
+                        </div>
+                        <div class="submenu-col">
+                            <b>鞋子系列</b>
+                            <a href="#">休闲皮鞋</a>
+                            <a href="#">商务皮鞋</a>
+                            <a href="#">帆布鞋 板鞋</a>
+                            <a href="#">人字拖 夹板</a>
+                            <a href="#">凉鞋 懒人鞋</a>
+                            <a href="#">洞洞鞋 网面鞋</a>
+                        </div>
+                    </div>
+                </li>
+                <!--时尚女装-->
+                <li><a href="#" class="left-link">时尚女装</a>
+                    <i class="icon-uniE019"></i>
+                    <div class="submenu">
+                        <div class="submenu-col">
+                            <b>裙子系列</b>
+                            <a href="#">半身裙 碎花裙</a>
+                            <a href="#">连衣裙 背带裤</a>
+                            <a href="#">蕾丝 & 连衣裙 </a>
+                            <a href="#">吊带连衣裙</a>
+                            <a href="#">棉麻裙 & 半身裙</a>
+                            <a href="#">中长裙 漏背装</a>
+                        </div>
+                        <div class="submenu-col">
+                            <b>女士内衣</b>
+                            <a href="#">文胸 内衣</a>
+                            <a href="#">聚拢文胸</a>
+                            <a href="#">少文胸 & 其他</a>
+                            <a href="#">塑身内衣</a>
+                            <a href="#">家居服 睡衣</a>
+                            <a href="#">无钢圈文胸</a>
+                        </div>
+                        <div class="submenu-col">
+                            <b>婚纱礼服</b>
+                            <a href="#">女装会场 美丽</a>
+                            <a href="#">阔太太 羊毛大衣</a>
+                            <a href="#">貂毛大衣 & 奢侈</a>
+                            <a href="#">品质大牌 国际</a>
+                            <a href="#">送礼会场 时尚</a>
+                            <a href="#">半透明婚纱</a>
+                        </div>
+                        <div class="submenu-col">
+                            <b>其他</b>
+                            <a href="#">项链 耳环</a>
+                            <a href="#">戒指 发饰</a>
+                            <a href="#">手镯 胸针</a>
+                            <a href="#">手链 脚链</a>
+                            <a href="#">耳线 饰品盒</a>
+                            <a href="#">口红 女士手表</a>
+                        </div>
+                    </div>
+                </li>
+                <!--化妆品-->
+                <li>
+                    <a href="#" class="left-link">化妆品</a>
+                </li>
+                <!--手表-->
+                <li>
+                    <a href="#" class="left-link">手表</a>
+                </li>
+                <!--手工皮鞋-->
+                <li>
+                    <a href="#" class="left-link">手工皮鞋</a>
+                </li>
+            </ul>
+
+            <ul class="nav-right">
+                <!--收藏-->
+                <li>
+                    <a href="#" class="a-btn">
+                        <i class="icon-uniF005" title="收藏"></i>
+                    </a>
+                </li>
+                <!--搜索-->
+                <li class="nav-link">
+                    <a href="#" class="a-btn" id="search-link">
+                        <i class="icon-uniF002" title="搜索"></i>
+                    </a>
+
+                    <div class="search-wrap hide-search">
+                        <p class="close-wrap">
+                            <a href="#" id="closer-search" class="icon-uniF00D"></a>
+                        </p>
+
+                        <p class="input-wrap">
+                            <input type="text" id="search-input" placeholder="搜索您喜欢的宝贝"/>
+                            <input type="button" id="search-btn" value="搜索" title="点击搜索"/>
+                        </p>
+
+                        <p class="hot-search">
+                            <small>
+                                <a href="#">西装礼服</a>
+                                <a href="#">套装</a>
+                                <a href="#">护肤品</a>
+                                <a href="#">婚纱</a>
+                                <a href="#">墨镜</a>
+                                <a href="#">手表</a>
+                                <a href="#">燕尾服</a>
+                                <a href="#">皮鞋</a>
+                                <a href="#">领带</a>
+                            </small>
+                        </p>
+
+                    </div>
+
+                </li>
+                <!--购物车-->
+                <li>
+                    <a href="shopping.html" class="a-btn">
+                        <i class="icon-uniF07A" title="购物车"></i>
+                        &nbsp;购物车
+                        <small class="product-number">10</small>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+
+</header>
+
+<main>
+
+    <div class="first">
+        <div class="container">
+            <h1>购物车</h1>
+            <small>
+                <a href="index.html">Home</a>
+                / shopping
+            </small>
+        </div>
+    </div>
+
+    <div class="second">
+        <div class="container">
+
+            <div class="shopping-wrap">
+
+                <ul class="cart-title">
+
+                    <li class="curruet-page">
+                        <span>全部商品</span>
+                    </li>
+                    |
+                    <li>
+                        <span>降价商品</span>
+                    </li>
+                    |
+                    <li>
+                        <span>失效商品</span>
+                    </li>
+                </ul>
+
+                <!--购物车表头-->
+                <ul class="cart-min-title">
+
+                    <li>
+                        <input type="checkbox" id="all-select"/>全选
+                    </li>
+
+                    <li>商品信息</li>
+
+                    <li>单价</li>
+
+                    <li>数量</li>
+
+                    <li>金额</li>
+
+                    <li>操作</li>
+
+                </ul>
+
+                <!--购物车列表-->
+                <div class="shopping-list" id="shop-list">
+
+                    <div class="shop-box">
+                        <ol class="product">
+
+                            <!--复选框-->
+                           <li class="checkbox">
+                               <input type="checkbox" class="select" name="check"/>
+                           </li>
+
+                            <!--商品信息-->
+                           <li class="images">
+                               <!--商品图片-->
+                               <div class="mini-img">
+                                   <img src="product/pc1.jpg" width="100%" height="100%" />
+                               </div>
+                                <p class="product-info">
+                                    <a href="#">春季学生格子衬衫修身上衣</a>
+                                    <span>
+                                        颜色分类：黑色
+                                        <br>
+                                        尺码：265=41
+                                    </span>
+                                </p>
+                           </li>
+
+                            <!--单价-->
+                           <li class="price">
+                               <div class="old thr">
+                                   <i class="icon-uniF157"></i>
+                                   <span>125.00</span>
+                               </div>
+                               <div class="new thr">
+                                   <i class="icon-uniF157"></i>
+                                   <label class="now-price">80.00</label>
+                               </div>
+                           </li>
+
+                            <!--数量-->
+                           <li class="goods-num">
+                               <div class="number-wrap">
+                                   <a class="icon-uniF068 reduce"></a>
+                                   <input type="text" value="1" class="pnumber"/>
+                                   <a class="icon-uniF067 insert"></a>
+                               </div>
+                           </li>
+
+                            <!--金额-->
+                           <li>
+                               <div class="new thr">
+                                   <i class="icon-uniF157"></i>
+                                   <label class="this-price"></label>
+                               </div>
+                           </li>
+
+                            <!--操作-->
+                           <li>
+                               <a href="#">移动到收藏夹</a>
+                               <a href="#">删除</a>
+                           </li>
+                        </ol>
+                    </div>
+
+                    <div class="shop-box">
+                        <ol class="product">
+
+                            <!--复选框-->
+                            <li class="checkbox">
+                                <input type="checkbox" class="select" name="check"/>
+                            </li>
+
+                            <!--商品信息-->
+                            <li class="images">
+                                <!--商品图片-->
+                                <div class="mini-img">
+                                    <img src="product/pc1.jpg" width="100%" height="100%"/>
+                                </div>
+                                <p class="product-info">
+                                    <a href="#">春季学生格子衬衫修身上衣</a>
+                                    <span>
+                                        颜色分类：黑色
+                                        <br>
+                                        尺码：265=41
+                                    </span>
+                                </p>
+                            </li>
+
+                            <!--单价-->
+                            <li class="price">
+                                <div class="old thr">
+                                    <i class="icon-uniF157"></i>
+                                    <span>125.00</span>
+                                </div>
+                                <div class="new thr">
+                                    <i class="icon-uniF157"></i>
+                                    <label class="now-price">80.00</label>
+                                </div>
+                            </li>
+
+                            <!--数量-->
+                            <li class="goods-num">
+                                <div class="number-wrap">
+                                    <a class="icon-uniF068 reduce"></a>
+                                    <input type="text" value="1" class="pnumber"/>
+                                    <a class="icon-uniF067 insert"></a>
+                                </div>
+                            </li>
+
+                            <!--金额-->
+                            <li>
+                                <div class="new thr">
+                                    <i class="icon-uniF157"></i>
+                                    <label class="this-price"></label>
+                                </div>
+                            </li>
+
+                            <!--操作-->
+                            <li>
+                                <a href="#">移动到收藏夹</a>
+                                <a href="#">删除</a>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="shop-box">
+                        <ol class="product">
+
+                            <!--复选框-->
+                            <li class="checkbox">
+                                <input type="checkbox" class="select" name="check"/>
+                            </li>
+
+                            <!--商品信息-->
+                            <li class="images">
+                                <!--商品图片-->
+                                <div class="mini-img">
+                                    <img src="product/pc1.jpg" width="100%" height="100%"/>
+                                </div>
+                                <p class="product-info">
+                                    <a href="#">春季学生格子衬衫修身上衣</a>
+                                    <span>
+                                        颜色分类：黑色
+                                        <br>
+                                        尺码：265=41
+                                    </span>
+                                </p>
+                            </li>
+
+                            <!--单价-->
+                            <li class="price">
+                                <div class="old thr">
+                                    <i class="icon-uniF157"></i>
+                                    <span>125.00</span>
+                                </div>
+                                <div class="new thr">
+                                    <i class="icon-uniF157"></i>
+                                    <label class="now-price">80.00</label>
+                                </div>
+                            </li>
+
+                            <!--数量-->
+                            <li class="goods-num">
+                                <div class="number-wrap">
+                                    <a class="icon-uniF068 reduce"></a>
+                                    <input type="text" value="1" class="pnumber"/>
+                                    <a class="icon-uniF067 insert"></a>
+                                </div>
+                            </li>
+
+                            <!--金额-->
+                            <li>
+                                <div class="new thr">
+                                    <i class="icon-uniF157"></i>
+                                    <label class="this-price"></label>
+                                </div>
+                            </li>
+
+                            <!--操作-->
+                            <li>
+                                <a href="#">移动到收藏夹</a>
+                                <a href="#">删除</a>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="shop-box">
+                        <ol class="product">
+
+                            <!--复选框-->
+                            <li class="checkbox">
+                                <input type="checkbox" class="select" name="check"/>
+                            </li>
+
+                            <!--商品信息-->
+                            <li class="images">
+                                <!--商品图片-->
+                                <div class="mini-img">
+                                    <img src="product/pc1.jpg" width="100%" height="100%"/>
+                                </div>
+                                <p class="product-info">
+                                    <a href="#">春季学生格子衬衫修身上衣</a>
+                                    <span>
+                                        颜色分类：黑色
+                                        <br>
+                                        尺码：265=41
+                                    </span>
+                                </p>
+                            </li>
+
+                            <!--单价-->
+                            <li class="price">
+                                <div class="old thr">
+                                    <i class="icon-uniF157"></i>
+                                    <span>125.00</span>
+                                </div>
+                                <div class="new thr">
+                                    <i class="icon-uniF157"></i>
+                                    <label class="now-price">80.00</label>
+                                </div>
+                            </li>
+
+                            <!--数量-->
+                            <li class="goods-num">
+                                <div class="number-wrap">
+                                    <a class="icon-uniF068 reduce"></a>
+                                    <input type="text" value="1" class="pnumber"/>
+                                    <a class="icon-uniF067 insert"></a>
+                                </div>
+                            </li>
+
+                            <!--金额-->
+                            <li>
+                                <div class="new thr">
+                                    <i class="icon-uniF157"></i>
+                                    <label class="this-price"></label>
+                                </div>
+                            </li>
+
+                            <!--操作-->
+                            <li>
+                                <a href="#">移动到收藏夹</a>
+                                <a href="#">删除</a>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="shop-box">
+                        <ol class="product">
+
+                            <!--复选框-->
+                            <li class="checkbox">
+                                <input type="checkbox" class="select" name="check"/>
+                            </li>
+
+                            <!--商品信息-->
+                            <li class="images">
+                                <!--商品图片-->
+                                <div class="mini-img">
+                                    <img src="product/pc1.jpg" width="100%" height="100%"/>
+                                </div>
+                                <p class="product-info">
+                                    <a href="#">春季学生格子衬衫修身上衣</a>
+                                    <span>
+                                        颜色分类：黑色
+                                        <br>
+                                        尺码：265=41
+                                    </span>
+                                </p>
+                            </li>
+
+                            <!--单价-->
+                            <li class="price">
+                                <div class="old thr">
+                                    <i class="icon-uniF157"></i>
+                                    <span>125.00</span>
+                                </div>
+                                <div class="new thr">
+                                    <i class="icon-uniF157"></i>
+                                    <label class="now-price">80.00</label>
+                                </div>
+                            </li>
+
+                            <!--数量-->
+                            <li class="goods-num">
+                                <div class="number-wrap">
+                                    <a class="icon-uniF068 reduce"></a>
+                                    <input type="text" value="1" class="pnumber"/>
+                                    <a class="icon-uniF067 insert"></a>
+                                </div>
+                            </li>
+
+                            <!--金额-->
+                            <li>
+                                <div class="new thr">
+                                    <i class="icon-uniF157"></i>
+                                    <label class="this-price"></label>
+                                </div>
+                            </li>
+
+                            <!--操作-->
+                            <li>
+                                <a href="#">移动到收藏夹</a>
+                                <a href="#">删除</a>
+                            </li>
+                        </ol>
+                    </div>
+
+                </div>
+
+                <!--购物车结算按钮-->
+                <div class="cart-bottom">
+                    <div class="totalled">
+                        <span>合计(不含运费)：</span>
+                        <b id="allprice">0.00</b>
+                    </div>
+                    <button class="bttn-fill bttn-md bttn-danger">结 算</button>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="onder-foot">
+        <div class="container">
+            <ul>
+                <li><img src="product/ic.png"/></li>
+                <li><img src="product/ic1.png"/></li>
+                <li><img src="product/ic2.png"/></li>
+                <li><img src="product/ic3.png"/></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="foot">
+        <div class="foot-top in-foot">
+            <div class="container">
+
+                <div class="foot-module">
+                    <b>ABOUT ME</b>
+                    <p>Suspen disse sed accu msan risus. Curab itur rhon cus,
+                        elitvel tinci dunt elemen tum,
+                        nunc urna tristi que nisi,
+                        in inter dum libero magnatristiqueante.
+                        adipiscing varius.
+                        Vestib ulum dolororem.</p>
+                </div>
+                <div class="foot-module">
+                    <b>CONTACT US</b>
+                    <div>
+                        <i class="icon-home"></i>
+                        <p>湖南省长沙市岳麓区桐梓坡西路229号 </p>
+                    </div>
+                    <div>
+                        <i class="icon-uniF095"></i>
+                        <p>
+                            +000-123-4566-7891<br>
+                            +000-188-7481-8887
+                        </p>
+                    </div>
+                    <div>
+                        <i class="icon-envelope"></i>
+                        <p>
+                            1344085370@qq.com<br>
+                            524182647@qq.com
+                        </p>
+                    </div>
+                </div>
+
+                <div class="foot-module">
+                    <b>TAGS</b>
+                    <p>
+                        <a href="#">leorn more</a>
+                        <a href="#">sed all</a>
+                        <a href="#">ipusm</a>
+                        <a href="#">read</a>
+                        <a href="#">more</a>
+                        <a href="#">Button</a>
+                        <a href="#">No</a>
+                        <a href="#">Understand</a>
+                        <a href="#">All Right</a>
+                    </p>
+                </div>
+
+                <div class="foot-module">
+                    <b>INFORMATION</b>
+                    <p>
+                        <a class="icon-uniF166"></a>
+                        <a class="icon-uniF16B"></a>
+                        <a class="icon-uniF099"></a>
+                        <a class="icon-uniF18A"></a>
+                        <a class="icon-uniF18B"></a>
+                        <a class="icon-uniF194"></a>
+                        <a class="icon-uniF143"></a>
+                        <a class="icon-uniF0D5"></a>
+                        <a class="icon-uniF08C"></a>
+                        <a class="icon-uniF082"></a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        <div class="foot-bottom in-foot">
+            <div class="container">
+                <span>Copyright: 2018 . Design and Developed by Earthshaking</span>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<script src="js/header.js"></script>
+<script src="js/shopping.js"></script>
+
+</body>
+</html>

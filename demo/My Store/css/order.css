@@ -1,0 +1,497 @@
+
+.first:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    position: absolute;
+    filter: contrast(.9);
+    /*opacity: .95;*/
+    background-size: cover;
+    background-position: 50% 47%;
+    background-repeat: no-repeat;
+    background-image: url("../img/shopping-bg.jpg");
+}
+
+.first:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.first .container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.first .container h1 {
+    padding: 13px 15px;
+    color: #fff;
+    font-size: 1.85em;
+    font-family: "苹方 常规", "微软雅黑", sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+}
+
+.first .container small {
+    font-size: .93em;
+    color: #fff;
+    border-top: 2px solid white;
+    padding: 13px 2px;
+}
+
+.first .container small a {
+    color: #f67777;
+}
+
+/*-------------------------------------*/
+
+.second {
+    height: auto;
+}
+
+.second .container {
+    width: 1200px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 50px 0 10px 0;
+}
+
+.second .container .order-wrap {
+    width: 1000px;
+    height:990px;
+
+    margin: auto;
+    display: flex;
+}
+
+.second .container .order-wrap .order-left {
+    flex: 0 0 13%;
+    height: 520px;
+    padding: 18px;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0 4px 9px -3px rgba(0, 0, 0, 0.2);
+}
+
+.second .container .order-wrap .order-left .head-icon {
+    width: 110px;
+    height: 110px;
+    overflow: hidden;
+    /*box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);*/
+    padding: 2px;
+}
+
+.second .container .order-wrap .order-left .head-icon img {
+    /*filter: brightness(.95);*/
+}
+
+.second .container .order-wrap .order-left .list-btn {
+    width: 100%;
+    height: auto;
+    margin-top: 16px;
+
+}
+
+.second .container .order-wrap .order-left .list-btn li {
+    width: 100%;
+    padding: 1px 0px;
+    margin-bottom: 8px;
+
+}
+
+.second .container .order-wrap .order-left .list-btn .frist-li {
+    margin-bottom: 10px;
+
+}
+
+.second .container .order-wrap .order-left .list-btn li a {
+    font-size: .9em;
+    font-family: Verdana, "微软雅黑", sans-serif;
+    color: rgba(0, 0, 0, 0.83);
+    display: flex;
+    position: relative;
+    margin-left: 5px;
+    letter-spacing: 0px;
+    cursor: pointer;
+}
+
+.second .container .order-wrap .order-left .list-btn li a i {
+    position: absolute;
+    right: 25px;
+    font-size: .92em;
+    top: 0;
+    font-weight: lighter;
+    opacity: .78;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1px;
+    height: 100%;
+}
+
+.second .container .order-wrap .order-left .list-btn .frist-li a {
+    font-size: 1.05em;
+    letter-spacing: 1px;
+    font-family: Verdana, "微软雅黑", sans-serif;
+    color: #ff7a7a;
+    pointer-events: none;
+}
+
+.second .container .order-wrap .order-left .list-btn li a:hover {
+    color: #ff7a7a;
+}
+
+.second .container .order-wrap .order-left .list-btn li a:hover i {
+    color: rgba(0, 0, 0, 0.83);
+    opacity: .78;
+}
+
+.second .container .order-wrap .order-left .list-btn li .left-submenu {
+    width: 100%;
+    height: auto;
+    padding: 9px 5px 0px 15px;
+    font-family: Verdana, "微软雅黑", sans-serif;
+    /*border: 1px solid red;*/
+    /*transition: all .2s ease-in-out;*/
+    overflow: hidden;
+    display: none;
+}
+
+.second .container .order-wrap .order-left .list-btn li .left-submenu li {
+    width: 100%;
+    padding: 0px 0px;
+    margin-bottom: 8px;
+
+}
+
+.second .container .order-wrap .order-left .list-btn li .left-submenu li:last-child {
+    width: 100%;
+    padding: 1px 0px;
+    margin-bottom: 0px;
+}
+
+.second .container .order-wrap .order-left .list-btn li .left-submenu li a {
+    font-size: x-small;
+    font-family: Verdana, "微软雅黑", sans-serif;
+}
+
+.second .container .order-wrap .order-right {
+    flex: 0 0 82%;
+    margin-left: 15px;
+    padding: 0px 0;
+}
+
+.second .container .order-wrap .order-right .top-title {
+    width: 100%;
+    height: 35px;
+    display: flex;
+    /*border: 1px solid red;*/
+}
+
+.top-title span {
+    display: flex;
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.17);
+    border-bottom: 1px solid white;
+    width: 90px;
+    align-items: center;
+    justify-content: center;
+    font-size: .9em;
+    background-color: white;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+
+}
+
+.second .container .order-wrap .order-right .right-main {
+    width: 100%;
+    height: auto;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    /*background: rgba(0, 0, 0, 0.2);*/
+    /*box-sizing: content-box;*/
+    padding: 0;
+    /*box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.2);*/
+}
+
+.right-main .order-search {
+    width: 100%;
+    padding: 15px 0px 8px 0;
+    display: flex;
+
+}
+
+.order-search .order-search-wrap {
+    border: 1px solid rgba(0, 0, 0, 0.22);
+    width: 300px;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.right-main .order-search input {
+    height: 100%;
+    box-sizing: border-box;
+    font-size: .78em;
+    padding: 5px 8px;
+    border: 0;
+    font-family: "苹方 常规", "微软雅黑", sans-serif;
+    font-weight: 400;
+}
+
+.right-main .order-search input:nth-child(1) {
+    width: 70%;
+}
+
+.right-main .order-search input:nth-child(2) {
+    width: 30.1%;
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: #F5F5F5;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.right-main .order-search input:nth-child(2):hover {
+    background-color: #eaeaea;
+
+}
+
+.right-main ul {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    background-color: #F5F5F5;
+    margin-bottom: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.right-main ul li:nth-child(1){
+    flex: 0 0 42%;
+}
+.right-main ul li {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .8em;
+    font-family: "苹方 常规","微软雅黑",sans-serif;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.right-main .order-list{
+    width: 100%;
+    height: auto;
+}
+
+.right-main .order-list .order{
+    width: 100%;
+    height: 140px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.right-main .order-list .order:hover{
+    outline: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+
+.order .in-order{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.order .in-order:nth-child(1) {
+    height: 28%;
+    background-color: #F5F5F5;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px;
+    position: relative;
+}
+
+.order .in-order:nth-child(1) .order-id{
+    font-size: .7em;
+    font-family: "微软雅黑", sans-serif;
+    font-weight: 400;
+    margin-left: 10px;
+}
+
+.order .in-order:nth-child(1) .order-time {
+    font-size: .7em;
+    font-family:"微软雅黑", sans-serif;
+    float: right;
+    margin-left: 20px;
+
+}
+
+.order .in-order:nth-child(1) span small{
+    margin-left: 3px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+
+}
+
+.order .in-order:nth-child(1) .icon-btn{
+    height: 100%;
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+}
+
+.icon-btn a{
+    margin: 0 5px;
+    font-size: 1.15em;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+    opacity: .7;
+}
+
+.order .in-order:nth-child(2) {
+    height: 72%;
+    display: flex;
+    align-items: center;
+    padding:0px 15px;
+}
+
+.order .in-order:nth-child(2) .bor{
+    height: 100%;
+    padding: 20px 0;
+    display: inline-flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+.order .in-order:nth-child(2) .order-img{
+    width:auto;
+    height: 80px;
+    overflow: hidden;
+}
+
+.order-img img{
+    height: 100%;
+}
+
+.order .in-order:nth-child(2) .order-info {
+    width: 275px;
+    overflow: hidden;
+    padding-left: 15px;
+    justify-content: flex-start;
+
+}
+
+.order .in-order:nth-child(2) .order-info p{
+    font-size: .85em;
+    font-family: "微软雅黑", sans-serif;
+}
+
+.order .in-order:nth-child(2) .order-price {
+    width: 125px;
+    overflow: hidden;
+    font-family: "微软雅黑", sans-serif;
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+
+}
+
+.order .in-order:nth-child(2) .order-price small{
+    font-size: .82em;
+    margin-right: 20px;
+}
+
+.order .in-order:nth-child(2) .order-number {
+    width: 125px;
+    overflow: hidden;
+    font-family: "微软雅黑", sans-serif;
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+
+}
+
+.order .in-order:nth-child(2) .order-number small{
+    margin-right: 30px;
+}
+
+
+.order .in-order:nth-child(2) .order-pay {
+    width: 120px;
+    overflow: hidden;
+    /*margin-left: 70px;*/
+    font-weight: bold;
+    font-family: "微软雅黑", sans-serif;
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+
+}
+
+.order .in-order:nth-child(2) .order-pay small {
+    margin-right: 30px;
+}
+.order .in-order:nth-child(2) .order-zt {
+    width:80px;
+    overflow: hidden;
+    font-family: "微软雅黑", sans-serif;
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.right-main .order-bottom{
+    width: 100%;
+    height:auto;
+    margin-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.right-main .order-bottom ol{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.right-main .order-bottom ol li{
+    box-sizing: border-box;
+    padding:5px 3px;
+}
+
+.right-main .order-bottom ol li:first-child a,
+.right-main .order-bottom ol li:last-child a{
+    padding: 5px 10px;
+}
+
+.right-main .order-bottom ol li a{
+    border: 1px solid rgba(0,0,0,0.5);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 5px;
+    color: rgba(0,0,0,0.75);
+    font-size: .86em;
+    font-family: "苹方 常规","微软雅黑", sans-serif;
+    cursor: pointer;
+}
+
+.current-a{
+    background-color: rgba(0, 0, 0, 0.06);
+}
+.right-main .order-bottom ol li a:hover{
+    background-color: rgba(0,0,0,0.07);
+}
