@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ">
+    <title>阅读页-文章</title>
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-global.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-styles.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/animate.css">
+</head>
+<!-- 文章投递 delivery组件 -->
+<div class="card appreciates-card">
+
+    <div class="card-header mb10">
+        <h3 class="card-title mb10" style="font-size: 24px;font-weight: 500 !important;">文章投递</h3>
+        <a href="#" class="closeButton" id="closeLayerButton" onclick="closeParentLayer()">&times;</a>
+    </div>
+
+    <div class="card-body pt0" style="padding-left: 45px;padding-right: 45px">
+        <div class="card-content">
+            <h5 class="searchTitle" style="font-size: 16px;font-weight: 500 !important;">每条内容最多只能投递1个频道<!--，该内容已投递$!delivery_num个频道--></h5>
+
+            <!--<form action="$!webPath/seller/article_show.htm" method="post" class="form-group channelSearchBox">-->
+                <!--<i class="fa fa-search"></i>-->
+                <!--<input type="text" name="keyword" class="form-control" id="channelSearch" placeholder="搜索频道名称" >-->
+                <!--<input type="hidden" name="curID" value="$!curID">-->
+                <!--<a href="javascript:search_form();" class="closes"><i class="fa fa-times-circle"></i></a>-->
+            <!--</form>-->
+
+
+            <!-- 搜索框 -->
+            <form action="$!webPath/seller/article_show.htm" method="post" class="form-group search-box block" id="delivery" style="float: unset !important;">
+                <input type="text" class="search-input" id="channelSearch" name="keyword" placeholder="搜索频道名称">
+                <input type="hidden" name="curID" value="$!curID">
+                <button type="button" class="searchBtn" id="searchArticleBtn" onclick="search_form();"><i class="fa fa-search"></i></button>
+            </form>
+
+
+            <h5 class="subSearchTitle">推荐频道：</h5>
+
+            <ul class="channel-list">
+                #set($store_list_class_count= 0)
+                #foreach($obj in $objs)
+                #if($!obj.store_logo)
+                #set($store_logo="$!webPath/$!obj.store_logo.path/$!obj.store_logo.name")
+                #else
+                #set($store_logo="$!webPath/$!config.storeImage.path/$!config.storeImage.name")
+                #end
+
+                #if($!store_list_class_count== 0)
+                #set($store_list_class ="")
+                #end
+                #if($!store_list_class_count== 1)
+                #set($store_list_class ="_c")
+                #end
+                #set($store_list_class_count = $!store_list_class_count + 1)
+
+                <li class="list-item clearfix">
+                    <a href="$!webPath/store_$!{obj.id}.htm" target="_blank" class="intems-img">
+                        <img src="$!store_logo" alt="" style="width: 58px;height: 60px" onerror="this.src='http://10.0.216.222:8080/zhinao/resources/mystyle/common/images/store.jpg'">
+                    </a>
+                    <div class="items-inner">
+                        <a href="$!webPath/store_$!{obj.id}.htm" target="_blank" class="min-title-box">
+                            <span class="min-title">$!obj.store_name</span>
+                        </a>
+
+                        #if($!state.get($!obj.id)!=-1)
+
+                        #if($!state.get($!obj.id)==0)
+                        <button class="min-button btn toudiBtn" onclick="submitAudit('$!webPath/seller/goods_sale.htm','$!{obj.id}','$!curID',this)" data-type="0" type="button">取消投递</button>
+
+                        #end
+
+                        #if($!state.get($!obj.id)==2)
+                        <button class="min-button btn" type="button">已收录</button>
+
+                        #end
+
+                        #else
+
+                        #if($!deliveryState==1)
+                        <button class="min-button btn toudiBtn disabled" disabled id="submitAudit$!{obj.id}" style="font-size: 14px"
+                                onclick="submitAudit('$!webPath/seller/goods_sale.htm','$!{obj.id}','$!curID',this)"
+                                data-type="1" type="button">禁止投递
+                        </button>
+                        #elseif($!deliveryState==0)
+                            <button class="min-button btn toudiBtn" id="submitAudit$!{obj.id}" style="font-size: 14px"
+                                    onclick="submitAudit('$!webPath/seller/goods_sale.htm','$!{obj.id}','$!curID',this)" data-type="1" type="button">投递
+                            </button>
+                        #end
+                        
+                        #end
+                    </div>
+                </li>
+
+                #end
+            </ul>
+        </div>
+        <!--<div class="row mybabysong">-->
+            <!--<div class="text-center col-12">-->
+                <!--<button type="button" class="checkMore btn" style="width: 360px">查看更多></button>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+
+</div>
+
+
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/js/script.js"></script>
+<script type="text/javascript">
+    function submitAudit(url, storeId, curID,obj) {
+        var mulitId = "$!curID";
+        var type = $(obj).attr('data-type');
+            jQuery.ajax({
+                type: 'POST',
+                url: url,
+                data: {
+                    "mulitId": mulitId,
+                    "storeId": storeId,
+                    "curID": curID,
+                    "type": type
+                },
+                success: function (data) {
+                    if (data) {
+                        if (type == 0) {
+                            $(obj).text("投递");
+                            siblingsBtnOpen(obj);
+                            $(obj).attr('data-type', 1);
+                        } else {
+                            $(obj).text("取消投递");
+                            siblingsBtnDisbeled(obj);
+                            $(obj).attr('data-type',0);
+                        }
+                    } else {
+                        alertModal(2, "投递失败，只能投递一个频道", function (index) {
+                            layer.close(index);
+                        });
+                    }
+                }
+            });
+
+    }
+
+
+    // 点击投递后禁用其他所有的投递按钮
+    function siblingsBtnDisbeled(obj) {
+        var btns = $(obj).parents('.list-item').siblings('.list-item').find('.toudiBtn');
+        btns.text('禁止投递');
+        btns.addClass('disabled').attr('disabled','disabled');
+    }
+
+    // 点击取消投递后开启其他所有的投递按钮
+    function siblingsBtnOpen(obj) {
+        var btns = $(obj).parents('.list-item').siblings('.list-item').find('.toudiBtn');
+        btns.text('投递');
+        btns.removeClass('disabled').removeAttr('disabled');
+    }
+    
+    
+    function search_form() {
+        jQuery("#delivery").submit();
+    }
+</script>
+</body>
+</html>

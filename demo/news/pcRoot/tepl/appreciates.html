@@ -1,0 +1,56 @@
+<!-- 赞赏作者 appreciates组件 -->
+<div class="card appreciates-card">
+    
+    <div class="card-header mb0 pb0">
+        <h3 class="card-title" style="font-size: 20px;font-weight: 500 !important;">赞赏作者</h3>
+        <a href="#" class="closeButton">&times;</a>
+    </div>
+    <div class="card-body">
+        <div class="current-user-money">
+            <p>当前账户可用金币余额 <strong>#if($!{userObj.gold}) $!{userObj.gold} #else 0 #end</strong> ，<a href="$!webPath/tepl/recharge.htm" id="nextRechargeBtn">继续充值</a></p>
+        </div>
+        <br>
+        <div class="money-select" id="zangshang">
+            <label class="money-item active">
+                <input type="radio" name="money" value="100" checked>
+                <img src="$!webPath/resources/mystyle/static/images/gold.jpg" alt="">
+                &nbsp;
+                <span class="subText">100</span>&nbsp;金币
+            </label>
+            <label class="money-item">
+                <input type="radio" name="money" value="500">
+                <img src="$!webPath/resources/mystyle/static/images/gold.jpg" alt="">&nbsp;
+                <span class="subText">500</span>&nbsp;金币
+            </label>
+            <label class="money-item">
+                <input type="radio" name="money" value="1000">
+                <img src="$!webPath/resources/mystyle/static/images/gold.jpg" alt="">&nbsp;
+                <span class="subText">1000</span>&nbsp;金币
+            </label>
+            <label class="money-item">
+                <input type="radio" name="money" value="1500">
+                <img src="$!webPath/resources/mystyle/static/images/gold.jpg" alt="">&nbsp;
+                <span class="subText">1500</span>&nbsp;金币
+            </label>
+            <label class="money-item">
+                <input type="radio" name="money" value="2000">
+                <img src="$!webPath/resources/mystyle/static/images/gold.jpg" alt="">&nbsp;
+                <span class="subText">2000</span>&nbsp;金币
+            </label>
+            <label class="money-item">
+                <input type="radio" name="money" id="otherMonery" value="0">
+                <img src="$!webPath/resources/mystyle/static/images/gold.jpg" alt="">&nbsp;
+                <span>其他<input type="text" class="moneyInput text-center" name="enterMoney" onchange="article.totalCount(this)"
+                               onkeyup='this.value=this.value.replace(/[^\0-9\.]/g,"")'>金币</span>
+            </label>
+        </div>
+        <div class="form-group pl20 pr20 pt15 mb25">
+            <textarea name="leaveMsg" placeholder="给作者留言..." id="leaveMsg"></textarea>
+        </div>
+        <div class="text-center">
+            <button class="btn" id="nextBtn" onclick="article.aritclePayGold('$!{articleId}','2')">立即支付</button>
+        </div>
+    </div>
+</div>
+
+

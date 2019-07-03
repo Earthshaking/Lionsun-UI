@@ -1,0 +1,38 @@
+.newsDataIcon,
+.sub-name,
+.result-datas {
+    color: #FFF !important;
+}
+
+.grid-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: auto;
+    background-color: #EBEEF1;
+    padding: 15px 12px;
+}
+
+.container-fluid {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding-top: 62px;
+    overflow: hidden;
+}
+
+.grid-card {
+    box-shadow: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+}
+
+.grid-card > .card-header {
+    background-color: #FFFFFF;
+}
+
+#frames {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}

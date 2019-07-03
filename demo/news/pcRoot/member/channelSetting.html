@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>频道设置</title>
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-global.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-styles.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/animate.css">
+    <script src="$!webPath/resources/js/jquery-1.6.2.js"></script>
+	<script src="$!webPath/resources/js/jquery-ui-1.8.21.js"></script>
+	<script src="$!webPath/resources/js/jquery.poshytip.min.js"></script>
+	<script src="$!webPath/resources/js/jquery.shop.common.js"></script>
+	<script src="$!webPath/resources/mystyle/static/js/jquery-validation/jquery.validate.min.js"></script>
+	<script src="$!webPath/resources/mystyle/static/js/jquery-validation/additional-methods.js"></script>
+	<script charset="utf-8" src="$!webPath/resources/editor/kindeditor.js"></script>
+	<script charset="utf-8" src="$!webPath/resources/editor/lang/zh_CN.js"></script>
+    <!--[if lt IE 9]>
+    <script src="http://www.jq22.com/jquery/html5.min.js"></script>
+    <![endif]-->
+<!--     <script> -->
+<!-- jQuery(document).ready(function(){ -->
+<!--    jQuery("#theForm2").validate({ -->
+<!-- 		       acc1:{accept:"$!config.imageSuffix"}, -->
+<!-- 			   acc2:{accept:"$!config.imageSuffix"}, -->
+<!-- 			   acc3:{accept:"$!config.imageSuffix"}, -->
+<!-- 			   acc4:{accept:"$!config.imageSuffix"}, -->
+<!-- 			   acc5:{accept:"$!config.imageSuffix"} -->
+<!-- 	          }, -->
+<!-- 		messages: { -->
+<!-- 			   acc1:{accept:"幻灯格式不正确"}, -->
+<!-- 			   acc2:{accept:"幻灯格式不正确"}, -->
+<!-- 			   acc3:{accept:"幻灯格式不正确"}, -->
+<!-- 			   acc4:{accept:"幻灯格式不正确"}, -->
+<!-- 			   acc5:{accept:"幻灯格式不正确"} -->
+<!-- 			 } -->
+<!--   }); -->
+<!-- }); -->
+<!-- function save_form(){ -->
+<!--    jQuery("#theForm2").submit(); -->
+<!-- } -->
+<!-- </script> -->
+<script>
+var options = {
+        cssPath : '$!webPath/resources/editor/plugins/code/prettify.css',
+        filterMode : true,
+		uploadJson:'$!webPath/upload.htm',
+		width : '600px',
+		height:'300px',
+		resizeType : 1,
+		allowImageUpload : false,
+		allowFlashUpload : false,
+		allowMediaUpload : false,
+		allowFileManager : false,
+		syncType:"form",
+		afterCreate : function() {
+							var self = this;
+							self.sync();
+						},
+		afterChange : function() {
+							var self = this;
+							self.sync();
+						},
+		afterBlur : function() {
+							var self = this;
+							self.sync();
+						},
+		items:['source', '|', 'fullscreen', 'undo', 'redo', 'print', 'cut', 'copy', 'paste',
+			'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+			'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+			'superscript', '|', 'selectall', 'clearhtml','quickformat','|',
+			'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+			'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image','flash', 'media', 'baidumap','table', 'hr', 'emoticons', 'link', 'unlink', '|', 'about']
+};
+
+jQuery(document).ready(function(){
+//
+jQuery("#theForm").validate({
+    rules:{
+	  store_ower_card:{required :true, minlength: 18},
+	  store_name:{required :true},
+        store_telephone:{required:true,minlength:11},
+	 },
+	messages:{
+	  store_ower_card:{required:"身份证号码不能为空", minlength:"请输入正确的身份证号码"},
+	  store_name:{required :"频道名称不能为空"},
+        store_telephone:{required: "手机号码不能为空",minlength:"请填写正确的手机号码"}
+	}
+  });				
+							
+     editor = KindEditor.create('#store_info',options);
+     jQuery("select").change(function(){
+     var level=jQuery(this).attr("level");
+     var id=jQuery(this).val();
+	 if(id!=""){
+	  jQuery.post("$!webPath/load_area.htm",{"pid":id},function(data){
+	     jQuery("#area"+level).empty();
+		 jQuery("#area"+level).append("<option value=''>请选择</option>");
+	     jQuery.each(data, function(index,item){
+		   jQuery("#area"+level).append("<option value='"+item.id+"'>"+item.areaName+"</option>");
+		 });
+		 jQuery("#area"+level).show();
+	  },"json");
+	 }else{
+	   for(var i=level;i<=3;i++){
+	    jQuery("#area"+i).empty();
+	    jQuery("#area"+i).hide();
+	   }
+	 }
+  });
+ jQuery("#area3").change(function(){
+   var id=jQuery(this).val();
+   jQuery("#area_id").val(id);
+  });
+});
+function save_form(){
+   jQuery("#theForm").submit();
+}
+</script>
+</head>
+<!-----------------------------------------
+  名称：智脑 - 频道中心 - 频道设置
+  文件：channelSetting.html
+  时间：2019年4月3日
+  作者：方凌松
+------------------------------------------->
+<body>
+<!-- 频道设置页面 -->
+<div id="channel-setting">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#settingBox" class="active show channel-setting-btn" data-toggle="tab">频道设置</a></li>
+                       <!--  <li><a href="#bannerBox" data-toggle="tab" class="channel-setting-btn">频道banner</a></li> -->
+                    </ul>
+                    <div class="tab-content ">
+                        <!-- 频道设置 -->
+                        <div class="tab-pane fade active in show" id="settingBox">
+                            <form action="$!webPath/seller/store_set_save.htm" method="post" enctype="multipart/form-data" class="pt20 channelForm" id="theForm">
+                                <input type="hidden"  name="storeId"   value="$!storeId">
+                                <div class="form-group clearfix">
+                                    <label class="control-label float-left  ">频道封面：</label>
+                                    <div class="rightBlock media">
+                                        <!--TODO:占位图-->
+                                        #set($store_logo="$!webPath/$!config.storeImage.path/$!config.storeImage.name")
+                                            #if($!store.store_logo)
+                                               #set($store_logo="$!webPath/$!store.store_logo.path/$!store.store_logo.name")
+                                        #end
+                                        <img src="$!store_logo" class="img-thumbnail mr-3 brn"
+                                             style="width: 100px;height: 100px;" alt="" id="logoHolder">
+                                        
+                                        <div class="media-body inline-block m5">
+
+                                            <input name="logo" type="file" id="logo" size="30" class="mb5" onchange="holderLogo(this)" >
+                                            <p class="tip-text">此图为您的频道封面，将显示在频道信息栏里，建议尺寸100*100像素</p>
+                                        </div>           
+                                    </div>
+                                </div>
+                              <!--   <div class="form-group clearfix">
+                                    <label class="control-label float-left  ">频道LOGO：</label>
+                                    <div class="rightBlock media">
+                                        TODO:占位图
+                                        #set($logo="$!webPath/$!config.storeImage.path/$!config.storeImage.name")
+                                            #if($!store.logo)
+                                               #set($logo="$!webPath/$!store.logo.path/$!store.logo.name")
+                                        #end
+                                        <img src="$!logo" class="img-thumbnail mr-3 brn"
+                                             style="width: 100px;height: 100px;" alt="" id="logoHolder1">
+                                        
+                                        <div class="media-body inline-block m5">
+
+                                            <input name="logopic" type="file" id="logo" size="30" class="mb5" onchange="holderLogo1(this)" >
+                                            <p class="tip-text">此图为您的频道LOGO，将显示在频道信息栏里，建议尺寸100*100像素</p>
+                                        </div>           
+                                    </div>
+                                </div> -->
+                                <div class="form-group clearfix">
+                                    <label class="control-label float-left">频道条幅：</label>
+                                    <div class="rightBlock" style="width: 720px;">
+                                        <!--TODO:占位图-->
+                                        #set($banner="$!webPath/resources/style/shop/$!{store.template}/images/banner.jpg")
+                                           #if($!store.store_banner)
+                                              #set($banner="$!webPath/$!store.store_banner.path/$!store.store_banner.name")
+                                        #end
+<!--                                         <div class="bannerPlaceholder mb10 img-thumbnail" -->
+<!--                                              style="width: 100%;height: 180px;"></div> -->
+                                        <div class="bannerPlaceholder mb10 img-thumbnail"
+                                             style="width: 100%;height: 180px;"><img src="$!banner" width="100%" height="180px" /></div>
+<!--                                         <input type="file" id="tiaofuFile" class="mb10" onchange="holderImg(this)"> -->
+										<input name="banner" type="file" id="banner" size="30" class="mb10" onchange="holderImg(this)"/>
+                                        <p class="tip-text">
+                                            此图为您的频道频道条幅，将显示在频道导航上方的banner位置，建议尺寸宽度为1200像素，频道logo与频道条幅只有点击"保存"后才能生效。</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label pt5">频道创建者： </label>
+                                    <input name="store_ower" type="text" class="form-control" style="width: 250px;" value="$!store.store_ower" readonly>
+<!--                                     <input type="text" class="form-control" style="width: 250px;" placeholder="创建者"> -->
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label pt5">手机号码：</label>
+                                     <input name="store_telephone" type="text" maxlength="11" minlength="11" required class="form-control" style="width: 250px;"
+                                     #if($!store.store_telephone) 
+                                     	value="$!store.store_telephone" 
+                                     #else 
+                                     	value="$!user.mobile" 
+                                     #end>
+                                    <!--<span name="store_telephone" class="form-control" style="width: 250px;"> $!store.store_telephone</span>-->
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label pt5">身份证号：</label>
+                                    <input name="store_ower_card" type="text" class="form-control" data-verify="" style="width: 250px;" value="$!store.store_ower_card">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label pt5">频道名称：</label>
+                                    <input name="store_name" type="text" class="form-control" style="width: 720px;margin-left: 2px"
+                                           value="$!store.store_name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label pt5">频道等级：</label>
+<!--                                     <input name="gradeName" type="text" class="form-control" style="width: 870px;margin-left: 2px" -->
+<!--                                     value="$!store.grade.gradeName"> -->
+										<span name="gradeName"  class="form-control" style="width: 720px;margin-left: 2px">$!store.grade.gradeName</span>
+<!--                                     <div class="form-select relative"> -->
+<!--                                         <select name="" id="pdjd" class="form-control select-clear" -->
+<!--                                                 style="width: 250px;"> -->
+<!--                                             <option value="">- 请选择频道等级 -</option> -->
+<!--                                             <option value="">- -</option> -->
+<!--                                             <option value="">- -</option> -->
+<!--                                         </select> <span class="down-arrow"></span> -->
+<!--                                     </div> -->
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label pt5">频道分类：</label>
+                                    <div class="form-select relative">
+                                        <select name="sc_id" id="discipline" class="form-control select-clear" style="width: 250px;">
+<!--                                             <option value="$!store.storeclass.className">- 请选择频道分类 -</option> -->
+                                            #if($!store.sc.className)
+                                             <option value="$!store.sc.id" selected>$!store.sc.className</option>
+                                              #foreach($sc in $scs)
+                                                 #if($!store.sc.id != $!sc.id)
+						                         <option value="$!sc.id" >$!sc.className</option>
+						                         #end
+						                     #end
+                                             #else
+                                                 <option value="0" selected>- 请选择频道分类 -</option>
+                                                 #foreach($sc in $scs)
+                                                   #if($!store.sc.id != $!sc.id)
+						                             <option value="$!sc.id" >$!sc.className</option>
+						                           #end
+						                         #end
+						                     #end
+                                        </select>
+<!-- 				                           <select name="store_class_id" id="discipline" class="form-control article-input" required> -->
+				
+<!-- 				                                <option value="0">- 请选择 -</option> -->
+<!-- 				                                #foreach($so in $scs) -->
+				
+<!-- 				                                #if($so.id==$obj.sc.id) -->
+<!-- 				                                <option value="$!so.id" selected>$!so.className</option> -->
+<!-- 				                                #else -->
+<!-- 				                                <option value="$!so.id">$!so.className</option> -->
+<!-- 				                                #end -->
+				
+<!-- 				                                 #foreach($sc1 in $so.childs) -->
+<!-- 				                                  #if($sc1.id==$obj.sc.id) -->
+<!-- 				                                <option value="$!sc1.id" selected>$!sc1.className</option> -->
+<!-- 				                                #else -->
+<!-- 				                                <option value="$!sc1.id">$!sc1.className</option> -->
+<!-- 				                                #end -->
+<!-- 				                                #end -->
+<!-- 				                                #end -->
+<!-- 				                            </select> -->
+
+                                        <span class="down-arrow"></span>
+                                    </div>
+                                
+                                </div>
+<!--                                 <div class="form-group"> -->
+<!--                                     <label class="control-label pt5">身份证号：</label> -->
+<!--                                     <input type="text" class="form-control" style="width: 250px;" placeholder="创建者"> -->
+<!--                                 </div> -->
+                                
+                                <div class="form-group clearfix">
+                                    <label class="control-label pt5">频道简介：</label>
+                                    <input name="store_info" type="text" class="form-control" required
+                                              style="height: 80px;width: 720px;margin-left: 2px" maxlength="500" value="$!store.store_info" >
+                                </div>
+                              <!--   <div class="form-group">
+                                    <label class="control-label pt5">标签：</label>
+                                    <input name="store_label" type="text" class="form-control" style="width: 870px;margin-left: 2px"
+                                           value="$!store.store_label">
+                                </div> -->
+<!--                                 <div class="form-group"> -->
+<!--                                     <label class="control-label pt5" type="text">投稿须知:</label> -->
+<!--                                     <input name="contribute_know" type="text" class="form-control" style="width: 870px;margin-left: 2px" -->
+<!--                                            value="$!store.contribute_know"> -->
+<!--                                 </div> -->
+                                <!--<div class="form-group clearfix">-->
+                                    <!--<label class="control-label pt5">投稿须知：</label>-->
+                                    <!--<input name="store.contribute_know" type="text" class="form-control"-->
+                                              <!--style="height: 80px;width: 870px;margin-left: 2px" value="$!store.contribute_know" maxlength="30">-->
+                                <!--</div>-->
+                                <br>
+                                <div class="text-center">
+                                    <button class="btn channel-btn blues" type="submit" style="width: 120px;" onclick="save_store();">保存
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- 频道Banner-->
+                        <div class="tab-pane fade" id="bannerBox">
+                            <form action="$!webPath/seller/store_slide_save.htm" method="post" enctype="multipart/form-data" class="channelForm pt35" id="theForm2">
+                                <input type="hidden"  name="storeId"   value="$!storeId">
+                                <div class="form-group clearfix">
+                                    <label class="control-label float-left">幻灯片1：</label>
+                                    <div class="rightBlock" style="width: 870px;">
+                                        <!--TODO:占位图-->
+                                        #if($!store.slides.size()>=1)
+				                          #set($slide1=$!store.slides.get(0))
+				                        #end
+<!--                                         <div class="bannerPlaceholder mb10" style="width: 100%;height: 180px;"><img src="$!webPath/$!slide1.acc.path/$!slide1.acc.name" width="100%" height="180px"  /> -->
+                                        
+<!--                                         </div> -->
+                                        <div class="bannerPlaceholder mb10 "  style="width: 100%;height: 180px;">
+                                        #set($banner1="$!webPath/resources/style/shop/$!{store.template}/images/banner.jpg")
+				                        #if($!slide1)
+				                        #set($banner1="$!webPath/$!slide1.acc.path/$!slide1.acc.name")
+				                        #end
+                                        <img src="$!banner1" width="100%" height="180px" /></div>
+                                        
+<!--                                         <input type="file" id="File1" class="mb10" onchange="holderImg(this)"> -->
+                                        
+				                          <input name="acc1" type="file" id="acc1" size="30" class="mb10" onchange="holderImg(this)" >
+				                     
+                                        <p class="tip-text">此图为您的店铺首页幻灯片，建议尺寸1200*288像素</p>
+                                     </div>
+                                 </div>
+                                
+                                <div class="form-group clearfix">
+                                    <label class="control-label float-left">幻灯片2：</label>
+                                    <div class="rightBlock" style="width: 870px;">
+                                        <!--TODO:占位图-->
+                                        #if($!store.slides.size()>=2)
+				                          #set($slide2=$!store.slides.get(1))
+				                        #end
+				                        
+<!--                                         <div class="bannerPlaceholder mb10" style="width: 100%;height: 180px;"><img src="$!webPath/$!slide2.acc.path/$!slide2.acc.name" width="100%" height="180px" /></div> -->
+                                         <div class="bannerPlaceholder mb10 "
+                                             style="width: 100%;height: 180px;">
+                                             #set($banner2="$!webPath/resources/style/shop/$!{store.template}/images/banner.jpg")
+						                        #if($!slide2)
+						                        #set($banner2="$!webPath/$!slide2.acc.path/$!slide2.acc.name")
+						                        #end
+                                             <img src="$!banner2" width="100%" height="180px" /></div>
+                                       
+<!--                                         <input type="file" id="File2" class="mb10" onchange="holderImg(this)"> -->
+                                        
+				                          <input name="acc2" type="file" id="acc2" size="30" class="mb10" onchange="holderImg(this)" >
+				                      
+                                        <p class="tip-text">此图为您的店铺首页幻灯片，建议尺寸1200*288像素</p>
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label float-left">幻灯片3：</label>
+                                    <div class="rightBlock" style="width: 870px;">
+                                        <!--TODO:占位图-->
+                                        #if($!store.slides.size()>=3)
+				                          #set($slide3=$!store.slides.get(2))
+				                        #end
+				                        
+                                        <div class="bannerPlaceholder mb10" style="width: 100%;height: 180px;">
+                                        #set($banner3="$!webPath/resources/style/shop/$!{store.template}/images/banner.jpg")
+				                        #if($!slide3)
+				                        #set($banner3="$!webPath/$!slide3.acc.path/$!slide3.acc.name")
+				                        #end
+                                       <img src="$!banner3" width="100%" height="180px"  />
+                                        </div>
+                                        
+<!--                                         <input type="file" id="File3" class="mb10" onchange="holderImg(this)"> -->
+                                       
+				                            <input name="acc3" type="file" id="acc3" size="30" class="mb10" onchange="holderImg(this)">
+				                        
+                                        <p class="tip-text">此图为您的店铺首页幻灯片，建议尺寸1200*288像素</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group clearfix">
+                                    <label class="control-label float-left">幻灯片4：</label>
+                                    <div class="rightBlock" style="width: 870px;">
+                                        <!--TODO:占位图-->
+                                        #if($!store.slides.size()>=4)
+				                          #set($slide4=$!store.slides.get(3))
+				                        #end
+<!--                                         <div class="bannerPlaceholder mb10" style="width: 100%;height: 180px;"><img src="$!webPath/$!slide1.acc.path/$!slide1.acc.name" width="100%" height="180px"  /> -->
+<!--                                         </div> -->
+                                        <div class="bannerPlaceholder mb10 "
+                                             style="width: 100%;height: 180px;">
+                                             #set($banner4="$!webPath/resources/style/shop/$!{store.template}/images/banner.jpg")
+						                        #if($!slide4)
+						                        #set($banner4="$!webPath/$!slide4.acc.path/$!slide4.acc.name")
+						                        #end
+                                             <img src="$!banner4" width="100%" height="180px" /></div>
+<!--                                         <input  type="file" id="File4" class="mb10" onchange="holderImg(this)"> -->
+				                             <input name="acc4" type="file" id="acc4" size="30" class="mb10" onchange="holderImg(this)" >
+				                       
+                                        <p class="tip-text">此图为您的店铺首页幻灯片，建议尺寸1200*288像素</p>
+                                     </div>
+                                 </div>
+                                
+                                <div class="form-group clearfix">
+                                    <label class="control-label float-left">幻灯片5：</label>
+                                    <div class="rightBlock" style="width: 870px;">
+                                        <!--TODO:占位图-->
+                                        #if($!store.slides.size()>=5)
+				                          #set($slide5=$!store.slides.get(4))
+				                        #end
+				                        
+<!--                                         <div class="bannerPlaceholder mb10" style="width: 100%;height: 180px;"><img src="$!webPath/$!slide1.acc.path/$!slide1.acc.name" width="100%" height="180px"  /> -->
+<!--                                         </div> -->
+                                        <div class="bannerPlaceholder mb10 "
+                                             style="width: 100%;height: 180px;">
+                                             #set($banner5="$!webPath/resources/style/shop/$!{store.template}/images/banner.jpg")
+						                        #if($!slide5)
+						                        #set($banner5="$!webPath/$!slide5.acc.path/$!slide5.acc.name")
+						                        #end
+                                             <img src="$!banner5" width="100%" height="180px" /></div>
+                                        
+<!--                                         <input  type="file" id="File5" class="mb10" onchange="holderImg(this)"> -->
+                                       
+				                            <input name="acc5" type="file" id="acc5" size="30" class="mb10" onchange="holderImg(this)" >
+				                        
+                                        <p class="tip-text">此图为您的店铺首页幻灯片，建议尺寸1200*288像素</p>
+                                     </div>
+                                 </div>
+                                <br>
+
+                                <div class="text-center">
+                                    <button class="btn channel-btn blues" type="submit" style="width: 120px;" >保存</button>
+<!--                                     <input type="button"  value="保 存" style="cursor:pointer;" onclick="save_form();"/> -->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/js/script.js"></script>
+<script>
+
+    // 切换标签页的时候动态改变父页面iframe高度
+    $("[data-toggle='tab']").on("shown.bs.tab",function () {
+        window.parent.setIframeHeight("channelFrame");
+    });
+
+    $(".channel-setting-btn").on("click", function () {
+        window.parent.setIframeHeight();
+    });
+
+    function holderImg(obj) {
+        var fileInput = $(obj);
+        var image_holder = fileInput.prev('.bannerPlaceholder');
+        image_holder.empty();
+        if (typeof (FileReader) != "undefined") {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("<img />", {
+                    "src": e.target.result,
+                    "class": "placeholderImg"
+                }).appendTo(image_holder);
+            };
+            image_holder.show();
+            reader.readAsDataURL(fileInput[0].files[0]);
+        } else {
+            layer.alert("你的浏览器不支持上传图片预览.");
+        }
+    }
+    
+    function holderLogo(obj) {
+        var fileInput = $(obj);
+        var image_holder = $("#logoHolder")
+        if (typeof (FileReader) != "undefined") {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                image_holder.attr('src', e.target.result);
+            };
+            image_holder.show();
+            reader.readAsDataURL(fileInput[0].files[0]);
+        } else {
+            layer.alert("你的浏览器不支持上传图片预览.");
+        }
+    } 
+
+    function holderLogo1(obj) {
+        var fileInput = $(obj);
+        var image_holder = $("#logoHolder1")
+        if (typeof (FileReader) != "undefined") {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                image_holder.attr('src', e.target.result);
+            };
+            image_holder.show();
+            reader.readAsDataURL(fileInput[0].files[0]);
+        } else {
+            layer.alert("你的浏览器不支持上传图片预览.");
+        }
+    } 
+    
+    // function save_store(){
+    //   alert("频道设置成功！");
+    // }
+    
+    function save_banner(){
+      alert("频道banner设置成功！");
+    }
+
+</script>
+</body>
+</html>

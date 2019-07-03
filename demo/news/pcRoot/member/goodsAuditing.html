@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章审核</title>
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-global.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-styles.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/animate.css">
+    <!--[if lt IE 9]>
+    <script src="http://www.jq22.com/jquery/html5.min.js"></script>
+    <![endif]-->
+</head>
+<!-----------------------------------------
+  名称：智脑 - 频道中心 - 文章审核
+  时间：2019年4月3日
+  作者：方凌松
+------------------------------------------->
+<body>
+<!-- 文章审核页面 -->
+
+<div id="channel-setting">
+    <div class="topss clearfix">
+        <button class="btn btn-add" type="button" onclick="waitAudit()">待审核</button>
+        &nbsp;&nbsp;
+        <button class="btn btn-delete" type="button" onclick="refuseAudit()">已拒绝</button>
+    </div>
+    <div class="table-responsive-sm pt20">
+        <table class="table table-bordered table-even table-mouseover table-center" width="100%"
+               id="frendTable">
+            <thead class="thead-bg2">
+            <tr>
+                <th>名称</th>
+                <th>作者</th>
+                <th>联系方式</th>
+                <th>分类</th>
+                <th>投递时间</th>
+                #if(!$!searchType)
+                <th>操作</th>
+                #end
+            </tr>
+            </thead>
+            <tbody>
+            #foreach($obj in $objs)
+            <tr>
+                <td><a href="$!webPath/goods_$!{obj.goods.id}.htm" target="_blank">$!obj.goods.goods_name</a>
+                </td>
+                <td>$!obj.goods.user.userName</td>
+                <td>$!obj.goods.user.mobile</td>
+                <td>#if($!obj.goods.gc)$!storeTools.generic_goods_class_info($!obj.goods.gc)#end</td>
+                <td>$!CommUtil.formatLongDate($!obj.deliveryTime)</td>
+
+                #if(!$!searchType)
+                <td>
+
+                    <a href="$!webPath/seller/review.htm?articleId=$!obj.goods.id&channelId=$!obj.store.id"
+                       data-toggle="layer">审核</a>
+                </td>
+                #end
+            </tr>
+            #end
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/js/script.js"></script>
+<script>
+    function waitAudit() {
+        window.location.href = "$!webPath/seller/goods_auditing.htm?storeId=$!storeId";
+    }
+
+    function refuseAudit() {
+        window.location.href = "$!webPath/seller/goods_auditing.htm?storeId=$!storeId&searchType=1";
+    }
+
+
+
+    $("[data-toggle='layer']").on("click", function (e) {
+        // 获取路径
+        var url = $(this).attr('href');
+        jQuery.get(url, function (data) {
+            window.parent.showModal(['495px', '330px'], data, function () {
+                $("#saveReview").on("click", function () {
+                    parent.layer.closeAll()
+                });
+            });
+        });
+        e.preventDefault();
+    });
+</script>
+</body>
+</html>

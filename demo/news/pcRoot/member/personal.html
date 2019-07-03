@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人资料</title>
+
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/jquery-ui/css/jquery-ui.min.css">-->
+    <link rel="stylesheet" href="$!webPath/resources/style/common/css/jquery-ui-1.8.22.custom.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-global.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-styles.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/animate.css">
+<script src="$!webPath/resources/mystyle/static/js/script.js"></script>
+<script src="$!webPath/resources/js/swfobject.js"></script>
+</head>
+
+<!-----------------------------------------
+  名称：智脑-我的账户-个人资料
+  时间：2019年4月2日
+  作者：方凌松
+------------------------------------------->
+<body>
+
+<div class="container-fluid">
+  <!--    <ul class="path-nav full">
+        <li>我的账户</li>
+        <li>个人资料</li>
+    </ul>-->
+
+    <div class="home-page pt35" style="margin:0 0 0 60px !important;">
+
+        <ul class="nav nav-tabs person-tabs">
+            <li class="active"><a href="#information" data-toggle="tab" id="informationTab">基本信息</a></li>
+            <li><a href="#password" data-toggle="tab" id="passwordTab">密码修改</a></li>
+            <li><a href="#authentication" data-toggle="tab" id="authenticationTab">实名认证</a></li>
+            <li><a href="#pictureUpload" data-toggle="tab" id="pictureUploadTab">头像上传</a></li>
+        </ul>
+
+        <div class="tab-content clearfix">
+
+            <!-- 基本信息 -->
+            <div class="tab-pane fadeIn animated-fast pb30" id="information">
+                <form action="$!webPath/member/account_save.htm" method="post" class="user-form" id="informationForm">
+
+                    <!-- 保存当前用户id -->
+                    <input type="hidden" name="uid" value="$!user.id">
+
+                    <!-- 用户名 -->
+                    <div class="form-group clearfix">
+                        <label class="control-label">用户名：</label>
+                        <input type="text" class="form-control static" value="$!user.userName"
+                               style="width: 325px !important;">
+                    </div>
+
+                    <!-- 手机号码 -->
+                    <div class="form-group clearfix">
+                        <label class="control-label ">手机号码：</label>
+                        <input type="text" class="form-control" maxlength="11" value="$!user.mobile" readonly="true" style="width: 325px !important;">
+                    </div>
+
+                    <!-- 性别 -->
+                    <div class="form-group clearfix">
+                        <label class="control-label">性别：</label>
+                        <div class="ml25">
+                            <label class="radio-inline" data-toggle="radio">
+                                <input type="radio" id="radio" name="sex" value="-1"/>
+                                <span>保密</span>
+                            </label>
+                            &nbsp;&nbsp;&nbsp;
+                            <label class="radio-inline" data-toggle="radio">
+                                <input type="radio" id="radio" name="sex" value="1"/>
+                                <span>男</span>
+                            </label>
+                            &nbsp;&nbsp;&nbsp;
+                            <label class="radio-inline" data-toggle="radio">
+                                <input type="radio" id="radio" name="sex" value="0"/>
+                                <span>女</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 出生日期 -->
+                    <div class="form-group clearfix">
+                        <label class="control-label">生日：</label>
+                        <input name="birthday" type="text" id="birthday" style="width: 325px !important;" class="form-control" value="$!CommUtil.formatShortDate($!user.birthday)"/>
+                        <!-- <input name="birthday" type="text" id="birthday" class="form-control" value="$!CommUtil.formatShortDate($!user.birthday)"> -->
+                        <!--                           -->
+                        <!--                         <span class="tip-text" style="margin-left:8px">输入格式为"19950722"</span> -->
+
+                    </div>
+                    
+                    <!-- 身份证号  -->
+                    <div class="form-group clearfix">
+                        <label class="control-label">身份证号：</label>
+                        <input name="idcode" type="text" id="idcode" class="form-control" value="$!user.idcode"
+                               style="width: 325px !important;"/>
+                    </div>
+                    
+                    <!-- 电子邮箱  -->
+                    <div class="form-group clearfix">
+                        <label class="control-label">电子邮箱：</label>
+                        <input name="email" type="text" id="email" class="form-control" value="$!user.email"
+                               style="width: 325px !important;"/>
+                    </div>
+                    
+                    <!-- 职业  -->
+                    <div class="form-group clearfix">
+                        <label class="control-label">职业：</label>
+                        <input name="profession" type="text" id="profession" class="form-control" value="$!user.profession"
+                               style="width: 325px !important;"/>
+                    </div>
+                    
+                    <!-- 职称  -->
+                    <div class="form-group clearfix">
+                        <label class="control-label">职称：</label>
+                        <input name="title" type="text" id="title" class="form-control" value="$!user.title"
+                               style="width: 325px !important;"/>
+                    </div>
+                    
+                    <!-- 专业领域  -->
+                    <div class="form-group clearfix">
+                        <label class="control-label">专业领域：</label>
+                        <input name="major" type="text" id="major" class="form-control" value="$!user.major"
+                               style="width: 325px !important;"/>
+                    </div>
+                    
+                    <!-- 工作单位  -->
+                    <div class="form-group clearfix">
+                        <label class="control-label">工作单位：</label>
+                        <input name="workorg" type="text" id="workorg" class="form-control" value="$!user.workorg"
+                               style="width: 325px !important;"/>
+                    </div>
+                    
+                    <!-- 通讯地址  -->
+                    <div class="form-group clearfix">
+                        <label class="control-label">通讯地址：</label>
+                        <div data-toggle="" class="region-select">
+
+                            <div class="form-select">
+                                <select id="areas_province" areaMark="province" class="form-control">
+                                    <option>请选择...</option>
+                                    #foreach($area in $areas)
+                                    <option value="$!area.id">$!area.areaName</option>
+                                    #end
+                                </select>
+                            </div>
+                            <div class="form-select">
+                                <select id="areas_city" areaMark="city" class="form-control">
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                            <div class="form-select">
+                                <select id="area_id" name="area_id" class="form-control">
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 个人简介 -->
+                    <div class="form-group clearfix" style="align-items: flex-start">
+                        <label class="control-label" for="introduce">个人简介：</label>
+                        <textarea name="introduce" id="introduce" class="form-control" style="width: 600px;height: 150px;">$!user.introduce</textarea>
+                    </div>
+                    <br>
+
+                    <!-- 二维码名片 -->
+                  <!--    <div class="form-group clearfix pt10" style="align-items: flex-start">
+                        <label class="control-label">二维码名片：</label>
+                        <img src="$!webPath/resources/mystyle/static/images/codes.png" alt=""
+                             style="width: 118px;height: 119px;margin-top: 5px">
+                    </div>-->
+                  
+                    <!-- 保存按钮 -->
+                    <div class="form-group buttons">
+                        <input name="" type="button" value="保存" class="btn person-submit" style="cursor:pointer; " id="person-submit"/>
+                    </div>
+                </form>
+            </div>
+
+            <!-- 密码修改 -->
+            <div class="tab-pane fadeIn animated-fast " id="password">
+                <form action="$!webPath/member/account_password_save.htm" method="post" name="passwordForm" id="passwordForm"
+                      class="user-form">
+                    <!-- 保存当前用户id -->
+                    <input type="hidden" name="uid" value="$!user.id">
+                    <div class="form-group">
+                        <label class="control-label">您的密码：</label>
+                        <input name="old_password" class="form-control" type="password" id="old_password" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="new_password">设置新密码：</label>
+                        <input name="new_password" class="form-control" type="password" id="new_password" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="confirmPsd">确认新密码：</label>
+                        <input name="confirmPsd" class="form-control" type="password" id="confirmPsd" required>
+                    </div>
+                    <div class="form-group pt40">
+                        <button class="btn password-submit" type="submit" id="password-submit">提 交</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- 实名认证 -->
+            <div class="tab-pane fadeIn animated-fast " id="authentication">
+
+                #if($!user.idcarda && $!user.idcardb && $!user.authentication == 1 )
+                    <div class="authenticationStatus">
+                        <div id="yesSuccess" class="authenticationStatus-item animated-fast fadeIn">
+                            <img src="$!webPath/resources/mystyle/static/images/icon-ok.png">
+                            已认证！
+                        </div>
+                    </div>
+                #elseif($!user.idcarda && $!user.idcardb && $!user.authentication == 0 )
+                    <div class="authenticationStatus">
+                        <div id="yesPass" class="authenticationStatus-item animated-fast fadeIn">
+                            <img src="$!webPath/resources/mystyle/static/images/icon-ok.png">
+                            认证信息已提交，请耐心等待审核！
+                        </div>
+                    </div>
+                #else
+                #if($!user.idcarda && $!user.idcardb && $!user.authentication ==2 )
+                    <div class="authenticationStatus">
+                       <div id="noPass" class="authenticationStatus-item animated-fast fadeIn">
+                           <img src="$!webPath/resources/mystyle/static/images/icon-times.png">
+                            审核未通过请重新提交！
+                       </div>
+                    </div>
+                    #end
+                <form class="user-form" id="authenticationForm" action="$!webPath/member/account_confirm_save.htm" method="post">
+                    <!-- 保存当前用户id -->
+                    <input type="hidden" name="uid" value="$!user.id">
+                    
+                    <div class="form-group">
+                        <label class="control-label">真实姓名：</label>
+                        <input type="text" class="form-control" data-verify="notNull" id="realname" name="realname" data-error-msg="请输入姓名" value="$!user.trueName" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">身份证号：</label>
+                        <input type="text" class="form-control" id="idcard" name="idcard" data-verify="idCard" data-error-msg="请输入正确的身份证号" maxlength="18" value="$!user.idcode" required>
+                    </div>
+                    <div class="form-group text-left" style="align-items: flex-start;justify-content:flex-start;height: auto">
+                        <label class="control-label">上传照片：</label>
+                        <div class="user-photos">
+                            个人信息面
+                            <div class="xx-box">
+
+
+                                #if($!user.idcarda)
+                                <img src="$!webPath/$!user.idcarda.path/$!user.idcarda.name" id="idcard_show_a"
+                                     width="182" height="118">
+                                #else
+                                <img src="$!webPath/$!user.idcarda.path/$!user.idcarda.name" id="idcard_show_a"
+                                     width="182" height="118" style="display: none">
+                                <label class="xxs">
+                                    <span>+</span>
+                                    点此上传 <input type="file" class="idcard-xx" id="idcard-1" name="idcard-1">
+                                    <input type="hidden" name="image_type_a" id="image_type_a" value="">
+                                    <input type="hidden" name="idcard_a" id="idcard_a" value="">
+                                </label>
+                                #end
+
+                                &nbsp;
+                                <img src="$!webPath/resources/mystyle/static/images/xx.png" alt="idcard_b">
+
+                            </div>
+                            <br>
+                            <br>
+                            国徽面
+                            <div class="gh-box">
+                                #if($!user.idcardb)
+                                <img src="$!webPath/$!user.idcardb.path/$!user.idcardb.name" id="idcard_show_b"
+                                     width="182" height="118">
+                                #else
+                                <img src="$!webPath/$!user.idcardb.path/$!user.idcardb.name" id="idcard_show_b"
+                                     width="182" height="118" style="display: none">
+                                <label class="ghs">
+                                    <span>+</span>
+                                    点此上传
+                                    <input type="file" class="idcard-xx" id="idcard-2" name="idcard-2">
+                                    <input type="hidden" name="image_type_b" id="image_type_b" value="">
+                                    <input type="hidden" name="idcard_b" id="idcard_b" value="">
+                                </label>
+                                #end
+
+                                &nbsp;
+                                <img src="$!webPath/resources/mystyle/static/images/gh.png" alt="">
+
+                            </div>
+
+                            <br>
+                            <p class="text-danger">注：<br>
+                                &nbsp;&nbsp;1.请上传清晰的身份证正面、反面共2张照片<br>
+                                &nbsp;&nbsp;2.照片不超过5M，支持格式jpg、jpeg、png
+                            </p>
+                        </div>
+                    </div>
+<div class="form-group clearfix mb20">
+                <label class="control-label m0 pb5 strong">手机号</label>
+                <div class="form-select relative block">
+                    <select name="mobile" id="mobile" class=" brn form-control select-clear" style="height: 44px">
+                        <option value="$!user.mobile">$!user.mobile</option>
+                    </select>
+                    <span class="blue-arrow"><i class="fa fa-angle-down"></i></span>
+                </div>
+            </div>
+            <div class="form-group clearfix mb20">
+                <label class="control-label m0 pb5 strong">短信验证码</label>
+
+                <div class="form-select relative block">
+                    <input type="text"  name="verifCode" class="form-control" data-verify="notNull" style="width: 200px;height: 44px;" placeholder="请输入六位数验证码">
+                    &nbsp;&nbsp;
+                        <button type="button" id="sendCode" class="btn border bg-white brn float-right" style="width: 150px;height: 44px;" onclick="javascript:sendSms();">发送验证码</button>
+                </div>
+            </div>
+            
+                    <div class="form-group pt40">
+                        <button class="btn authentication-submit" type="button" style="width: auto !important;" id="authenticationSubmit">提交实名认证信息</button>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                </form>
+                #end
+            </div>
+
+               <!-- 头像上传 -->
+            <div class="tab-pane fadeIn animated-fast " id="pictureUpload">
+                
+                <form action="$!webPath/member/upload_avatar.htm" method="post" id="uploadForm">
+                    
+                    <div class="text-center pt45" style="width: 588px">
+                        
+                        <label id="uploadHeadImg" for="headImg">
+                            <input type="file" id="headImg" name="headImg" />
+                            <input type="hidden" name="image_type" id="image_type" value="">
+                            <input type="hidden" name="big_avatar" id="big_avatar" value="">
+
+                            <i class="fa fa-image" id="icons"></i>&nbsp;选择照片
+                        </label>
+                        <br>
+                        <p class="text-center uploadFileText mb20">支持jpg、jpeg、gif、png、bmp格式的图片</p>
+                        <br>
+                        <!-- 头像预览区域 -->
+                        #set($userImg="$!webPath/$!config.memberIcon.path/$!config.memberIcon.name")
+                        #if($!user.photo)
+                        #set($userImg="$!webPath/$!user.photo.path/$!user.photo.name")
+                        #end
+                        <div id="img-holderBox">
+                            <img src="$!userImg" alt="" style="width: 100px;height:100px;" id="imgshow">
+                        </div>
+                        <br>
+                        <h6 style="color: #999;">头像预览</h6>
+                        <br>
+                        <button id="submitUpload" type="button" onclick="javascript:subUploadForm();" class="btn">提 交</button>
+                    </div>
+                <div class="ordercon">
+              <div class="modifyheadimg">
+                <script type="text/javascript">
+
+                function subUploadForm(){
+                    if($("#headImg").val()==""){
+                        layer.alert("请选择图片！",{},function(){
+                                layer.closeAll();
+                            });
+                            return false;
+                    }else{
+                        document.getElementById('uploadForm').submit();
+                    }
+                }
+
+                $("#headImg").on("change",headPortraitListener);
+
+                 /*定义全局变量存贮图片信息*/
+                 var base64head="";
+                 var imgType = "";
+
+                /*头像上传监听*/
+                function headPortraitListener(e) {
+                    var img = document.getElementById('imgshow');
+                      if(window.FileReader) {
+                          var file  = e.target.files[0];
+                          var fileName = e.target.value;
+                          console.log("fileName   "+fileName);
+
+                          if(file.size/1048576>1){
+                            layer.alert("请上传1M以内的图片！",{},function(){
+                                layer.closeAll();
+                            });
+                            return false;
+                          }
+
+                          var reader = new FileReader();
+                          if (file && file.type.match('image.*')) {
+                              reader.readAsDataURL(file);
+                          } else {
+                              img.css('display', 'none');
+                              img.attr('src', '');
+                          }
+                          console.log("reader   "+reader);
+                          reader.onloadend = function (e) {
+                          img.setAttribute('src', reader.result);
+                          //imgType = reader.result.split(",")[0].split(";")[0].replace("data:image/","");
+                          imgType = fileName.split(".")[1];
+
+                          base64head = reader.result.split(",")[1];
+                          console.log("base64head   "+base64head.length);
+                          console.log("imgType   "+imgType);
+                          $("#image_type").val("."+imgType);
+                          console.log("imgType   "+$("#image_type").val());
+
+                          $("#big_avatar").val(base64head);
+
+                        }
+                      }
+                }
+
+            </script>
+      
+                </form>
+            
+            </div>
+    </div>
+
+</div>
+
+
+<script>
+    jQuery('#birthday').datepicker({
+        dateFormat: "yy-mm-dd",
+        dayNamesMin:['日','一','二','三','四','五','六'],
+        monthNamesShort:['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+        yearRange: "1950:2020",
+        changeMonth: true,
+        changeYear: true
+    });
+
+    personal.portraitHolder();
+
+    window.onload = function () {
+        if (location.hash) {
+            var theinfoTab = $(location.hash);
+            theinfoTab.tab('show');
+        } else {
+            var infoTab = $("#informationTab");
+            infoTab.tab('show');
+        }
+    };
+
+    $("#passwordForm").validate({
+        rules: {
+            confirmPsd: {
+                required: true,
+                equalTo: "#new_password"
+            }
+        },
+        messages: {
+            confirmPsd: {
+                required: "两次密码输入不一致",
+            }
+        },
+    });
+
+    $(document).ready(function () {
+
+        $(":radio[value=$!user.sex]").attr("checked", true);
+
+        //获取下级地区信息
+        $("select[id^=areas_]").change(function () {
+            var areaMark = jQuery(this).attr("areaMark");
+            var parent_id = jQuery("#areas_" + areaMark).val();
+            jQuery.post("$!webPath/buyer/account_getAreaChilds.htm", {
+                "parent_id": parent_id,
+                "areaMark": areaMark
+            }, function (data) {
+                if (areaMark == "province") {
+                    jQuery("#area_id").html("<option>请选择...</option>");
+                    jQuery("#areas_city").html("<option>请选择...</option>");
+                    jQuery("#areas_city").append(data);
+                }
+                if (areaMark == "city") {
+
+                    jQuery("#area_id").html(data);
+                }
+            }, "text");
+        });
+
+    #if ($!user.area)
+        jQuery("#areas_province").val("$!user.area.parent.parent.id");
+        jQuery("#areas_city").html("<option>$!user.area.parent.areaName</option>");
+        jQuery("#area_id").html("<option value=\"$!user.area.id\">$!user.area.areaName</option>");
+    #end
+
+    });
+
+    $("#idcard_show_a").on("click", function () {
+        $(".xxs").trigger("click");
+    });
+    $("#idcard_show_b").on("click", function () {
+        $(".ghs").trigger("click");
+    });
+                
+    $("#idcard-1").on("change",idcardAListener);
+    $("#idcard-2").on("change",idcardBListener);
+
+                 /*定义全局变量存贮图片信息*/
+                 var base64head="";
+                 var imgType = "";
+
+                /*头像上传监听*/
+                function idcardAListener(e) {
+                    var img = document.getElementById('idcard_show_a');
+                      if(window.FileReader) {
+                          var file  = e.target.files[0];
+                          var fileName = e.target.value;
+                          console.log("fileName   "+fileName);
+
+                          if(file.size/1048576>1){
+                            layer.alert("请上传1M以内的图片！",{},function(){
+                                layer.closeAll();
+                            });
+                            return false;
+                          }
+
+                          var reader = new FileReader();
+                          if (file && file.type.match('image.*')) {
+                              reader.readAsDataURL(file);
+                          } else {
+                              img.css('display', 'none');
+                              img.attr('src', '');
+                          }
+                          console.log("reader   "+reader);
+                          reader.onloadend = function (e) {
+                          img.setAttribute('src', reader.result);
+                              $("#idcard_show_a").show();
+                              $(".xxs").hide();
+                              //imgType = reader.result.split(",")[0].split(";")[0].replace("data:image/","");
+                          imgType = fileName.split(".")[1];
+
+                          base64head = reader.result.split(",")[1];
+                          console.log("base64head   "+base64head.length);
+                          console.log("imgType   "+imgType);
+                          $("#image_type_a").val("."+imgType);
+                          console.log("imgTypea   "+$("#image_type_a").val());
+
+                          $("#idcard_a").val(base64head);
+
+                        }
+                      }
+                }
+
+
+                /*头像上传监听*/
+                function idcardBListener(e) {
+                    var img = document.getElementById('idcard_show_b');
+                      if(window.FileReader) {
+                          var file  = e.target.files[0];
+                          var fileName = e.target.value;
+                          console.log("fileName   "+fileName);
+
+                          if(file.size/1048576>1){
+                            layer.alert("请上传1M以内的图片！",{},function(){
+                                layer.closeAll();
+                            });
+                            return false;
+                          }
+
+                          var reader = new FileReader();
+                          if (file && file.type.match('image.*')) {
+                              reader.readAsDataURL(file);
+                          } else {
+                              img.css('display', 'none');
+                              img.attr('src', '');
+                          }
+                          console.log("reader   "+reader);
+                          reader.onloadend = function (e) {
+                          img.setAttribute('src', reader.result);
+                              $("#idcard_show_b").show();
+                              $(".ghs").hide();
+                              //imgType = reader.result.split(",")[0].split(";")[0].replace("data:image/","");
+                          imgType = fileName.split(".")[1];
+
+                          base64head = reader.result.split(",")[1];
+                          console.log("base64head   "+base64head.length);
+                          console.log("imgType   "+imgType);
+                          $("#image_type_b").val("."+imgType);
+                          console.log("imgTypeb   "+$("#image_type_b").val());
+
+                          $("#idcard_b").val(base64head);
+
+                        }
+                      }
+                }
+    
+
+    var personSubmit = jQuery("#person-submit");
+    personSubmit.on("click", function () {
+        var form = $("#informationForm");
+        var action = form.attr("action");
+        var data = form.serialize();
+        jQuery.ajax({
+            url: action,
+            data: data,
+            type: "post",
+            success: function (data) {
+                alertModal(1,"个人信息修改成功",function (index) {
+                    layer.close(index);
+                })
+            },
+            error: function (data) {
+                alertModal(2, "个人信息修改失败", function (index) {
+                    layer.close(index);
+                });
+            }
+        })
+    });
+
+    var authenticationSubmit = $("#authenticationSubmit");
+        authenticationSubmit.on("click", function () {
+            var forms = $("#authenticationForm");
+            AuthenticationSubmit();
+            /* if (validateForm(forms) > 0) {
+                console.log("校验通过");
+                AuthenticationSubmit();
+            } else {
+                console.log("校验未通过");
+                return false;
+            } */
+        });
+
+
+    function AuthenticationSubmit() {
+        var form = $("#authenticationForm");
+        var action = form.attr("action");
+
+        var data = form.serialize();
+        jQuery.ajax({
+            url: action,
+            data: data,
+            type: "post",
+            success: function (d) {
+            	alert("yes!!!");
+            	console.log(d);
+                d = eval(d);
+                alertModal(1, d.msg, function (index) {
+                    layer.close(index);
+                     setTimeout(function () {
+                        location.reload();
+                    }, 1000);
+                }) 
+            },
+            error: function (data) {
+                alertModal(2, "信息提交失败", function (index) {
+                    layer.close(index);
+                });
+            }
+        })
+    }
+        
+        
+</script>
+
+
+
+</body>
+</html>

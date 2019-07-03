@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>频道管理</title>
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-global.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-styles.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/animate.css">
+    <!--[if lt IE 9]>
+    <script src="http://www.jq22.com/jquery/html5.min.js"></script>
+    <![endif]-->
+</head>
+<!-----------------------------------------
+  名称：智脑 - 创建频道1
+  时间：2019年4月3日
+  作者：方凌松
+------------------------------------------->
+<body>
+
+<div class="all-wrapper">
+    <div id="channelHeader"></div>
+    
+  <!--  <div class="content-fluid pt40">
+        <div class="top-box mb20 " id="globalBox" data-url="$!webPath/seller/channel_head.htm">
+            <!------------------------------------------
+               加载公用组件内容：左侧logo标识和搜索框
+               对应模版文件：tepl/search.html
+             ------------------------------------------>
+        </div>
+    </div>-->
+    
+    <div class="main-inner" style="padding-top: 60px;">
+        
+        <div class="content-fluid pt20 mb20" style="width:1024px;">
+            <h4>频道创建</h4>
+            <p class="light-color">一个身份可以建立多个频道，创建后无法注销，申请到正式审核通过预计需要1~3个工作日，了解更多请看 <a href="">创建规则必看</a></p>
+            <br>
+            <ul class="steps-list">
+                <li class="active"><a href="">1</a></li>
+                <li><a href="">2</a></li>
+                <li><a href="">3</a></li>
+                <li><a href="">4</a></li>
+            </ul>
+        </div>
+        
+        <div class="content-fluid pt50 mt100 flex-space-between" style="width: 960px;">
+            <br>
+            <div class="p-2 flex-item">
+                <div class="left-place">
+                    <img src="$!webPath/resources/mystyle/static/images/createChannel1.png" alt="个人频道" style="width: 100px;height: 100px;">
+                    <h5 class="pt15">个人频道</h5>
+                    <p>通过手机号码实名认证创建的叫个人频道</p>
+                </div>
+                <button class="btn channel-btn white" onclick="jumpCreateChannel(this)" data-type="0">创建个人频道</button>
+            </div>
+         <!--   <div class="p-2 flex-item">
+                <div class="right-place">
+                    <img src="$!webPath/resources/mystyle/static/images/createChannel2.png" alt="企业频道" style="width: 100px;height: 100px;">
+                    <h5 class="pt15">企业频道</h5>
+                    <p>通过企业的统一识别号认证创建的叫企业频道</p>
+                </div>
+                <button class="btn channel-btn blues" onclick="jumpCreateChannel(this)" data-type="1">创建企业频道</button>
+            </div>-->
+        </div>
+        
+    </div>
+</div>
+
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/js/script.js"></script>
+<script>
+    global.loadSearch();
+
+    // 跳转到第二步
+    function jumpCreateChannel(obj) {
+        var $this = $(obj);
+        var type = $this.data('type');
+        location.href = '$!webPath/seller/instruction.htm?store_type=' + type;
+    }
+    
+</script>
+</body>
+</html>

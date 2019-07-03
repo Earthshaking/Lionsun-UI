@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    #if($!owner.id!=$!user.id||!$!user.id)
+    <title>TA的主页</title>
+    #else
+    <title>我的主页</title>
+    #end
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-global.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-styles.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/animate.css">
+    <script src="$!webPath/resources/js/jquery-1.6.2.js"></script>
+	<script src="$!webPath/resources/js/jquery.shop.common.js"></script>
+</head>
+<!-----------------------------------------
+  名称：智脑-TA的主页
+  时间：2019年3月31日
+  作者：方凌松
+------------------------------------------->
+<body>
+<div class="container-fluid pt62">
+
+    <!-- 顶部导航栏 -->
+    <div id="memberSpaceHeader" class="fadeIn animated">
+
+    </div>
+
+    <div id="users-header">
+
+        <!-- 主题背景图片 -->
+        <div class="usersInfosHeader">
+
+            <!-- 更换主题背景 -->
+            <a href="javascript:void (0);" title="点击更换背景" id="usersBackground">
+                <img src="$!webPath/resources/mystyle/static/images/channelBg.jpg" alt="TA的主页背景">
+            </a>
+
+            <!-- 关注按钮 -->
+            #if($!owner.id!=$!user.id)
+            <div class="content-fluid">
+                #if($!isAtten)
+                <a class="btn btn-user dised" style="width: 92px;" id="attention" href="javascript:void (0)" data-url="$!webPath/default/personFocus_add_attention.htm">已关注</a>
+                #else
+                <a class="btn btn-user" style="width: 92px;" id="attention" href="javascript:void (0)" data-url="$!webPath/default/personFocus_add_attention.htm">+关注</a>
+                #end
+            </div>
+            #end
+        </div>
+
+        <!-- 用户头像等信息 -->
+        <div class="usersInfosBody">
+            <div class="content-fluid text-center mb20" style="padding-top:0 !important;">
+                #if($!owner.photo)
+                #set($userImg="$!webPath/$!owner.photo.path/$!owner.photo.name")
+                #else
+                #set($userImg="$!webPath/resources/style/system/front/default/images/usercenter/headimg.jpg")
+                #end
+                <!-- 用户头像 -->
+                <div id="usersIcons">
+                    #if($!owner.id!=$!user.id||!$!user.id)
+                    <a href="$!webPath/member/memberSpace.htm?uid=$!{owner.id}"> <img class="attention_hd_pic userImg"
+                                                                                      src=$!userImg alt="用户头像"
+                                                                                      onerror="this.src='$!webPath/resources/style/system/front/default/images/usercenter/headimg.jpg'"/></a>
+                    #else
+                    <a href="$!webPath/member/memberSpace.htm"><img class="attention_hd_pic userImg" src=$!userImg alt="用户头像"
+                                                                    onerror="this.src='$!webPath/resources/style/system/front/default/images/usercenter/headimg.jpg'"/></a>
+                    #end
+                </div>
+                <!-- 用户名 && 星评价 -->
+                <div class="text-center" id="userInfos">
+                    <div class="text-center pt5">
+                        <span class="userTitle" id="usersTitle">$!owner.userName</span>
+
+                        <!--<ul class="star-list mr0" data-state="3">-->
+                            <!--<li><i class="fa fa-star yes" aria-hidden="true"></i></li>-->
+                            <!--<li><i class="fa fa-star yes" aria-hidden="true"></i></li>-->
+                            <!--<li><i class="fa fa-star yes" aria-hidden="true"></i></li>-->
+                            <!--<li><i class="fa fa-star" aria-hidden="true"></i></li>-->
+                            <!--<li><i class="fa fa-star" aria-hidden="true"></i></li>-->
+                        <!--</ul>-->
+                    </div>
+                    <!-- 个性签名 -->
+                    <p class="signature">$!owner.signature</p>
+                </div>
+
+                <!-- 文章 &&  && 关注 -->
+                <ul class="user-basic">
+                    <li><a href="$!webPath/default/personHome.htm?uid=$!owner.id">$!articles_num</a>文章</li>
+                    <li><a href="$!webPath/default/personFocus.htm?uid=$!owner.id&flag=2&type=3">$!fans_num</a>粉丝</li>
+                    <li><a href="$!webPath/default/personFocus.htm?uid=$!owner.id&flag=1&type=1">$!attentions_num</a>关注</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 用户页面导航 -->
+        <div class="usersInfosNav">
+            <ul class="nav-tabs bn">
+                #if($!owner.id == $!user.id)
+                <li class="active"><a href="$!webPath/default/personHome.htm">我的主页</a></li>
+                <li #if($!type==1||$!type==2)class="active"#end><a
+                    href="$!webPath/default/personFocus.htm?flag=1&type=1">我的关注</a></li>
+                <li #if($!type==3)class="active"#end><a href="$!webPath/default/personFocus.htm?flag=2&type=3">我的粉丝</a>
+                </li>
+                #else
+                <li class="active"><a href="$!webPath/default/personHome.htm?uid=$!owner.id">TA的主页</a></li>
+                <li #if($!type==1||$!type==2)class="active"#end><a
+                    href="$!webPath/default/personFocus.htm?uid=$!owner.id&flag=1&type=1">TA的关注</a></li>
+                <li #if($!type==3)class="active"#end><a
+                    href="$!webPath/default/personFocus.htm?uid=$!owner.id&flag=2&type=3">TA的粉丝</a></li>
+                #end
+            </ul>
+        </div>
+
+        <div class="bottomsDemo"></div>
+    </div>
+
+    <div class="content-fluid pt40">
+
+        <div class="main-content">
+            <div class="col-left">
+                <!-- 切换按钮 -->
+                <div class="content-btn clearfix">
+                    <div class="btn-group float-left">
+                        #if($!owner.id!=$!user.id||!$!user.id)
+                        <a href="$!webPath/default/personHome.htm?uid=$!owner.id">
+                            <button #if(!$!style)class="btn btn-light active layout-btn" #else
+                                    class="btn btn-light layout-btn" #end>文章
+                            </button>
+                        </a>
+
+                        <a href="$!webPath/default/personHome.htm?style=1&uid=$!owner.id">
+                            <button #if($!style==1)class="btn btn-light active layout-btn
+                            " #else class="btn btn-light layout-btn" #end>热门</button></a>
+                      <!--  <a href="$!webPath/default/personHome.htm?style=2&uid=$!owner.id">
+                            <button #if($!style==2)class="btn btn-light active layout-btn
+                            " #else class="btn btn-light layout-btn" #end>最新评论</button></a>-->
+                        #else
+                        <a href="$!webPath/default/personHome.htm">
+                            <button #if(!$!style)class="btn btn-light active layout-btn" #else
+                                    class="btn btn-light layout-btn" #end>文章
+                            </button>
+                        </a>
+                        <a href="$!webPath/default/personHome.htm?style=1">
+                            <button #if($!style==1)class="btn btn-light active layout-btn
+                            " #else class="btn btn-light
+                            layout-btn" #end>热门</button></a>
+                      <!--  <a href="$!webPath/default/personHome.htm?style=2">
+                            <button #if($!style==2)class="btn btn-light active layout-btn
+                            " #else class="btn btn-light
+                            layout-btn" #end>最新评论</button>
+                        </a>-->
+                        #end
+                    </div>
+
+
+                    <!--<div class="float-right">-->
+                    <a href="#resultBox" data-now="list" class="toggleLayoutBtn" style="display: block" title="切换到列表模式"><i
+                        class="fa fa-th-large"></i></a>
+                </div>
+                <!-- 筛选条件 排序方式 -->
+                <div class="sort-boxes clearfix">
+
+                    <div class="btn-group btn-group-sm" id="sortBtnBox">
+                        <a href="$!webPath/default/personHome.htm?uid=$!owner.id&sort=1&style=$!style" class="btn #if($!sort==1) select-this #end">综合排序</a>
+                        <a href="$!webPath/default/personHome.htm?uid=$!owner.id&sort=2&style=$!style" class="btn #if($!sort==2) select-this #end">最新</a>
+                        <a href="$!webPath/default/personHome.htm?uid=$!owner.id&sort=3&style=$!style" class="btn #if($!sort==3) select-this #end">周热度</a>
+                        <a href="$!webPath/default/personHome.htm?uid=$!owner.id&sort=4&style=$!style" class="btn #if($!sort==4) select-this #end">月热度</a>
+                      <!--  <a href="$!webPath/sort/personHome.htm?sort=5&style=$!style" class="btn">价格从低到高</a>
+                        <a href="$!webPath/sort/personHome.htm?sort=6&style=$!style" class="btn">价格从高到低</a>-->
+                        <a href="$!webPath/default/personHome.htm?uid=$!owner.id&sort=5&style=$!style" class="btn #if($!sort==5) select-this #end">免费</a>
+                        <a href="$!webPath/default/personHome.htm?uid=$!owner.id&sort=6&style=$!style" class="btn #if($!sort==6) select-this #end">付费</a>
+                    </div>
+
+                 <!--   <div class="float-right">
+                        <label>
+                            <input type="checkbox" class="checkbox-inline" id="free">
+                            <span style="font-size: 12px;position: relative;top: -2px;">&nbsp;免费</span>
+                        </label>
+                        &nbsp;&nbsp;&nbsp;
+                        <label>
+                            <input type="checkbox" class="checkbox-inline" id="vipFree">
+                            <span style="font-size: 12px;position: relative;top: -2px;">&nbsp;会员免费</span>
+                        </label>
+                    </div>-->
+
+                </div>
+                <!-- 主要内容 -->
+                <div class="content-body">
+					<form method="post" id="ListForm">
+						<input type="hidden" id="layout" name="layout" value="$!layout"/>
+                    	<!-- grid 为网格布局 ，list 为列表布局 -->
+	                    <div class="result-box clearfix $!layout newDemo mb15" id="resultBox">
+	                        #foreach($obj in $!objs)
+	                        <div class="result-item">
+	                        	#set($goods_url="$!webPath/goods_$!{obj.id}.htm")
+	                            #if($!config.second_domain_open)
+	                            #set($goods_url="http://$!{obj.goods_store.store_second_domain}.$!{domainPath}/goods_$!{obj.id}.htm")
+	                            #end
+	                        
+	                            #if($!obj.goods_main_photo)
+	                            #set($goods_main_photo="$!imageWebServer/$!{obj.goods_main_photo.path}/$!{obj.goods_main_photo.name}")
+	                            #else
+	                            #set($goods_main_photo="$!imageWebServer/$!config.goodsImage.path/$!config.goodsImage.name")
+	                            #end
+	                            <a href="$!goods_url"><img src=$goods_main_photo alt="" class="img-fluid" onerror="this.src='$!webPath/resources/mystyle/common/images/good.jpg'"></a>
+	                            <!-- 文章标题 -->
+	
+	                            <h3 class="resultItemTitle p0"><a href="$!goods_url">$!obj.goods_name</a></h3>
+	                            <p class="itemValue">
+	                                <!-- 文章内容 -->
+	                                 $!CommUtil.substring("$!CommUtil.FilterHtmlString($!obj.goods_details)",150)
+	                            </p>
+	                            <!-- 其他信息 -->
+	                            <div class="itemInfo p0">
+	                                <span class="price">
+                                        #if($!obj.goods_price)
+                                        <img src="$!imageWebServer/resources/mystyle/static/images/gold-mini.jpg" class="iconss" style="width:26px !important;height:20px !important;"/> $!obj.goods_price
+                                        #else
+                                        <img src="$!imageWebServer/resources/mystyle/static/images/gold-mini.jpg" class="iconss" style="width:26px !important;height:20px !important;"/> 0.00
+                                        #end
+                                    </span>
+	                               <!-- <span>$!obj.user.userName</span>-->
+
+	                                <span><img src="$!imageWebServer/resources/mystyle/static/images/eye.jpg" class="iconss" style="width:26px !important;height:20px !important;"/>$!obj.goods_click</span>
+	                               <!--<span>$!obj.goods_comment评</span>-->
+	                                <span><img src="$!imageWebServer/resources/mystyle/static/images/god.jpg"
+                                               class="iconss" style="width:26px !important;height:20px !important;"/>$!obj.goods_like</span>
+	                                #set($store_name = " ")
+	                                #foreach($gs in $!goods_store)
+	                                  #if($gs.goods.id == $!obj.id)
+	                                  #set($store_name = $gs.store.store_name)
+	                                  #end
+	                                #end
+	                                <span>$!store_name</span>
+	                                <span id="addTimeInfo">$!CommUtil.formatLongDate($!obj.addTime)</span>
+	                            </div>
+	                        </div>
+	                        #end
+	                    </div>
+						<div class="fenye3">
+					        <input name="ad_status" type="hidden" id="ad_status" value="$!ad_status" />
+					        <input name="ad_title" type="hidden" id="ad_title" value="$!ad_title" />
+					        <input type="hidden" name="mulitId" id="mulitId" />
+							<input name="currentPage" type="hidden" id="currentPage" value="$!currentPage" />
+				          	$!gotoPageFormHTML
+				        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- 右侧 -->
+            <div class="col-right clearfix">
+                <div class="col-right-inner">
+
+                    <!-- 个人介绍 -->
+                    <div class="introduction">
+                        <h3 class="introduction-title">
+                            <img src="$!webPath/resources/mystyle/static/images/icon/users-min-icon.jpg" alt=""
+                                 style="vertical-align: middle"/>
+                            个人介绍
+                        </h3>
+                        <p> $!owner.introduce</p>
+                    </div>
+
+                    <!-- TA的频道 -->
+                    #if($!stors.size()!=0)
+                    <div class="TaChannel list-group">
+                        #if($!owner.id!=$!user.id)
+                        <div class="TaChannelTitle">TA的频道</div>
+                        #else
+                        <div class="TaChannelTitle">我的频道</div>
+                        #end
+                        #foreach($stor in $stors)
+                            <div class="list-group-item">
+                                <div class="media">
+                                    #if($!stor.store_logo)
+                                    #set($store_logo="$!webPath/$!{stor.store_logo.path}/$!{stor.store_logo.name}")
+                                    #else
+                                    #set($store_logo="$!webPath/$!config.storeImage.path/$!config.storeImage.name")
+                                    #end
+                                    <img src="$!store_logo" alt="" style="width: 68px;height: 68px;" class="mr-3"
+                                         onerror="this.src='$!webPath/resources/mystyle/common/images/channel-img.jpg'">
+                                    <div class="media-body">
+                                        <a href="$!webPath/store.htm?id=$!stor.id" class="subChannelTitle">$!{stor.store_name}</a>
+                                        <span>$!{stor.store_ower}</span>
+                                    </div>
+                                </div>
+                                <hr style="padding: 0;margin: 0">
+                            </div>
+                        #end
+                    </div>
+                    #end
+                </div>
+            </div>
+
+        </div>
+
+        <br>
+        <br>
+        <br>
+    </div>
+</div>
+
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/js/script.js"></script>
+<script>
+
+    $(".fenye3").addClass('pagination').find('a').addClass('page-link').wrap("<div class='page-item'></div>");
+
+    global.loadSearch();
+    window.onload = function () {
+        var resultBox = $("#resultBox");
+        if (location.hash) {
+            var hashStrings = (window.location.hash.length > 0 ? window.location.hash.substring(1) : "");
+            $("[data-to='" + hashStrings + "']").addClass('active');
+        } else {
+            $("[data-to='list']").addClass('active');
+        }
+        queryDatasLength();
+    };
+
+    $("#sortBtnBox").children(".btn").on("click", function () {
+        if (!$(this).hasClass('select-this')) {
+            $(this).addClass('select-this').siblings('.btn').removeClass('select-this');
+        }
+    });
+
+    var toggleButton = $(".toggleLayoutBtn");
+
+    // 点击切换布局
+    toggleButton.on("click", function (e) {
+        var nowdata = $(this).attr('data-now');
+        var boxid = $(this).attr('href');
+
+        if (nowdata == 'list') {
+            $(this)
+                .attr('data-now', "grid")
+                .attr('title', "切换到列表模式")
+                .children('i')
+                .removeClass('fa-th-large')
+                .addClass('fa-th-list');
+            $(boxid).removeClass('list').addClass('grid');
+            $("#layout").val("grid");
+        } else {
+            $(this)
+                .attr('data-now', "list")
+                .attr('title', "切换到大图模式")
+                .children('i')
+                .removeClass('fa-th-list')
+                .addClass('fa-th-large');
+            $(boxid).removeClass('grid').addClass('list');
+            $("#layout").val("list");
+        }
+        e.preventDefault();
+    });
+
+    $("#attention").on("click", function () {
+        var url = $(this).attr("data-url");   // 后台连接
+        var $this = $(this);
+        jQuery.ajax({
+            type: 'POST',
+            url: url,
+            beforeSend: function () {
+            },
+            success: function (data) {
+                if (data) {
+                    $this.html("已关注").addClass('dised');
+                    alertModal(1, "关注成功", function (index) {
+                        layer.close(index);
+                    });
+                } else {
+                    alertModal(2, "关注失败", function (index) {
+                        layer.close(index);
+                    });
+                }
+            }
+        });
+    });
+
+    function queryDatasLength() {
+        var box = $("#resultBox");
+        var count = box.children('.result-item').length;
+        if (count == 0) {
+            box.append(addNoDatas());
+        }
+    }
+
+    function addNoDatas() {
+        return `<div id="noDatas">
+                        <img src="$!webPath/resources/mystyle/static/images/channel-noData.jpg" alt="">
+                    </div>`;
+    }
+
+    //关注事件
+    jQuery("a[id^=add_attention_]").click(function () {
+        jQuery.post("$!webPath/default/homepage_add_attention.htm",
+            {
+                "user_id": jQuery(this).attr("obj_id")
+            }, function (data) {
+                if (data == "true") {
+                    alertModal(1, "关注成功", function (index) {
+                        layer.close(index);
+                    });
+                } else {
+                    alertModal(2, "关注失败，您已经关注过TA了！", function (index) {
+                        layer.close(index);
+                    });
+                }
+            }, "text");
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>友情链接</title>
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-global.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-styles.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/animate.css">
+    <!--[if lt IE 9]>
+    <script src="http://www.jq22.com/jquery/html5.min.js"></script>
+    <![endif]-->
+</head>
+<!-----------------------------------------
+  名称：智脑 - 频道中心 - 友情链接
+  时间：2019年4月3日
+  作者：方凌松
+------------------------------------------->
+<body>
+<!-- 友情链接页面 -->
+<div id="channel-setting">
+                    <div class="topss clearfix">
+                        <h4 class="float-left">友情链接</h4>
+                        <a href="$!webPath/seller/store_partner_add.htm?storeId=$!storeId" class="float-right btn friendBtn" data-toggle="layer">新增友情链接</a>
+                    </div>
+                    <div class="table-responsive-sm pt20">
+                        <table class="table table-bordered table-mouseover table-even table-center" width="100%" id="frendTable">
+                            <thead class="thead-bg2">
+                            <tr>
+                                <th>链接名称</th>
+                                <th>地址</th>
+                                <th>序号</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            #foreach($obj in $objs)
+                            <tr>
+                                <td>$!{obj.title}</td>
+                                <td>$!obj.url</td>
+                                <td>$!obj.sequence</td>
+                                <td><a href="$!webPath/seller/store_partner_edit.htm?id=$!obj.id&storeId=$!storeId" data-toggle="layer">编辑</a>&nbsp;&nbsp;<a href="$!webPath/seller/store_partner_del.htm?mulitId=$!obj.id&storeId=$!storeId">删除</a></td>
+                            </tr>
+                            #end
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/js/script.js"></script>
+<script>
+    $("[data-toggle='layer']").on("click", function (e) {
+        // 获取路径
+        var url = $(this).attr('href');
+        jQuery.get(url, function (data) {
+            window.parent.showModal(['495px', '330px'], data, function () {
+                $("#frendForm").validate();
+                $("label.error").on("show",function () {
+                    $(".form-tips").hide();
+                });
+            });
+        });
+        e.preventDefault();
+    });
+</script>
+</body>
+</html>

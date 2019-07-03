@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人频道</title>
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-global.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-styles.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/animate.css">
+    <!--[if lt IE 9]>
+    <script src="http://www.jq22.com/jquery/html5.min.js"></script>
+    <![endif]-->
+</head>
+<!-----------------------------------------
+  名称：智脑 - 创建个人频道
+  时间：2019年4月3日
+  作者：方凌松
+  ------------------------------------------->
+<body>
+
+<div class="all-wrapper">
+    <div id="channelHeader"></div>
+
+<!------------------------------------------
+               加载公用组件内容：左侧logo标识和搜索框
+               对应模版文件：tepl/search.html
+               ------------------------------------------>
+    <!-- <div class="content-fluid pt40" >
+        <div class="top-box mb20 " id="globalBox" data-url="$!webPath/seller/channel_head.htm">
+            
+       </div>
+    </div> -->
+
+    <div class="main-inner" style="padding-top: 60px;">
+
+        <div class="content-fluid pt20 mb20 mt20" style="width:1024px;">
+            <h4>频道创建</h4>
+            <p class="light-color">一个身份可以建立多个频道，创建后无法注销，申请到正式审核通过预计需要1~3个工作日，了解更多请看 <a href="">创建规则必看</a></p>
+            <br>
+            <ul class="steps-list">
+                <li class="active"><a href="">1</a></li>
+                <li class="active"><a href="">2</a></li>
+                <li class="active"><a href="">3</a></li>
+                <li><a href="">4</a></li>
+            </ul>
+        </div>
+
+        <div class="content-fluid pt50" style="width:960px;margin-top: 60px;">
+            <form action="$!webPath/seller/store_create_finish.htm" method="post" enctype="multipart/form-data"
+                  id="createchannelid" class="person-form createsForm">
+                <input name="store_create_session" class="select-out" type="hidden" id="store_create_session"
+                       value="$!store_create_session"/>
+                <input name="grade_id" class="select-out" type="hidden" id="grade_id" value="1"/>
+                <input name="store_type" class="select-out" type="hidden" id="store_type" value="$!{store_type}"/>
+
+                <div class="form-inline">
+                    <!-- 姓名 -->
+                    <div class="form-group">
+                        <label class="control-label">姓名：</label>
+                        <input type="text" data-verify="notNull" data-error-msg="请输入姓名" class="form-control" name="store_ower"
+                               style="width: 250px;" placeholder="请输入姓名" value="$!user.trueName">
+                    </div>
+
+                    <!-- 手机号 -->
+                    <div class="form-group">
+                        <label class="control-label">手机号：</label>
+                        <input type="text" data-verify="mobile" data-error-msg="请输入正确的手机号" maxlength="11" class="form-control" name="store_telphone"
+                               style="width: 250px;" value="$!user.mobile" readonly="true">
+                    </div>
+                </div>
+
+                <div class="form-inline">
+
+                    <!-- 电子邮箱 -->
+                    <div class="form-group">
+                        <label class="control-label">电子邮箱：</label>
+                        <input type="text" class="form-control" data-verify="email" data-error-msg="请输入正确的Email地址" name="email" style="width: 250px;" placeholder="请输入电子邮箱" value="$!user.email">
+                    </div>
+
+                    <!-- 身份证号 -->
+                    <div class="form-group">
+                        <label class="control-label">身份证号：</label>
+                        <input type="text" data-verify="idCard" value="$!user.idcode" class="form-control" data-error-msg="请输入正确的身份证号" name="store_ower_card" maxlength="18" style="width: 250px;" value="" readonly="true">
+                    </div>
+
+                </div>
+
+                <!-- 频道分类 -->
+                <div class="form-group onecLect">
+                    <label class="control-label">频道分类：</label>
+                    <div class="form-select inline-block relative">
+                        <select name="sc_id" class="form-control select-clear" data-verify="notNull" data-error-msg="请选择频道分类" style="width: 251px;" required>
+                            <option value="">请选择频道分类</option>
+                            #foreach($sc in $scs)
+                            <option value="$!sc.id">$!sc.className</option>
+                            #foreach($sc1 in $sc.childs)
+                            <option value="$!sc1.id">$!sc1.className</option>
+                            #end
+                            #end
+                        </select>
+                        <span class="down-arrow"></span>
+                    </div>
+                </div>
+
+                <!-- 频道名称 -->
+                <div class="form-group onecLect">
+                    <label class="control-label">频道名称：</label>
+                    <input type="text" class="form-control" data-verify="notNull" name="store_name" style="width: 713px;" placeholder="请输入频道名称" data-error-msg="请输入频道名称">
+                </div>
+
+                <!-- 频道封面 -->
+                <div class="form-group onecLect clearfix">
+                    <label class="control-label float-left  ">频道封面：</label>
+                    <div class="form-select inline-block relative">
+                        <!--TODO:占位图-->
+                        #set($store_logo="$!webPath/$!config.storeImage.path/$!config.storeImage.name")
+                        #if($!store.store_logo)
+                        #set($store_logo="$!webPath/$!store.store_logo.path/$!store.store_logo.name")
+                        #end
+                        <img src="$!store_logo" class="img-thumbnail mr-3 brn"
+                             style="width: 100px;height: 100px;" alt="" id="logoHolder">
+                        <div class="media-body inline-block m5">
+                            <input name="logo" type="file" id="logo" size="30" class="mb5 " data-verify="notNull" data-error-msg="请上传频道封面" onchange="holderLogo(this)">
+                            <p class="tip-text">此图为您的频道封面，将显示在频道信息栏里，建议尺寸100*100像素</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 频道简介 -->
+                <div class="form-group onecLect clearfix">
+                    <label class="control-label float-left">频道简介：</label>
+                    <textarea name="store_info" id="channelInfo" data-verify="notNull" class="form-control ml5"
+                              style="height: 80px;width: 713px" placeholder="请对频道做简单介绍，30字以内" maxlength="500" data-error-msg="请输入频道简介"></textarea>
+                </div>
+
+                <!-- 标签 -->
+              <!--  <div class="form-group onecLect">
+                    <label class="control-label">标签：</label>
+                    <input type="text" name="store_label" class="form-control select-out" style="width: 713px;"
+                           placeholder="每个用户最多可以创建6个频道，每个频道可添加3个标签">
+                </div>-->
+                <br>
+                <br>
+                <div class="text-center">
+                    <a href="$!webPath/seller/instruction.htm?store_type=$!store_type" class="btn channel-btn white"
+                       style="width: 108px;padding:0">上一步</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="btn channel-btn blues" onclick="checkTheForm()" style="width: 108px;padding:0;color: #fff !important;">提交审核</a>
+                </div>
+            </form>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/js/script.js"></script>
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/lib/jquery.params.js"></script>
+<script>
+    global.loadSearch();
+    var currentForm = $("#createchannelid");
+
+    currentForm.find('.form-control:not(.select-out)').on("blur", function () {
+        checkFormContrl($(this));
+    });
+
+    function checkTheForm() {
+        if (validateForm(currentForm) > 0) {
+            console.log("校验通过");
+            currentForm.submit();
+        } else {
+            return false;
+        }
+    }
+
+</script>
+</body>
+</html>

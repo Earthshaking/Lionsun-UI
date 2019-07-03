@@ -1,0 +1,72 @@
+<!-- 充值 -->
+
+<div class="card appreciates-card" style="height: 100%;">
+
+    <div class="card-header mb0 pb0">
+        <h3 class="card-title" style="font-size: 20px;font-weight: 500 !important;">充值</h3>
+        <a href="#" class="closeButton">&times;</a>
+    </div>
+    <div class="card-body">
+    	<form action="$!webPath/seller/gold_record_save.htm" method="post" name="theForm" id="theForm">
+        <div class="current-user-account">
+            <p>充值账号： <strong>$!user.mobile</strong></p>
+        </div>
+        <p class="current-user-account">充值金额：</p>
+        <div class="money-select">
+            <label class="money-item active">
+                <input type="radio" name="gold_money" value="1" checked>
+                <span class="subText">￥1 </span>&nbsp;&nbsp;(100金币)
+            </label>
+            <label class="money-item">
+                <input type="radio" name="gold_money" value="5">
+                <span class="subText">￥5 </span>&nbsp;&nbsp;(500金币)
+            </label>
+            <label class="money-item">
+                <input type="radio" name="gold_money" value="10">
+                <span class="subText">￥10 </span>&nbsp;&nbsp;(1000金币)
+            </label>
+            <label class="money-item">
+                <input type="radio" name="gold_money" value="20">
+                <span class="subText">￥20 </span>&nbsp;&nbsp;(2000金币)
+            </label>
+            <label class="money-item">
+                <input type="radio" name="gold_money" value="50">
+                <span class="subText">￥50 </span>&nbsp;&nbsp;(5000金币)
+            </label>
+            <label class="money-item">
+                <input type="radio" name="gold_money" id="otherMonery" value="0">
+                <span>￥<input type="text" class="moneyInput text-center" name="enterMoney" maxlength="4"
+                                onchange="article.totalCount(this)"
+                                oninput="value=value.replace(/[^\d]/g,'')">（<span id="yueCount">0</span>金币）</span>
+            </label>
+        </div>
+        <p class="current-user-account">充值方式：</p>
+        <div class="form-group text-left mb15 pl25">
+       	  
+                      
+            <label class="pay-item #if($!payment.name=='支付宝')active#end">
+               #foreach($payment in $payments)
+                #if($!payment.name=='支付宝')
+               #set($checked = "checked")
+               #end
+               <input type="radio" name="gold_payment" value="$!payment.mark" #if($!payment.name=='支付宝')checked#end>
+               #if($!payment.name=='支付宝')
+               <span class="pay-zfb"></span>支付宝
+               #end
+               <!--#if($!payment.name=='财付通')-->
+               <!--<span class="pay-wx"></span>-->
+               <!--#end-->
+              <!--  $!payment.name -->
+                #end
+            </label>
+            &nbsp;&nbsp;       
+        </div>
+        <textarea name="gold_exchange_info" cols="40" rows="6" id="gold_exchange_info" style="display: none;">金币充值</textarea>
+        <div class="text-center">
+            <button type="submit" class="btn" id="nextBtn" onclick="article.openPay()">立即支付</button>
+            <input name="gold_session" type="hidden" id="gold_session" value="$!gold_session" />
+        </div>
+         </form>              
+    </div>
+
+</div>

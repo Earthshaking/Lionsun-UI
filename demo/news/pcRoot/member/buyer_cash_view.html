@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提现管理</title>
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-global.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-styles.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/animate.css">
+</head>
+
+<body>
+
+<div class="container-fluid">
+    
+    <ul class="path-nav full">
+        <li>我的账户</li>
+        <li>提现详情</li>
+    </ul>
+    <div class="manager-wrraper">
+        <table width="705" border="0" cellspacing="0" cellpadding="0" class="addnavtable">
+                  <tr>
+                    <td width="100" align="right" valign="top">提现编号：</td>
+                    <td class="px10 message">$!obj.cash_sn</td>
+                  </tr>
+                  <tr>
+                    <td align="right" valign="top">提现金额：</td>
+                    <td class="px10">$!obj.cash_amount</td>
+                  </tr>
+                  <tr>
+                    <td  align="right" valign="top">提现时间：</td>
+                    <td class="px10">$!CommUtil.formatLongDate($!obj.addTime)</td>
+                  </tr>
+                  <tr>
+                    <td  align="right" valign="top">支付方式：</td>
+                    #if($!obj.cash_payment=="alipay")
+                      #set($cash_payment="支付宝")
+                    #end
+                    #if($!obj.cash_payment=="wechat")
+                      #set($cash_payment="微信")
+                    #end
+                    <td class="px10">$!cash_payment</td>
+                  </tr>
+                  <tr>
+                    <td  align="right" valign="top">提现状态：</td>
+                     #if($!obj.cash_status==0)
+                      #set($cash_status="提现申请")
+                    #end
+                    #if($!obj.cash_status==1)
+                      #set($cash_status="提现成功")
+                    #end
+                    <td class="px10">$!cash_status</td>
+                  </tr>
+                  <tr>
+                    <td  align="right" valign="top">支付状态：</td>
+                    #if($!obj.cash_pay_status==0)
+                      #set($cash_pay_status="等待支付")
+                    #end
+                    #if($!obj.cash_pay_status==1)
+                      #set($cash_pay_status="等待审核")
+                    #end
+                    #if($!obj.cash_pay_status==2)
+                      #set($cash_pay_status="支付完成")
+                    #end
+                    <td class="px10">$!cash_pay_status</td>
+                  </tr>
+                  <!-- #if($!obj.cash_payment=="outline")
+                  <tr>
+                    <td  align="right" valign="top">收款人姓名：</td>
+                    <td class="px10">$!obj.cash_userName</td>
+                  </tr>
+                  <tr>
+                    <td  align="right" valign="top">收款银行：</td>
+                    <td class="px10">$!obj.cash_bank</td>
+                  </tr>
+                  <tr>
+                    <td  align="right" valign="top">提现备注：</td>
+                    <td class="px10">$!obj.cash_remittance_info</td>
+                  </tr>
+                  #end -->
+                  #if($!obj.cash_admin)
+                  <tr>
+                    <td  align="right" valign="top">操作管理员：</td>
+                    <td class="px10">$!obj.cash_admin.userName</td>
+                  </tr>
+                  #end
+                  #if($!obj.cash_admin_info)
+                  <tr>
+                    <td  align="right" valign="top">操作备注：</td>
+                    <td class="px10">$!obj.cash_admin_info</td>
+                  </tr>
+                  #end
+                  <tr>
+                    <td  align="right" valign="top">&nbsp;</td>
+                    <td class="px10"><span class="setsub">
+                        <input type="button"  value="返回列表" style="cursor:pointer;" onclick="window.location.href='$!webPath/member/buyer_cash_list.htm'" />
+                        </span></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div></td>
+      </tr>
+    </table>
+    </div>
+    
+</div>
+
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/js/script.js"></script>
+</body>
+</html>

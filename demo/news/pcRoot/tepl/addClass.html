@@ -1,0 +1,85 @@
+<!-- 新增文章分类 -->
+<div class="card default-card" style="height: 100%">
+    <div class="card-header bg-light">
+        <h6 class="card-title pt5">新增分类</h6>
+        <a href="#" class="closeButton">&times;</a>
+    </div>
+    <div class="card-body" style="height: 100%">
+        <form class="friendForm pt15" id="classForm" action="$!webPath/seller/usergoodsclass_save.htm">
+                <input type="hidden" class="form-control brn" id="classid" name="id" value="$!curClass.id">
+                <input type="hidden" class="form-control brn" id="storeId" name="storeId" value="$!storeId">
+            <!-- 分类名称 -->
+            <div class="form-group clearfix">
+                <label class="control-label" for="classname" style="width: 115px">分类名称：</label>
+                <input type="text" class="form-control brn" id="classname" name="className" value="$!{curClass.className}" style="width:250px;" required>
+            
+            </div>
+            
+            <!-- 上级分类 -->
+            <div class="form-group clearfix">
+                <label class="control-label" for="parent" style="width: 115px">上级分类：</label>
+                <div class="form-select relative" style="width: 250px;display:inline-block;">
+                    <select name="pid" id="parent" class="form-control select-clear">
+                        <option value="-1">请选择上级分类</option>
+                        #foreach($ugc in $ugcs)
+                        #if($obj.id==$ugc.id)
+                        <option value="$ugc.id" selected>$!ugc.className</option>
+                        #else
+                        <option value="$ugc.id" >$!ugc.className</option>
+                        #end
+                        #end
+                    </select>
+                    <span class="down-arrow"></span>
+                </div>
+            </div>
+            
+            <!-- 分类数据模版 -->
+          <!--   <div class="form-group clearfix">
+                <label class="control-label" for="classData" style="width: 115px">分类数据模版：</label>
+                <input type="text" class="form-control" required style="width: 170px;" id="classData" name="classData">
+                <button class="btn btn-light border" type="button" style="width: 70px;">浏览...</button>
+            </div> -->
+            
+            <!-- 分类排序 -->
+            <div class="form-group clearfix">
+                <label class="control-label" for="classsort" style="width: 115px">分类排序：</label>
+                <input type="text" class="form-control brn" id="classsort" name="sequence" value="$!curClass.sequence" style="width:250px;" required>
+            </div>
+            
+            <!-- 是否显示 -->
+            <div class="form-group clearfix">
+                <label class="control-label" style="width: 115px">是否显示：</label>
+                <div class="inline-block ml20">
+                    #if($curClass.display==true)
+                    <label data-toggle="radio" data-style="default" class="radio-inline">
+                        <input type="radio" value="1" name="display" checked>
+                        <span>是</span>
+                    </label>
+                    #else
+                    <label data-toggle="radio" data-style="default" class="radio-inline">
+                        <input type="radio" value="1" name="display" >
+                        <span>是</span>
+                    </label>
+                    #end
+                    &nbsp;&nbsp;&nbsp;
+                    #if($curClass.display==false)
+                    <label data-toggle="radio" data-style="default" class="radio-inline">
+                        <input type="radio" value="0" name="display" checked>
+                        <span>否</span>
+                    </label>
+                    #else
+                     <label data-toggle="radio" data-style="default" class="radio-inline">
+                        <input type="radio" value="0" name="display" >
+                        <span>否</span>
+                    </label>
+                    #end
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn color-white"
+                        style="width: 110px;height: 40px;background-color: #1E8CEB">保 存
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/jquery.magnify/jquery.magnify.min.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-global.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-styles.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/animate.css">
+    <style>
+        .load-more {
+            display: none;
+        }
+
+        .scroll-tip {
+            width: 100%;
+            height: 40px;
+            display: none;
+            padding: 15px;
+            font-size: 14px;
+            position: relative;
+            color: #333;
+            top: 15px;
+            text-align: center;
+        }
+
+        .tab-pane.active .scroll-tip {
+            display: block;
+        }
+
+        .center-box {
+            width: auto;
+            display: inline-block;
+            padding: 0 15px 3px;
+            background-color: #FFF;
+        }
+		.itemValue{
+			font-size:14px;
+			color:#999;
+			padding-top:5px;
+			margin-bottom:8px;
+			line-height:1.7;
+			display:block;
+			white-space:nowrap;
+			text-overflow:ellipsis;
+			overflow:hidden;
+			width:650px;
+		}
+    </style>
+</head>
+<!-----------------------------------------
+  名称：智脑-首页
+  文件名：home.html
+  时间：2019年3月26日
+  作者：方凌松
+  ------------------------------------------->
+<body>
+
+<!-- BEGIN -->
+<div class="all-wrapper">
+    <!-- 顶部栏 -->
+    <div id="indexheader"></div>
+
+    <!-- 主体部分 -->
+    <div class="content-fluid pt50">
+        <div class="home-page" id="home-search-box">
+            <!-- 智脑LOGO -->
+            <div class="LOGO-box">
+                <img src="$!webPath/resources/mystyle/static/images/zhinao-logo.jpg" alt="智脑LOGO"
+                     style="width: 300px;height: 64px;">
+            </div>
+            <!-- 搜索框 -->
+            <form method="post" action="$!webPath/turnsearch.htm" class="form-group" id="home-search" style="width: 640px;">
+                <div id="searchForm">
+                    <label for="searchType" class="search-wrrapr">
+                        <select name="type" id="searchType">
+                            <option value="goods" selected>文章</option>
+                            <option value="store">频道</option>
+                        </select>
+                        <span class="down-arrow"></span>
+                    </label>
+                    <input type="text" name="keyword" class="searchInput" id="search" value="" maxlength="100"/>
+                </div>
+                <!-- 搜索按钮 -->
+                <button id="searchBtn" onclick="search_form();" class="btn"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+
+        <!-- 悬浮在顶上的搜索框 -->
+        <div class="search-fixed" style="display: none">
+            <div class="container" id="search-fixed-inner">
+                <img src="$!webPath/resources/mystyle/static/images/zhinao-logo.jpg" alt="智脑LOGO"
+                     style="width: 200px;">
+                <form method="post" action="$!webPath/search.htm" class="form-group search-fixed-home-search"
+                      id="home-search"
+                      style="width: 640px;">
+                    <div id="searchForm">
+                        <label for="searchType" class="search-wrrapr">
+                            <select name="type" id="searchType">
+                                <option value="goods" selected>文章</option>
+                                <option value="store">频道</option>
+                            </select>
+                            <span class="down-arrow"></span>
+                        </label>
+                        <input type="text" name="keyword" class="searchInput" id="search" value="" maxlength="100"/>
+                    </div>
+                    <!-- 搜索按钮 -->
+                    <button id="searchBtn" onclick="search_form();" class="btn"><i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="home-list">
+            <ul class="nav nav-tabs">
+                <li><a href="#recommend" class="listBtn nav-link active show" data-toggle="tab"
+                       data-name="recommend">推荐</a></li>
+                <li><a href="#favorite" class="listBtn nav-link" data-toggle="tab" data-name="favorite"
+                       #if(!$!isLogin)onclick="window.location='$!webPath/user/login.htm'" #end>我的关注</a></li>
+                <li><a href="#collection" class="listBtn nav-link" data-toggle="tab" data-name="collection"
+                       #if(!$!isLogin)onclick="window.location='$!webPath/user/login.htm'" #end>我的收藏</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <!-- 推荐 -->
+                <div class="tab-pane fade homeList active show" id="recommend">
+                    #foreach($!store_reommend_good in $store_reommend_goods)
+                    <div class="media home-item">
+                        #if($!store_reommend_good.goods_main_photo)
+                        #set($img="$!imageWebServer/$!{store_reommend_good.goods_main_photo.path}/$!{store_reommend_good.goods_main_photo.name}")
+                        #else
+                        #set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+                        #end
+                        #set($goods_url="$!webPath/goods_$!{store_reommend_good.id}.htm")
+                        #if($!config.second_domain_open)
+                        #set($goods_url="http://$!{store_reommend_good.goods_store.store_second_domain}.$!{domainPath}/goods_$!{store_reommend_good.id}.htm")
+                        #end
+                        <a href="$!goods_url" class="item-bg-link mr25" target="_blank">
+                            <img src="$!img" onerror="this.src='$!webPath/resources/mystyle/common/images/good.jpg'"
+                                 alt="$!CommUtil.substring('$!store_reommend_good.goods_name',20)" class=""
+                                 style="width:160px;height: 101px">
+                        </a>
+                        <div class="media-body">
+                            <a href="$!goods_url" class="home-item-title" style="font-weight: bold !important;"
+                               target="_blank">
+                                $!store_reommend_good.goods_name
+                            </a>
+                            <div class="home-item-info">
+                                <span>$!{store_reommend_good.user.userName}</span>
+                              <!--  <span>$!{store_reommend_good.goods_click}评</span>-->
+                                <span><img src="$!imageWebServer/resources/mystyle/static/images/god.jpg" class="iconss"
+                                           style="width:26px !important;height:20px !important;"/> $!{store_reommend_good.goods_like}</span>
+                                <span>$!CommUtil.formatLongDate($!{store_reommend_good.addTime})</span>
+                            </div>
+                        </div>
+                    </div>
+                    #end
+                    <!-- 滚动到此处触发加载 -->
+                    <div id="recommendScroll" class="scroll-tip">
+                        <img src="$!webPath/resources/mystyle/static/images/first-loading.png" alt="">
+                    </div>
+                </div>
+                <!-- 我的关注  -->
+                <div class="tab-pane homeList fade " id="favorite">
+                    #foreach($obj in $favorite_list)
+                    <div class="media home-item">
+                        #if($!obj.store.store_logo)
+                        #set($store_logo="$!webPath/$!{obj.store.store_logo.path}/$!{obj.store.store_logo.name}")
+                        #else
+                        #set($store_logo="$!webPath/$!config.storeImage.path/$!config.storeImage.name")
+                        #end
+                        <a href="$!webPath/store_$!{obj.store.id}.htm" class="item-bg-link mr25" title="first image"
+                           target="_blank">
+                            <img src="$!store_logo" alt="first image thumbnail"
+                                 onerror="this.src='$!webPath/resources/mystyle/common/images/channel-img.jpg'"
+                                 style="width:101px;height: 101px"/>
+                        </a>
+                        <div class="media-body">
+                            <a href="$!webPath/store_$!{obj.store.id}.htm" class="home-item-title"
+                               style="font-weight: bold !important;" target="_blank">$!obj.store.store_name</a>
+                            <div class="home-item-info">
+                                <span>$!{obj.store.store_ower}&nbsp;&nbsp;</span>
+                                #set($goodscount=0)
+                                #foreach($audit in $obj.store.auditStore)
+                                #if($!audit.deleteStatus==false&&$!audit.audit_state==2)
+                                #set($goodscount=$goodscount+1)
+                                #end
+                                #end
+                                <span>内容$!{goodscount}篇&nbsp;&nbsp;</span>
+                                <span>$!{obj.store.favorite_count}人关注</span>
+                            </div>
+                        </div>
+                    </div>
+                    #end
+                    <!-- 滚动到此处触发加载 -->
+                    <div id="favoriteScroll" class="scroll-tip">
+                        <img src="$!webPath/resources/mystyle/static/images/first-loading.png" alt="">
+                    </div>
+                </div>
+                <!-- 我的收藏 -->
+                <div class="tab-pane homeList fade " id="collection">
+                    #foreach($!col_good in $collection_list)
+                    #if($!{col_good.goods.user.userName})
+                    <div class="media home-item">
+                        #if($!col_good.goods.goods_main_photo)
+                        #set($img="$!imageWebServer/$!{col_good.goods.goods_main_photo.path}/$!{col_good.goods.goods_main_photo.name}")
+                        #else
+                        #set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+                        #end
+                        #set($goods_url="$!webPath/goods_$!{col_good.goods.id}.htm")
+                        #if($!config.second_domain_open)
+                        #set($goods_url="http://$!{col_good.goods.goods_store.store_second_domain}.$!{domainPath}/goods_$!{col_good.id}.htm")
+                        #end
+                        <a href="$!goods_url" class="item-bg-link mr25" title="first image" target="_blank">
+                            <img src="$!img" alt="first image thumbnail"
+                                 onerror="this.src='$!webPath/resources/mystyle/common/images/good.jpg'"
+                                 style="width:160px;height: 101px"/>
+                        </a>
+                        <div class="media-body">
+                            <a href="$!goods_url" class="home-item-title" style="font-weight: bold !important;"
+                               target="_blank">
+                                $!col_good.goods.goods_name
+                            </a>
+                            <p class="itemValue">$!CommUtil.substring("$!CommUtil.FilterHtmlString($!col_good.goods.goods_details)",86)</p>
+                            <div class="home-item-info">
+                                <span>$!{col_good.goods.user.userName}</span>
+                                <span><img src="$!imageWebServer/resources/mystyle/static/images/god.jpg" class="iconss"
+                                           style="width:26px !important;height:20px !important;"/> $!{col_good.goods.goods_like}</span>
+                                <span>$!CommUtil.formatLongDate($!{col_good.goods.addTime})</span>
+                            </div>
+                        </div>
+                    </div>
+                    #end
+                    #end
+                    <!-- 滚动到此处触发加载 -->
+                    <div id="collectionScroll" class="scroll-tip">
+                        <img src="$!webPath/resources/mystyle/static/images/first-loading.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
+</div>
+<!-- END -->
+
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/js/script.js"></script>
+<script type="text/javascript">
+
+    var loadData;
+
+    var recommendStatus = 0, recommendPage = 1,     // 推荐数据 状态 & 当前页数
+        favoriteStatus = 0, favoritePage = 1,       // 关注数据 状态 & 当前页数
+        collectionStatus = 0, collectionPage = 1;   // 收藏数据 状态 & 当前页数
+
+    var fixedSearch = $(".search-fixed"),           // flexed固定的搜索框
+        searchTop = $("#searchForm").offset().top;  // 搜索框跟顶部的距离
+
+    /* 页面滚动的时候执行 */
+    $(window).scroll(function () {
+        // 滚动到底部加载数据
+        var totalHeight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());
+        if ($(document).height() <= totalHeight) {
+            var item = $("a.listBtn.active").attr('data-name');
+            if (item == 'recommend') {          // 推荐
+                loadRecommend();
+            } else if (item == 'favorite') {    // 关注
+                loadFavorite();
+            } else if (item == 'collection') {  // 收藏
+                loadCollection();
+            }
+        }
+        // 搜索框固定浮在顶部
+        var scrollPos = $(window).scrollTop();
+        if (scrollPos > searchTop - 20) {
+            fixedSearch.show();   // 显示固定搜索框
+        } else {
+            fixedSearch.hide();   // 隐藏固定搜索框
+        }
+    });
+
+    /* 加载推荐数据 */
+    function loadRecommend() {
+        var box = $("#recommendScroll");
+        if (recommendStatus == 0) {
+            console.log("加载推荐数据...");
+            box.empty().append(getLoadingHtml());
+            recommendPage += 1;
+            loadList("recommend", recommendPage);
+        } else {
+            console.log("推荐数据已全部加载完毕！");
+            box.empty().append(getLoadedHtml());
+        }
+    }
+
+    /* 加载关注数据 */
+    function loadFavorite() {
+        var box = $("#favoriteScroll");
+        if (favoriteStatus == 0) {
+            console.log("加载关注数据...");
+            box.empty().append(getLoadingHtml());
+            favoritePage += 1;
+            loadList("favorite", favoritePage);
+        } else {
+            console.log("关注数据已全部加载完毕！");
+            box.empty().append(getLoadedHtml());
+        }
+    }
+
+    /* 加载收藏数据 */
+    function loadCollection() {
+        var box = $("#collectionScroll");
+        if (collectionStatus == 0) {
+            console.log("加载收藏数据...");
+            box.empty().append(getLoadingHtml());
+            collectionPage += 1;
+            loadList("collection", collectionPage);
+        } else {
+            console.log("收藏数据已全部加载完毕！");
+            box.empty().append(getLoadedHtml());
+        }
+    }
+
+    /**
+     * 访问后台加载数据
+     * @param type          需要加载的数据类型
+     * @param currentPage   当前加载的页数
+     */
+    function loadList(type, currentPage) {
+        if ($!currentPage != null && $!currentPage != 0){
+            currentPage = $!currentPage;
+        }
+        console.log("当前加载类型：" + type);
+        console.log("当前的页数：" + currentPage);
+        console.log("当前的页数：" + $!currentPage);
+        var json;
+        jQuery.getJSON("$!webPath/getindexList.htm?currentPage=" + currentPage + "&type=" + type, function (result) {
+
+            // console.log("旧数据=============");
+            // console.log(loadData);
+            // console.log("新数据=============");
+            // console.log(result.data);
+            console.log(JSON.stringify(result.data) == loadData);
+            if (JSON.stringify(result.data) != loadData) {
+                console.log("与上次数据不相等,开始加载数据...");
+                loadData = JSON.stringify(result.data);
+                loadHtml(result.data, type);
+            } else {
+                console.log("与上次数据相等");
+                // 结束加载！
+                    if (type == "recommend") {
+                        recommendStatus = 1;
+                        console.log("推荐数据已全部加载完成");
+                        $("#recommendScroll").empty().append(getLoadedHtml());
+                    } else if (type == "favorite") {
+                        favoriteStatus = 1;
+                        console.log("关注数据已全部加载完成");
+                        $("#favoriteScroll").empty().append(getLoadedHtml());
+                    } else if (type == "collection") {
+                        collectionStatus = 1;
+                        console.log("收藏数据已全部加载完成");
+                        $("#collectionScroll").empty().append(getLoadedHtml());
+                    }
+                    return false;
+                }
+        });
+    }
+
+    /**
+     * 获取到数据后，加载对应的html显示页面中
+     * @param json  从后台获取到的数据
+     * @param obj   类型
+     */
+    function loadHtml(json, obj) {
+        var node = "";
+        var width;
+        var imgSrc;
+
+        if (obj == "recommend") {
+            width = 160;
+            for (var i = 0; i < json.length; i++) {
+                node += '<div class="media home-item">' +
+                    '<a href="' + json[i].articleUrl + '" class="item-bg-link" target="_blank">' +
+                    '<img src="' + json[i].imgUrl + '" alt="John Doe" class="mr25" style="width:' + width + 'px;height: 101px">' +
+                    '</a>' +
+                    '<div class="media-body">' +
+                    '<a href="' + json[i].articleUrl + '" class="home-item-title" style="font-weight: bold !important;">' + json[i].goods_name + '</a>' +
+                    '<div class="home-item-info">' +
+                    '<span>' + json[i].userName + '</span>' +
+                    '<span><img src="$!imageWebServer/resources/mystyle/static/images/god.jpg" class="iconss" style="width:26px !important;height:20px !important;"/>' + json[i].goods_like + '</span>' +
+                    '<span>' + json[i].addTime + '</span>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+            }
+        } else if (obj == "favorite") {
+            width = 101;
+            for (var i = 0; i < json.length; i++) {
+                node += '<div class="media home-item">' +
+                    '<a href="' + json[i].articleUrl + '" class="item-bg-link" target="_blank">' +
+                    '<img src="' + json[i].imgUrl + '" alt="John Doe" class="mr25" style="width:' + width + 'px;height: 101px">' +
+                    '</a>' +
+                    '<div class="media-body">' +
+                    '<a href="' + json[i].articleUrl + '" class="home-item-title" style="font-weight: bold !important;">' + json[i].articleName + '</a>' +
+                    '<div class="home-item-info">' +
+                    '<span>' + json[i].userName + '</span>' +
+                    '<span>内容' + json[i].goodsCount + '篇</span>' +
+                    '<span>' + json[i].favCount + '人关注</span>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+            }
+        } else if (obj == "collection") {
+            width = 160;
+            for (var i = 0; i < json.length; i++) {
+                node += '<div class="media home-item">' +
+                    '<a href="' + json[i].articleUrl + '" class="item-bg-link" target="_blank">' +
+                    '<img src="' + json[i].imgUrl + '" alt="John Doe" class="mr25" style="width:' + width + 'px;height: 101px">' +
+                    '</a>' +
+                    '<div class="media-body">' +
+                    '<a href="' + json[i].articleUrl + '" class="home-item-title" style="font-weight: bold !important;">' + json[i].articleName + '</a>' +
+                    '<p class="itemValue">' + json[i].content + '</p>' + 
+                    '<div class="home-item-info">' +
+                    '<span>' + json[i].userName + '</span>' +
+                    '<span>' + json[i].articleLike + '赞</span>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+            }
+        }
+        var toElement = $("#" + obj + "Scroll");
+        toElement.before(node);
+        // 图片加载出错后显示默认图片
+        $("img").on("error", function () {
+            if (obj == "favorite") {
+                imgSrc = "resources/mystyle/common/images/channel-img.jpg";
+            } else if (obj == "recommend" || obj == "collection") {
+                imgSrc = "resources/mystyle/common/images/good.jpg";
+            }
+            $(this).attr('src', imgSrc);
+        });
+    }
+
+    /* 数据正在加载中的回显 */
+    function getLoadingHtml() {
+        return "<div class=\"center-box\"><img src=\"$!webPath/resources/mystyle/static/images/loading.gif\" alt=\"loading..\"\n" +
+            "                                 class=\"loading-icon\">\n" +
+            "                            <span>内容加载中...</span></div>";
+    }
+
+    /* 数据全部加载完成后的回显 */
+    function getLoadedHtml() {
+        return "<span class=\"bottom-line\">我是有底线的</span>";
+    }
+
+    /* 数据还未开始加载的回显 */
+    function getLoadBeforeHtml() {
+        return "<img src=\"$!webPath/resources/mystyle/static/images/first-loading.png\" alt=\"\">";
+    }
+
+    function search_form() {
+        jQuery("#home-search").submit();
+        jQuery("#keyword").val("");
+    }
+
+</script>
+
+</body>
+</html>

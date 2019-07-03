@@ -1,0 +1,80 @@
+<!-- 智脑顶部导航栏 Navbar组件 -->
+<nav class="znao-header header-default">
+    <a href="#" class="navbar-logo">
+        <img src="$!webPath/resources/mystyle/static/images/icon/home-logo.png" alt="智脑LOGO"
+             style="position: relative;left: 15px;height: 50px;">
+    </a>
+    <div class="header-wrraper clearfix">
+        <div class="header-left">
+            <ul class="navbar navbar-expand-sm header-navbar">
+                <!-- 首页 -->
+                <li class="nav-item">
+                    <a href="{{navbar.indexpage.url}}" class="nav-link">{{navbar.indexpage.title}}</a>
+                </li>
+                <!-- 会员中心 -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{navbar.member.url}}">{{navbar.member.title}}</a>
+                </li>
+                <!-- 频道中心 -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{navbar.channel.url}}">{{navbar.channel.title}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="header-right">
+
+        <ul class="navbar header-navbar-2">
+            #if($!user)
+            <!-- 已登录 -->
+            <li class="nav-item">
+                <a href="$!webPath/member/memberSpace.htm#allarticle" class="nav-link">
+                    <img src="$!webPath/resources/mystyle/static/images/red-icon.png" alt="">&nbsp;写内容</a>
+                <!--<div class="dropdown-menu custom-menu">-->
+                    <!--<a href="javascript:void(0)" class="dropdown-item"><i class="fa fa-image"></i>图文</a>-->
+                    <!--<a href="javascript:void(0)" class="dropdown-item"><i class="fa fa-music"></i>音频</a>-->
+                    <!--<a href="javascript:void(0)" class="dropdown-item"><i class="fa fa-video-camera"></i>视频</a>-->
+                    <!--<a href="javascript:void(0)" class="dropdown-item"><i class="fa fa-book"></i>电子书</a>-->
+                <!--</div>-->
+            </li>
+            <li class="nav-item"><a href="javascript:void(0)" class="nav-link" onclick="messageList($!user.id)">消息(<span
+                    class="tag">$!messageSize</span>)</a></li>
+            <li class="nav-item dropdown">
+                <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="header-user-img">
+                	#if($!user.photo)
+					    #set($img="$!webPath/$!user.photo.path/$!user.photo.name")
+					  #else 
+					    #set($img="$!webPath/$!config.memberIcon.path/$!config.memberIcon.name")
+					  #end
+                    <img src="$!img" alt=""
+                         class="rounded-circle"
+                         onerror="this.src='$!webPath/resources/style/system/front/default/images/usercenter/headimg.jpg'">
+                </a>
+                <div class="dropdown-menu custom-menu users-menu">
+                    <div class="dropdown-header">
+                        <h5>$!CommUtil.substring("$!{user.userName}",12)</h5>
+                    </div>
+                    <a href="$!webPath/default/personHome.htm?uid=$!user.id" target="_blank"
+                       class="dropdown-item">我的主页</a>
+                    <a href="$!webPath/member/memberSpace.htm#allarticle" target="_blank" class="dropdown-item">我的内容</a>
+                    <a href="$!webPath/member/memberSpace.htm#myCollection" target="_blank"
+                       class="dropdown-item">我的收藏</a>
+                    <a href="$!webPath/member/memberSpace.htm#myMoney" target="_blank" class="dropdown-item">我的钱包</a>
+                    <a href="$!webPath/member/memberSpace.htm#myinfo" target="_blank" class="dropdown-item">个人设置</a>
+                    <a href="javascript:void(0)" target="_blank" class="dropdown-item">帮助与反馈</a>
+                    <a href="$!webPath/iskyshop_logout.htm" class="dropdown-item">退出登录</a>
+                </div>
+            </li>
+            #else
+            <!-- 未登录 -->
+            <li class="nav-item"><a href="{{navbar.login.url}}" class="nav-link">
+            {{navbar.login.title}}</a></li>
+            <li class="disabled">|</li>
+            <li class="nav-item"><a href="{{navbar.register.url}}" class="nav-link">
+            {{navbar.register.title}}</a></li>
+            #end
+        </ul>
+    </div>
+</nav>
+
+

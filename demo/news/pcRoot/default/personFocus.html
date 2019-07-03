@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TA的关注</title>
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-global.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-styles.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/animate.css">
+
+    <script>
+
+        function getattention0(user_id,obj) {
+            var url = "$!webPath/default/personFocus_add_attention.htm";
+            jQuery.ajax({
+                type: 'POST', url: url, data: {"user_id": user_id},
+                beforeSend: function () {
+                },
+                success: function (data) {
+                    if (data) {
+                        $(obj).html("<strong>√</strong> 已关注").addClass('dised');
+                        alertModal(1, "关注成功", function (index) {
+                            layer.close(index);
+                        });
+                    } else {
+                        alertModal(2, "关注失败", function (index) {
+                            layer.close(index);
+                        });
+                    }
+                }
+            });
+        }
+
+        function getattention1(user_id,obj) {
+            var url = "$!webPath/default/personFocus_add_attention.htm";
+            jQuery.ajax({
+                type: 'POST', url: url, data: {"user_id": user_id},
+                beforeSend: function () {
+                },
+                success: function (data) {
+                    if (data) {
+                        $(obj).html("<strong>√</strong> 已关注").addClass('dised');
+                        alertModal(1, "关注成功", function (index) {
+                            layer.close(index);
+                        });
+                    } else {
+                        alertModal(2, "关注失败", function (index) {
+                            layer.close(index);
+                        });
+                    }
+                }
+            });
+        }
+
+        function getattention2(channel_id,obj) {
+            var url = "$!webPath/default/channelFocus_add_attention.htm";
+            jQuery.ajax({
+                type: 'POST', url: url, data: {"channel_id": channel_id},
+                beforeSend: function () {
+                },
+                success: function (data) {
+                    if (data) {
+                        $(obj).html("<strong>√</strong> 已关注").addClass('dised');
+                        alertModal(1, "关注成功", function (index) {
+                            layer.close(index);
+                        });
+                    } else {
+                        alertModal(2, "关注失败", function (index) {
+                            layer.close(index);
+                        });
+                    }
+                }
+            });
+        }
+
+    </script>
+    <script src="$!webPath/resources/js/jquery-1.6.2.js"></script>
+	<script src="$!webPath/resources/js/jquery.shop.common.js"></script>
+</head>
+<!-----------------------------------------
+  名称：智脑-TA的关注
+  时间：2019年3月31日
+  作者：方凌松
+------------------------------------------->
+<body>
+<div class="container-fluid pb50 pt62">
+    <!-- 顶部导航栏 -->
+    <div id="memberSpaceHeader" class="fadeIn animated">
+
+    </div>
+
+    <div id="users-header">
+
+        <!-- 主题背景图片 -->
+        <div class="usersInfosHeader">
+
+            <!-- 更换主题背景 -->
+            <a href="javascript:void (0);" title="点击更换背景" id="usersBackground">
+                <img src="$!webPath/resources/mystyle/static/images/channelBg.jpg" alt="">
+            </a>
+
+            <!-- 关注按钮 -->
+            #if($!owner.id!=$!curUser.id)
+            <div class="content-fluid">
+                #if($!isAtten)
+                <a class="btn btn-user dised" style="width: 92px;" id="attention" href="javascript:void (0)" data-url="$!webPath/default/personFocus_add_attention.htm">已关注</a>
+                #else
+                <a class="btn btn-user" style="width: 92px;" id="attention" href="javascript:void (0)" data-url="$!webPath/default/personFocus_add_attention.htm">+关注</a>
+                #end
+            </div>
+            #end
+        </div>
+        #if($!owner.id!=$!curUser.id||!$!user.id)
+        <!--<button type="button" class="btn btn-default" onclick="javascript:window.location.href='$!webPath/default/personFocus.htm?uid=$!curUser.id'" style="width: 92px;">返回主页面</button>-->
+        #end
+        <!--<a href="$!webPath/index.htm">返回首页</a>-->
+        <!-- 用户头像等信息 -->
+        <div class="usersInfosBody">
+            <div class="content-fluid text-center mb20" style="padding-top:0 !important;">
+                <!-- 用户头像 -->
+                <div id="usersIcons">
+                    #set($userImg="$!webPath/$!config.memberIcon.path/$!config.memberIcon.name")
+                    #if($!owner.photo)
+                    #set($userImg="$!webPath/$!owner.photo.path/$!owner.photo.name")
+                    #end
+                    #if($!owner.id!=$!curUser.id||!$!user.id)
+                    <a href="$!webPath/default/personFocus.htm?uid=$!{owner.id}">
+                        <img src="$userImg" alt="" class="userImg"
+                             onerror="this.src='$!webPath/resources/style/system/front/default/images/usercenter/headimg.jpg'">
+                    </a>
+                    #else
+                    <a href="$!webPath/default/personFocus.htm">
+                        <img src="$userImg" alt="" class="userImg"
+                             onerror="this.src='$!webPath/resources/style/system/front/default/images/usercenter/headimg.jpg'">
+                    </a>
+                    #end
+                </div>
+                <!-- 用户名 && 星评价 -->
+                <div class="text-center" id="userInfos">
+                    <div class="text-center pt5">
+                        <span class="userTitle" id="usersTitle">$!owner.userName</span>
+
+                        <!--<ul class="star-list mr0" data-state="3">-->
+                            <!--<li><i class="fa fa-star yes" aria-hidden="true"></i></li>-->
+                            <!--<li><i class="fa fa-star yes" aria-hidden="true"></i></li>-->
+                            <!--<li><i class="fa fa-star yes" aria-hidden="true"></i></li>-->
+                            <!--<li><i class="fa fa-star" aria-hidden="true"></i></li>-->
+                            <!--<li><i class="fa fa-star" aria-hidden="true"></i></li>-->
+                        <!--</ul>-->
+                        <p class="signature">$!owner.signature</p>
+                    </div>
+                    <!-- 个性签名 -->
+                    <!-- <p class="signature">$!owner.introduce</p> -->
+                </div>
+                <!-- 文章 && 粉丝 && 关注 -->
+                <ul class="user-basic">
+                    <li><a href="$!webPath/default/personHome.htm?uid=$!owner.id">$!articles_num</a>文章</li>
+                    <li><a href="$!webPath/default/personFocus.htm?uid=$!owner.id&flag=2&type=3">$!fans_num</a>粉丝</li>
+                    <li><a href="$!webPath/default/personFocus.htm?uid=$!owner.id&flag=1&type=1">$!attentions_num</a> 关注</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 用户页面导航 -->
+        <div class="usersInfosNav">
+            <ul class="nav-tabs bn">
+                #if($!owner.id ==$!user.id)
+                <li><a href="personHome.htm?uid=$!owner.id">我的主页</a></li>
+                <li #if($!flag==1) class="active" #end><a href="personFocus.htm?flag=1&type=1" id="focusFirstBtn">我的关注</a></li>
+                <li><a href="personFocus.htm?flag=2&type=3" id="fansFirstBtn">我的粉丝</a></li>
+                #else
+                <li><a href="personHome.htm?uid=$!owner.id">TA的主页</a></li>
+                <li #if($!flag==1) class="active" #end><a href="personFocus.htm?uid=$!owner.id&flag=1&type=1" id="focusFirstBtn">TA的关注</a>
+                </li>
+                <li #if($!flag==2) class="active" #end><a href="personFocus.htm?uid=$!owner.id&flag=2&type=3" id="fansFirstBtn">TA的粉丝</a></li>
+                #end
+            </ul>
+        </div>
+        <div class="bottomsDemo"></div>
+
+    </div>
+
+    <div class="content-fluid pt40">
+        <div class="main-content">
+
+            <!-- 左侧 -->
+            <div class="col-left">
+                <div class="main-content pt10 clearfix">
+
+                    <!-- 切换按钮 -->
+                    <div class="content-btn clearfix relative">
+
+                        <ul class="nav nav-tabs bn" id="focusBtnGroup">
+                            <li>
+                                <a href="personFocus.htm?uid=$!owner.id&flag=1&type=1" #if($!type==1) class="active show" #end>
+                                    <!-- 关注用户<span id="FocusUser">#if(!$!objs)0#end$!objs.size()</span> -->
+                                    关注用户<span id="FocusUser">$!attentions_num</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="personFocus.htm?uid=$!owner.id&flag=1&type=2" #if($!type==2) class="active show" #end>
+                                    关注频道<span id="FocusChannel">$!favorite_store_num</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="personFocus.htm?uid=$!owner.id&flag=2&type=3" #if($!type==3) class="active show" #end>
+                                    粉丝<span id="fansCount">$!fans_num</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <!-- 布局结合按钮 -->
+                        <a #if($!type==1) style="display:block;" #end href="#focusBox" data-now="list" class="toggleLayoutBtn" title="切换到列表模式"><i
+                            class="fa fa-th-list"></i></a>
+                        <a #if($!type==2) style="display:block;" #end href="#channelBox" data-now="list" class="toggleLayoutBtn" title="切换到大图模式"><i
+                            class="fa fa-th-large"></i></a>
+                        <a #if($!type==3) style="display:block;" #end href="#fansBox" data-now="list" class="toggleLayoutBtn" title="切换到大图模式"><i
+                            class="fa fa-th-large"></i></a>
+                    </div>
+
+                    <!-- 主要内容 -->
+                    <div class="content-body tab-content">
+						<form method="post" id="ListForm">
+							<input type="hidden" id="layout" name="layout" value="$!layout"/>
+	                        <!-- 关注用户 -->
+	                        <div class="tab-pane fade in #if($!type==1) active show #end" id="focus">
+	                            <div class="focusItems $!layout" id="focusBox">
+	                                #foreach($obj in $myAttentions)
+	                                #set($userImg="$!webPath/$!config.memberIcon.path/$!config.memberIcon.name")
+	                                #if($!obj.toUser.photo)
+	                                #set($userImg="$!webPath/$!obj.toUser.photo.path/$!obj.toUser.photo.name")
+	                                #end
+	                                <div class="focus-item media animated fadeIn">
+	                                    <a href="$!webPath/default/personHome.htm?uid=$!{obj.toUser.id}"
+	                                       target="_blank"><img src="$userImg" alt=""
+	                                                            onerror="this.src='$!webPath/resources/style/system/front/default/images/usercenter/headimg.jpg'"
+	                                                            class="rounded-circle usersHeadIcon"
+	                                                            style="width:100px;height: 100px"></a>
+	                                    <div class="media-body">
+	                                        <h4 class="usersAccount">
+	                                            $!obj.toUser.userName
+	                                            #if($!obj.toUser.sex==-1) #end
+	                                            #if($!obj.toUser.sex==0)
+	                                            <span class="female"></span>
+	                                            #end
+	                                            #if($!obj.toUser.sex==1)
+	                                            <span class="male"></span>
+	                                            #end
+	                                        </h4>
+	                                        <p>文章 $!obj.toUser.goods.size() | 粉丝
+	                                        #if($!$!obj.toUser)
+	                                        $!myAttentionsFans.get($!obj.toUser.id).size()
+	                                        #else
+	                                        0
+	                                        #end
+	                                    	</p>
+	                                    </div>                 
+	                                    #if($user.id)
+	                                    #if($!owner.id!=$!curUser.id)
+	                                    <!--    <button type="button" class="btn btn-user" style="width: 92px;"><a href="javascript:void(0);" id="add_attention_$!obj.id" obj_id="$!obj.id">+ 关注</a></button> -->
+	                                    <a href="javascript:getattention($!obj.toUser.id,this);" class="btn btn-user"
+	                                       id="add_attention" user_id="$!obj.toUser.id"><strong>+</strong> 关注</a>
+	                                    #else
+	                                    <!--  <button type="button" class="btn btn-user" style="width: 92px;"><a href="$!webPath/default/personFocus_remove_attention.htm?mulitId=$!obj.id&currentPage=$!currentPage&type=0" >取消关注</a></button> -->
+	                                    <a href="$!webPath/default/personFocus_remove_attention.htm?mulitId=$!obj.id&currentPage=$!currentPage&type=0"
+	                                       class="btn btn-user dised"><strong>√</strong> 已关注</a>
+	                                    #end
+	                                    #end
+	                                </div>
+	                                #end
+	                            </div>
+	                        </div>
+	                        <!-- 关注频道 -->
+	                        <div class="tab-pane list fade  #if($!type==2) active show #end" id="channel">
+	                            <div class="focusItems $!layout" id="channelBox">
+	                                #foreach($obj in $objs)
+	                                <div class="focus-item media animated fadeIn">
+	                                    #if($!obj.store.store_logo)
+	                                    #set($store_logo="$!webPath/$!{obj.store.store_logo.path}/$!{obj.store.store_logo.name}")
+	                                    #else
+	                                    #set($store_logo="$!webPath/$!config.storeImage.path/$!config.storeImage.name")
+	                                    #end
+	                                    <a href="$!webPath/store.htm?id=$!{obj.store.id}"
+	                                       target="_blank"><img src="$store_logo" alt=""
+	                                                            class="usersHeadIcon" style="width:100px;height: 100px" onerror="this.src='$!webPath/resources/mystyle/common/images/channel-img.jpg'"></a>
+	                                    <div class="media-body">
+	                                        <h4 class="usersAccount">$!{obj.store.store_name}</h4>
+	                                        <p>$!obj.store.store_ower 收录$!{obj.store.goods_list.size()} |
+	                                            $!{obj.store.favorite_count}关注</p>
+	                                    </div>
+	                                    <!--                                     +关注按键需要修改 -->
+	                                    #if($user.id)
+	                                    #if($!owner.id!=$!curUser.id)
+	                                    <button type="button" class="btn btn-user" id="attention_channel"
+	                                            onclick="getattention2('$!{obj.store.id}',this)"><strong>+</strong> 关注
+	                                    </button>
+	                                    #else
+	                                    <a href="$!webPath/default/channelFocus_remove_attention.htm?mulitId=$!obj.id&currentPage=$!currentPage&type=0"
+	                                       class="btn btn-user dised"><strong>√</strong> 已关注</a>
+	                                    #end
+	                                    #end
+	                                    <!--                                     <button type="button" class="btn btn-user" style="width: 92px;">+ 关注</button> -->
+	                                    <!--                                     <button type="button" class="btn btn-user" id="attention_channel" onclick="getattention2('$!{obj.store.id}')" style="width: 92px;">+ 关注</button> -->
+	                                </div>
+	                                #end
+	                            </div>
+	                        </div>
+	                        <!-- 粉丝 -->
+	                        <div class="tab-pane list fade  #if($!type==3) active show #end mb15" id="fans">
+	                            <div class="focusItems $!layout" id="fansBox">
+	                                #foreach($obj in $myFans)
+	                                <div class="focus-item media animated fadeIn">
+	                                    #set($userImg="$!webPath/$!config.memberIcon.path/$!config.memberIcon.name")
+	                                    #if($!obj.fromUser.photo)
+	                                    #set($userImg="$!webPath/$!obj.fromUser.photo.path/$!obj.fromUser.photo.name")
+	                                    #end
+	                                    <a href="$!webPath/default/personHome.htm?uid=$!{obj.fromUser.id}" target="_blank"><img
+	                                        src="$!userImg" alt=""
+	                                        onerror="this.src='$!webPath/resources/style/system/front/default/images/usercenter/headimg.jpg'"
+	                                        class="rounded-circle usersHeadIcon" style="width:100px;height: 100px"></a>
+	                                    <div class="media-body">
+	                                        <h4 class="usersAccount">
+	                                            $!obj.fromUser.userName
+	                                            #if($!obj.fromUser.sex==-1)#end
+	                                            #if($!obj.fromUser.sex==0)
+	                                            <span class="female"></span>
+	                                            #end
+	                                            #if($!obj.fromUser.sex==1)
+	                                                <span class="male"></span>
+	                                            #end
+	                                        </h4>
+	                                        <p>文章 $!obj.fromUser.goods.size() | 粉丝  
+	                                            $myFansFans.get($!obj.toUser.id).size()</p>
+	                                    </div>
+	                                    <!--                                     关注功能部分未修改 -->
+	                                    
+	                                    <!-- modified by ffy  -->
+	                                    #set($isgz=0)
+	                                    #foreach($attens in $myAttentionsFans.get($obj.fromUser.id))
+	                        		      #foreach($fans in $myFansFans.get($obj.toUser.id))
+	                                	    #if($!attens.toUser.id==$!fans.fromUser.id)
+	                                		  #set($isgz=1)
+	                                	    #end
+	                                      #end
+	                                    #end
+	                                    #if($user.id)
+	                                    #if($!isgz==0)
+	                                    <a href="javascript:void (0)" onclick="getattention0($!obj.fromUser.id,this)" class="btn btn-user" id="add_attention" user_id="$!obj.fromUser.id"><strong>+</strong> 关注</a>
+	                                    #else
+	                                    <a href="#" class="btn btn-user dised"><strong>√</strong> 已关注</a>
+	                                    #end
+	                                    #end
+	                                    <!-- end -->
+	                                </div>
+	                                #end
+	
+	                            </div>
+	                        </div>
+
+							<div class="fenye3">
+						        <input name="ad_status" type="hidden" id="ad_status" value="$!ad_status" />
+						        <input name="ad_title" type="hidden" id="ad_title" value="$!ad_title" />
+						        <input type="hidden" name="mulitId" id="mulitId" />
+								<input name="currentPage" type="hidden" id="currentPage" value="$!currentPage" />
+					          	$!gotoPageFormHTML
+					        </div>
+						</form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧 -->
+            <div class="col-right clearfix">
+                <div class="col-right-inner">
+
+                    <!-- 个人介绍 -->
+                    <div class="introduction">
+                        <h3 class="introduction-title">
+                            <img src="$!webPath/resources/mystyle/static/images/icon/users-min-icon.jpg" alt=""
+                                 style="vertical-align: middle"/>
+                            个人介绍
+                        </h3>
+                        <p> $!owner.introduce</p>
+                    </div>
+
+                    <!-- TA的频道 -->
+                    #if($!stors.size()!=0)
+                    <div class="TaChannel list-group">
+                        #if($!owner.id!=$!user.id||!$!user.id)
+                        <div class="TaChannelTitle">TA的频道</div>
+                        #else
+                        <div class="TaChannelTitle">我的频道</div>
+                        #end
+                        
+                        #foreach($stor in $stors)
+                        <div class="list-group-item">
+                            <div class="media">
+                                #if($!stor.store_logo)
+                                #set($store_logo="$!webPath/$!{stor.store_logo.path}/$!{stor.store_logo.name}")
+                                #else
+                                #set($store_logo="$!webPath/$!config.storeImage.path/$!config.storeImage.name")
+                                #end
+                                <img src="$!store_logo" alt=""
+                                     style="width: 68px;height: 68px;" class="mr-3"
+                                     onerror="this.src='$!webPath/resources/mystyle/common/images/channel-img.jpg'">
+                                <div class="media-body">
+                                    <a href="$!webPath/store.htm?id=$!stor.id" class="subChannelTitle s15">$!{stor.store_name}</a>
+                                    <span class="s14">$!{stor.store_ower}</span>
+                                </div>
+                            </div>
+                        </div>
+                        #end
+                                                 <!--<div class="list-group-item pl15 pr15">-->
+                                                     <!--<div class="media">-->
+                                                         <!--<img src="$!webPath/resources/mystyle/static/images/placeholder/img1_140x175.jpg" alt=""-->
+                                                              <!--style="width: 68px;height: 68px;" class="mr-3">-->
+                                                         <!--<div class="media-body">-->
+                                                             <!--<a href="#" class="subChannelTitle">当代世界与社会主义</a>-->
+                                                             <!--<span>创建者</span>-->
+                                                         <!--</div>-->
+                                                     <!--</div>-->
+                                                 <!--</div>-->
+                                                 <!--<div class="list-group-item pl15 pr15">-->
+                                                     <!--<div class="media">-->
+                                                         <!--<img src="$!webPath/resources/mystyle/static/images/placeholder/img1_140x175.jpg" alt=""-->
+                                                              <!--style="width: 68px;height: 68px;" class="mr-3">-->
+                                                         <!--<div class="media-body">-->
+                                                             <!--<a href="#" class="subChannelTitle">当代世界与社会主义</a>-->
+                                                             <!--<span>创建者</span>-->
+                                                         <!--</div>-->
+                                                     <!--</div>-->
+                                                 <!--</div>-->
+                                                 <!--<div class="list-group-item pl15 pr15">-->
+                                                     <!--<div class="media">-->
+                                                         <!--<img src="$!webPath/resources/mystyle/static/images/placeholder/img1_140x175.jpg" alt=""-->
+                                                              <!--style="width: 68px;height: 68px;" class="mr-3">-->
+                                                         <!--<div class="media-body">-->
+                                                             <!--<a href="#" class="subChannelTitle">当代世界与社会主义</a>-->
+                                                             <!--<span>创建者</span>-->
+                                                         <!--</div>-->
+                                                     <!--</div>-->
+                                                 <!--</div>-->
+                    </div>
+                    #end
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/js/script.js"></script>
+<script>
+
+    $(".fenye3").addClass('pagination').find('a').addClass('page-link').wrap("<div class='page-item'></div>");
+
+    global.loadSearch();
+    window.onload = function () {
+
+        querryNowShow();
+        bindClickEvent();
+
+        jQuery("img").one("error", function (e) {
+            $(this).attr('src', '$!webPath/resources/mystyle/common/images/good.jpg');
+        });
+
+        var resultBox = $("#resultBox");
+        if (location.hash) {
+            var hashStrings = (window.location.hash.length > 0 ? window.location.hash.substring(1) : "");
+            resultBox.addClass(hashStrings);
+            $("[data-to='" + hashStrings + "']").addClass('active');
+        } else {
+            $("[data-to='list']").addClass('active');
+            resultBox.addClass('list');
+        }
+
+        var toggleButton = $(".toggleLayoutBtn");
+
+        // 点击切换布局
+        toggleButton.on("click", function (e) {
+            var nowdata = $(this).attr('data-now');
+            var boxid = $(this).attr('href');
+
+            if (nowdata == 'list') {
+                $(this)
+                    .attr('data-now', "grid")
+                    .attr('title', "切换到列表模式")
+                    .children('i')
+                    .removeClass('fa-th-large')
+                    .addClass('fa-th-list');
+                $(boxid).removeClass('list').addClass('grid');
+                $("#layout").val("grid");
+            } else {
+                $(this)
+                    .attr('data-now', "list")
+                    .attr('title', "切换到大图模式")
+                    .children('i')
+                    .removeClass('fa-th-list')
+                    .addClass('fa-th-large');
+                $(boxid).removeClass('grid').addClass('list');
+                $("#layout").val("list");
+            }
+            e.preventDefault();
+        });
+
+    }
+
+    /**
+     * 绑定点击事件
+     */
+    function bindClickEvent() {
+        var usersInfosNav = $(".usersInfosNav");
+        var btnGroup = $("#focusBtnGroup");
+        var layoutBtn = $(".toggleLayoutBtn");
+
+        btnGroup.find("a[data-toggle='tab']").on("click", function (e) {
+            layoutBtn.hide();
+            var boxbtn = $(this).attr("data-boxBtn");
+            $("a[href=" + boxbtn + "]").show();
+
+            if ($(this).attr('id') == 'fansToButton') {
+                usersInfosNav.find('#fansFirstBtn').parent('li').addClass('active').siblings('li').removeClass('active');
+            } else {
+                usersInfosNav.find('#focusFirstBtn').parent('li').addClass('active').siblings('li').removeClass('active');
+            }
+        });
+
+        $(".nav-tabs").find('a').on("click", function () {
+            if (!$(this).parent('li').hasClass('active')) {
+                $(this).parent('li').addClass('active').siblings('li').removeClass('active');
+            }
+        });
+
+
+        $("#fansFirstBtn").on("click", function () {
+            $("#fansToButton").tab('show');
+        });
+    }
+
+    /**
+     * 页面刚加载完成时获取当前正显示哪个tab页，再显示对应的布局切换按钮
+     */
+    function querryNowShow() {
+        var btnGroup = $("#focusBtnGroup");
+        btnGroup.find('a').each(function (e) {
+            if ($(this).hasClass('active')) {
+                var boxbtn = $(this).attr("data-boxBtn");
+                $("a[href=" + boxbtn + "]").show();
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

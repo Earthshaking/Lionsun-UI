@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>频道主页</title>
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/jquery.bxslider/jquery.bxslider.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-global.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-styles.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/animate.css">
+</head>
+<!-----------------------------------------
+  名称：智脑-频道主页
+  时间：2019年3月30日
+  作者：方凌松
+  ------------------------------------------->
+<body>
+<div class="container-fluid pt62">
+        <!-- 顶部栏 -->
+        <div id="header"></div>
+
+        <!--<div class="content-fluid pt40 mb10">-->
+            <!--<div class="top-box" id="globalBox" data-url="$!webPath/seller/channel_head.htm">-->
+            <!--&lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+               <!--加载公用组件内容：左侧logo标识和搜索框-->
+               <!--对应模版文件：tepl/search.html-->
+               <!--&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+           <!--</div>-->
+       <!--</div>-->
+
+       <div class="page-background clearfix">
+       #set($banner="$!webPath/resources/mystyle/static/images/channelBg.jpg")
+       #if($!store.store_banner)
+         	#set($banner="$!webPath/$!store.store_banner.path/$!store.store_banner.name")
+       #end
+        <img src="$!banner" onerror="this.src='$!webPath/resources/mystyle/static/images/channelBg.jpg'" alt="bg" style="width: 100%;" class="bg-img">
+        <!-- 投稿 && 关注 按钮 -->
+        <!--<div class="content-fluid">
+            <div class="floatBtn">
+                    <button type="button" class="btn contributeColor">投稿</button>
+                    <button type="button" class="btn focusColor" >+关注</button>
+            </div>
+        </div> -->
+    </div>
+
+    <!-- 用户页面导航 -->
+    <div id="channelPage-nav">
+        <div class="content-fluid" style="padding-top: 0 !important;">
+            <ul class="nav-tabs navbar ">
+                <li #if(!$!classid) class="active" #end><a href="$!webPath/store_$!{store.id}.htm">全部分类</a></li>
+                #foreach($cs in $ugslist)
+                <li #if($!classid==$!cs.id) class="active" #end><a href="$!webPath/store_$!{store.id}.htm?classid=$!cs.id">$!{cs.className} </a></li>
+                #end
+            </ul>
+        </div>
+    </div>
+
+    <!-- 主要内容 -->
+    <div class="content-fluid">
+        <div class="main-content pt20">
+            <!-- 左侧 -->
+            <div class="col-left">
+             <!-- 筛选条件 排序方式 -->
+                <div class="sort-boxes clearfix">
+
+                    <input type="hidden" value="$!id" id="storeID">
+
+                    <div class="btn-group btn-group-sm" id="sortBtnBox">
+                        <a href="$!webPath/store.htm?sort=1&id=$!id&classid=$!classid" class="btn #if($!sort==1) select-this #end">综合排序</a>
+                        <a href="$!webPath/store.htm?sort=2&id=$!id&classid=$!classid" class="btn #if($!sort==2) select-this #end">最新</a>
+                        <a href="$!webPath/store.htm?sort=3&id=$!id&classid=$!classid" class="btn #if($!sort==3) select-this #end">周热度</a>
+                        <a href="$!webPath/store.htm?sort=4&id=$!id&classid=$!classid" class="btn #if($!sort==4) select-this #end">月热度</a>
+                      <!--  <a href="$!webPath/sort/personHome.htm?sort=5&style=$!style" class="btn">价格从低到高</a>
+                        <a href="$!webPath/sort/personHome.htm?sort=6&style=$!style" class="btn">价格从高到低</a>-->
+                         <a href="$!webPath/store.htm?sort=5&id=$!id&classid=$!classid" class="btn #if($!sort==5) select-this #end">免费</a>
+                        <a href="$!webPath/store.htm?sort=6&id=$!id&classid=$!classid" class="btn #if($!sort==6) select-this #end">付费</a>
+                    </div>
+
+                 <!--   <div class="float-right">
+                        <label>
+                            <input type="checkbox" class="checkbox-inline" id="free">
+                            <span style="font-size: 12px;position: relative;top: -2px;">&nbsp;免费</span>
+                        </label>
+                        &nbsp;&nbsp;&nbsp;
+                        <label>
+                            <input type="checkbox" class="checkbox-inline" id="vipFree">
+                            <span style="font-size: 12px;position: relative;top: -2px;">&nbsp;会员免费</span>
+                        </label>
+                    </div>-->
+
+                </div>
+                <!-- 频道主页！！！！！！！！！ -->
+                <div class="result-box list clearfix channel" id="resultBox">
+                	<input type="hidden" id="sort" value="$!sort"/>
+                	<input type="hidden" id="classid" value="$!classid"/>
+
+
+
+                </div>
+
+                <div id="favoriteScroll" class="scroll-tip" style="display:none;">
+                    <img src="$!webPath/resources/mystyle/static/images/first-loading.png" alt="">
+                </div>
+                <br>
+                <br>
+            </div>
+
+            <!-- 右侧 -->
+            <div class="col-right">
+                <div class="col-right-inner pt10">
+                   #if($!store.store_logo)
+                   #set($store_logo="$!webPath/$!{store.store_logo.path}/$!{store.store_logo.name}")
+                   #else
+                   #set($store_logo="$!webPath/$!config.storeImage.path/$!config.storeImage.name")
+                   #end
+                   <div class="card channel-card mb35">
+                    <div class="card-body clearfix">
+                        <img src="$!store_logo" alt="" style="width: 102px;height: 102px" id="usersImg"
+                             onerror="this.src='$!webPath/resources/mystyle/common/images/channel-img.jpg'">
+                        #set($receivegoods=0)
+                        #set($goodscount=0)
+                        #foreach($audit in $store.auditStore)
+                        #if($!audit.deleteStatus==false&&$!audit.audit_state==2)
+                        #set($goodscount=$goodscount+1)
+                        #end
+                        #end
+                        <h5 class="card-title mb0">$!store.store_name</h5>
+                        <!--<span style="color: #999;">收录  | 人关注</span>-->
+                        <div class="col-12 pt15">
+                            <!-- 投稿 -->
+                            <button type="button" class="btn contributeColor" onclick="contribute('$!webPath/contribute.htm?storeId=$!store.id')" style="width: 80px">投稿</button>&nbsp;
+                            #if($!isFav)
+                            <button type="button" class="btn dised focusColor" onclick="channelFav(this)" style="width: 80px"><strong>√</strong> 已关注</button>
+                            #else
+                            <button type="button" class="btn focusColor" onclick="channelFav(this)" style="width: 80px"><strong>+</strong> 关注</button>
+                            #end
+                        </div>
+                    </div>
+
+                    <div class="card-footer" style="border-top: 0 !important;height: auto !important;">
+                        <hr style="margin-top: 30px !important;">
+                        <!--<h5 class="card-title globalYellowTitle">公告</h5>-->
+                        <ol>
+                            <!--<li>频道主编：$!store.store_ower</li>-->
+                            <li>频道描述：$!store.store_info</li>
+                            <!--<li>投稿需知：$!store.contribute_know</li>-->
+                        </ol>
+                    </div>
+
+                       <ul class="two-news">
+                           <li>内容数 <br>$!goodscount</li>
+                           <li>|</li>
+                           <li>关注数 <br>$!favcount</li>
+                       </ul>
+
+                </div>
+
+                    <div class="moduleTwo">
+                        <hr class="mb10">
+                        <div class="clearfix">
+                            <span class="subBoxTitle float-left">频道主编</span>
+                        </div>
+
+                        <div class="author-box">
+                            <div class="media author-item">
+                                <a href="$!webPath/default/personHome.htm?uid=$!store.user.id" target="_blank">
+                                    <img src="$!webPath/$!{store.user.photo.path}/$!{store.user.photo.name}" alt="" class="mr-3 rounded-circle"
+                                         style="width: 48px;height: 48px;"
+                                         onerror="this.src='$!webPath/resources/style/system/front/default/images/usercenter/headimg.jpg'">
+                                </a>
+                                <div class="media-body clearfix">
+                                    <a href="$!webPath/default/personHome.htm?uid=$!store.user.id" target="_blank"><span
+                                        class="media-title">$!store.user.userName</span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                <!-- 推荐作者 -->
+                <div class="moduleTwo">
+                    <hr class="mb10">
+
+                    <div class="clearfix">
+                        <span class="subBoxTitle float-left">推荐作者 ($!usercount)</span>
+                         #set($authorpage=$authorpage+1)
+                         <a href="store.htm?authorCurPage=$!authorpage&id=$!id" class="float-right">换一换</a>
+                    </div>
+
+                    <div class="author-box">
+                        #foreach($obj in $!userList)
+                        #if($!obj.photo)
+                        #set($uImg1="$!webPath/$!{obj.photo.path}/$!{obj.photo.name}")
+                        #else
+                        #set($uImg1="$!webPath/$!config.memberIcon.path/$!config.memberIcon.name")
+                        #end
+                        <div class="media author-item">
+                            <a href="$!webPath/default/personHome.htm?uid=$obj.id" target="_blank">
+                                <img src="$!uImg1" alt="" class="mr-3 rounded-circle"
+                                style="width: 48px;height: 48px;"
+                                     onerror="this.src='$!webPath/resources/style/system/front/default/images/usercenter/headimg.jpg'">
+                            </a>
+                            <div class="media-body clearfix">
+                                <a href="$!webPath/default/personHome.htm?uid=$obj.id" target="_blank"><span class="media-title">$!obj.userName</span></a>
+                                #set($isgz=0)
+                        		#foreach($fans in $recommandUsersFans.get($obj.id))
+                                	#if($!fans.fromUser.id==$!user.id)
+                                		#set($isgz=1)
+                                	#end
+                                #end
+                                #if($!isgz==0)
+                                		<a href="javascript:void(0)" class="btn btn-user color-white float-right btn-sm" onclick="getattention('$!{obj.id}','$!{user.id}','$!webPath/default/personFocus_add_attention.htm',this)" id="add_attention_$!owner.id" obj_id="$!owner.id"><strong>+</strong> 关注</a>
+                                #else
+                                		<a href="#" class="btn btn-user float-right btn-sm dised"><strong>√</strong> 已关注</a>
+                                #end
+                            </div>
+                        </div>
+                        #end
+                    </div>
+                    #if($userList.size()>5)
+                    <!--<button class="btn-block btn showMoreBtn"  type="button">查看更多></button>-->
+                    #end
+                </div>
+
+                <!-- 关注的人 -->
+                <div class="moduleTwo">
+                    <hr class="mb10">
+
+                    <div class="clearfix">
+                        <span class="subBoxTitle float-left">关注的人（$!favcount）</span>
+                         #set($favoritepage=$favoritepage+1)
+                        <a href="store.htm?favoriteCurPage=$!favoritepage&id=$!id" class="float-right">换一换</a>
+                    </div>
+
+                    <div class="author-box">
+                        #foreach($obj in $!favoriteList)
+                        #if($!obj.user.photo)
+                        #set($uImg2="$!webPath/$!{obj.user.photo.path}/$!{obj.user.photo.name}")
+                        #else
+                        #set($uImg2="$!webPath/$!config.memberIcon.path/$!config.memberIcon.name")
+                        #end
+                        <div class="media author-item">
+                            <a href="$!webPath/default/personHome.htm?uid=$!{obj.user.id}" target="_blank">
+                                <img src="$!uImg2" alt="" class="mr-3 rounded-circle"
+                                style="width: 48px;height: 48px;"
+                                     onerror="this.src='$!webPath/resources/style/system/front/default/images/usercenter/headimg.jpg'">
+                            </a>
+                            <div class="media-body clearfix">
+                                <a href="$!webPath/default/personHome.htm?uid=$!{obj.user.id}" target="_blank"></a><span class="username">$!obj.user.userName</span>
+                            </div>
+                        </div>
+                        #end
+                    </div>
+                    #if($!favcount > 5)
+                    <!--<button class="btn-block btn showMoreBtn" type="button">查看更多></button>-->
+                    #end
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- 投稿须知 -->
+    <!--<div class="contribute-know">-->
+        <!--<img src="$!webPath/resources/mystyle/static/images/bookIcon.png" alt="">-->
+        <!--<span>投稿须知</span>-->
+    <!--</div>-->
+
+</div>
+
+
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/js/script.js"></script>
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/lib/jquery.bxslider/jquery.bxslider.js"></script>
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/lib/jquery.bxslider/jquery.easing.min.js"></script>
+<script>
+	$(function(){
+		var wznr = $("#wznr").text();
+		$("#wznrs").html(wznr)
+	})
+
+	$(function(){
+    	loadChannelData();
+	});
+    
+	// 滚动刷新
+    $(window).scroll(function () {
+        // 滚动到底部加载数据
+        var totalHeight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());
+        if ($(document).height() <= totalHeight) {
+            loadChannelData()
+        }
+    });
+
+    var pageCount = 1;
+
+	// 加载频道数据
+    function loadChannelData() {
+        var url = "/zhinao/store_data.htm";
+        var storeid = $("#storeID").val();
+        jQuery.ajax({
+            url:url,
+            data:{
+                classId:$("#classid").val(),
+                length:5,
+                storeId:storeid,
+                currentPage:pageCount,
+                sort:$("#sort").val()
+            },
+            type:"post",
+            success:function (data) {
+                var datas = JSON.parse(data);
+                if (datas.data.length > 0 ) {
+                    loadChannelHtml(datas.data);
+        			pageCount ++;
+                    queryDatasLength()
+                }else{
+                    $(".scroll-tip").empty().append(`<span class="bottom-line">我是有底线的</span>`);
+                }
+            },
+            error:function (data) {
+                console.log(data);
+            }
+        });
+
+    }
+
+    // 加载频道数据Html
+    function loadChannelHtml(data) {
+        var html = "";
+        for (var i = 0; i < data.length; i++) {
+            var value = data[i];
+            html += `<div class="result-item">
+                <a href="${value.articleUrl}">
+                    <img src="${value.imgUrl}" alt="" class="img-fluid" onerror="this.src='$!webPath/resources/mystyle/common/images/good.jpg'">
+                </a>
+                <h3 class="resultItemTitle" style="width: 800px !important;font-size: 18px !important;"><a href="${value.articleUrl}">${value.goods_name}</a></h3>
+                <p class="itemValue">${value.goods_details}</p>
+                <div class="itemInfo p0">`;
+            if(value.goods_price){
+            	html +=`<span class="price"><img src="$!imageWebServer/resources/mystyle/static/images/gold-mini.jpg" class="mr5" style="width:26px !important;height:20px !important;"/> ${value.goods_price}</span>`;
+            }else{
+            	html +=`<span class="price"><img src="$!imageWebServer/resources/mystyle/static/images/gold-mini.jpg" class="mr5" style="width:26px !important;height:20px !important;"/> 0.00</span>`;
+            }
+           	html += `<span><img src="$!imageWebServer/resources/mystyle/static/images/eye.jpg" class="iconss" style="width:26px !important;height:20px !important;"/> ${value.goods_click}</span>
+                    <span><img src="$!imageWebServer/resources/mystyle/static/images/god.jpg" class="iconss" style="width:26px !important;height:20px !important;"/> ${value.goods_like}</span>
+                    <span>${value.userName}</span>
+                    <span>${value.addTime}</span>
+                </div>
+            </div>`;
+        }
+        $("#resultBox").append(html);
+    }
+    
+
+    function queryDatasLength() {
+        var box = $("#resultBox");
+        var count = box.children('.result-item').length;
+        if (count == 0) {
+            box.append(addNoDatas());
+        }
+    }
+
+    function addNoDatas() {
+        return `<div id="noDatas">
+                        <img src="$!webPath/resources/mystyle/static/images/channel-noData.jpg" alt="">
+                    </div>`;
+    }
+
+    /**
+     * 弹窗页面文件 tepl/contribute.html
+     * 执行此方法后，会先验证登录状态
+     * 若无用户登录则弹出短暂提示语再跳转至登录页面
+     * 若有用户登录，则继续执行下一步显示投稿页面的弹窗
+     */
+    function contribute(url) {
+        checkLogin();  // 验证登录状态
+
+        /**
+         * @参数1 弹窗大小
+         * @参数2 访问地址
+         * @参数3 回调函数
+         */
+        showIframeModal(['746px','876px'],url,function (index) {
+            // do something..
+        });
+    }
+
+    // 验证当前是否有用户登录
+    function checkLogin() {
+        ajax('post', 'loginCheck.htm', "", function (result) {
+            var resultData = JSON.parse(result);
+            // 如果当前没有用户登录
+            if (!resultData.status) {
+                location.href = resultData.data[0].url;
+                /* console.log(resultData.msg);
+                alertModal(2, resultData.msg, function () {
+                    setTimeout(function () {
+                        location.href = resultData.data[0].url;
+                    }, 2000);
+                }); */
+            } else {
+                console.log(resultData.msg);
+            }
+        });
+    }
+
+    global.loadSearch();
+
+    window.onload = function () {
+        $(".author-box").find('.author-item:gt(4)').hide();
+        $(".showMoreBtn").on("click", function () {
+            if ($(this).hasClass('showMore')) {
+                $(this).html("展开更多>").removeClass('showMore').prev('.author-box').find('.author-item:gt(4)').fadeOut('fast');
+            } else {
+                $(this).html("收起").addClass('showMore').prev('.author-box').find('.author-item:gt(4)').fadeIn('fast');
+            }
+        });
+    }
+
+    function channelFav(btn){
+        #if($!user)
+            #if($!user.id==$!obj.goods_store.user.id)
+                alertModal(2, "不能关注自己的店铺", function (index) {
+                    layer.close(index);
+                });
+            #else
+                jQuery.post("$!webPath/add_store_favorite.htm",{"id":"$!store.id"},function(data){
+                   if(data==0){
+                       $(btn).html("<strong>√</strong> 已关注").addClass('dised');
+                       alertModal(1, "关注频道成功", function (index) {
+                           layer.close(index);
+                       });
+                   }
+                   if(data==1){
+                       alertModal(2, "该频道已经被关注", function (index) {
+                           layer.close(index);
+                       });
+                }
+            },"text");
+            #end
+        #else
+            window.location.href="$webPath/user/login.htm";
+        #end
+    };
+
+</script>
+</body>
+
+
+
+</html>

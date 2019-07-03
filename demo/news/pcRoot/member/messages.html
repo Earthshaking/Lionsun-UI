@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>站内消息</title>
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-global.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-styles.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/animate.css">
+    <style>
+    
+    </style>
+    <script src="$!webPath/resources/js/jquery-1.6.2.js"></script>
+	<script src="$!webPath/resources/js/jquery.shop.common.js"></script>
+</head>
+<!-----------------------------------------
+  名称：智脑 我的账户-站内消息
+  时间：2019年4月2日
+  作者：方凌松
+------------------------------------------->
+<body>
+
+<div class="container-fluid">
+    
+    <div class="manager-wrraper">
+        <ul class="nav nav-tabs msg-tabs" style="width: 147px !important;top:0!important;">
+           <!--  <li class="active"><a href="#getMsg" class="active show" data-toggle="tab" id="getMsgTab">收到消息</a></li>
+            <li><a href="#sentMsg" data-toggle="tab" id="sentMsgTab">已发消息</a></li> -->
+            <li class="active"><a href="#systemMsg" class="active show" data-toggle="tab" id="systemMsgTab">系统消息</a></li>
+        </ul>
+        
+  		<form method="post" id="ListForm">
+	        <div class="tab-content" id="messageTablesGroup">
+	            <!-- 系统消息 -->
+	            <div class="tab-pane fade in active show mb15" id="systemMsg">
+	                <div class="table-responsive-md clearfix">
+	                    <div class="table-contrl mb5 clearfix relative" style="min-height: 40px">
+	                        <!-- 全选 && 删除 -->
+	                        <div class="float-left msg-item-box">
+	                            <label data-toggle="checkbox" data-style="default" class="">
+	                                <input type="checkbox" name="checkAll" data-table="#systemMsg-table">
+	                                <span class="nothing">&nbsp;全选</span>
+	                            </label>
+	                            <a href="" class="deleteButton"><i class="fa fa-trash-o"></i> 删除</a>
+	                        </div>
+	                    </div>
+	                    <table class="table table-white-border" width="100%" id="systemMsg-table">
+	                        <thead class="thead-bg">
+	                        <tr>
+	                            <th width="30"></th>
+	                            <th>消息内容</th>
+	                            <th>时间</th>
+	                            <th>操作</th>
+	                        </tr>
+	                        </thead>
+	                        <tbody>
+	                        #foreach($obj in $objs)
+	                        <tr>
+	                            <td>
+	                                <label data-toggle="checkbox" data-style="default">
+	                                    <input type="checkbox" name="checkItem">
+	                                    <span class="nothing"></span>
+	                                </label>
+	                            </td>
+	                            <td class="table-width">$!obj.content</td>
+	                            <td>$!CommUtil.formatLongDate($!obj.addTime)</td>
+	                            <td><a href="javascript:void(0);" onclick="if(confirm('是否确定删除短信?'))window.location.href='$!webPath/buyer/message_del.htm?mulitId=$!obj.id&type=$!type'" class="deleteThisMsg">删除</a></td>
+	                        </tr>
+	                        #end
+	                        </tbody>
+	                    </table>
+	                </div>
+	            </div>
+	         	<div class="fenye3">
+			        <input name="ad_status" type="hidden" id="ad_status" value="$!ad_status" />
+			        <input name="ad_title" type="hidden" id="ad_title" value="$!ad_title" />
+			        <input type="hidden" name="mulitId" id="mulitId" />
+					<input name="currentPage" type="hidden" id="currentPage" value="$!currentPage" />
+		          	$!gotoPageFormHTML
+		      	</div>
+        	</form>
+        </div>
+    
+    </div>
+
+</div>
+
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/js/script.js"></script>
+<script>
+	$(".fenye3").addClass('pagination').find('a').addClass('page-link').wrap("<div class='page-item'></div>");
+
+	// 全选功能
+    initContrl();
+    
+    // 全选功能
+    function initContrl() {
+        var checkAll = $("input[name='checkAll']");
+        
+        // 如果全选按钮发生点击
+        checkAll.on("change", function () {
+            
+            var table = $(this).data('table');
+            if ($(this).is(":checked")) {
+                $(table).find("input[name='checkItem']").prop('checked', 'checked');
+            } else {
+                $(table).find("input[name='checkItem']").prop('checked', false);
+            }
+        });
+        
+        
+        var checkitem = $("input[name='checkItem']");
+        checkitem.on("change", function () {
+            
+            var checkAllBox = $(this).parents('table').prev('.table-contrl').find("input[name='checkAll']");
+            var checkedCount = $(this).parents('table').find("input[name='checkItem']:checked").length;
+            var inputCount = $(this).parents('table').find("input[name='checkItem']").length;
+            
+            if (checkedCount != inputCount) {
+                checkAllBox.prop('checked', false);
+            } else {
+                checkAllBox.prop('checked', 'checked');
+            }
+        });
+    }
+    
+    /* var type=0;
+    var from_user_id=$!user.id;
+    var url_1 = "messages.htm?from_user_id="+from_user_id;
+    var url_2 = "messages.htm?type="+type;
+    $("#sentMsgTab").click(function(){
+        window.open(url_1);
+    });
+    $("#systemMsgTab").click(function(){
+        window.open(url_2);
+    });  */
+    
+</script>
+</body>
+</html>

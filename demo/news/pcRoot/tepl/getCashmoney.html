@@ -1,0 +1,70 @@
+<!-- 提现 -->
+<div class="card default-card cash-card" style="height: 100%">
+    <div class="card-header bg-light">
+        <h6 class="card-title pt5">提现</h6>
+        <a href="#" class="closeButton">&times;</a>
+    </div>
+    <div class="card-body" style="height:100%;">
+        <form action="" class="cashForm" id="cashForm" style="width: 433px">
+
+            <div class="form-group">
+                <label>可提余额：</label>
+                <div class="input-items">
+                    <span class="strong">￥100.0</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="text-muted">（满50元才可提现）</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="getMentod">提现方式：</label>
+                <div class="input-items">
+                    <select name="getMentod" id="getMentod" class="form-control" data-verify="notNull"
+                            data-error-msg="请选择">
+                        <option value="-1" class="disabled">请选择</option>
+                    </select>
+                    &nbsp;&nbsp;<span class="text-danger">*</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="moneys">提现金额：</label>
+                <div class="input-items">
+                    <input type="text" class="form-control" id="moneys" data-verify="notNull" data-error-msg="提现金额">
+                    &nbsp;&nbsp;<span class="text-danger">*</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="getAccount">收款账号：</label>
+                <div class="input-items">
+                    <input type="text" class="form-control" id="getAccount" data-verify="notNull"
+                           data-error-msg="请输入收款账号">
+                    &nbsp;&nbsp;<span class="text-danger">*</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="name">姓名：</label>
+                <div class="input-items">
+                    <input type="text" class="form-control" id="name" data-verify="notNull" data-error-msg="请输入姓名">
+                    &nbsp;&nbsp;<span class="text-danger">*</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="codes">手机验证码：</label>
+                <div class="input-items">
+                    <input type="text" class="form-control" id="codes" style="width: 170px !important;">&nbsp;&nbsp;
+                    <button id="getCodes" class="btn btn-primary" style="width: 140px;border-radius: 0">获取短信验证码</button>
+                </div>
+                </div>
+                <br>
+            <br>
+            <div class="text-center">
+                <button class="btn btn-primary btn-lg" type="button" id="yesGetCash">确定提现</button>
+            </div>
+
+        </form>
+    </div>
+</div>

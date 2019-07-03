@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>频道管理</title>
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-global.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-styles.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/animate.css">
+    <!--[if lt IE 9]>
+    <script src="http://www.jq22.com/jquery/html5.min.js"></script>
+    <![endif]-->
+</head>
+<!-----------------------------------------
+  名称：智脑 - 创建频道2
+  时间：2019年4月3日
+  作者：方凌松
+------------------------------------------->
+<body>
+
+<div class="all-wrapper">
+    <div id="channelHeader"></div>
+    
+   <!-- <div class="content-fluid pt40">
+        <div class="top-box mb20 " id="globalBox" data-url="$!webPath/seller/channel_head.htm">
+            <!------------------------------------------
+               加载公用组件内容：左侧logo标识和搜索框
+               对应模版文件：tepl/search.html
+             ------------------------------------------>
+        </div>
+    </div>-->
+    
+    <div class="main-inner" style="padding-top: 60px;">
+        
+        <div class="content-fluid pt20 mb20" style="width:1024px;">
+            <h4>频道创建</h4>
+            <p class="light-color">一个身份可以建立多个频道，创建后无法注销，申请到正式审核通过预计需要1~3个工作日，了解更多请看 <a href="">创建规则必看</a></p>
+            <br>
+            <ul class="steps-list">
+                <li class="active"><a href="">1</a></li>
+                <li class="active"><a href="">2</a></li>
+                <li><a href="">3</a></li>
+                <li><a href="">4</a></li>
+            </ul>
+        </div>
+        
+        <div class="content-fluid pt50" style="width: 1076px;">
+            <div class="text-center guidelines">
+                <h4 class="guidelines-title">频道创建须知</h4>
+                <p style="text-align: left; overflow-wrap: break-word; font-family: &quot;sans serif&quot;, tahoma, verdana, helvetica; font-size: 12px; white-space: normal;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;">使用本公司服务所须遵守的条款和条件。</span>
+</p>
+<p style="overflow-wrap: break-word; font-size: 14px; white-space: normal; font-family: &quot;font-size:12pt;font-weight:bold;&quot;;">
+    <br/>
+</p>
+<p style="overflow-wrap: break-word; font-size: 14px; white-space: normal; font-family: &quot;font-size:12pt;font-weight:bold;&quot;;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;"></span>
+</p>
+<p style="overflow-wrap: break-word; font-size: 14px; white-space: normal; font-family: &quot;font-size:12pt;font-weight:bold;&quot;;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;">一、用户资格</span>
+</p>
+<p style="overflow-wrap: break-word; font-size: 14px; white-space: normal; font-family: &quot;font-size:12pt;font-weight:bold;&quot;;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;">本公司的服务仅向适用法律下能够签订具有法律约束力的合同的个人提供并仅由其使用。在不限制前述规定的前提下，本公司的服务不向被临时或无限期中止的用户提供。如您不合资格，请勿使用本公司的服务。此外，您的帐户（包括信用评价）和用户名不得向其他方转让或出售。另外，本公司保留根据其意愿中止或终止您的帐户的权利。</span>
+</p>
+<p style="overflow-wrap: break-word; font-size: 14px; white-space: normal; font-family: &quot;font-size:12pt;font-weight:bold;&quot;;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;"><br/></span>
+</p>
+<p style="overflow-wrap: break-word; font-family: &quot;sans serif&quot;, tahoma, verdana, helvetica; font-size: 12px; white-space: normal;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;">二、您的资料（包括但不限于所添加的任何内容）不得：</span>
+</p>
+<p style="overflow-wrap: break-word; font-family: &quot;sans serif&quot;, tahoma, verdana, helvetica; font-size: 12px; white-space: normal;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;">(1)违反宪法确定的基本原则的；&nbsp;</span>
+</p>
+<p style="overflow-wrap: break-word; font-family: &quot;sans serif&quot;, tahoma, verdana, helvetica; font-size: 12px; white-space: normal;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;"><span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;">(2)</span><span style="font-family: &quot;color:#333333;font-size:10px;&quot;;">危害国家安全，泄漏国家机密，颠覆国家政权，破坏国家统一的；</span><span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;">&nbsp;</span></span>
+</p>
+<p style="overflow-wrap: break-word; font-family: &quot;sans serif&quot;, tahoma, verdana, helvetica; font-size: 12px; white-space: normal;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;"><span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;">(3)</span><span style="font-family: &quot;color:#333333;font-size:10px;&quot;;">损害国家荣誉和利益的</span></span><span style="font-size: 14px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;"><span style="font-size: 11px; font-family: &quot;color:#333333;font-size:10px;&quot;;">；</span><span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 10px;">&nbsp;</span></span>
+</p>
+<p style="overflow-wrap: break-word; font-family: &quot;sans serif&quot;, tahoma, verdana, helvetica; font-size: 12px; white-space: normal;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;"><span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;">(4)</span><span style="font-family: &quot;color:#333333;font-size:10px;&quot;;">煽动民族仇恨、民族歧视，破坏民族团结的；</span><span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;">&nbsp;</span></span>
+</p>
+<p style="overflow-wrap: break-word; font-family: &quot;sans serif&quot;, tahoma, verdana, helvetica; font-size: 12px; white-space: normal;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;"><span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;">(5)</span><span style="font-family: &quot;color:#333333;font-size:10px;&quot;;">破坏国家宗教政策，宣扬邪教和封建迷信的；</span></span>
+</p>
+<p style="overflow-wrap: break-word; font-family: &quot;sans serif&quot;, tahoma, verdana, helvetica; font-size: 12px; white-space: normal;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;"><span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;">(6)</span><span style="font-family: &quot;color:#333333;font-size:10px;&quot;;">散布谣言，扰乱社会秩序，破坏社会稳定的；</span></span>
+</p>
+<p>
+    <span style="font-size: 14px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;"></span>
+</p>
+<p style="overflow-wrap: break-word;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;">(7)散布淫秽、色情、赌博、暴力、恐怖或者教唆犯罪的；&nbsp;</span>
+</p>
+<p style="overflow-wrap: break-word;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;">(8)侮辱或者诽谤他人，侵害他人合法权益的；&nbsp;</span>
+</p>
+<p style="overflow-wrap: break-word;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;">(9)煽动非法集会、结社、游行、示威、聚众扰乱社会秩序的；&nbsp;</span>
+</p>
+<p style="overflow-wrap: break-word;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;">(10)以非法民间组织名义活动的；</span>
+</p>
+<p style="overflow-wrap: break-word;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;">(11)含有法律、行政法规禁止的其他内容的</span><span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 10px;">。</span>
+</p>
+<p>
+    <br/>
+</p>
+<p style="overflow-wrap: break-word; font-family: &quot;sans serif&quot;, tahoma, verdana, helvetica; font-size: 12px; white-space: normal;">
+    <br/>
+</p>
+<p style="overflow-wrap: break-word; font-family: &quot;sans serif&quot;, tahoma, verdana, helvetica; font-size: 12px; white-space: normal;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;">三、违约</span>
+</p>
+<p>
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;"></span>
+</p>
+<p>
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;">如发生以下情形，本公司可能限制您的活动、立即删除您的内容、向本公司网站发出有关您的行为的警告、发出警告通知、暂时中止、无限期地中止或终止您的用户资格及拒绝向您提供服务：</span>
+</p>
+<p>
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;">(a)您违反本协议或纳入本协议的文件；</span>
+</p>
+<p>
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;">(b)本公司无法核证或验证您向本公司提供的任何资料；</span>
+</p>
+<p style="overflow-wrap: break-word;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;">(c)本公司相信您的行为可能对您、本公司用户或本公司造成损失或法律责任。</span>
+</p>
+<p>
+    <br/>
+</p>
+<p style="overflow-wrap: break-word; font-family: &quot;sans serif&quot;, tahoma, verdana, helvetica; font-size: 12px; white-space: normal;">
+    <br/>
+</p>
+<p style="overflow-wrap: break-word; font-family: &quot;sans serif&quot;, tahoma, verdana, helvetica; font-size: 12px; white-space: normal;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;">四、责任限制</span>
+</p>
+<p style="overflow-wrap: break-word; font-family: &quot;sans serif&quot;, tahoma, verdana, helvetica; font-size: 12px; white-space: normal;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;"><span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;">本公司、本公司的关联公司和相关实体或本公司的供应商在任何情况下均不就因本公司的网站、本公司的服务或本协议而产生或与之有关的利润损失或任何特别、间接或后果性的损害（无论以何种方式产生，包括疏忽）承担任何责任。</span><span style="font-family: &quot;color:black;&quot;;">您同意，就您自身行为之合法性单独承担责任。</span><span style="font-family: &quot;color:black;font-size:10px;&quot;;">您同意，本公司和本公司的所有关联公司和相关 实体对本公司用户的行为的合法性及产生的任何结果不承担责任。</span></span>
+</p>
+<p style="overflow-wrap: break-word; font-family: &quot;sans serif&quot;, tahoma, verdana, helvetica; font-size: 12px; white-space: normal;">
+    <br/>
+</p>
+<p style="overflow-wrap: break-word; font-family: &quot;sans serif&quot;, tahoma, verdana, helvetica; font-size: 12px; white-space: normal;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;"><span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 10px;">五、</span><span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;"><span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;">无代理关系</span><span style="font-family: &quot;color:black;font-size:10px;font-weight:bold;&quot;;">用户和本公司是独立的合同方，本协议无意建立也没有创立任何代理、合伙、合营、雇员与雇主或特许经营关系。本公司也不对任何用户及其网上交易行为做出明示或默许的推荐、承诺或担保。</span></span></span>
+</p>
+<p style="overflow-wrap: break-word; font-family: &quot;sans serif&quot;, tahoma, verdana, helvetica; font-size: 12px; white-space: normal;">
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 14px;"><br/></span>
+</p>
+<p style="overflow-wrap: break-word; font-family: &quot;sans serif&quot;, tahoma, verdana, helvetica; font-size: 12px; white-space: normal;">
+    <span style="font-size: 14px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;">六、一般规定本协议在所有方面均受中华人民共和国法律管辖。本协议的规定是可分割的，如本协议任何规定被裁定为无效或不可执行，该规定可被删除而其余条款应予以执行。</span>
+</p>
+<p>
+    <br/>
+</p>
+            </div>
+            <br>
+            <div class="mb20">
+                <label data-toggle="checkbox" data-style="default">
+                    <input type="checkbox" id="areedIdear" onchange="toggleNextButton(this)">
+                    <span>同意以上条款</span>
+                </label>
+            </div>
+    
+            <input type="hidden" value="" id="createType">
+            
+            <div class="text-center">
+                <button class="btn channel-btn white" style="width: 108px;padding:0" onclick="location.href='$!webPath/seller/store_create_first.htm'">上一步</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button id="nexted" class="btn channel-btn blues disabled" disabled style="width: 108px;padding:0" onclick="jumpNextPage()">下一步</button>
+            </div>
+
+        </div>
+        
+    </div>
+</div>
+
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/js/script.js"></script>
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/lib/jquery.params.js"></script>
+<script>
+    global.loadSearch();
+
+    // 点击同意条款切换下一步按钮的状态
+    function toggleNextButton(selector) {
+        var button = $("#nexted");
+        if ($(selector).is(":checked")) {
+            button.removeClass('disabled').removeAttr('disabled');
+        }else{
+            button.addClass('disabled').attr('disabled','disabled');
+        }
+    }
+
+    function jumpNextPage() {
+         location.href = '$!webPath/seller/store_create_second.htm?store_type=$!store_type';
+    }
+    
+</script>
+</body>
+</html>

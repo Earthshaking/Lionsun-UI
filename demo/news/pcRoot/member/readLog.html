@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浏览记录</title>
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-global.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-styles.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/animate.css">
+    <style>
+    
+    </style>
+    <script src="$!webPath/resources/js/jquery-1.6.2.js"></script>
+	<script src="$!webPath/resources/js/jquery.shop.common.js"></script>
+</head>
+<!-----------------------------------------
+  名称：智脑-我的账户-阅读记录
+  时间：2019年4月2日
+  作者：方凌松
+------------------------------------------->
+<body>
+
+<div class="container-fluid">
+    
+    <div class="manager-wrraper">
+        <h1 class="manager-title pb10 mb20">浏览记录</h1>
+    	
+    	<form method="post" id="ListForm">
+	        <div class="table-responsive-md clearfix mb15">
+	            <table class="table table-white-border flex-table" width="100%" id="article-table">
+	                <thead class="thead-bg">
+	                <tr>
+	                    <th>内容名称</th>
+	                    <th>浏览时间</th>
+	                </tr>
+	                </thead>
+	                <tbody id="tbody">
+	                #foreach($obj in $objs)
+	                <tr>
+	                    <td style="text-align:left;"><a href="$!webPath/goods_$!{obj.goods.id}.htm" target="_blank">$!obj.goods.goods_name</a></td>
+	                    <td>$!CommUtil.formatLongDate($!obj.addTime)</td>
+	                </tr>
+	                #end
+	                </tbody>
+	            </table>
+	        </div>
+			<div class="fenye3">
+			        <input name="ad_status" type="hidden" id="ad_status" value="$!ad_status" />
+			        <input name="ad_title" type="hidden" id="ad_title" value="$!ad_title" />
+			        <input type="hidden" name="mulitId" id="mulitId" />
+					<input name="currentPage" type="hidden" id="currentPage" value="$!currentPage" />
+		          	$!gotoPageFormHTML
+	        </div>
+			<br>
+			<br>
+			<br>
+        </form>
+    </div>
+
+</div>
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/js/script.js"></script>
+
+<script>
+	$(".fenye3").addClass('pagination').find('a').addClass('page-link').wrap("<div class='page-item'></div>");
+</script>
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索-文章-列表</title>
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/jquery.bxslider/jquery.bxslider.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-global.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-styles.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/animate.css">
+
+    <style>
+        #resultBox.grid {
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        #resultBox.grid .result-item {
+            height: 287px !important;
+        }
+
+        #resultBox.grid .result-item > .resultItemTitle {
+            width: 100% !important;
+            padding: 0 !important;
+        }
+
+    </style>
+    <script src="$!webPath/resources/js/jquery-1.6.2.js"></script>
+    <script src="$!webPath/resources/js/jquery.shop.common.js"></script>
+</head>
+<!-----------------------------------------
+  名称：智脑-搜索-文章-列表
+  时间：2019年3月26日
+  作者：方凌松
+------------------------------------------->
+<body>
+<div class="container-fluid pt62">
+    <!-- 顶部栏 -->
+    <div id="header"></div>
+
+    <div class="content-fluid pt40">
+
+        <div class="top-box" id="globalBox" style="justify-content: center">
+            <div class="right-search" id="search-element" style="left: 0;">
+                <!-- 搜索框 -->
+                <div class="form-group" id="home-search"
+                     style="width: 640px;">
+                    <div id="searchForm">
+                        <label for="searchType" class="search-wrrapr">
+                            <select name="type" id="searchType">
+                                <option value="goods" selected>文章</option>
+                                <option value="store">频道</option>
+                            </select>
+                            <span class="down-arrow"></span>
+                        </label>
+                        <input type="text" name="keywords" class="searchInput" id="search" value="" maxlength="100"/>
+                    </div>
+                    <!-- 搜索按钮 -->
+                    <a id="searchBtn" class="btn"><i class="fa fa-search"></i></a>
+
+                    <!-- 这个隐藏的按钮不可删除 不然会bug -->
+                    <!--<button class="hide" type="button"></button>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+
+            <!-- 切换按钮 -->
+            <div class="content-top">
+                <!-- <div class="btn-group">
+                     <button class="btn btn-light layout-btn" type="button" data-toggle="resultLayout" data-to="grid">
+                         <i class="fa fa-th-large"></i>大图
+                     </button>
+                     <button class="btn btn-light layout-btn active" type="button" data-toggle="resultLayout" data-to="list" style="border-right:1px solid #ddd !important;">
+                         <i class="fa fa-th-list"></i>列表
+                     </button>
+                 </div>-->
+            </div>
+
+            <!-- 筛选条件 排序方式 -->
+            <div class="sort-boxes clearfix">
+                <form method="post" id="ListForm" accept-charset="utf-8">
+                    <input type="hidden" id="sort" name="sort" value="$!sort"/>
+                    <input type="hidden" name="keyword" value="$!keyword"/>
+                    <input type="hidden" name="type" value="$!type"/>
+                    <div class="btn-group btn-group-sm" id="sortBtnBox">
+                        <a href="javascript:change(1);" class="btn #if($!sort==1) select-this #end">综合排序</a>
+                        <a href="javascript:change(2);" class="btn #if($!sort==2) select-this #end">最新</a>
+                        <a href="javascript:change(3);" class="btn #if($!sort==3) select-this #end">周热度</a>
+                        <a href="javascript:change(4);" class="btn #if($!sort==4) select-this #end">月热度</a>
+                        <!--  <a href="$!webPath/sort/personHome.htm?sort=5&style=$!style" class="btn">价格从低到高</a>
+                          <a href="$!webPath/sort/personHome.htm?sort=6&style=$!style" class="btn">价格从高到低</a>-->
+                        <a href="javascript:change(5);" class="btn #if($!sort==5) select-this #end">免费</a>
+                        <a href="javascript:change(6);" class="btn #if($!sort==6) select-this #end">付费</a>
+                    </div>
+                </form>
+
+                <!--   <div class="float-right">
+                       <label>
+                           <input type="checkbox" class="checkbox-inline" id="free">
+                           <span style="font-size: 12px;position: relative;top: -2px;">&nbsp;免费</span>
+                       </label>
+                       &nbsp;&nbsp;&nbsp;
+                       <label>
+                           <input type="checkbox" class="checkbox-inline" id="vipFree">
+                           <span style="font-size: 12px;position: relative;top: -2px;">&nbsp;会员免费</span>
+                       </label>
+                   </div>-->
+
+            </div>
+
+            <!-- 主要内容 -->
+            <div class="content-body">
+
+                <div class="result-box list clearfix pt15" id="resultBox">
+                    <!-- 搜索内容展示 -->
+                </div>
+
+                <div id="favoriteScroll" class="scroll-tip" style="display: none">
+                    <img src="$!webPath/resources/mystyle/static/images/first-loading.png" alt="" id="loadMoreData">
+                </div>
+
+                <br>
+                <br>
+                <div id="noResult" style="display: none">
+                    <p class="noResult-text">没有找到与“<span class="text-danger">搜索关键字</span>”相关的内容，换个关键字试试吧~</p>
+                    <img src="$!imageWebServer/resources/mystyle/static/images/nullResult.jpg"/>
+                </div>
+
+            </div>
+
+            <!--<div>-->
+            <!--<input name="currentPage" type="hidden" id="currentPage" value="$!currentPage" />-->
+            <!--<input type="hidden" name="goods_view" id="goods_view" value="$!goods_view" />-->
+            <!--<input name="orderBy" type="hidden" id="orderBy" value="$!orderBy" />-->
+            <!--<input name="orderType" type="hidden" id="orderType" value="$!orderType" /> -->
+            <!--$!gotoPageFormHTML </div>-->
+
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</div>
+
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/js/script.js"></script>
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/lib/jquery.bxslider/jquery.bxslider.js"></script>
+<script type="text/javascript"
+        src="$!webPath/resources/mystyle/static/lib/jquery.bxslider/jquery.easing.min.js"></script>
+<script>
+
+    $("#loadMoreData").on("click", function () {
+        starSearch();
+    });
+
+    var loadData;
+    var keywordValue = $("input[name='keyword']").val();
+    var keywordType = $("input[name='type']").val();
+
+    // 滚动刷新
+    $(window).scroll(function () {
+        // 滚动到底部加载数据
+        var totalHeight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());
+        if ($(document).height() <= totalHeight) {
+            starSearch();
+        }
+    });
+
+    window.onload = function () {
+        // 如果存在关键字
+        $("#search").val(keywordValue);
+        goSearch(keywordType, keywordValue);
+    };
+
+    $("#search").on("keyup", function (event) {
+        if (event.keyCode == 13) {
+            $("#searchBtn").trigger("click");
+        }
+    });
+
+    // 点击搜索按钮
+    $("#searchBtn").on("click", function () {
+        starSearch();
+    });
+
+    var currentPageCount = 0;
+
+    // 开始搜索
+    function starSearch() {
+        var values = $("#search").val();
+        var searchType = $("#searchType").val();
+        currentPageCount = 0;
+        goSearch(searchType, values);
+    }
+
+    /*
+     * @param type        type=goods  文章搜索   type=store  频道搜索
+     * @param keyword     搜索关键字  非必需
+     * @param currentPage 当前页码 非必需
+     * @param orderBy     排序字段 非必需
+     * @param orderType   排序类型  默认降序 非必需
+     * @param view_type   视图类型 非必需
+     * @param goods_view  文章列表视图 非必需
+     */
+    function goSearch(type, keyword) {
+
+        var sortsBox = $(".sort-boxes");
+        var url = "search.htm";
+        jQuery.ajax({
+            url: url,
+            data: {
+                type: type,
+                keyword: keyword,
+                currentPage: currentPageCount,
+                sort: $("#sort").val()
+            },
+            type: "post",
+            success: function (data) {
+                var datas = JSON.parse(data);
+                console.log(datas);
+                currentPageCount++;
+                if (datas.data.length > 0) {
+                    if (JSON.stringify(datas.data) != loadData) {
+                        console.log("与上次数据不相等,开始加载数据...");
+                        loadData = JSON.stringify(datas.data);
+                        if (type == "goods") {
+                            // 文章
+                            sortsBox.show();
+                            getSearchGoodsHtml(datas.data);
+                        } else {
+                            // 频道
+                            sortsBox.hide();
+                            getSearchChannelHtml(datas.data);
+                        }
+
+                        $(".scroll-tip").show();
+                        $("#noResult").hide();
+
+                        qeryData()
+                    } else {
+                        $(".scroll-tip").hide();
+                    }
+                } else {
+                    $(".scroll-tip").hide();
+                    $("#resultBox").empty();
+                    $("#noResult").show();
+                }
+
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    }
+
+    // 获取搜索到的频道内容 
+    function getSearchChannelHtml(data) {
+        var html = "";
+        var flag = 0;
+
+        for (var i = 0; i < data.length; i++) {
+            var value = data[i];
+            html += `<div class="channel-item pt15">
+                        <div class="channel-manager">
+                            <label class="channel-label light-blue">主编：${value.userName}</label>
+                            <a href="${value.storeUrl}" target="_blank">
+                                <img src="${value.imgUrl}" class="channel-img"
+                                     alt="channel-img" width="130px" height="130px"
+                                     onerror="this.src='$!webPath/resources/mystyle/common/images/store.jpg'"/>
+                            </a>
+                            <p>共收录内容<span class="reds"> ${value.goods_num}</span>篇 - <span
+                                class="reds">${value.favorite_count}</span>人关注</p>
+                            <div class="channel-info">
+                                <h3><a href="$!webPath/store_${value.id}.htm">${value.store_id}</a></h3>
+                                <span class="channel-tag">${value.store_label}</span>
+                            </div>
+                        </div>
+                        <div class="channel-inner">
+                            <div class="channel-carousel-box">
+                                <ul class="channel-auto">`;
+            if (value.goods_list.length > 0) {
+                flag ++;
+                for (var j = 0; j < value.goods_list.length; j++) {
+                    var goods = value.goods_list[j];
+                    html += `<li class="auto-item slide">
+                                            <a href="${goods.articleUrl}" target="_blank">
+                                                <img src="${goods.imgUrl}" alt="文章图片"
+                                                     onerror="this.src='$!webPath/resources/mystyle/common/images/good.jpg'">
+                                            </a>
+                                            <p class="the-info">${goods.goods_name}</p>
+                                        </li>`;
+                }
+            }else{
+                html += `<li class="nodataLi"><img style="width: 190px" src="$!imageWebServer/resources/mystyle/static/images/nullResult.jpg" alt="">&nbsp;&nbsp;暂无数据</li>`;
+            }
+            html += `</ul>
+                            </div>
+                        </div>
+                    </div>`;
+
+        }
+        $("#resultBox").empty().append(html);
+        if (flag > 0) {
+            initChannelAuto();    // 初始化频道文章轮播
+        }
+    }
+
+    // 初始化频道文章轮播
+    function initChannelAuto() {
+        $('.channel-auto').bxSlider({
+            minSlides: 2,
+            maxSlides: 3,
+            moveSlides: 1,
+            pager: false
+        });
+    }
+
+    // 获取搜索到的文章内容
+    function getSearchGoodsHtml(data) {
+        var html = "";
+        for (var i = 0; i < data.length; i++) {
+            var value = data[i];
+            html += `<div class="result-item datas-items">
+                <a href="${value.articleUrl}">
+                    <img src="${value.imgUrl}" alt="" class="img-fluid" onerror="this.src='$!webPath/resources/mystyle/common/images/good.jpg'">
+                </a>
+                <h3 class="resultItemTitle" style="width: 800px !important;font-size: 18px !important;"><a href="${value.articleUrl}">${value.goods_name}</a></h3>
+                <p class="itemValue">${value.goods_details}</p>
+                <div class="itemInfo p0">`;
+
+            if (value.goods_price) {
+                html += `<span class="price"><img src="$!imageWebServer/resources/mystyle/static/images/gold-mini.jpg" class="mr5" style="width:26px !important;height:20px !important;"/> ${value.goods_price}</span>`;
+            } else {
+                html += `<span class="price"><img src="$!imageWebServer/resources/mystyle/static/images/gold-mini.jpg" class="mr5" style="width:26px !important;height:20px !important;"/> 0.00</span>`;
+            }
+
+            html += `<span><img src="$!imageWebServer/resources/mystyle/static/images/eye.jpg" class="iconss" style="width:26px !important;height:20px !important;"/> ${value.goods_click}</span>
+                    <span><img src="$!imageWebServer/resources/mystyle/static/images/god.jpg" class="iconss" style="width:26px !important;height:20px !important;"/> ${value.goods_like}</span>
+                    <span>${value.storeName}</span>
+                    <span>${value.userName}</span>
+                    <span>${value.addTime}</span>
+                </div>
+            </div>`;
+        }
+        $("#resultBox").empty().append(html);
+    }
+
+    function qeryData() {
+        var lengths = $("#resultBox").children('.datas-items').length;
+        if (lengths < 5) {
+            $(".scroll-tip").hide();
+        }
+    }
+
+    function change(sort) {
+        $("#sort").val(sort);
+        $("#ListForm").submit();
+    }
+</script>
+</body>
+</html>

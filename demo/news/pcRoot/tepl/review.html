@@ -1,0 +1,33 @@
+<!-- 文章审核 -->
+<div class="card default-card" style="height: 100%">
+    <div class="card-header bg-light">
+        <h6 class="card-title pt5">内容审核</h6>
+        <a href="#" class="closeButton">&times;</a>
+    </div>
+    <div class="card-body" style="height:100%;">
+        <form action="$!webPath/seller/comment_receive.htm" method="post" class="friendForm pt10" id="reviewForm" target="channelframe">
+            <!-- <input name="type" type="hidden" id="type" value="0" /> -->
+          <input name="articleId" type="hidden" id="type" value="$!{articleId}" />
+          <input name="channelId" type="hidden" id="type" value="$!{channelId}" />
+            <div class="form-inline clearfix mb20">
+                <label class="control-label float-left" for="opinion" style="width: 100px">审核意见：</label>
+                <div class="form-select relative" style="width: 320px;">
+                    <select name="type" id="opinion" class="form-control brn" style="width: 100%" required onchange="toggleText(this)">
+                                <option value="0" selected>- 请选择 -</option>
+                                <option value="1">拒绝</option>
+                                <option value="2">同意</option>
+                   </select>
+                   <span class="down-arrow"></span>
+                </div>
+                <!-- <input type="text" class="form-control brn" id="opinion" name="opinion" style="width:310px;" required> -->
+            </div>
+            <div class="form-group clearfix">
+                <label class="control-label float-left" for="acceptreason" style="width: 100px">不接受原因：</label>
+                <textarea type="text" class="form-control brn disabled" disabled style="width: 320px;height: 107px;" id="acceptreason" required name="comment"></textarea>
+            </div>
+            <div class="text-center">
+                <button type="button" onclick="formSubmitBefore()" class="btn color-white brn" style="width: 110px;height: 40px;background-color: #1E8CEB" id="saveReview">保 存</button>
+            </div>
+        </form>
+    </div>
+</div>

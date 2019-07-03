@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实名认证</title>
+
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/jquery-ui/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="$!webPath/resources/style/common/css/jquery-ui-1.8.22.custom.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-global.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-styles.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/animate.css">
+
+</head>
+
+<!-----------------------------------------
+  名称：智脑-我的账户-安全验证-弹出窗口
+  时间：2019年4月2日
+  作者：方凌松
+------------------------------------------->
+<body>
+
+<!-- 安全验证 -->
+<div class="card default-card bn">
+    <div class="card-header bg-light">
+        <h6 class="card-title pt5">安全验证</h6>
+        <a href="#" class="closeButton" onclick="closeParentLayer();">&times;</a>
+    </div>
+    <div class="card-body pl25 pr25 bn">
+        <form class="friendForm pt15 pl20 pr20" action="$!webPath/member/account_confirm_save.htm" method="post" name="theForm" id="theForm">
+            
+            <p>为保障帐号安全，实名前验证身份</p>
+            
+            <div class="form-group clearfix mb20">
+                <label class="control-label m0 pb5 strong">验证方式</label>
+                <div class="form-select relative block">
+                    <select name="mobile" id="phonelist" class=" brn form-control select-clear" style="height: 44px">
+                        <option value="$!user.mobile">$!user.mobile</option>
+                    </select>
+                    <span class="blue-arrow"><i class="fa fa-angle-down"></i></span>
+                </div>
+            </div>
+            
+            <div class="form-group clearfix mb25">
+                <input type="text"  name="verifCode class="form-control brn" style="width: 200px;height: 44px;" placeholder="请输入六位数验证码">
+                <button type="button" id="sendCode"" class="btn border bg-white brn float-right" style="width: 150px;height: 44px;" onclick="javascript:sendSms();">发送验证码</button>
+            </div>
+            
+            <div class="text-center">
+                <button type="submit" class="btn brn btn-block color-white"
+                        style="width: 100%;height: 45px;background-color: #1E8CEB">保 存
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/js/script.js"></script>
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/lib/Distpicker/distpicker.data.min.js"></script>
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/lib/Distpicker/distpicker.min.js"></script>
+<script src="$!webPath/resources/js/jquery-1.6.2.js"></script>
+<script src="$!webPath/resources/js/jquery-ui-1.8.21.js"></script>
+<script src="$!webPath/resources/js/jquery.shop.common.js"></script>
+<script src="$!webPath/resources/js/jquery.validate.min.js"></script>
+<script>
+jQuery(document).ready(function(){
+  jQuery("#theForm").validate({
+       rules: {
+			mobile:{
+				required:true,
+			    remote:{
+		          url: "$!webPath/verify_mobile.htm",     //后台处理程序
+                  type: "post",               //数据发送方式
+                  dataType: "json",           //接受数据格式   
+                  data: {                     //要传递的数据
+                    "mobile": function(){return jQuery("#mobile").val();},"id":"$!user.id"
+		          }
+		       }
+			},
+			mobile_verify_code:{required:true}
+		  },
+	   messages: {
+		    mobile:{required:"手机号码不能为空",remote:"该手机号码已经绑定"},
+			mobile_verify_code:{required:"验证码不能为空"}
+		}
+  });
+  
+  
+});
+
+/* jQuery("#sendCode").on("click",function(){
+		sendSms();
+	}); */
+</script>
+<script>
+			var time=60;
+			var time_id="";
+			function generic_mobile_verify_code(){
+               var mobile=jQuery("#mobile").val();
+               if(isMobil(mobile)){
+			      jQuery.post("$!webPath/buyer/account_mobile_sms.htm",{"type":"mobile_vetify_code","mobile":mobile},function(data){
+				    if(data=="100"){
+					     jQuery("#mobile_verify_code_generic").hide();
+				         time_id=setInterval(countDown,1000);
+					}
+					if(data=="200"){
+					   alert("短信发送失败");
+					}
+					if(data=="300"){
+					   alert("商城未开启短信服务");
+					}
+				  },"text");
+               }else{
+			      alert("请输入正确的手机号码");
+			   }
+             }
+		   function countDown(){
+		     --time;
+			 jQuery("#time_out_generic").html(time+"秒后可以重新获取,验证码15分钟有效");
+			 if(time==0){
+			   clearInterval(time_id);
+			   jQuery("#time_out_generic").html("");
+			   jQuery("#mobile_verify_code_generic").show();
+               time=10;
+			 }
+		   }
+           function isMobil(s) {
+             var patrn = /(^0{0,1}1[3|4|5|6|7|8|9][0-9]{9}$)/;
+             if (!patrn.exec(s)) {
+                 return false;
+             }
+             return true;
+            } </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!-- 智脑顶部导航栏 Navbar组件 -->
+<!--  a !!!-->
+<nav class="znao-header header-blue">
+    <a href="#" class="navbar-logo">
+        <img src="../../static/images/member-space-logo.png" alt="智脑LOGO" style="position: relative;left: 15px;">
+    </a>
+    
+    <div class="header-wrraper clearfix">
+        <div class="header-left">
+            <ul class="navbar navbar-expand-sm header-navbar">
+                <!-- 首页 -->
+                <li class="nav-item">
+                    <a href="{{navbar.indexpage.url}}" class="nav-link">{{navbar.indexpage.title}}</a>
+                </li>
+                <!-- 会员中心 -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{navbar.member.url}}">{{navbar.member.title}}</a>
+                </li>
+                <!-- 频道中心 -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{navbar.channel.url}}">{{navbar.channel.title}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="header-right">
+        <ul class="navbar header-navbar-2">
+            <!-- 已登录 -->
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <img src="../../static/images/white-icon.png" alt="">&nbsp;写内容</a>
+            </li>
+            <li class="nav-item"><a href="javascript:void(0)" class="nav-link">消息(<span
+                    class="tag">0</span>)</a></li>
+            <li class="nav-item dropdown">
+                <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="header-user-img">
+                    <img src="../../static/images/icon/user-icon.png" alt="" class="rounded-circle" onerror="this.src='$!webPath/resources/style/system/front/default/images/usercenter/headimg.jpg'">
+                </a>
+                <div class="dropdown-menu custom-menu users-menu">
+                    <div class="dropdown-header"><h5>admin</h5></div>
+                    <a href="$!webPath/default/personHome.htm?uid=$!user.id" target="_blank"
+                       class="dropdown-item">我的主页</a>
+                    <a href="$!webPath/member/memberSpace.htm#allarticle" target="_blank" class="dropdown-item">我的内容</a>
+                    <a href="$!webPath/member/memberSpace.htm#myCollection" target="_blank"
+                       class="dropdown-item">我的收藏</a>
+                    <a href="$!webPath/member/memberSpace.htm#myMoney" target="_blank" class="dropdown-item">我的钱包</a>
+                    <a href="$!webPath/member/memberSpace.htm#myinfo" target="_blank" class="dropdown-item">个人设置</a>
+                    <a href="javascript:void(0)" target="_blank" class="dropdown-item">帮助与反馈</a>
+                    <a href="$!webPath/iskyshop_logout.htm" class="dropdown-item">退出登录</a>
+                </div>
+            </li>
+            
+            <!--#else-->
+            <!--&lt;!&ndash; 未登录 &ndash;&gt;-->
+            <!--<li class="nav-item"><a href="{{navbar.login.url}}" class="nav-link">{{navbar.login.title}}</a></li>-->
+            <!--<li class="disabled">|</li>-->
+            <!--<li class="nav-item"><a href="{{navbar.register.url}}" class="nav-link">{{navbar.register.title}}</a></li>-->
+            <!--#end-->
+        </ul>
+    </div>
+
+    <!--<div class="header-wrraper full clearfix">-->
+        <!---->
+        <!--<div class="header-left">-->
+            <!--<span class="usersaccount">$!CommUtil.substring("$!{user.userName}",12)</span>-->
+            <!--&nbsp;&nbsp;&nbsp;&nbsp;-->
+            <!--<a href="javascript:void(0)" onclick="memberMessageList($!{user.id})" class="message" >消息<span class="tag">$!messageSize</span></a>-->
+            <!--&nbsp;&nbsp;&nbsp;&nbsp;-->
+            <!--<a href="$!webPath/iskyshop_logout.htm" class="lightblue"><span>[退出]</span></a>-->
+        <!--</div>-->
+        <!---->
+        <!--<div class="header-right">-->
+            <!--<ul class="navbar navbar-expand-sm header-navbar">-->
+                 <!--&lt;!&ndash; 首页 &ndash;&gt;-->
+                <!--<li class="nav-item">-->
+                    <!--<a href="{{navbar.indexpage.url}}" class="nav-link">{{navbar.indexpage.title}}</a>-->
+                <!--</li>-->
+                <!--&lt;!&ndash; 会员中心 &ndash;&gt;-->
+                <!--<li class="nav-item dropdown">-->
+                    <!--<a class="nav-link dropdown-toggle" href="{{navbar.member.url}}" >{{navbar.member.title}}</a>-->
+                    <!--<div class="dropdown-menu">-->
+                        <!--{{each navbar.member.child value i}}-->
+                        <!--<a class="dropdown-item" href="{{value.url}}">{{value.title}}</a>-->
+                        <!--{{/each}}-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--&lt;!&ndash; 频道中心 &ndash;&gt;-->
+                <!--<li class="nav-item dropdown">-->
+                    <!--<a class="nav-link dropdown-toggle" href="{{navbar.channel.url}}" >{{navbar.channel.title}}</a>-->
+                    <!--<div class="dropdown-menu">-->
+                        <!--{{each navbar.channel.child value j}}-->
+                        <!--<a class="dropdown-item" href="{{value.url}}">{{value.title}}</a>-->
+                        <!--{{/each}}-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--&lt;!&ndash; 收藏夹 &ndash;&gt;-->
+                <!--<li class="nav-item">-->
+                    <!--<a href="{{navbar.collection.url}}" class="nav-link" target="myframe">{{navbar.collection.title}}</a>-->
+                <!--</li>-->
+                <!--&lt;!&ndash; 帮助中心 &ndash;&gt;-->
+                <!--<li class="nav-item">-->
+                    <!--<a href="{{navbar.help.url}}" class="nav-link">{{navbar.help.title}}</a>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+</nav>
+
+

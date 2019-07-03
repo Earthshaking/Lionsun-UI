@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的关注</title>
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-global.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-styles.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/animate.css">
+    <style>
+        #noDataBlock{
+            display: flex;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column;
+            color:#999999;
+        }
+
+        #noDataBlock img{
+            margin-top: 200px !important;
+        }
+    </style>
+    <script src="$!webPath/resources/js/jquery-1.6.2.js"></script>
+	<script src="$!webPath/resources/js/jquery.shop.common.js"></script>
+</head>
+<!-----------------------------------------
+  名称：智脑-我的账户-我的关注
+  时间：2019年4月2日
+  作者：方凌松
+------------------------------------------->
+<body>
+
+<div class="container-fluid">
+    
+    <div class="manager-wrraper relative">
+        <ul class="nav nav-tabs person-tabs topUpTabs" style="margin-bottom: 20px">
+            <li class="active">
+            	<a class="#if($!type==0)active show#end" href="javascript:change(0);">关注作者</a>
+            </li>
+            <li>
+            	<a class="#if($!type==1)active show#end" href="javascript:change(1);">关注频道</a>
+       		</li>
+        </ul>
+        
+        <div class="tab-content clearfix">
+
+            <!-- 关注用户 -->
+            <div class="tab-pane fade in #if($!type==0)show active#end" id="focusUser">
+  				<form method="post" id="ListForm">
+  					<input type="hidden" id="type" name = "type" value="$!type"/>
+	                #if($objs.size()!=0)
+	                    <ul class="list-group mb15">
+	                        #foreach($myAttention in $objs)
+	                               <li class="list-group-item">
+	                                   <div class="media p-2">
+	                                       <label data-toggle="checkbox" data-style="default">
+	                                           <input type="checkbox" name="checkItem">
+	                                           <span class="nothing"></span>
+	                                       </label>
+	                                       &nbsp;&nbsp;
+	                                       #set($userImg="$!webPath/$!config.memberIcon.path/$!config.memberIcon.name")
+	                                       #if($!myAttention.toUser.photo)
+	                                       #set($userImg="$!webPath/$!myAttention.toUser.photo.path/$!myAttention.toUser.photo.name")
+	                                       #end
+	                                       <img src="$!userImg" alt="用户头像" style="width: 50px;height: 50px;" class="mr-3"
+	                                            onerror="this.src='$!webPath/resources/style/common/images/member.jpg'">
+	                                       <div class="media-body clearfix">
+	                                       $!myAttention.toUser.userName
+	            <!--                                取消关注功能按键待修改 -->
+	            <!--                                <a href="$!webPath/member/collection_del.htm?mulitId=$!obj.id&currentPage=$!currentPage&type=1">取消关注</a> -->
+	            <!--                                <a href="$!webPath/member/userFocus_remove_attention.htm?id=myAttention.id" >取消关注</a> -->
+	                                                <div class="btn bg-white border btn-sm float-right"><a href="$!webPath/member/userFocus_remove_attention.htm?mulitId=$!myAttention.id&currentPage=$!currentPage&type=0">取消关注</a></div>
+	                                           <span class="the-times">$!CommUtil.formatLongDate($!myAttention.addTime)</span>
+	                                       </div>
+	                                   </div>
+	                               </li>
+	                        #end
+	                    </ul>
+	                #else
+	
+	                <!-- 没有数据时显示 -->
+	                <div id="noDataBlock">
+	                    <img src="$!webPath/resources/mystyle/static/images/focus-noData.jpg" alt="focus-noData.jpg">
+	                    <h5 style="color:#999999;">暂无数据~</h5>
+	                </div>
+	
+	                #end
+	                <div class="fenye3">
+				        <input name="ad_status" type="hidden" id="ad_status" value="$!ad_status" />
+				        <input name="ad_title" type="hidden" id="ad_title" value="$!ad_title" />
+				        <input type="hidden" name="mulitId" id="mulitId" />
+						<input name="currentPage" type="hidden" id="currentPage" value="$!currentPage" />
+			          	$!gotoPageFormHTML
+		        	</div>
+  				</form>
+            </div>
+            <!-- 关注频道 -->
+            <div class="tab-pane fade pt15 #if($!type==1)show active#end" id="drawMoneylist">
+                <form method="post" id="ListForm">
+  					<input type="hidden" id="type" name = "type" value="$!type"/>
+	                #if($objs.size()!=0)
+		                <table class="table table-white-border mb15" width="100%" id="channelTable">
+		                    <thead class="thead-bg theadBr centers">
+		                    <tr>
+		                        <th width="30"></th>
+		                        <th>频道名称</th>
+		                        <th>频道主编</th>
+		                        <th>分类</th>
+		                        <th>操作</th>
+		                    </tr>
+		                    </thead>
+		                    <tbody>
+		                    #foreach($obj in $objs)
+		                    <tr>
+		                        <td><input type="checkbox" class="checkItems"></td>
+		                        <td>
+		                            <div class="media">
+		<!-- 	                            #if($!obj.store.store_logo) -->
+		<!-- 	                               #set($store_logo="$!webPath/$!{obj.store.store_logo.path}/$!{obj.store.store_logo.name}") -->
+		<!-- 	                            #else -->
+		<!-- 	                               #set($store_logo="$!webPath/$!config.storeImage.path/$!config.storeImage.name") -->
+		<!-- 	                            #end  -->
+		                                #if($!obj.store.store_logo)
+		                                   #set($store_logo="$!webPath/$!{obj.store.store_logo.path}/$!{obj.store.store_logo.name}")
+		                                #else
+		                                   #set($store_logo="$!webPath/$!config.storeImage.path/$!config.storeImage.name")
+		                                #end
+			                            <img src="$!store_logo" alt="" style="width: 50px;height: 50px;"
+			                                     class="mr-3" onerror="this.src='$!webPath/resources/mystyle/common/images/channel-img.jpg'">
+		                                <div class="media-body pt-3">
+		                                     $!obj.store.store_name
+		                                </div>
+		                            </div>
+		                        </td>
+		                        <td class="text-center"><div class="pt-3" style="color: #999;">$!{obj.store.store_ower}</div></td>
+		                        <td class="text-center"><div class="pt-3" style="color: #999;">$!{obj.store.sc.className}</div></td>
+		                        
+		                        <td class="text-center pt-3">
+		                             <div class="btn bg-white border">
+		                                  <a href="$!webPath/member/collection_del.htm?mulitId=$!obj.id&currentPage=$!currentPage&type=1">取消关注</a>
+		                             </div>
+		                        </td>
+		                    </tr>
+		                    #end
+		                    </tbody>
+		                </table>
+	                #else
+		                <!-- 没有数据时显示 -->
+		                <div id="noDataBlock">
+		                    <img src="$!webPath/resources/mystyle/static/images/focus-noData.jpg" alt="focus-noData.jpg">
+		                    <h5 style="color:#999999;">暂无数据~</h5>
+		                </div>
+	                #end
+	                <div class="fenye3">
+				        <input name="ad_status" type="hidden" id="ad_status" value="$!ad_status" />
+				        <input name="ad_title" type="hidden" id="ad_title" value="$!ad_title" />
+				        <input type="hidden" name="mulitId" id="mulitId" />
+						<input name="currentPage" type="hidden" id="currentPage" value="$!currentPage" />
+			          	$!gotoPageFormHTML
+		        	</div>
+  				</form>
+            </div>
+            
+        </div>
+        <br>
+        <br>
+        <br>
+
+    </div>
+
+</div>
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/js/script.js"></script>
+<script>
+
+	$(".fenye3").addClass('pagination').find('a').addClass('page-link').wrap("<div class='page-item'></div>");
+
+	function getattention0(user_id,obj) {
+            var url = "$!webPath/default/personFocus_add_attention.htm";
+            jQuery.ajax({
+                type: 'POST', url: url, data: {"user_id": user_id},
+                beforeSend: function () {
+                },
+                success: function (data) {
+                    if (data) {
+                        $(obj).html("取消关注").addClass('dised');
+                        alertModal(1, "关注成功", function (index) {
+                            layer.close(index);
+                        });
+                    } else {
+                        alertModal(2, "关注失败", function (index) {
+                            layer.close(index);
+                        });
+                    }
+                }
+            });
+        }
+function change(type){
+	$("#type").val(type);
+	$("#ListForm").submit();
+}
+</script>
+</body>
+</html>

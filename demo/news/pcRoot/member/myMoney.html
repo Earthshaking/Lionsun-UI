@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的钱包</title>
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="$!webPath/resources/style/common/css/jquery-ui-1.8.22.custom.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-global.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-styles.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/animate.css">
+    <style>
+        body, html {
+            height: 100%;
+        }
+    </style>
+    <script src="$!webPath/resources/js/jquery-1.6.2.js"></script>
+	<script src="$!webPath/resources/js/jquery.shop.common.js"></script>
+</head>
+<!-----------------------------------------
+  名称：智脑-我的钱包
+  文件：myMoney.html
+  时间：2019年6月12日
+  作者：方凌松
+------------------------------------------->
+<body>
+
+<div class="news-all">
+
+    <!-- 收入支出等情况 -->
+    <div class="card" id="money-info-box">
+        <div class="card-body">
+            <div class="col">
+                <div class="media money-media">
+                    <img src="$!webPath/resources/mystyle/static/images/member-icon/money-icon_1.png" class="mr-4"
+                         alt="">
+                    <div class="media-body">
+                    #set($total_income=0)
+                    #set($e=0)
+                    #foreach($LSrecord in $LSrecords)
+                       #if($LSrecord.gold_handle_type==1 || $LSrecord.gold_handle_type==3)
+                              #set($e=1)
+                              #set($total_income=$total_income + $LSrecord.gold_count)
+                       #end
+                    #end
+                        <h4>$!total_income</h4>
+                        <span>总收入</span>
+                    </div>
+                </div>
+            </div>
+            <div class="lines"></div>
+            <div class="col">
+                <div class="media money-media">
+                    <img src="$!webPath/resources/mystyle/static/images/member-icon/money-icon_2.png" class="mr-4"
+                         alt="">
+                    <div class="media-body">
+                     #set($today_income=0)
+                  
+                    #foreach($LSrecord in $LSrecords)
+                       #if(($LSrecord.gold_handle_type==1 ||$LSrecord.gold_handle_type==3)&& $!LSrecord.addTime.getTime()>=$!curtime )
+                                  #set($today_income=$today_income + $LSrecord.gold_count)
+                                  
+                                  
+                       #end
+                    #end
+                        <h4>$!today_income  </h4>
+                        <span>今日收入</span>
+                    </div>
+                </div>
+            </div>
+            <div class="lines"></div>
+            <div class="col">
+                <div class="media money-media">
+                    <img src="$!webPath/resources/mystyle/static/images/member-icon/money-icon_3.png" class="mr-4"
+                         alt="">
+                    <div class="media-body">
+                    #set($total_expenses=0)
+                    
+                    #foreach($LSrecord in $LSrecords)
+                       #if( $LSrecord.gold_handle_type==2||$LSrecord.gold_handle_type==4 || $LSrecord.gold_handle_type==5)
+                              #set($total_expenses=$total_expenses + $LSrecord.gold_count)
+                       #end
+                    #end
+                        <h4>$!total_expenses</h4>
+                        <span>总支出</span>
+                    </div>
+                </div>
+            </div>
+            <div class="lines"></div>
+            <div class="col-3 media">
+                <div class="media money-media">
+                    <div class="media-body">
+                    #set($total_income=0)
+                    #set($e=0)
+                    #foreach($LSrecord in $LSrecords)
+                       #if( $LSrecord.gold_handle_type==3)
+                              #set($e=1)
+                              #set($total_income=$total_income + $LSrecord.gold_count)
+                       #end
+                    #end
+                        <h4>$!total_income</h4>
+                        <span>平台收益</span>
+                    </div>
+                    <div class="other-btns">
+                        <a href="$!webPath/tepl/recharge.htm" id="RechargeBtn" class="btn btn-sm chongzhi">充值</a>
+                      <!--   <a href="$!webPath/tepl/getCash.htm" class="btn btn-sm tixian" id="getCashButton">提现</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 详细情况表格 -->
+    <div class="card" id="moneys-table-box">
+        <div class="card-body">
+            <ul class="nav nav-tabs" id="tabs-navbar">
+                <li class="#if($!type==0)active #end"><a href="javascript:change(0);">收支明细</a></li>
+               <!--  <li class="#if($!type==2)active #end"><a href="javascript:change(2);">提现记录</a></li> -->
+                <li class="#if($!type==1)active #end"><a href="javascript:change(1);">充值记录</a></li>
+            </ul>
+            <div class="tab-content">
+
+                <!-- 收支明细 -->
+                <div id="moneybox1" class="tab-pane fade in #if($!type==0)show active#end">
+	  				<form method="post" id="ListForm" action="$!webPath/member/myMoney.htm">
+	  					<input type="hidden" id="type" name = "type" value="$!type"/>
+	                    <div class="table1-contrl">
+	                        <!-- 开始和结束时间 -->
+	                        <div class="form-inline">
+	                            <label for="startDate">起止时间：</label>
+	                            <input name="startDate" type="text" id="startDate" class="selectDate form-control"
+	                                   placeholder="年/月/日" value="$!startDate"/>
+	                            <label for="endDate">&nbsp; 至 &nbsp;</label>
+	                            <input name="endDate" type="text" id="endDate" class="selectDate form-control"
+	                                   placeholder="年/月/日" value="$!endDate"/>
+	                        </div>
+	                        &nbsp;
+	                        &nbsp;&nbsp;
+	                        <!-- 单选时间 -->
+	                        <div class="button-select" >
+	                            <label class="radio-btn #if($!times==0)selected #end"  style="display:none;">
+	                                今天 <input type="radio" name="times" value="0" class="radios">
+	                            </label>
+	                            <label class="radio-btn #if($!times==1)selected #end">
+	                                今天 <input type="radio" name="times" #if($!times==1)checked #end value="1" class="radios">
+	                            </label>
+	                            <label class="radio-btn #if($!times==2)selected #end">
+	                                最近1个月 <input type="radio" name="times" #if($!times==2) checked #end value="2" class="radios">
+	                            </label>
+	                            <label class="radio-btn #if($!times==3)selected #end">
+	                                最近3个月 <input type="radio" name="times" #if($!times==3) checked #end value="3" class="radios">
+	                            </label>
+	                            <label class="radio-btn #if($!times==4)selected #end">
+	                                最近半年 <input type="radio" name="times" #if($!times==4) checked #end value="4" class="radios">
+	                            </label>
+	                            <label class="radio-btn #if($!times==5)selected #end">
+	                                最近1年 <input type="radio" name="times" #if($!times==5) checked #end value="5" class="radios">
+	                            </label>
+	                        </div>
+	                    </div>
+	                    <div class="table-responsive clearfix">
+	                        <table class="table table-white-border flex-table" width="100%">
+	                            <thead class="thead-bg thead-text-color">
+	                            
+	                            <tr>
+	                                <th>交易流水号</th>
+	                                <th>创建时间</th>
+	                                <th>项目名称</th>
+	                                <th>交易类型</th>
+	                                <th>支付方式</th>
+	                                <th>收入</th>
+	                                <th>支出</th>
+	                                <th>金币金额</th>
+	                                <th>操作</th>
+	                            </tr>
+	                            </thead>
+	                            <tbody id="tbody">
+	                            #foreach($LSrecord in $objs)
+	                            <tr>
+	                            
+	                                <td>$!LSrecord.gold_sn</td>
+	                                <td>$!CommUtil.formatLongDate($!LSrecord.addTime)</td>
+	                                <td><a href="$!webPath/goods_$!{LSrecord.gold_order.goods.id}.htm" target="_blank">$!LSrecord.gold_exchange_info</a></td>
+	                                <td>
+	                                #if($!LSrecord.gold_handle_type==1)
+	                                                                      充值
+	                                #elseif($!LSrecord.gold_handle_type==2)
+	                                                                      提现
+	                                #elseif($!LSrecord.gold_handle_type==3)
+	                                                                       分成
+	                                #elseif($!LSrecord.gold_handle_type==4)
+	                                                                        打赏
+	                                #else
+	                                                                       购买
+	                                #end 
+	                                </td>
+	                                
+	                                <td>
+                                 	#if($!LSrecord.gold_payment==0)
+	                                                                        微信
+	                                #elseif($!LSrecord.gold_payment==1)
+	                                                                        支付宝
+	                                #elseif($!LSrecord.gold_payment==2)
+	                                                                        余额
+	                                #end
+	                                </td>
+	                                
+	                                #if($!LSrecord.gold_handle_type==1||$!LSrecord.gold_handle_type==3)
+	                                <td>$!LSrecord.gold_count</td>
+	                                <td>--</td>
+	                                #else
+	                                <td>--</td>
+	                                <td>$!LSrecord.gold_count</td>
+	                                #end
+	                                <td>$!LSrecord.gold_user.gold</td>
+	                                <td>$!LSrecord.gold_admin_info</td>
+	                               
+	                            </tr>
+	                             #end
+	                            </tbody>
+	                        </table>
+	                    </div>
+						<div class="fenye3">
+					        <input name="ad_status" type="hidden" id="ad_status" value="$!ad_status" />
+					        <input name="ad_title" type="hidden" id="ad_title" value="$!ad_title" />
+					        <input type="hidden" name="mulitId" id="mulitId" />
+							<input name="currentPage" type="hidden" id="currentPage" value="$!currentPage" />
+				          	$!gotoPageFormHTML
+			        	</div>
+	  				</form>
+                </div>
+                <!-- 提现记录 -->
+                <div id="moneybox2" class="tab-pane fade #if($!type==2)show active#end">
+	  				<form method="post" id="ListForm">
+	  					<input type="hidden" id="type" name = "type" value="$!type"/>
+	                    <div class="table1-contrl">
+	                        <!-- 开始和结束时间 -->
+	                        <div class="form-inline">
+	                            <label for="startDate">起止时间：</label>
+	                            <input name="startDate" type="text" id="startDate" class="selectDate form-control"
+	                                   placeholder="年/月/日" value="$!startDate"/>
+	                            <label for="endDate">&nbsp; 至 &nbsp;</label>
+	                            <input name="endDate" type="text" id="endDate" class="selectDate form-control"
+	                                   placeholder="年/月/日" value="$!endDate"/>
+	                        </div>
+	                        &nbsp;
+	                        &nbsp;&nbsp;
+	                        <!-- 单选时间 -->
+	                        <div class="button-select" >
+	                            <label class="radio-btn #if($!times==0)selected #end"  style="display:none;">
+	                                今天 <input type="radio" name="times" value="0" class="radios">
+	                            </label>
+	                            <label class="radio-btn #if($!times==1)selected #end">
+	                                今天 <input type="radio" name="times" #if($!times==5)checked #end value="1" class="radios">
+	                            </label>
+	                            <label class="radio-btn #if($!times==2)selected #end">
+	                                最近1个月 <input type="radio" name="times" #if($!times==5)checked #end value="2" class="radios">
+	                            </label>
+	                            <label class="radio-btn #if($!times==3)selected #end">
+	                                最近3个月 <input type="radio" name="times" #if($!times==5)checked #end value="3" class="radios">
+	                            </label>
+	                            <label class="radio-btn #if($!times==4)selected #end">
+	                                最近半年 <input type="radio" name="times" #if($!times==5)checked #end value="4" class="radios">
+	                            </label>
+	                            <label class="radio-btn #if($!times==5)selected #end">
+	                                最近1年 <input type="radio" name="times" #if($!times==5)checked #end value="5" class="radios">
+	                            </label>
+	                        </div>
+	                    </div>
+	                    <div class="table-responsive clearfix">
+	                        <table class="table table-white-border flex-table" width="100%">
+	                            <thead class="thead-bg thead-text-color">
+	                            <tr>
+	                                <th>申请编号</th>
+	                                <th>提现方式</th>
+	                                <th>提现金额（元）</th>
+	                                <th>消耗金币（个）</th>
+	                                <th>申请时间</th>
+	                                <th>提现账号</th>
+	                                <th>提现状态</th>
+	                                <th>支付状态</th>
+	                                <th>操作</th>
+	                            </tr>
+	                            </thead>
+	                            <tbody id="tbody2">
+	                            #foreach($gold_change in $objs)
+	                            #if($gold_change.gold_handle_type==2)
+	                            <tr>
+	                                <td>$!gold_change.gold_sn</td>
+	                                <td>
+	                                #if($!gold_change.gold_payment==0)
+	                                                                        微信
+	                                #elseif($!gold_change.gold_payment==1)
+	                                                                        支付宝
+	                                #else
+	                                                                        余额
+	                                #end
+	                                </td>
+	                                <td>$!gold_change.gold_money</td>
+	                                <td> $!gold_change.gold_count </td>
+	                                <td> $!gold_change.addtime </td>
+	                         
+	                                <td>$!gold_change.casher_account</td>
+	                                <td>
+	                                #if($!gold_change.gold_status==0)
+	                                                                        冻结
+	                               
+	                                #else
+	                                                                        完成
+	                                #end
+	                                </td>
+	                                <td>
+	                                #if($!gold_change.gold_pay_status==0)
+	                                     待支付                                  
+	                                #elseif($!gold_change.gold_pay_status==1)
+	                                                                        等待审核                               
+	                                #else
+	                                                                         支付完成
+	                                #end
+	                                </td>
+	                                <td>
+	                                #if($gold_change.gold_handle_type==1)
+	                                充值
+	                                #elseif($gold_change.gold_handle_type==2)
+	                                提现
+	                                #end
+	                                </td>
+	                            </tr>
+	                            #end
+	                            #end
+	                            </tbody>
+	                        </table>
+	                    </div>
+		                <div class="fenye3">
+					        <input name="ad_status" type="hidden" id="ad_status" value="$!ad_status" />
+					        <input name="ad_title" type="hidden" id="ad_title" value="$!ad_title" />
+					        <input type="hidden" name="mulitId" id="mulitId" />
+							<input name="currentPage" type="hidden" id="currentPage" value="$!currentPage" />
+				          	$!gotoPageFormHTML
+			        	</div>
+	  				</form>
+                </div>
+                <!-- 充值记录 -->
+                <div id="moneybox3" class="tab-pane fade #if($!type==1)show active#end">
+	                <form method="post" id="ListForm">
+	  					<input type="hidden" id="type" name = "type" value="$!type"/>
+	                    <div class="table1-contrl">
+	                        <!-- 开始和结束时间 -->
+	                        <div class="form-inline">
+	                            <label for="startDate">起止时间：</label>
+	                            <input name="startDate" type="text" id="startDate" class="selectDate form-control"
+	                                   placeholder="年/月/日" value="$!startDate"/>
+	                            <label for="endDate">&nbsp; 至 &nbsp;</label>
+	                            <input name="endDate" type="text" id="endDate" class="selectDate form-control"
+	                                   placeholder="年/月/日" value="$!endDate"/>
+	                        </div>
+	                        &nbsp;
+	                        &nbsp;&nbsp;
+	                        <!-- 单选时间 -->
+	                        <div class="button-select" >
+	                            <label class="radio-btn #if($!times==0)selected #end"  style="display:none;">
+	                                今天 <input type="radio" name="times" value="0" class="radios">
+	                            </label>
+	                            <label class="radio-btn #if($!times==1)selected #end">
+	                                今天 <input type="radio" name="times" #if($!times==5)checked #end value="1" class="radios">
+	                            </label>
+	                            <label class="radio-btn #if($!times==2)selected #end">
+	                                最近1个月 <input type="radio" name="times" #if($!times==5)checked #end value="2" class="radios">
+	                            </label>
+	                            <label class="radio-btn #if($!times==3)selected #end">
+	                                最近3个月 <input type="radio" name="times" #if($!times==5)checked #end value="3" class="radios">
+	                            </label>
+	                            <label class="radio-btn #if($!times==4)selected #end">
+	                                最近半年 <input type="radio" name="times" #if($!times==5)checked #end value="4" class="radios">
+	                            </label>
+	                            <label class="radio-btn #if($!times==5)selected #end">
+	                                最近1年 <input type="radio" name="times" #if($!times==5)checked #end value="5" class="radios">
+	                            </label>
+	                        </div>
+	                    </div>
+	                    <div class="table-responsive clearfix">
+	                        <table class="table table-white-border flex-table" width="100%">
+	                            <thead class="thead-bg thead-text-color">
+	                            <tr>
+	                                <th>订单编号</th>
+	                                <th>充值方式</th>
+	                                <th>充值金额（元）</th>
+	                                <th>新增金币（个）</th>
+	                                <th>申请时间</th>
+	                                <th>充值账号</th>
+	                                <th>充值状态</th>
+	                                <th>支付状态</th>
+	                                <th>操作</th>
+	                            </tr>
+	                            </thead>
+	                            <tbody id="tbody3">
+	                             #foreach($gold_change in $objs)
+	                            #if($gold_change.gold_handle_type==1)
+	                            <tr>
+	                                <td>$!gold_change.gold_sn</td>
+	                                <td>
+	                                #if($!gold_change.gold_payment==0)
+	                                                                        微信
+	                                #elseif($!gold_change.gold_payment==1)
+	                                                                        支付宝
+	                                #else
+	                                                                        余额
+	                                #end
+	                                </td>
+	                                <td>$!gold_change.gold_money</td>
+	                                <td> $!gold_change.gold_count </td>
+	                                <td> $!gold_change.addtime </td>
+	                         
+	                                <td>$!gold_change.casher_account</td>
+	                                <td>
+	                                #if($!gold_change.gold_status==0)
+	                                                                        冻结
+	                               
+	                                #else
+	                                                                        完成
+	                                #end
+	                                </td>
+	                                <td>
+	                                #if($!gold_change.gold_pay_status==0)
+	                                     待支付                                  
+	                                #elseif($!gold_change.gold_pay_status==1)
+	                                                                        等待审核                               
+	                                #else
+	                                                                         支付完成
+	                                #end
+	                                </td>
+	                                <td>
+	                                #if($gold_change.gold_handle_type==1)
+	                                充值
+	                                #elseif($gold_change.gold_handle_type==2)
+	                                提现
+	                                #end
+	                                </td>
+	                            </tr>
+	                            #end
+	                            #end
+	                            </tbody>
+	                        </table>
+	                    </div>
+						<div class="fenye">
+						<div class="fenye3">
+					        <input name="ad_status" type="hidden" id="ad_status" value="$!ad_status" />
+					        <input name="ad_title" type="hidden" id="ad_title" value="$!ad_title" />
+					        <input type="hidden" name="mulitId" id="mulitId" />
+							<input name="currentPage" type="hidden" id="currentPage" value="$!currentPage" />
+				          	$!gotoPageFormHTML
+			        	</div>
+			        	</div>
+	  				</form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/js/script.js"></script>
+
+<script>
+
+	$(".fenye3").addClass('pagination').find('a').addClass('page-link').wrap("<div class='page-item'></div>");
+
+	jQuery('.selectDate').datepicker({
+        dateFormat: "yy-mm-dd",
+        dayNamesMin: ['日', '一', '二', '三', '四', '五', '六'],
+        monthNamesShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        yearRange: "1950:2020",
+        changeMonth: true,
+        changeYear: true
+    });
+
+    // 充值
+    $("#RechargeBtn").on("click", function (e) {
+        var url = $(this).attr('href');
+        jQuery.get(url, function (data) {
+            showModal(['610px', '660px'], data, function () {
+
+				$(".money-item").on("click", function () {
+					if (!$(this).hasClass('active')) {
+						$(this).addClass('active').siblings('.money-item').removeClass('active');
+					}
+				});
+
+				$(".pay-item").on("click", function () {
+					if (!$(this).hasClass('active')) {
+						$(this).addClass('active').siblings('.pay-item').removeClass('active');
+					}
+				});
+
+			});
+        });
+        e.preventDefault();
+    });
+
+    // 提现
+    $("#getCashButton").on("click", function (e) {
+        var url = $(this).attr('href');
+        jQuery.get(url, function (data) {
+            showModal(['490px', '500px'], data, function (index) {
+                // 点击提交登录表单
+                var cashForm = $("#cashForm");
+                cashForm.find('input:not(.select-out)').on("blur", function () {
+                    checkFormContrl($(this));
+                });
+                $("#yesGetCash").on("click", function () {
+                    if (validateForm(cashForm) > 0) {
+                        console.log("校验通过");
+                        cashForm.submit();
+                    } else {
+                        return false;
+                    }
+                });
+
+                $(".closeButton").on("click", function () {
+                    layer.closeAll();
+                });
+
+            });
+        });
+        e.preventDefault();
+    });
+    
+    $(".selectDate").on("change", function () {
+		$(".radio-btn").removeClass("selected");
+		$(".radios").removeAttr("checked");
+        if (!$("#endDate").val()==""&&!$("#startDate").val()=="") {
+			$("#ListForm").submit();
+        }
+    });
+
+    $(".radios").on("change", function () {
+        if ($(this).is(':checked')) {
+			$("#startDate").val("");
+			$("#endDate").val("");
+            $(this).parent('.radio-btn').addClass('selected').siblings('.radio-btn').removeClass('selected');
+        	$(this).attr("checked","true");
+			$("#ListForm").submit();
+        }
+    });
+    
+	function change(type){
+		init();
+		$("#type").val(type);
+		$("#ListForm").submit();
+	}
+	
+	function init(){
+		$("#currentPage").val("1");
+		$("#startDate").val("");
+		$("#endDate").val("");
+		$(".radio-btn").removeClass("selected");
+		$(".radios").removeAttr("checked");
+	}
+</script>
+</body>
+</html>

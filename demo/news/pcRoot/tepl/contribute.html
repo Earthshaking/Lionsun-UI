@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投稿</title>
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/jquery.bxslider/jquery.bxslider.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-global.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-styles.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/animate.css">
+    <style>
+    </style>
+</head>
+<!-----------------------------------------
+  名称：智脑-频道主页-投稿弹窗
+  时间：2019年5月17日
+  作者：方凌松
+  ------------------------------------------->
+<body>
+
+<div class="card appreciates-card" id="contributeBox">
+
+    <div class="card-header mb10">
+        <h3 class="card-title mb10" style="font-size: 24px;font-weight: 500 !important;">投稿</h3>
+        <a href="#" class="closeButton" id="closeLayerButton" onclick="closeParentLayer()">&times;</a>
+    </div>
+    <div class="card-body clearfix" style="padding: 0 45px 35px!important;">
+
+        <!-- 搜索框 -->
+        <div class="search-box block">
+            <input type="text" class="search-input" id="searchArticle" name="goods_name" placeholder="请输入搜索内容名称">
+            <button type="button" class="searchBtn" id="searchArticleBtn"><i class="fa fa-search"></i></button>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="contribute-content">
+            <ul class="nav-tabs contributeNav nav">
+                <li class="active"><a href="#photoTab" class="contribute-link active" data-toggle="tab">图文</a></li>
+                <!--<li><a href="#radioTab" class="contribute-link" data-toggle="tab">音频</a></li>-->
+                <!--<li><a href="#videoTab" class="contribute-link" data-toggle="tab">视频</a></li>-->
+            </ul>
+            <div class="tab-content">
+                <!-- 图文 -->
+                <div class="tab-pane fade in active show" id="photoTab">
+                    <div class="area">
+                        <ul class="list-group" id="photoTextTabList">
+                            <!--&lt;!&ndash; 文章 &ndash;&gt;-->
+                            <!--<li class="list-group-item">-->
+                                <!--&lt;!&ndash; 多选框 &ndash;&gt;-->
+                                <!--<div class="list-group-item-check form-check-inline">-->
+                                    <!--<input type="checkbox" class="form-check-input">-->
+                                    <!--<label class="form-check-label"></label>-->
+                                <!--</div>-->
+                                <!--&lt;!&ndash; 图片和文章标题 &ndash;&gt;-->
+                                <!--<div class="media item-media">-->
+                                    <!--<img src="$!webPath/resources/mystyle/static/images/channelBg.jpg" class="mr-2"-->
+                                         <!--width="90px" height="60px" alt="">-->
+                                    <!--<div class="media-body">-->
+                                        <!--<p>第一文章saffron似懂非懂sad</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--&lt;!&ndash; 文章状态 &ndash;&gt;-->
+                                <!--<div class="item-status"><span>已上架</span></div>-->
+                                <!--&lt;!&ndash; 价格 &ndash;&gt;-->
+                                <!--<div class="item-price"><span>￥2.22</span></div>-->
+                            <!--</li>-->
+                            <!--&lt;!&ndash; 文章 &ndash;&gt;-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 按钮 -->
+        <div class="contribute-btn">
+            <button class="btn btn-yes mr15" type="button" onclick="submitContribute()">确 认</button>
+            <button class="btn btn-cancel ml15" type="button" onclick="closeParentLayer()">取 消</button>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/js/script.js"></script>
+<script type="text/javascript">
+
+    /**
+     * @return {string}
+     */
+    function LoadListDemo(data) {
+        var html = "";
+        for (var i = 0; i < data.length; i++) {
+            var value = data[i];
+            var price = value.goods_price || 0;
+            var status = getStatus(value.auditStatus);
+            
+            html += ' <li class="list-group-item">\n' +
+                '       <div class="list-group-item-check form-check-inline">\n' +
+                '           <input type="checkbox" class="form-check-input" value="'+value.id+'" data-status="'+ value.auditStatus+'" >\n' +
+                '           <label class="form-check-label"></label>\n' +
+                '       </div>\n' +
+                '       <div class="media item-media">\n' +
+                '           <img src="'+ value.imgUrl +'" class="mr-2"\n' +
+                '                width="90px" height="60px" alt="">\n' +
+                '           <div class="media-body">\n' +
+                '               <p><a href="'+ value.articleUrl +'" target="_blank">'+value.goods_name+'</a></p>\n' +
+                '           </div>\n' +
+                '       </div>\n' +
+                '       <div class="item-status"><span>'+status+'</span></div>\n' +
+                '       <div class="item-price"><span>￥'+ price +'</span></div>\n' +
+                '     </li>';
+        }
+        return html;
+    }
+
+    // 返回状态
+    function getStatus(value) {
+        var result = "";
+        if (value == -1) {
+            result = "已发布";
+        }else if(value == 0){
+            result = "待审核";
+        } else if (value == 2) {
+            result = "已收录";
+        }
+        return result;
+    }
+
+    // 加载数据
+    jQuery.getJSON("$!webPath/channelDelivery.htm?storeId=$!storeId", function (result) {
+        if (result.data != null) {
+
+            console.log(result.data);
+            var html = LoadListDemo(result.data);
+            $("#photoTextTabList").empty().append(html);
+
+            /* 自定义滚动条 */
+            $(".area").perfectScrollbar();
+
+            // 图片加载出错后显示默认图片
+            $("img").on("error",function () {
+                $(this).attr('src','resources/mystyle/common/images/good.jpg');
+            });
+
+            initSearch();
+            initCheckedContrl();
+        } else {
+            alertModal(2,"数据加载出错",function (index) {
+                layer.close(index);
+            });
+            return false;
+        }
+    });
+
+    function initSearch() {
+        /* 搜索 */
+        $("#searchArticleBtn").on("click", function () {
+            var value = $("#searchArticle").val();  // 搜索的内容
+            if (jQuery.trim(value) != "") {
+                $("#photoTextTabList li").fadeOut('fast').filter(":contains('" + value + "')").fadeIn('fast');
+            } else {
+                $("#photoTextTabList li").fadeIn('fast');
+            }
+        });
+    }
+
+
+    // 点击选中时执行
+    function initCheckedContrl() {
+
+        $(".form-check-input").on("change", function () {
+            var $this = $(this);
+            var status = $this.attr('data-status');
+
+            // 判断是否可投递
+            if (status == 0 || status == 2) {
+                alertModal(2,"该文章已投递，不可进行二次投递",function (index) {
+                    layer.close(index);
+                });
+                $this.prop("checked",false);
+            }
+
+            // 选中的样式
+            if ($this.is(":checked")) {
+                $this.parents('.list-group-item').addClass('checked');
+            }else{
+                $this.parents('.list-group-item').removeClass('checked');
+            }
+        });
+
+    }
+
+    // 投稿功能
+    function submitContribute() {
+        var ids = "";
+        $(".form-check-input:checked").each(function (e) {
+            ids += $(this).val() + ",";
+        });
+
+        ids = ids.substring(0,ids.length-1);
+        // alert(ids);
+        jQuery.getJSON("$!webPath/receiveDelivery.htm?multiId=" + ids + "&storeId=$!storeId", function (result) {
+            if (result.data != null) {
+                alertModal(1,"投稿成功",function (index) {
+                    setTimeout(function () {
+                        closeParentLayer();
+                    },800);
+                });
+            } else {
+                return false;
+            }
+        });
+    }
+
+</script>
+
+</body>
+</html>

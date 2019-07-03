@@ -1,0 +1,213 @@
+.button {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.button:hover, .button:focus {
+    text-decoration: none;
+}
+
+.button:focus, .button.focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.button.disabled, .button:disabled {
+    opacity: 0.65;
+}
+
+.button:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+.button:not(:disabled):not(.disabled):active, .button:not(:disabled):not(.disabled).active {
+    background-image: none;
+}
+
+.button.shiny {
+    min-height: 1.5em;
+    display: inline-block;
+    padding: 12px 36px;
+    margin: 10px 5px 5px 0;
+    cursor: pointer;
+    opacity: 0.9;
+    color: #FFF;
+    font-size: 1em;
+    letter-spacing: 1px;
+    text-shadow: rgba(0, 0, 0, 0.9) 0 1px 2px;
+    background: #434343;
+    border: 1px solid rgba(36, 36, 36, 0.6);
+    -webkit-border-radius: 4px;
+    -khtml-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: rgba(255, 255, 255, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.25) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 0 0, inset rgba(255, 255, 255, 0.03) 0 20px 0, inset rgba(0, 0, 0, 0.15) 0 -20px 20px, inset rgba(255, 255, 255, 0.05) 0 20px 20px;
+    -khtml-box-shadow: rgba(255, 255, 255, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.25) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 0 0, inset rgba(255, 255, 255, 0.03) 0 20px 0, inset rgba(0, 0, 0, 0.15) 0 -20px 20px, inset rgba(255, 255, 255, 0.05) 0 20px 20px;
+    -moz-box-shadow: rgba(255, 255, 255, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.25) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 0 0, inset rgba(255, 255, 255, 0.03) 0 20px 0, inset rgba(0, 0, 0, 0.15) 0 -20px 20px, inset rgba(255, 255, 255, 0.05) 0 20px 20px;
+    -o-box-shadow: rgba(255, 255, 255, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.25) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 0 0, inset rgba(255, 255, 255, 0.03) 0 20px 0, inset rgba(0, 0, 0, 0.15) 0 -20px 20px, inset rgba(255, 255, 255, 0.05) 0 20px 20px;
+    box-shadow: rgba(255, 255, 255, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.25) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 0 0, inset rgba(255, 255, 255, 0.03) 0 20px 0, inset rgba(0, 0, 0, 0.15) 0 -20px 20px, inset rgba(255, 255, 255, 0.05) 0 20px 20px;
+    -webkit-transition: all 0.1s linear;
+    -khtml-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+}
+
+.button.button-block {
+    width: 100%;
+    display: block;
+}
+
+.button.shiny:focus,
+.button.shiny:hover {
+    -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 5px, inset rgba(255, 255, 255, 0.25) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 0 0, inset rgba(255, 255, 255, 0.03) 0 20px 0, inset rgba(0, 0, 0, 0.15) 0 -20px 20px, inset rgba(255, 255, 255, 0.05) 0 20px 20px;
+    -khtml-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 5px, inset rgba(255, 255, 255, 0.25) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 0 0, inset rgba(255, 255, 255, 0.03) 0 20px 0, inset rgba(0, 0, 0, 0.15) 0 -20px 20px, inset rgba(255, 255, 255, 0.05) 0 20px 20px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 5px, inset rgba(255, 255, 255, 0.25) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 0 0, inset rgba(255, 255, 255, 0.03) 0 20px 0, inset rgba(0, 0, 0, 0.15) 0 -20px 20px, inset rgba(255, 255, 255, 0.05) 0 20px 20px;
+    -o-box-shadow: rgba(0, 0, 0, 0.5) 0 2px 5px, inset rgba(255, 255, 255, 0.25) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 0 0, inset rgba(255, 255, 255, 0.03) 0 20px 0, inset rgba(0, 0, 0, 0.15) 0 -20px 20px, inset rgba(255, 255, 255, 0.05) 0 20px 20px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 2px 5px, inset rgba(255, 255, 255, 0.25) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 0 0, inset rgba(255, 255, 255, 0.03) 0 20px 0, inset rgba(0, 0, 0, 0.15) 0 -20px 20px, inset rgba(255, 255, 255, 0.05) 0 20px 20px;
+}
+
+.button.shiny:focus .shine,
+.button.shiny:hover .shine {
+    left: 55px;
+}
+
+.button.shiny:active {
+    -webkit-box-shadow: rgba(255, 255, 255, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0) 0 1px 0, inset rgba(0, 0, 0, 0.5) 0 0 5px, inset rgba(255, 255, 255, 0.03) 0 20px 0, inset rgba(0, 0, 0, 0.15) 0 -20px 20px, inset rgba(255, 255, 255, 0.05) 0 20px 20px;
+    -khtml-box-shadow: rgba(255, 255, 255, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0) 0 1px 0, inset rgba(0, 0, 0, 0.5) 0 0 5px, inset rgba(255, 255, 255, 0.03) 0 20px 0, inset rgba(0, 0, 0, 0.15) 0 -20px 20px, inset rgba(255, 255, 255, 0.05) 0 20px 20px;
+    -moz-box-shadow: rgba(255, 255, 255, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0) 0 1px 0, inset rgba(0, 0, 0, 0.5) 0 0 5px, inset rgba(255, 255, 255, 0.03) 0 20px 0, inset rgba(0, 0, 0, 0.15) 0 -20px 20px, inset rgba(255, 255, 255, 0.05) 0 20px 20px;
+    -o-box-shadow: rgba(255, 255, 255, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0) 0 1px 0, inset rgba(0, 0, 0, 0.5) 0 0 5px, inset rgba(255, 255, 255, 0.03) 0 20px 0, inset rgba(0, 0, 0, 0.15) 0 -20px 20px, inset rgba(255, 255, 255, 0.05) 0 20px 20px;
+    box-shadow: rgba(255, 255, 255, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0) 0 1px 0, inset rgba(0, 0, 0, 0.5) 0 0 5px, inset rgba(255, 255, 255, 0.03) 0 20px 0, inset rgba(0, 0, 0, 0.15) 0 -20px 20px, inset rgba(255, 255, 255, 0.05) 0 20px 20px;
+}
+
+.button.shiny:active .shine {
+    opacity: 0;
+}
+
+.button.shiny.gray {
+    background: #555;
+}
+
+.button.shiny.linear {
+    background: linear-gradient(90deg, #769abb 0%, #2580B3 55%, #2580B3 100%);
+}
+
+.button.shiny.blue {
+    background: #3a617e;
+}
+
+.button.shiny.green {
+    background: #477343;
+}
+
+.button.shiny.red {
+    background: #723131;
+}
+
+.button.shiny.purple {
+    background: #4b3f5e;
+}
+
+.button.shiny.orange {
+    background: var(--orange);
+}
+
+
+.button.shiny.bg-linear-1 {
+    background: #282537;
+    background-image: -webkit-radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
+    background-image: -moz-radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
+    background-image: -o-radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
+    background-image: radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
+}
+
+.button.shiny.bg-linear-2 {
+    background: #092756;
+    background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -moz-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -moz-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+    background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -webkit-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -webkit-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+    background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -o-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -o-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+    background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -ms-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -ms-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+    background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), linear-gradient(to bottom, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), linear-gradient(135deg, #670d10 0%, #092756 100%);
+}
+
+.button.shiny.bg-linear-3 {
+
+    background-image: linear-gradient(#8b9da9, #fff6e4);
+    box-shadow: inset 0 0 100px hsla(0, 0%, 0%, .3);
+}
+
+.button.shiny.bg-linear-4 {
+    background: rgb(105, 155, 200);
+    background: -moz-radial-gradient(top left, ellipse cover, rgba(105, 155, 200, 1) 0%, rgba(181, 197, 216, 1) 57%);
+    background: -webkit-gradient(radial, top left, 0px, top left, 100%, color-stop(0%, rgba(105, 155, 200, 1)), color-stop(57%, rgba(181, 197, 216, 1)));
+    background: -webkit-radial-gradient(top left, ellipse cover, rgba(105, 155, 200, 1) 0%, rgba(181, 197, 216, 1) 57%);
+    background: -o-radial-gradient(top left, ellipse cover, rgba(105, 155, 200, 1) 0%, rgba(181, 197, 216, 1) 57%);
+    background: -ms-radial-gradient(top left, ellipse cover, rgba(105, 155, 200, 1) 0%, rgba(181, 197, 216, 1) 57%);
+    background: radial-gradient(ellipse at top left, rgba(105, 155, 200, 1) 0%, rgba(181, 197, 216, 1) 57%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#699bc8', endColorstr='#b5c5d8', GradientType=1);
+}
+
+.button.shiny.bg-linear-5 {
+    background-image: linear-gradient(45deg, rgba(194, 233, 221, 0.5) 1%, rgba(104, 119, 132, 0.5) 100%), linear-gradient(-45deg, #494d71 0%, rgba(217, 230, 185, 0.5) 80%);
+}
+
+.button.shiny.bg-linear-6 {
+    background: rgb(244, 226, 156);
+    background: -moz-linear-gradient(-45deg, rgba(244, 226, 156, 0) 0%, rgba(59, 41, 58, 1) 100%), -moz-linear-gradient(left, rgba(244, 226, 156, 1) 0%, rgba(130, 96, 87, 1) 100%);
+    background: -webkit-linear-gradient(-45deg, rgba(244, 226, 156, 0) 0%, rgba(59, 41, 58, 1) 100%), -webkit-linear-gradient(left, rgba(244, 226, 156, 1) 0%, rgba(130, 96, 87, 1) 100%);
+    background: -o-linear-gradient(-45deg, rgba(244, 226, 156, 0) 0%, rgba(59, 41, 58, 1) 100%), -o-linear-gradient(left, rgba(244, 226, 156, 1) 0%, rgba(130, 96, 87, 1) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(244, 226, 156, 0) 0%, rgba(59, 41, 58, 1) 100%), -ms-linear-gradient(left, rgba(244, 226, 156, 1) 0%, rgba(130, 96, 87, 1) 100%);
+    background: linear-gradient(135deg, rgba(244, 226, 156, 0) 0%, rgba(59, 41, 58, 1) 100%), linear-gradient(to right, rgba(244, 226, 156, 1) 0%, rgba(130, 96, 87, 1) 100%);
+
+}
+
+
+
+.shine {
+    display: block;
+    position: relative;
+    background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, white 50%, rgba(255, 255, 255, 0) 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(50%, white), color-stop(100%, rgba(255, 255, 255, 0)));
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, white 50%, rgba(255, 255, 255, 0) 100%);
+    background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0%, white 50%, rgba(255, 255, 255, 0) 100%);
+    background: -ms-linear-gradient(left, rgba(255, 255, 255, 0) 0%, white 50%, rgba(255, 255, 255, 0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#00ffffff', GradientType=1);
+    background: linear-gradient(left, rgba(255, 255, 255, 0) 0%, white 50%, rgba(255, 255, 255, 0) 100%);
+    padding: 0 12px;
+    top: -12px;
+    left: -24px;
+    height: 2px;
+    -webkit-box-shadow: rgba(255, 255, 255, 0.2) 0 1px 5px;
+    -khtml-box-shadow: rgba(255, 255, 255, 0.2) 0 1px 5px;
+    -moz-box-shadow: rgba(255, 255, 255, 0.2) 0 1px 5px;
+    -o-box-shadow: rgba(255, 255, 255, 0.2) 0 1px 5px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -khtml-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    opacity: 0.7;
+}
+
+.shine {
+    box-shadow: rgba(255, 255, 255, 0.2) 0 1px 5px;
+}
+
+a.btn.disabled,
+fieldset:disabled a.btn {
+    pointer-events: none;
+}

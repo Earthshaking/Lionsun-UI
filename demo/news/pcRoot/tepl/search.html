@@ -1,0 +1,28 @@
+<!-- 智脑搜索框和Logo标识 search公用组件 -->
+
+<!-- 左侧LOGO 
+<div class="left-logo">
+    <a href="index.htm"><img src="$!webPath/resources/mystyle/static/images/channel-LOGO.jpg" alt="智脑LOGO"></a>
+</div>-->
+<!-- 搜索框 -->
+<div class="right-search" id="search-element">
+    <!-- 搜索框 -->
+    <form method="post" action="$!webPath/turnsearch.htm" class="form-group" id="home-search" style="width: 640px;">
+        <div id="searchForm">
+            <label for="searchType" class="search-wrrapr">
+                <select name="type" id="searchType">
+                    <option value="goods" selected>文章</option>
+                    <option value="store">频道</option>
+                </select>
+                <span class="down-arrow"></span>
+            </label>
+            <input type="text" name="keywords" class="searchInput" id="search" value="" maxlength="100"/>
+        </div>
+        <!-- 搜索按钮 -->
+        <button id="searchBtn" class="btn" type="button"><i class="fa fa-search"></i></button>
+
+        <!-- 这个隐藏的按钮不可删除 不然会bug -->
+        <button class="hide" type="button"></button>
+
+    </form>
+</div>

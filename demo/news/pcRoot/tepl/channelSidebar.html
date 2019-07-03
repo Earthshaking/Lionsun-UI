@@ -1,0 +1,83 @@
+<!-- 频道中心侧边栏 -->
+<div class="channel-left-navbar">
+    <!-- 频道 -->
+    <div class="channel-items">
+        <h6 class="items-titles p5 pb10 others-items-titles">
+            <a href="{{navbar.channelOverview.url}}" target="{{navbar.channelOverview.target}}" class="channel-link"
+               data-hash="{{navbar.channelOverview.hash}}">
+                <img src="{{navbar.channelOverview.img}}" alt="" class="default-icon">
+                <img src="{{navbar.channelOverview.imgb}}" alt="" class="active-icon">
+                {{navbar.channelOverview.title}}
+            </a>
+        </h6>
+    </div>
+
+    <!-- 文章管理 -->
+    <div class="channel-items">
+        <h6 class="items-titles p5" style="color: #000;">
+            <img src="{{navbar.articleManage.img}}" alt="" class="default-icon">
+            <img src="{{navbar.articleManage.imgb}}" alt="" class="active-icon">
+            {{navbar.articleManage.title}}
+        </h6>
+        <ul id="article-Manager-list" class="channel-sidebar-list">
+            {{each navbar.articleManage.childs value i}}
+            <li><a href="{{value.url}}" target="{{value.target}}" data-hash="{{value.hash}}" class="channel-link"
+                   data-name="{{value.token}}">{{value.title}}</a></li>
+            {{/each}}
+        </ul>
+    </div>
+    <!-- 频道管理 -->
+    <div class="channel-items">
+        <h6 class="items-titles p5">
+            <img src="{{navbar.channelManager.img}}" alt="" class="default-icon">
+            <img src="{{navbar.channelManager.imgb}}" alt="" class="active-icon">
+            {{navbar.channelManager.title}}
+        </h6>
+        <ul>
+            {{each navbar.channelManager.childs value i}}
+            <li><a href="{{value.url}}" target="{{value.target}}" data-hash="{{value.hash}}" class="channel-link"
+                   data-name="{{value.token}}">{{value.title}}</a></li>
+            {{/each}}
+        </ul>
+    </div>
+
+    <!-- 交易管理 -->
+    <div class="channel-items">
+        <h6 class="items-titles p5">
+            <img src="{{navbar.tradingManager.img}}" alt="" class="default-icon">
+            <img src="{{navbar.tradingManager.imgb}}" alt="" class="active-icon">
+            {{navbar.tradingManager.title}}
+        </h6>
+        <ul class="channel-sidebar-list">
+            {{each navbar.tradingManager.childs value i}}
+            <li><a href="{{value.url}}" target="{{value.target}}" data-hash="{{value.hash}}" class="channel-link"
+                   data-name="{{value.token}}">{{value.title}}</a></li>
+            {{/each}}
+        </ul>
+    </div>
+
+    <div class="channel-items">
+        <h6 class="items-titles p5 pb10">
+            <a href="{{navbar.customerService.url}}" target="{{navbar.customerService.target}}" class="channel-link"
+               data-hash="{{navbar.customerService.hash}}">
+                <img src="{{navbar.customerService.img}}" alt="" class="default-icon">
+                <img src="{{navbar.customerService.imgb}}" alt="" class="active-icon">
+                {{navbar.customerService.title}}
+            </a>
+        </h6>
+    </div>
+
+    <!--&lt;!&ndash; 客户服务 &ndash;&gt;-->
+    <!--<div class="channel-items">-->
+        <!--<h6 class="items-titles p5">-->
+            <!--<img src="{{navbar.customerService.img}}" alt="">-->
+            <!--{{navbar.customerService.title}}-->
+        <!--</h6>-->
+        <!--<ul>-->
+            <!--{{each navbar.customerService.childs value i}}-->
+            <!--<li><a href="{{value.url}}" target="{{value.target}}" data-hash="{{value.hash}}" class="channel-link"-->
+                   <!--data-name="{{value.token}}">{{value.title}}</a></li>-->
+            <!--{{/each}}-->
+        <!--</ul>-->
+    <!--</div>-->
+</div>

@@ -1,0 +1,38 @@
+
+  <div class="index">
+    <div class="index2">
+      <div class="paywaiting"> <span> <img src="$!imageWebServer/resources/style/common/images/loading.gif"  /></span> <span style="margin-top:10px;">正在为您跳转支付页面，请等待......</span></div>
+    </div>
+  </div>
+
+#if($!type=="goods")
+  #set($id="$!order_id")
+#end
+#if($!type=="cash")
+  #set($id="$!cash_id")
+#end
+#if($!type=="gold")
+  #set($id="$!gold_id")
+#end
+#if($!type=="integral")
+  #set($id="$!integral_order_id")
+#end
+
+#if($!{payType}=="alipay")
+ $!payTools.genericAlipay("$!url","$!payment_id","$!type","$!id")
+#end
+#if($!{payType}=="bill")
+$!payTools.generic99Bill("$!url","$!payment_id","$!type","$!id")
+#end
+
+#if($!{payType}=="tenpay")
+<script>
+ window.location.href='$!webPath/tenpay.htm?type=$!type&payment_id=$!payment_id&id=$!id';
+</script>
+#end
+#if($!{payType}=="chinabank")
+$!payTools.genericChinaBank("$!url","$!payment_id","$!type","$!id")
+#end
+#if($!{payType}=="paypal")
+$!payTools.genericPaypal("$!url","$!payment_id","$!type","$!id")
+#end

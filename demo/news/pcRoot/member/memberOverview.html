@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会员空间 - 概况</title>
+    <link rel="stylesheet" href="../../static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/lib/jquery-ui/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../../static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../../static/css/custom-global.css">
+    <link rel="stylesheet" href="../../static/css/custom-styles.css">
+    <link rel="stylesheet" href="../../static/css/animate.css">
+    <link rel="stylesheet" href="../../static/lib/gridstack/gridstack.min.css">
+    <link rel="stylesheet" href="../../static/css/custom-button.css">
+    <link rel="stylesheet" href="../../static/css/grid-styles.css">
+    <style>
+        
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .grid-stack > .grid-stack-item > .grid-stack-item-content {
+            left: 8px !important;
+            right: 8px !important;
+            overflow: hidden;
+        }
+
+        .grid-stack.static .card-move-handle {
+            display: none;
+        }
+
+        .area {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .table-responsive {
+            position: relative;
+            padding-bottom: 15px;
+        }
+        table{
+        	table-layout: fixed;
+        }
+		td{
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow:ellipsis;
+		}
+    </style>
+</head>
+
+<!-----------------------------------------
+  名称：会员空间 概况
+  时间：2019年6月11日
+  文件名：memberOverview.html
+  访问连接：member/member_overview.htm
+  作者：方凌松
+------------------------------------------->
+<body>
+<div class="grid-container animated-fasts fodeIn">
+    <div class="grid-stack static">
+        <!-- 总收入 -->
+        <div class="grid-stack-item" id="item1" data-gs-id="item1" data-gs-x="0" data-gs-y="0" data-gs-width="2"
+             data-gs-height="2" data-gs-no-resize="true">
+            <div class="grid-stack-item-content card grid-card memberRed">
+                <div class="card-header card-move-handle">（1）总收入</div>
+                <div class="card-body media">
+                    <div class="media-body">
+                        <h4 class="result-datas">88</h4>
+                        <span class="sub-name">总收入</span>
+                    </div>
+                    <img src="../../static/images/member-icon/fours1.png" alt="总收入">
+                </div>
+            </div>
+        </div>
+        <!-- 今日收入 -->
+        <div class="grid-stack-item" id="item2" data-gs-id="item2" data-gs-x="2" data-gs-y="0" data-gs-width="2"
+             data-gs-height="2" data-gs-no-resize="true">
+            <div class="grid-stack-item-content card grid-card memberOrange">
+                <div class="card-header card-move-handle">（2）今日收入</div>
+                <div class="card-body media">
+                    <div class="media-body">
+                        <h4 class="result-datas">88</h4>
+                        <span class="sub-name">今日收入</span>
+                    </div>
+                    <img src="../../static/images/member-icon/fours2.png" alt="今日收入">
+                </div>
+            </div>
+        </div>
+        <!-- 可用余额 -->
+        <div class="grid-stack-item" id="item3" data-gs-id="item3" data-gs-x="4" data-gs-y="0" data-gs-width="2"
+             data-gs-height="2" data-gs-no-resize="true">
+            <div class="grid-stack-item-content card grid-card memberGreen">
+                <div class="card-header card-move-handle">（3）可用余额</div>
+                <div class="card-body media">
+                    <div class="media-body">
+                        <h4 class="result-datas">88</h4>
+                        <span class="sub-name">可用余额</span>
+                    </div>
+                    <img src="../../static/images/member-icon/fours3.png" alt="可用余额">
+                </div>
+            </div>
+        </div>
+        <!-- 内容总数 -->
+        <div class="grid-stack-item" id="item4" data-gs-id="item4" data-gs-x="6" data-gs-y="0" data-gs-width="2"
+             data-gs-height="2" data-gs-no-resize="true">
+            <div class="grid-stack-item-content card grid-card memberBlue">
+                <div class="card-header card-move-handle">（4）内容总数</div>
+                <div class="card-body media">
+                    <div class="media-body">
+                        <h4 class="result-datas">88</h4>
+                        <span class="sub-name">内容总数</span>
+                    </div>
+                    <img src="../../static/images/member-icon/fours4.png" alt="内容总数">
+                </div>
+            </div>
+        </div>
+        <!-- 粉丝数 -->
+        <div class="grid-stack-item" id="item5" data-gs-id="item5" data-gs-x="8" data-gs-y="0" data-gs-width="2"
+             data-gs-height="2" data-gs-no-resize="true">
+            <div class="grid-stack-item-content card grid-card memberPurple">
+                <div class="card-header card-move-handle">（5）粉丝数</div>
+                <div class="card-body media">
+                    <div class="media-body">
+                        <h4 class="result-datas">88</h4>
+                        <span class="sub-name">粉丝数</span>
+                    </div>
+                    <img src="../../static/images/member-icon/fours5.png" alt="粉丝数">
+                </div>
+            </div>
+        </div>
+        <!-- 个人名片 -->
+        <div class="grid-stack-item" id="item6" data-gs-id="item6" data-gs-x="10" data-gs-y="0" data-gs-width="2"
+             data-gs-height="8" data-gs-no-resize="true">
+            <div class="grid-stack-item-content card grid-card">
+                <div class="card-header card-move-handle">（6）个人名片</div>
+                <div class="card-body">
+                    <!-- 用户头像 & 用户昵称 -->
+                    <div class="user-box text-center" id="user-card">
+                        <img src="../../static/images/placeholder/img2_235x220.jpg" id="userImg" alt="会员头像" class="rounded-circle">
+                        <h5 id="spaceName" class="newsSpaceName">Admin</h5>
+                        <a href="#" id="editorUserBtn"
+                           class="btn btn-outline-secondary btn-sm">编辑资料</a>
+                        <a href="#" id="goUserHomePage" target="_blank">访问个人主页</a>
+                    </div>
+                    <hr>
+                    <!-- 扫码访问 -->
+                    <div class="take-qrCode">
+                        <h4 class="h5">扫码访问个人主页</h4>
+                        <img src="../../static/images/codes.png" id="userHomeQrCode"
+                             alt="个人主页二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 近期活动 -->
+        <div class="grid-stack-item" id="item7" data-gs-id="item7" data-gs-x="10" data-gs-y="9" data-gs-width="2"
+             data-gs-height="6" data-gs-no-resize="true">
+            <div class="grid-stack-item-content card grid-card">
+                <div class="card-header card-move-handle">（7）近期活动</div>
+                <div class="card-body">
+                    <p class="home-card-title">近期活动</p>
+                    <br>
+                    <ul id="jqhd-img-list">
+                        <li><a href=""><img src="../../static/images/jqhd-1.png" alt="近期活动1"></a></li>
+                        <li><a href=""><img src="../../static/images/jqhd-2.png" alt="近期活动2"></a></li>
+                        <li><a href=""><img src="../../static/images/jqhd-3.png" alt="近期活动3"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 常用功能和关注的频道 -->
+        <div class="grid-stack-item" id="item8" data-gs-id="item8" data-gs-x="0" data-gs-y="2" data-gs-width="10"
+             data-gs-height="6" data-gs-no-resize="true">
+            <div class="grid-stack-item-content card grid-card">
+                <div class="card-header card-move-handle">（8）常用功能和关注的频道</div>
+                <div class="card-body p25" id="commonfocusContrl">
+                    <!-- 常用功能 -->
+                    <div class="commonContrl">
+                        <p class="home-card-title">常用功能</p>
+                        <div class="row clearfix">
+                            <!-- 图文 -->
+                            <div class="col">
+                                <a href="#" class="contrl-item memberLightBlue">
+                                    <div class="item-left">
+                                        <img src="../../static/images/member-icon/bigicon_1.png"
+                                             alt="图文.png">
+                                    </div>
+                                    <div class="item-right">图文</div>
+                                </a>
+                            </div>
+                            <!-- 音频 -->
+                            <div class="col">
+                                <a href="#" class="contrl-item memberLightGray">
+                                    <div class="item-left">
+                                        <img src="../../static/images/member-icon/bigicon_2.png"
+                                             alt="音频.png">
+                                    </div>
+                                    <div class="item-right">音频</div>
+                                </a>
+                            </div>
+                            <!-- 视频 -->
+                            <div class="col">
+                                <a href="#" class="contrl-item memberLightBlue">
+                                    <div class="item-left">
+                                        <img src="../../static/images/member-icon/bigicon_3.png"
+                                             alt="视频.png">
+                                    </div>
+                                    <div class="item-right">视频</div>
+                                </a>
+                            </div>
+                            <!-- 电子书 -->
+                            <div class="col">
+                                <a href="#" class="contrl-item memberLightRed">
+                                    <div class="item-left">
+                                        <img src="../../static/images/member-icon/bigicon_4.png"
+                                             alt="电子书.png">
+                                    </div>
+                                    <div class="item-right">电子书</div>
+                                </a>
+                            </div>
+                            <!-- 我的钱包 -->
+                            <div class="col">
+                                <a href="#" class="contrl-item memberLightRed2">
+                                    <div class="item-left">
+                                        <img src="../../static/images/member-icon/bigicon_5.png"
+                                             alt="我的钱包.png">
+                                    </div>
+                                    <div class="item-right">我的钱包</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 关注的频道 -->
+                    <div class="focusChannel">
+                        <p class="home-card-title">关注的频道</p>
+                        <div class="channel-list-box clearfix">
+                            <!-- 频道列表 -->
+                            <ul class="channel-list pt10">
+                                <li class="channel-item">
+                                    <a href="#" target="_blank">
+                                        <img src="../../static/images/placeholder/img2_235x220.jpg" alt="" class="usersHeadIcon" style="width:100px;height: 100px" onerror="this.src='../../static/images/placeholder/img2_235x220.jpg'"></a>
+                                    <div class="media-body pt10">
+                                        <p class="channel-name"><a href="#" target="_blank">频道名称</a></p>
+                                    </div>
+                                </li>
+                                <li class="channel-item">
+                                    <a href="#" target="_blank">
+                                        <img src="../../static/images/placeholder/img2_235x220.jpg" alt="" class="usersHeadIcon" style="width:100px;height: 100px" onerror="this.src='../../static/images/placeholder/img2_235x220.jpg'"></a>
+                                    <div class="media-body pt10">
+                                        <p class="channel-name"><a href="#" target="_blank">频道名称</a></p>
+                                    </div>
+                                </li>
+                                <li class="channel-item">
+                                    <a href="#" target="_blank">
+                                        <img src="../../static/images/placeholder/img2_235x220.jpg" alt="" class="usersHeadIcon" style="width:100px;height: 100px" onerror="this.src='../../static/images/placeholder/img2_235x220.jpg'"></a>
+                                    <div class="media-body pt10">
+                                        <p class="channel-name"><a href="#" target="_blank">频道名称</a></p>
+                                    </div>
+                                </li>
+                                <li class="channel-item">
+                                    <a href="#" target="_blank">
+                                        <img src="../../static/images/placeholder/img2_235x220.jpg" alt="" class="usersHeadIcon" style="width:100px;height: 100px" onerror="this.src='../../static/images/placeholder/img2_235x220.jpg'"></a>
+                                    <div class="media-body pt10">
+                                        <p class="channel-name"><a href="#" target="_blank">频道名称</a></p>
+                                    </div>
+                                </li>
+                                <li class="channel-item">
+                                    <a href="#" target="_blank">
+                                        <img src="../../static/images/placeholder/img2_235x220.jpg" alt="" class="usersHeadIcon" style="width:100px;height: 100px" onerror="this.src='../../static/images/placeholder/img2_235x220.jpg'"></a>
+                                    <div class="media-body pt10">
+                                        <p class="channel-name"><a href="#" target="_blank">频道名称</a></p>
+                                    </div>
+                                </li>
+                                <li class="channel-item">
+                                    <a href="#" target="_blank">
+                                        <img src="../../static/images/placeholder/img2_235x220.jpg" alt="" class="usersHeadIcon" style="width:100px;height: 100px" onerror="this.src='../../static/images/placeholder/img2_235x220.jpg'"></a>
+                                    <div class="media-body pt10">
+                                        <p class="channel-name"><a href="#" target="_blank">频道名称</a></p>
+                                    </div>
+                                </li>
+                                <li class="channel-item">
+                                    <a href="#" target="_blank">
+                                        <img src="../../static/images/placeholder/img2_235x220.jpg" alt="" class="usersHeadIcon" style="width:100px;height: 100px" onerror="this.src='../../static/images/placeholder/img2_235x220.jpg'"></a>
+                                    <div class="media-body pt10">
+                                        <p class="channel-name"><a href="#" target="_blank">频道名称</a></p>
+                                    </div>
+                                </li>
+                                <li class="channel-item">
+                                    <a href="#" target="_blank">
+                                        <img src="../../static/images/placeholder/img2_235x220.jpg" alt="" class="usersHeadIcon" style="width:100px;height: 100px" onerror="this.src='../../static/images/placeholder/img2_235x220.jpg'"></a>
+                                    <div class="media-body pt10">
+                                        <p class="channel-name"><a href="#" target="_blank">频道名称</a></p>
+                                    </div>
+                                </li>
+                                <li class="channel-item">
+                                    <a href="#" target="_blank">
+                                        <img src="../../static/images/placeholder/img2_235x220.jpg" alt="" class="usersHeadIcon" style="width:100px;height: 100px" onerror="this.src='../../static/images/placeholder/img2_235x220.jpg'"></a>
+                                    <div class="media-body pt10">
+                                        <p class="channel-name"><a href="#" target="_blank">频道名称</a></p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <!-- 我的浏览 -->
+        <div class="grid-stack-item" id="item9" data-gs-id="item9" data-gs-x="0" data-gs-y="9" data-gs-width="5"
+             data-gs-height="6" data-gs-no-resize="true">
+            <div class="grid-stack-item-content card grid-card table-card">
+                <div class="card-header card-move-handle">（9）我的浏览</div>
+                <div class="card-body">
+                    <p class="home-card-title">我的浏览</p>
+                    <div class="table-inner area">
+                        <table id="ll-table" width="100%">
+                            <tbody>
+	                            <tr>
+	                                <td style="width:60%;"><span class="mini-block"></span>
+	                                	<a href="#" target="_blank">浏览记录浏览记录浏览记录浏览记录浏览记录浏览记录浏览记录浏览记录...</a>
+	                                </td>
+	                                <td class="td-time text-muted">2019-07-22 21:50</td>
+	                            </tr>
+                                <tr>
+                                    <td style="width:60%;"><span class="mini-block"></span>
+                                        <a href="#" target="_blank">浏览记录浏览记录浏览记录浏览记录浏览记录浏览记录浏览记录浏览记录...</a>
+                                    </td>
+                                    <td class="td-time text-muted">2019-07-12 21:50</td>
+                                </tr>
+                                <tr>
+                                    <td style="width:60%;"><span class="mini-block"></span>
+                                        <a href="#" target="_blank">浏览记录浏览记录浏览记录浏览记录浏览记录浏览记录浏览记录浏览记录...</a>
+                                    </td>
+                                    <td class="td-time text-muted">2019-07-22 21:50</td>
+                                </tr>
+                                <tr>
+                                    <td style="width:60%;"><span class="mini-block"></span>
+                                        <a href="#" target="_blank">浏览记录浏览记录浏览记录浏览记录浏览记录浏览记录浏览记录浏览记录...</a>
+                                    </td>
+                                    <td class="td-time text-muted">2019-07-32 21:50</td>
+                                </tr>
+                                <tr>
+                                    <td style="width:60%;"><span class="mini-block"></span>
+                                        <a href="#" target="_blank">浏览记录浏览记录浏览记录浏览记录浏览记录浏览记录浏览记录浏览记录...</a>
+                                    </td>
+                                    <td class="td-time text-muted">2019-07-22 21:50</td>
+                                </tr>
+                                <tr>
+                                    <td style="width:60%;"><span class="mini-block"></span>
+                                        <a href="#" target="_blank">浏览记录浏览记录浏览记录浏览记录浏览记录浏览记录浏览记录浏览记录...</a>
+                                    </td>
+                                    <td class="td-time text-muted">2019-07-12 21:50</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 我的购买 -->
+        <div class="grid-stack-item" id="item10" data-gs-id="item10" data-gs-x="5" data-gs-y="9" data-gs-width="5"
+             data-gs-height="6" data-gs-no-resize="true">
+            <div class="grid-stack-item-content card grid-card table-card">
+                <div class="card-header card-move-handle">（10）我的购买</div>
+                <div class="card-body pl35 pr35">
+                    <p class="home-card-title">我的购买</p>
+                    <div class="table-inner area">
+                        <table id="hy-table" width="100%">
+                            <tbody>
+                            <tr>
+                                <td class="td-name" style="width:53%"><span class="mini-block"></span>
+                                    <a href="#" target="_blank">商品名称商品名称商品名称商品名称...</a>
+                                </td>
+                                <td class="td-box" style="display:table;width:auto;">频道名称</td>
+                                <td class="td-time text-muted" style="width:auto">2019-07-12 21:50</td>
+                            </tr>
+                            <tr>
+                                <td class="td-name" style="width:53%"><span class="mini-block"></span>
+                                    <a href="#" target="_blank">商品名称商品名称商品名称商品名称...</a>
+                                </td>
+                                <td class="td-box" style="display:table;width:auto;">频道名称</td>
+                                <td class="td-time text-muted" style="width:auto">2019-07-12 21:50</td>
+                            </tr>
+                            <tr>
+                                <td class="td-name" style="width:53%"><span class="mini-block"></span>
+                                    <a href="#" target="_blank">商品名称商品名称商品名称商品名称...</a>
+                                </td>
+                                <td class="td-box" style="display:table;width:auto;">频道名称</td>
+                                <td class="td-time text-muted" style="width:auto">2019-07-12 21:50</td>
+                            </tr>
+                            <tr>
+                                <td class="td-name" style="width:53%"><span class="mini-block"></span>
+                                    <a href="#" target="_blank">商品名称商品名称商品名称商品名称...</a>
+                                </td>
+                                <td class="td-box" style="display:table;width:auto;">频道名称</td>
+                                <td class="td-time text-muted" style="width:auto">2019-07-12 21:50</td>
+                            </tr>
+                            <tr>
+                                <td class="td-name" style="width:53%"><span class="mini-block"></span>
+                                    <a href="#" target="_blank">商品名称商品名称商品名称商品名称...</a>
+                                </td>
+                                <td class="td-box" style="display:table;width:auto;">频道名称</td>
+                                <td class="td-time text-muted" style="width:auto">2019-07-12 21:50</td>
+                            </tr>
+                            <tr>
+                                <td class="td-name" style="width:53%"><span class="mini-block"></span>
+                                    <a href="#" target="_blank">商品名称商品名称商品名称商品名称...</a>
+                                </td>
+                                <td class="td-box" style="display:table;width:auto;">频道名称</td>
+                                <td class="td-time text-muted" style="width:auto">2019-07-12 21:50</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <br>
+</div>
+<script type="text/javascript" src="../../static/js/script.js"></script>
+<script type="text/javascript" src="../../static/lib/gridstack/lodash.min.js"></script>
+<script type="text/javascript" src="../../static/lib/gridstack/gridstack.min.js"></script>
+<script type="text/javascript">
+
+    $(".area").perfectScrollbar();
+    $(function () {
+        var gridContainer = $('.grid-stack');
+        var options = {
+            disableDrag: true,
+            vertical_margin: 16,
+            cell_height: 60,
+            draggable: {
+                handle: '.card-move-handle'
+            }
+        };
+        gridContainer.gridstack(options);
+    });
+
+    window.onload = function () {
+
+        var channelList = $(".channel-list");
+        channelList.find("li").each(function () {
+            if ($(this).index() > 8) {
+                $(this).remove()
+            }
+        });
+
+
+    }
+
+
+</script>
+
+</body>
+</html>

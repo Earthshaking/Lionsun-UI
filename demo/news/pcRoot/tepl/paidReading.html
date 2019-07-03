@@ -1,0 +1,15 @@
+<!-- 付费阅读 -->
+<div class="card default-card" style="height: 100%">
+    <div class="card-header bg-light">
+        <h6 class="card-title pt5">付费阅读</h6>
+        <a href="#" class="closeButton">&times;</a>
+    </div>
+    <div class="card-body text-center" style="height:100%;">
+        <h2>本次阅读将消耗$!{goods.goods_price}金币</h2>
+        <p>当前可用余额$!{userObj.gold}金币，继续充值</p>
+        <br>
+        <br>
+        <input type="hidden" id="money" name="money" value="$!{goods.goods_price}" >
+        <button type="button" class="btn color-white btn-lg btn-primary brn" id="payMoneyNow"  onclick="article.aritclePayGold('$!{goods.id}','1');">立即支付</button>
+    </div>
+</div>

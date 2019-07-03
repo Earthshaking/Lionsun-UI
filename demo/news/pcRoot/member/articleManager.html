@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章管理</title>
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/lib/bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-global.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/custom-styles.css">
+    <link rel="stylesheet" href="$!webPath/resources/mystyle/static/css/animate.css">
+    <style>
+
+    </style>
+
+</head>
+<!-----------------------------------------
+  名称：智脑-文章管理
+  时间：2019年4月2日
+  作者：方凌松
+------------------------------------------->
+<body>
+
+<div class="container-fluid manager-wrraper">
+
+    <h1 class="manager-title bb pb10"><img src="$!webPath/resources/mystyle/static/images/book.png" alt=""> 全部图文</h1>
+      <form action="$!webPath/member/goods_storage.htm" method="post" id="ListForm">
+    <div class="article-manager">
+        <div class="clearfix">
+            <div class="table-contrl">
+                <div class="button-box">
+                    <button class="btn btn-add" type="button" onclick="window.location.href='$!webPath/member/article_add.htm'">新增文章</button>
+                    <button class="btn btn-delete" onclick="deleAll('$!webPath/seller/goods_del.htm');" type="button">删除</button>
+                    <!-- 此处待修改 onclick="location.href='$!webPath/seller/article_show.htm?type=0&curID=65536'" -->
+                    <!-- <button class="btn btn-send" type="button" onclick="alertModal111()" >图文投递</button> -->
+                </div>
+                <div class="search-box">
+                    <input type="text" class="search-input" id="search" name="goods_name">
+                    <button type="button" class="searchBtn" onclick="myFunction()"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+            <table class="table table-bordered" width="100%" id="article-table">
+                <thead class="thead-bg">
+                <tr>
+                    <th width="30">
+                        <label data-toggle="checkbox" data-style="default">
+                            <input type="checkbox" name="checkAll">
+                            <span class="nothing"></span>
+                        </label>
+                    </th>
+                    <th style="width: 400px">图文名称</th>
+                    <th style="min-width: 70px;">分类</th>
+                    <th style="min-width:100px">定价(金币)</th>
+                    <th style="min-width: 110px">编辑时间</th>
+                    <th style="min-width: 140px">投递频道</th>
+                    <th style="min-width: 120px">投递时间</th>
+                    <th style="min-width: 100px">审核状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody id="tbody">
+                #foreach($obj in $objs)
+                <tr>
+                 	#set($goods_url="$!webPath/goods_$!{obj.id}.htm")
+	                #if($!config.second_domain_open)
+	                	#set($goods_url="http://$!{obj.goods_store.store_second_domain}.$!{domainPath}/goods_$!{obj.id}.htm")
+	                #end
+                    <td>
+                        <label data-toggle="checkbox" data-style="default">
+                            <input type="checkbox" name="checkItem"  value="$!obj.id">
+                            <span class="nothing"></span>
+                        </label>
+                    </td>
+                    <td><p class="table-width" style="width: 400px"><a href="$!goods_url" target='_blank'>$!obj.goods_name</a></p></td>
+                    <td>#if($!obj.gc)$!storeTools.generic_goods_class_info($!obj.gc)#end</td>
+                    <td><span class="reds">#if($!obj.goods_price) $!obj.goods_price #else 0.00 #end</span></td>
+                    <td>$!CommUtil.substringNormal("$!obj.addTime",19)</td>
+                    
+                    <!-- Add by Dandelion -->
+                    #set($flag=0)
+                    #foreach($tg in $!gslist)
+                    #if(($!tg.goods.goods_name == $!obj.goods_name)&&($flag<1))
+                    <td>$!tg.store.store_name</td>
+                    <td>$!CommUtil.formatLongDate($!tg.addTime)</td>
+                    #if($!tg.audit_state==0)
+                    #set($isshow=true)
+                    <td>审核中</td>
+                    #elseif($!tg.audit_state==2)
+                    #set($isshow=true)
+                    <td>已收录</td>
+                    #elseif($!tg.audit_state==1)
+                    #set($isshow=true)
+                    <td>已拒绝 </td>
+                    #end
+                    #set($flag=$flag+1)
+                    #end
+                    #end
+                    #if($flag==0)
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    #end
+                    <!-- end -->
+                    <td>
+                        <div style="min-width: 250px">
+                            <a href="$!webPath/seller/goods_edit.htm?id=$!obj.id">编辑</a>
+                            &nbsp;
+                    		#if(!$!isshow)
+                            <a href="javascript:void(0)" onclick="submitArticle('$!obj.id')">投稿</a>
+                            #end
+                            &nbsp;
+                    		#if($!isshow)
+                            <a href="javascript:void(0);" onclick="getAudit('$!obj.id')">审核意见</a>
+                            #end
+                            &nbsp;
+                            <!--<a href="javascript:if(confirm('删除后不可恢复?'))window.location.href=''">删除</a>-->
+                            <a href="javascript:void(0);" onclick="removeThisArticle(this)" data-url="$!webPath/seller/goods_del.htm?mulitId=$!obj.id&op=storage">删除</a>
+                        </div>
+                    </td>
+                </tr>
+                #set($isshow=false)
+                #end
+
+                </tbody>
+            </table>
+        </div>
+        <div class="fenye">
+            <div class="fenyes pagination">
+              <input name="currentPage" type="hidden" id="currentPage" value="$!currentPage" />
+              <input type="hidden" name="goods_view" id="goods_view" value="$!goods_view" />
+              <input name="orderBy" type="hidden" id="orderBy" value="$!orderBy" />
+              <input name="orderType" type="hidden" id="orderType" value="$!orderType" />
+              $!gotoPageFormHTML
+            </div>
+        </div>
+        <br>
+        <br>
+        </div>
+    <input type="hidden" name="mulitId" id="mulitId" />
+    <input type="hidden" name="op" id="op" />
+
+ </form>
+    </div>
+
+
+<script type="text/javascript" src="$!webPath/resources/mystyle/static/js/script.js"></script>
+<script>
+
+    $(".fenyes").find('a').addClass('page-link').wrap("<div class='page-item'></div>");
+
+    initContrl();
+
+    // 全选功能
+    function initContrl() {
+        var checkAll = $("input[name='checkAll']");
+        checkAll.on("change", function () {
+            if ($(this).is(":checked")) {
+                $("input[name='checkItem']").prop('checked', 'checked');
+            } else {
+                $("input[name='checkItem']").prop('checked', false);
+            }
+        });
+        var checkitem = $("input[name='checkItem']");
+        var inputCount = checkitem.length;
+        checkitem.on("change", function () {
+            var checkedCount = $("input[name='checkItem']:checked").length;
+            if (checkedCount != inputCount) {
+                checkAll.prop('checked',false);
+            }else {
+                checkAll.prop('checked', 'checked');
+            }
+        });
+    }
+
+    // 多选删除--自定义
+    function deleAll(url){
+
+        var op="storage";
+
+        var mulitId="";
+        jQuery(":checkbox:checked").each(function(){
+          if(jQuery(this).val()!=""&jQuery(this).val()!="on"){
+          if (mulitId=="") {
+            mulitId=jQuery(this).val();
+        }else{
+             mulitId=mulitId+","+jQuery(this).val();
+        }
+
+          }
+        });
+        if(mulitId!=""){
+        jQuery("#mulitId").val(mulitId);
+        jQuery("#op").val(op);
+       jQuery("#ListForm").attr("action",url);
+         jQuery("#ListForm").submit();
+        }else{
+           alert("至少选择一条数据记录");
+        }
+    };
+
+    // 搜索
+    function myFunction() {
+        // 声明变量
+
+        var keyword;
+        keyword = document.getElementById("search").value;
+
+       jQuery("#ListForm").submit();
+
+    }
+
+    var parent = window.parent;
+
+    $("[data-toggle='layer2']").on("click", function (e) {
+        // var url = $(this).data('href');
+        var width = $(this).data('width');
+        var height = $(this).data('height');
+        var articleId = $(this).data('curid');
+        // jQuery.get(url, function (data) {
+
+        showIframeModal([width, height], '$!webPath/seller/store_blong.htm?articleId='+articleId, function () {
+
+        });
+
+        // });
+        e.preventDefault();
+    });
+
+    $("[data-toggle='layer']").on("click", function (e) {
+        var url = $(this).data('href');
+        jQuery.get(url, function (data) {
+            parent.showModal(['680px', '720px'], data, function () {
+
+            });
+        });
+        e.preventDefault();
+    });
+
+
+    function openVoteLayer(URL) {
+        layer.closeAll();
+        setTimeout(function () {
+            showIframeModal(['680px', '720px'], URL, function () {
+
+            });
+        }, 500);
+
+    }
+
+    /*function alertModal111(){
+        var mulitId="";
+        jQuery(":checkbox:checked").each(function(){
+          if(jQuery(this).val()!=""&jQuery(this).val()!="on"){  
+          if (mulitId=="") {
+            mulitId=jQuery(this).val();
+        }else{
+             mulitId=mulitId+","+jQuery(this).val();
+            }
+          }
+        });
+        if(mulitId==""){
+           alert("至少选择一条数据记录");
+           return false;
+        }
+
+        showIframeModal(['680px', '720px'], '$!webPath/seller/article_show.htm?type=0&curID='+mulitId, function () {
+        
+        });
+    }*/
+    function removeThisArticle(obj) {
+        var url = $(obj).attr('data-url');
+        alertModal(3,"删除后不可恢复?",function (index) {
+            window.location.href = url;
+        });
+    }
+
+    //审核意见弹窗
+    function getAudit(curID){
+        showIframeModal(['495px', '320px'], '../seller/audit_advice.htm?curID='+curID, function () {
+
+        });
+    }
+
+</script>
+</body>
+</html>
