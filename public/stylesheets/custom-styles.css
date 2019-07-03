@@ -15,7 +15,11 @@
     margin: 0;
 }
 
-body, html {
+html{
+    height: 100%;
+}
+
+body {
     height: 100%;
     width: 100%;
 }
@@ -77,7 +81,6 @@ body {
 #sidebar {
     width: 0;
     height: 100%;
-    border-right: 1px solid var(--globalGray);
     /*box-shadow: 2px 0 5px 0 var(--boxShadow);*/
     background-color: transparent;
     transition: all .3s;
@@ -85,6 +88,7 @@ body {
     overflow-x: hidden;
     overflow-y: hidden;
     position: relative;
+    z-index: 99999;
 }
 
 #sidebar::before {
@@ -239,6 +243,7 @@ body {
     position: absolute;
     top: 0;
     width: 100%;
+    z-index: 99999;
 }
 
 #main > #header .navbar-toggler {
@@ -246,7 +251,7 @@ body {
 }
 
 #main > #header .navbar-toggler:hover {
-    background-color: #ececec;
+    background-color: rgba(224, 224, 224, 0.9);
 }
 
 #frame {
@@ -262,6 +267,11 @@ body {
 .docs {
     color: rgba(12, 84, 96, 1) !important;
     font-weight: 700;
+}
+
+.bg-greens{
+    background-color: #f3f5f6;
+    border-bottom: 1px solid #ddd;
 }
 
 .docs.active {

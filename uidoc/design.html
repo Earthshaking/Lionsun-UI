@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <!-- CSS -->
+    <link href="../scss/lionsun-ui.css" rel="stylesheet" type="text/css">
+    <link href="../scss/lionsun-icon.css" rel="stylesheet" type="text/css">
+    <style>
+        .example-box {
+            width: 100%;
+            height: auto;
+            background-color: #FFF;
+            /*border: 1px solid #ddd;*/
+            padding: 30px 50px;
+        }
+        
+        .container-fluid {
+            min-width: 1400px;
+            height: 100%;
+        }
+        
+        #ui-boxes ul {
+            padding-left: 20px;
+        }
+        
+        #ui-boxes ul > li {
+            list-style: square !important;
+            font-size:20px;
+        }
+        
+        #ui-boxes ul > li > ul {
+            padding-left: 20px;
+        }
+        
+        #ui-boxes ul > li > ul > li {
+            list-style: circle !important;
+            font-size: 16px;
+            color: #67727e;
+    
+        }
+
+        blockquote{
+            border-width: 0 0 0 8px;
+            border-color: #ddd #ddd #ddd #cfe5fa;
+            border-style: solid;
+            padding: 30px 30px 10px;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <!-- 页面规范 -->
+    <div class="example-box" id="ui-boxes"></div>
+</div>
+
+<script type="text/javascript" src="../public/library/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="../public/library/bootstrap-4.0.0/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="../public/library/scrollbar/index.js"></script>
+<script type="text/javascript" src="../public/javascripts/custom-global.js"></script>
+<script type="text/javascript" src="showdown.min.js"></script>
+<script>
+    
+    $.get('readme.md', function (data) {
+        console.log(data);
+        var converter = new showdown.Converter();
+        document.getElementById("ui-boxes").innerHTML = converter.makeHtml(data);
+    });
+    
+    var scrollbar = initScrollbar("body");
+
+    //
+    // var color = [
+    //     {id: 1, color: "#E8101B"},
+    //     {id: 2, color: "#1575ED"},
+    //     {id: 3, color: "#42C02E"},
+    //     {id: 4, color: "#FF8A2B"},
+    //     {id: 5, color: "#555555"},
+    //     {id: 6, color: "#FCFCFC"},
+    //     {id: 7, color: "#C7C7C7"},
+    //     {id: 8, color: "#EBEBEB"},
+    //     {id: 9, color: "#F8F8F8"},
+    //     {id: 10, color: "#EDEDED"},
+    //     {id: 11, color: "#59C7FA"},
+    //     {id: 12, color: "#EBECF1"},
+    //     {id: 13, color: "#F3F3F3"},
+    //     {id: 14, color: "#F1FBFD"},
+    //     {id: 15, color: "#F7FAFF"},
+    //     {id: 16, color: "#E3EBF8"},
+    //     {id: 17, color: "#F9FAFE"},
+    //     {id: 18, color: "#EDF7FF"},
+    //     {id: 19, color: "#333333"},
+    //     {id: 20, color: "#3388ff"},
+    // ];
+    // var htmls = template('colorTemplate', {list: color});
+    // document.getElementById('color-boxes').innerHTML = htmls;
+
+
+</script>
+
+</body>
+</html>

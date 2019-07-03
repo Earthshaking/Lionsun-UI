@@ -1,0 +1,101 @@
+
+/*---------------------------------------
+          常用的mixin封装
+ ---------------------------------------*/
+
+// 自动添加浏览器前缀
+@mixin prefix($styleName, $value, $options: webkit moz o ms) {
+    #{$styleName}: $value;
+    @each $option in $options {
+        @if $option == webkit {
+            -webkit-#{$styleName}: $value;
+        } @else if $option == moz {
+            -moz-#{$styleName}: #{$value};
+        } @else if $option == o {
+            -o-#{$styleName}: #{$value};
+        } @else if $option == ms {
+            -ms-#{$styleName}: #{$value};
+        }
+    }
+}
+
+// 浮动
+@mixin float($f: left) {
+    float: $f;
+}
+
+// 清除浮动
+@mixin clearfix() {
+    zoom: 1;
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
+
+// 三角形
+@mixin triangle($size, $dir, $color) {
+    display: block;
+    width: 0;
+    height: 0;
+    border: $size solid transparent;
+    border-#{$dir}: $size solid #{$color};
+}
+
+// 设置宽高
+@mixin size($w, $h: auto) {
+    width: $w;
+    height: $h;
+}
+
+// 单行文本溢出显示省略号
+@mixin text-overflow {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// 文字不换行
+@mixin word-break {
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+// 边框圆角
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+
+// 阴影
+@mixin shadow($x, $y, $blur, $color) {
+    -webkit-box-shadow: $x $y $blur $color;
+    -moz-box-shadow: $x $y $blur $color;
+    box-shadow: $x $y $blur $color;
+}
+
+// 内阴影
+@mixin shadow-inset($x, $y, $blur, $color) {
+    -webkit-box-shadow: inset $x $y $blur $color;
+    -moz-box-shadow: inset $x $y $blur $color;
+    box-shadow: inset $x $y $blur $color;
+}
+
+// 过渡效果
+@mixin transition($property) {
+    -webkit-transition: $property .2s ease;
+    -moz-transition: $property .2s ease;
+    -o-transition: $property .2s ease;
+    transition: $property .2s ease;
+}
+
+// 盒子类型
+@mixin box-sizing {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}

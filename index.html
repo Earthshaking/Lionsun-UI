@@ -5,15 +5,104 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>立森UI</title>
-    <link href="public/library/bootstrap-4.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="scss/lionsun-ui.css" rel="stylesheet" type="text/css">
+    <link href="scss/lionsun-icon.css" rel="stylesheet" type="text/css">
     <link href="public/library/jquery-ui/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
-    <link href="public/fonts/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="public/stylesheets/animate.css" rel="stylesheet" type="text/css">
-    <link href="public/stylesheets/custom-global.css" rel="stylesheet" type="text/css">
-    <link href="public/stylesheets/custom-color.css" rel="stylesheet" type="text/css">
     <link href="public/stylesheets/custom-styles.css" rel="stylesheet" type="text/css">
-    <link href="public/library/scrollbar/gemini-scrollbar.css" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="public/favicon.ico" type="image/x-icon"/>
+    
+    <style>
+    
+        #floatBox {
+            position: absolute;
+            width: 100%;
+            /*left: 20px;*/
+            /*right: 20px;*/
+            bottom: 20px;
+            z-index: 9999;
+            padding: 5px 15px;
+            min-width: 400px;
+            display: none;
+        }
+    
+        #floatBox .card-body {
+            transition: all 300ms;
+            padding: 10px 15px;
+            position: relative;
+        }
+    
+        #floatBox.min .card-body {
+            height: 0;
+            padding: 0;
+            visibility: hidden;
+            opacity: 0;
+            /*display: none;*/
+        }
+    
+        #floatBox > .card {
+            border-radius: 0;
+            box-shadow: 2px 5px 10px 0 rgba(17, 17, 17, 0.1), 5px 5px 5px 0 rgba(17, 17, 17, 0.12);
+            border: 1px solid rgba(153, 153, 153, 0.5);
+        }
+    
+        #minBtn {
+            width: 50px;
+            padding: 0;
+            position: relative;
+            left: 9px;
+            float: right;
+            color: #999;
+            opacity: 0.8;
+            border: 0;
+            outline: 0;
+            box-shadow: none;
+            background-color: transparent;
+        }
+    
+        #minBtn:hover {
+            color: #000;
+        }
+    
+        #minBtn i {
+            font-size: 30px;
+        }
+        
+        .infoCard > .card-header {
+            padding: 10px 20px;
+            display: flex;
+            position: relative;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #fff;
+        }
+        
+        .infoCard > .card-header .card-title {
+            font-size: 20px;
+            margin-bottom: 0;
+        }
+        
+        #openNew {
+            position: absolute;
+            right: 60px;
+            top: 8px;
+            background-color: #f5f5f5;
+        }
+
+        #openNew:hover {
+            background-color: #f1f1f1;
+        }
+
+        .card-header > a:nth-child(#openNew) {
+            width: 100%;
+            padding: 10px 20px;
+            border: 0;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            color: rgba(17, 17, 17, 0.77);
+        }
+
+    </style>
 </head>
 <body>
 
@@ -22,7 +111,6 @@
     
     <!-- 主体 -->
     <div class="content">
-        
         <!-- 侧边栏 -->
         <div id="sidebar" class="animated fadeIn open area pt10" data-status="open">
             <br>
@@ -33,28 +121,45 @@
             <div class="card brn bn sidebar-card">
                 <div class="card-header sidebar-card-header">
                     <a class="card-link" href="#collapseOne" data-toggle="collapse">
-                        <i class="fa fa-bookmark"></i>Page template<i class="fa fa-angle-right"></i></a>
+                        <i class="fa fa-bookmark"></i>基本信息<i class="fa fa-angle-right"></i></a>
                 </div>
                 <div id="collapseOne" class="collapse show">
                     <div class="card-body p0">
                         <div class="sidebarMenu">
-                            <a href="view/home.html" class="active" target="frame">基本页面布局</a>
-                            <a href="demo/znao/index.html" target="frame" id="thinkbrainsBtn">智脑风格页面模版</a>
+                            <a href="uidoc/Lionsun-UI.html" class="active" target="frame">介绍</a>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- 智脑风格页面模版 -->
+            <div class="card brn bn sidebar-card">
+                <div class="card-header sidebar-card-header">
+                    <a class="card-link collapsed" href="#collapseThree" data-toggle="collapse">
+                        <i class="fa fa-bookmark"></i>智脑风格页面模版<i class="fa fa-angle-right"></i></a>
+                </div>
+                <div id="collapseThree" class="collapse">
+                    <div class="card-body p0">
+                        <div class="sidebarMenu" data-type="tepl"></div>
+                        <script type="text/html" id="menuTemplate">
+                            {{each list as value i}}
+                                <a href="demo/znao/{{value.url}}" data-time="{{value.time}}" target="frame">{{value.title}}</a>
+                            {{/each}}
+                        </script>
+                    </div>
+                </div>
+            </div>
+
             <!-- 元素组件 -->
             <div class="card brn bn sidebar-card">
                 <div class="card-header sidebar-card-header">
                     <a class="card-link collapsed" href="#collapseTwo" data-toggle="collapse">
-                        <i class="fa fa-bookmark"></i>UI KIT<i class="fa fa-angle-right"></i>
+                        <i class="fa fa-bookmark"></i>UI 元素<i class="fa fa-angle-right"></i>
                     </a>
                 </div>
                 <div id="collapseTwo" class="collapse">
                     <div class="card-body p0">
                         <div class="sidebarMenu">
-                            
+                            <a href="view/home.html" target="frame">页面示例</a>
                             <a href="view/navbar.html" target="frame">导航栏</a>
                             <a href="view/button.html" target="frame">按钮</a>
                             <a href="view/list.html" target="frame">列表组</a>
@@ -108,32 +213,56 @@
         </div>
         
         <div id="main">
+            
             <!-- 导航栏 -->
             <div id="header" class="animated fadeIn">
-                <nav class="navbar navbar-light bg-light">
+                <nav class="navbar navbar-light bg-greens">
                     <button class="navbar-toggler" id="LIONSUN" data-status="open" type="button" onclick="toggleSidebar(this)">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </nav>
             </div>
+
+            <iframe src="uidoc/Lionsun-UI.html" id="frame" class="frame" name="frame" frameborder="0"></iframe>
+
+            <!-- 页面模版详细信息面板 -->
+            <div id="floatBox" class="animated bounceInUp">
+                <div class="card infoCard">
+                    <div class="card-header">
+                        <h5 class="card-title">页面标题：<span id="pagename" style="color: #FF0000"></span></h5>
+                        <a href="" class="btn btn-light" id="openNew" target="_blank">在新标签页打开</a>
+                        <a href="#" class="btn" id="minBtn"><i class="fa fa-angle-down"></i></a>
+                    </div>
+                    <div class="card-body">
+                        <p>完成时间：<span id="pagetime"></span></p>
+                        <p>页面路径：<span id="pageurl"></span></p>
+                    </div>
+                </div>
+            </div>
             
-            <iframe src="view/home.html" id="frame" class="frame" name="frame" frameborder="0"></iframe>
         </div>
     
     </div>
 
 </div>
 <!-- CODE END/. -->
+
+
+
+
+
+
+
 <script src="public/library/jquery-2.1.1.js"></script>
 <script src="public/library/bootstrap-4.0.0/js/bootstrap.bundle.min.js"></script>
 <script src="public/library/scrollbar/index.js"></script>
+<script src="public/library/template-web.js"></script>
 <script src="public/library/jquery-ui/js/jquery-ui.min.js"></script>
 <script src="public/library/jquery.cookie.js"></script>
 <script src="public/library/jquery.animate.js"></script>
 <script src="public/javascripts/custom-util.js"></script>
 <script src="public/javascripts/custom-global.js"></script>
-<script>
-    
+<script type="text/javascript">
     var sidebar = $("#sidebar").Sidebar({});
     var scrollbar = initScrollbar(".area");
     
@@ -149,20 +278,79 @@
         }
     }
     
-    $(".sidebarMenu").find('a').on("click", function () {
-        if (!$(this).hasClass('active')) {
-            $(this).addClass('active').siblings().removeClass('active');
-        }
-    });
+    function initClickContrl() {
+        var floatBox = $("#floatBox");
+        
+        $(".sidebarMenu").find('a').on("click", function () {
+            if (!$(this).hasClass('active')) {
+                $(this).addClass('active').siblings().removeClass('active');
+            }
+            
+            floatBox.hide();
+    
+            if ($(this).parent('.sidebarMenu').attr('data-type') == 'tepl') {
+                setInfos($(this));
+            }
+        });
+        
+        $("#thinkbrainsBtn").on("click", function () {
+            var LIONSUN = $("#LIONSUN");
+            if (LIONSUN.data('status') == 'open') {
+                sidebar.close(LIONSUN);
+            }
+        });
     
     
-    $("#thinkbrainsBtn").on("click", function () {
-        var LIONSUN = $("#LIONSUN");
-        if (LIONSUN.data('status') == 'open') {
-            sidebar.close(LIONSUN);
-        }
-    });
+        $("#minBtn").on("click", function () {
+            if ($(this).parents('#floatBox').hasClass('min')) {
+                $(this).find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
+                $(this).parents('#floatBox').removeClass('min');
+            } else {
+                $(this).find('i').removeClass('fa-angle-down').addClass('fa-angle-up');
+                $(this).parents('#floatBox').addClass('min');
+            }
+        });
+    }
 
+    function setInfos(obj) {
+        var time = $(obj).data('time');
+        var name = $(obj).html();
+        var url = $(obj).attr('href');
+        $("#pagename").html(name);
+        $("#pagetime").html(time);
+        $("#pageurl").html(url);
+        $("#openNew").attr('href', url);
+        setTimeout(function () {
+            $("#floatBox").show();
+        }, 100);
+    }
+
+    // 智脑风格页面数据
+    var menuData = [
+        {title: "首页", url: "page/default/home.html", time: "2019年3月26日"},
+        {title: "登录页面", url: "page/default/login.html", time: "2019年3月26日"},
+        {title: "注册页面", url: "page/default/register.html", time: "2019年3月31日"},
+        {title: "搜索-文章列表", url: "page/default/result.html", time: "2019年3月26日"},
+        {title: "搜索-频道页", url: "page/default/channel.html", time: "2019年3月30日"},
+        {title: "TA的主页", url: "page/default/personHome.html", time: "2019年3月31日"},
+        {title: "TA的关注", url: "page/default/personFocus.html", time: "2019年3月31日"},
+        {title: "频道主页", url: "page/default/channelHome.html", time: "2019年3月31日"},
+        {title: "阅读页-文章", url: "page/default/article.html", time: "2019年4月1日"},
+        {title: "频道管理主页1", url: "page/member/channelManager.html", time: "2019年4月4日"},
+        {title: "频道管理主页2", url: "page/member/created_managerHome.html", time: "2019年4月4日"},
+        {title: "判断创建-1", url: "page/member/createdChannel_1.html", time: "2019年4月4日"},
+        {title: "判断创建-2", url: "page/member/createdChannel_2.html?type=personal", time: "2019年4月4日"},
+        {title: "判断创建-个人", url: "page/member/created_personal.html", time: "2019年4月4日"},
+        {title: "判断创建-企业", url: "page/member/created_enterprise.html", time: "2019年4月4日"},
+        {title: "判断创建完成", url: "page/member/created_success.html", time: "2019年4月4日"},
+        {title: "会员空间", url: "page/member/memberSpace.html", time: "2019年4月1日"},
+        {title: "频道中心", url: "page/member/channelSetting.html#setting", time: "2019年4月4日"},
+    ];
+
+    var html = template('menuTemplate', {list: menuData});
+    $("#menuTemplate").prev('.sidebarMenu').html(html);
+
+    initClickContrl();
 
 </script>
 </body>
