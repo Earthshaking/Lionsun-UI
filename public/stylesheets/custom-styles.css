@@ -210,6 +210,7 @@ body {
 
 .sidebarMenu a.disabled {
     opacity: 0.5;
+    pointer-events: none;
 }
 
 .example-item {

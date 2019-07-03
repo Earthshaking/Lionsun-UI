@@ -142,7 +142,7 @@
                         <div class="sidebarMenu" data-type="tepl"></div>
                         <script type="text/html" id="menuTemplate">
                             {{each list as value i}}
-                                <a href="demo/znao/{{value.url}}" data-time="{{value.time}}" target="frame">{{value.title}}</a>
+                                <a href="demo/{{value.url}}" data-time="{{value.time}}" target="frame">{{value.title}}</a>
                             {{/each}}
                         </script>
                     </div>
@@ -247,12 +247,6 @@
 </div>
 <!-- CODE END/. -->
 
-
-
-
-
-
-
 <script src="public/library/jquery-2.1.1.js"></script>
 <script src="public/library/bootstrap-4.0.0/js/bootstrap.bundle.min.js"></script>
 <script src="public/library/scrollbar/index.js"></script>
@@ -262,7 +256,9 @@
 <script src="public/library/jquery.animate.js"></script>
 <script src="public/javascripts/custom-util.js"></script>
 <script src="public/javascripts/custom-global.js"></script>
+
 <script type="text/javascript">
+    
     var sidebar = $("#sidebar").Sidebar({});
     var scrollbar = initScrollbar(".area");
     
@@ -327,31 +323,35 @@
 
     // 智脑风格页面数据
     var menuData = [
-        {title: "首页", url: "page/default/home.html", time: "2019年3月26日"},
-        {title: "登录页面", url: "page/default/login.html", time: "2019年3月26日"},
-        {title: "注册页面", url: "page/default/register.html", time: "2019年3月31日"},
-        {title: "搜索-文章列表", url: "page/default/result.html", time: "2019年3月26日"},
-        {title: "搜索-频道页", url: "page/default/channel.html", time: "2019年3月30日"},
-        {title: "TA的主页", url: "page/default/personHome.html", time: "2019年3月31日"},
-        {title: "TA的关注", url: "page/default/personFocus.html", time: "2019年3月31日"},
-        {title: "频道主页", url: "page/default/channelHome.html", time: "2019年3月31日"},
-        {title: "阅读页-文章", url: "page/default/article.html", time: "2019年4月1日"},
-        {title: "频道管理主页1", url: "page/member/channelManager.html", time: "2019年4月4日"},
-        {title: "频道管理主页2", url: "page/member/created_managerHome.html", time: "2019年4月4日"},
-        {title: "判断创建-1", url: "page/member/createdChannel_1.html", time: "2019年4月4日"},
-        {title: "判断创建-2", url: "page/member/createdChannel_2.html?type=personal", time: "2019年4月4日"},
-        {title: "判断创建-个人", url: "page/member/created_personal.html", time: "2019年4月4日"},
-        {title: "判断创建-企业", url: "page/member/created_enterprise.html", time: "2019年4月4日"},
-        {title: "判断创建完成", url: "page/member/created_success.html", time: "2019年4月4日"},
-        {title: "会员空间", url: "page/member/memberSpace.html", time: "2019年4月1日"},
-        {title: "频道中心", url: "page/member/channelSetting.html#setting", time: "2019年4月4日"},
+        {title: "首页", url: "znao/page/default/home.html", time: "2019年3月26日"},
+        {title: "登录页面", url: "znao/page/default/login.html", time: "2019年3月26日"},
+        {title: "注册页面", url: "znao/page/default/register.html", time: "2019年3月31日"},
+        {title: "搜索-文章列表", url: "znao/page/default/result.html", time: "2019年3月26日"},
+        {title: "搜索-频道页", url: "znao/page/default/channel.html", time: "2019年3月30日"},
+        {title: "TA的主页", url: "znao/page/default/personHome.html", time: "2019年3月31日"},
+        {title: "TA的关注", url: "znao/page/default/personFocus.html", time: "2019年3月31日"},
+        {title: "频道主页", url: "znao/page/default/channelHome.html", time: "2019年3月31日"},
+        {title: "阅读页-文章", url: "znao/page/default/article.html", time: "2019年4月1日"},
+        {title: "频道管理主页1", url: "znao/page/member/channelManager.html", time: "2019年4月4日"},
+        {title: "频道管理主页2", url: "znao/page/member/created_managerHome.html", time: "2019年4月4日"},
+        {title: "判断创建-1", url: "znao/page/member/createdChannel_1.html", time: "2019年4月4日"},
+        {title: "判断创建-2", url: "znao/page/member/createdChannel_2.html?type=personal", time: "2019年4月4日"},
+        {title: "判断创建-个人", url: "znao/page/member/created_personal.html", time: "2019年4月4日"},
+        {title: "判断创建-企业", url: "znao/page/member/created_enterprise.html", time: "2019年4月4日"},
+        {title: "判断创建完成", url: "znao/page/member/created_success.html", time: "2019年4月4日"},
+        {title: "会员空间", url: "znao/page/member/memberSpace.html", time: "2019年4月1日"}, {
+            title: "新版会员空间",
+            url: "news/pcRoot/member/memberSpace.html",
+            time: "2019年4月1日"
+        },
+        {title: "频道中心", url: "znao/page/member/channelSetting.html#setting", time: "2019年4月4日"},
     ];
 
     var html = template('menuTemplate', {list: menuData});
     $("#menuTemplate").prev('.sidebarMenu').html(html);
 
     initClickContrl();
-
 </script>
+
 </body>
 </html>
